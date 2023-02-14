@@ -1,0 +1,46 @@
+:root {
+    --font-white: #FFF;
+    --font-primary: #0473E3;
+}
+
+h1 {
+    font-size: 70px;
+    font-weight: 600;
+}
+
+h2 {
+    font-size: 40px;
+}
+
+h3 {
+    font-size: 33px;
+}
+
+h4 {
+    font-size: 22px;
+    font-weight: 400;
+}
+
+h5 {
+    font-size: 18px;
+    font-weight: 500;
+}
+
+@media only screen and (max-width: 600px) {
+    h1 {
+        font-size: 50px;
+    }
+
+    h4 {
+        font-size: 18px;
+    }
+}
+
+/* COLOR */
+.fontWhite {
+    color: var(--font-white)
+}
+
+.fontPrimary {
+    color: var(--font-primary);
+}

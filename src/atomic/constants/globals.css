@@ -1,0 +1,29 @@
+* {
+    margin: 0;
+    padding: 0;
+    letter-spacing: 1.5px;
+    box-sizing: border-box;
+}
+
+html, body {
+    max-width: 100vw;
+    overflow-x: hidden;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+input, button {
+    all: unset
+}
+
+a, button {
+    cursor: pointer;
+}
+
+main, section, div, article, aside, button {
+    display: flex;
+    flex-direction: column;
+}
