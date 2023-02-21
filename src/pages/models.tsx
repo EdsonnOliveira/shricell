@@ -1,4 +1,4 @@
-export interface ViewProps extends LoginProps, RegisterProps {
+export interface ViewProps extends LoginProps, RegisterProps, AttachmentProps {
     steps: Steps;
     title: string;
 }
@@ -15,6 +15,12 @@ export interface RegisterProps {
     dunsNumber: string;
     setDunsNumber: SetText;
     haveAccount: () => void;
+    clickAttachment: () => void;
+}
+
+export interface AttachmentProps {
+    haveAccount: () => void;
+    clickFinalize: () => void;
 }
 
 export type Steps = 'login' | 'register' | 'attachment' | 'success'

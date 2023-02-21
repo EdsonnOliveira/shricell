@@ -31,7 +31,7 @@ const MainLogin: React.FC<IndexProps> = ({
                 />
             </Container>
             <Container>
-                <Logo src={ImgLogo} alt='Logo' />
+                { !children && <Logo src={ImgLogo} alt='Logo' /> }
                 <h1>{ title }</h1>
                 {
                     children ?? (

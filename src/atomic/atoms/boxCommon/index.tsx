@@ -15,6 +15,13 @@ const BoxCommon = styled.div`
     align-items: ${( props: AlignmentsStyledProps ) => ( props.alignItems ?? 'flex-start' )};
     gap: ${( props: AlignmentsStyledProps ) => ( props.gap ?? '0px' )};
 
+    @media only screen and (max-width: 800px) {
+        & {
+            width: ${( props: IndexStyledProps ) => ( props.width800 ?? props.width )};
+            flex-direction: ${( props: AlignmentsStyledProps ) => ( props.flexDirection800 ?? props.flexDirection )};
+        }
+    }
+
     margin-top: ${( props: MarginsStyledProps ) => (props.mt ?? 0)};
     margin-left: ${( props: MarginsStyledProps ) => (props.ml ?? 0)};
     margin-right: ${( props: MarginsStyledProps ) => (props.mr ?? 0)};

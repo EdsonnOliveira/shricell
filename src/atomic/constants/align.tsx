@@ -6,8 +6,11 @@ export type AlignItems = 'flex-start' | 'flex-end' | 'center'
 
 export type Alignments = {
     flexDirection?: FlexDirection;
+    flexDirection800?: FlexDirection;
     justifyContent?: JustifyContent;
+    justiftyContent800?: JustifyContent; 
     alignItems?: AlignItems;
+    alignItems800?: AlignItems;
     gap?: string;
 }
 

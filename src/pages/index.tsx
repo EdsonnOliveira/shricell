@@ -20,6 +20,14 @@ const Home: React.FC = ({
     setSteps('login')
   }
 
+  const clickAttachment = () => {
+    setSteps('attachment')
+  }
+
+  const clickFinalize = () => {
+    setSteps('success')
+  }
+
   return (
     <View
       steps={steps}
@@ -32,6 +40,8 @@ const Home: React.FC = ({
       dunsNumber={dunsNumber}
       setDunsNumber={setDunsNumber}
       haveAccount={haveAccount}
+      clickAttachment={clickAttachment}
+      clickFinalize={clickFinalize}
     />
   )
 }
