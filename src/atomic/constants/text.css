@@ -10,6 +10,7 @@ h1 {
 
 h2 {
     font-size: 40px;
+    font-weight: 500;
 }
 
 h3 {
@@ -43,4 +44,9 @@ h5 {
 
 .fontPrimary {
     color: var(--font-primary);
+}
+
+/* WEIGHT */
+.w400 {
+    font-weight: 400;
 }
