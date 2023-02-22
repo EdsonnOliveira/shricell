@@ -19,6 +19,8 @@ export interface RegisterProps {
 }
 
 export interface AttachmentProps {
+    certificate: FileList | null
+    setCertificate: (file: FileList | null) => void;
     haveAccount: () => void;
     clickFinalize: () => void;
 }

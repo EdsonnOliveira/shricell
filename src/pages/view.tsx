@@ -1,9 +1,10 @@
 import React from "react";
 
 import MainLogin from "@atomic/organisms/mainLogin";
-import Input from "~/atomic/atoms/input";
+import Input from "@atomic/atoms/input";
 import BoxCommon from "@atomic/atoms/boxCommon";
 import Button from "@atomic/atoms/button";
+import FileDnD from "@atomic/mocelules/fileDnD";
 
 import { ViewProps, RegisterProps, AttachmentProps } from "./models";
 
@@ -14,6 +15,8 @@ const View: React.FC<ViewProps> = ({
     password,
     setPassword,
     clickRegister,
+    certificate,
+    setCertificate,
     haveAccount,
     clickAttachment,
     clickFinalize
@@ -41,6 +44,8 @@ const View: React.FC<ViewProps> = ({
         case 'attachment':
             return (
                 <StepAttachment
+                    certificate={certificate}
+                    setCertificate={setCertificate}
                     haveAccount={haveAccount}
                     clickFinalize={clickFinalize}
                 />
@@ -125,6 +130,8 @@ const StepRegister: React.FC<RegisterProps> = ({
 )
 
 const StepAttachment: React.FC<AttachmentProps> = ({
+    certificate,
+    setCertificate,
     haveAccount,
     clickFinalize,
 }) => (
@@ -132,8 +139,13 @@ const StepAttachment: React.FC<AttachmentProps> = ({
         title='Attachment'
         type='customer'
     >
-        <BoxCommon width='100%' height='450px' gap='10px' mt='20px' alignItems='center' style={{ overflow: 'auto' }}>
-            
+        <BoxCommon width='100%' height='450px' gap='10px' mt='20px' style={{ overflow: 'auto' }}>
+            <h2>Certificate of incorporation</h2>
+            <FileDnD file={certificate} setFile={setCertificate} mb='10px' />
+            <h2>Photo ID</h2>
+            <FileDnD file={certificate} setFile={setCertificate} mb='10px' />
+            <h2>Resale or tax exempt certificate</h2>
+            <FileDnD file={certificate} setFile={setCertificate} />
         </BoxCommon>
         <BoxCommon width='50%' alignItems='center'>
             <Button text='I have a account' type='ghost' textColor='fontPrimary' onClick={haveAccount} />

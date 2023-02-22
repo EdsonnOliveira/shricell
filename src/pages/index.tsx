@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Steps } from "./models";
 
 import View from "./view";
@@ -11,6 +11,8 @@ const Home: React.FC = ({
   const [steps, setSteps] = useState<Steps>('login')
 
   const [dunsNumber, setDunsNumber] = useState<string>('')
+
+  const [certificate, setCertificate] = useState<FileList | null>(null)
 
   const clickRegister = () => {
     setSteps('register')
@@ -39,6 +41,8 @@ const Home: React.FC = ({
       clickRegister={clickRegister}
       dunsNumber={dunsNumber}
       setDunsNumber={setDunsNumber}
+      certificate={certificate}
+      setCertificate={setCertificate}
       haveAccount={haveAccount}
       clickAttachment={clickAttachment}
       clickFinalize={clickFinalize}
