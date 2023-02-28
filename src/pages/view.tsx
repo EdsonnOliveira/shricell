@@ -14,6 +14,7 @@ const View: React.FC<ViewProps> = ({
     setEmail,
     password,
     setPassword,
+    clickLogin,
     clickRegister,
     certificate,
     setCertificate,
@@ -31,6 +32,7 @@ const View: React.FC<ViewProps> = ({
                     onChangeEmail={setEmail}
                     password={password}
                     onChangePassword={setPassword}
+                    clickLogin={clickLogin}
                     clickRegister={clickRegister}
                 />
             )

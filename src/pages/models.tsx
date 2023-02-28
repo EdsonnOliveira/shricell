@@ -1,6 +1,5 @@
 export interface ViewProps extends LoginProps, RegisterProps, AttachmentProps {
     steps: Steps;
-    title: string;
 }
 
 export interface LoginProps {
@@ -8,6 +7,7 @@ export interface LoginProps {
     setEmail: SetText;
     password: string;
     setPassword: SetText;
+    clickLogin: () => void;
     clickRegister: () => void;
 }
 

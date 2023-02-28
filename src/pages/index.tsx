@@ -1,18 +1,38 @@
 import React, { useEffect, useState } from "react";
+import { useAxios } from "use-axios-client";
+import user from "../services/api/user";
 import { Steps } from "./models";
 
 import View from "./view";
 
 const Home: React.FC = ({
 }) => {
-  const [title, setTitle] = useState<string>('Register')
-  const [email, setEmail] = useState<string>('')
-  const [password, setPassword] = useState<string>('')
+  // const { data, error, loading } = useAxios({
+  //   url: 'https://api.shricell.com/api/v1/login',
+  //   data: {
+  //     email: 'devsite4@gmail.com',
+  //     password: '12345678',
+  //   },
+  // });
+
+  const [email, setEmail] = useState<string>('devsite4@gmail.com')
+  const [password, setPassword] = useState<string>('12345678')
   const [steps, setSteps] = useState<Steps>('login')
 
   const [dunsNumber, setDunsNumber] = useState<string>('')
 
   const [certificate, setCertificate] = useState<FileList | null>(null)
+
+  useEffect(() => {
+    
+    // console.warn(data)
+  }, [])
+
+  const clickLogin = () => {
+    user.login({ email, password })
+    .then((res) => console.warn(res))
+    .catch((res) => console.log(res))
+  }
 
   const clickRegister = () => {
     setSteps('register')
@@ -33,11 +53,11 @@ const Home: React.FC = ({
   return (
     <View
       steps={steps}
-      title={title}
       email={email}
       setEmail={setEmail}
       password={password}
       setPassword={setPassword}
+      clickLogin={clickLogin}
       clickRegister={clickRegister}
       dunsNumber={dunsNumber}
       setDunsNumber={setDunsNumber}

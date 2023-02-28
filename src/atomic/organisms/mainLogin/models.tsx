@@ -8,6 +8,7 @@ export interface IndexProps {
     onChangeEmail?: (value: string) => void;
     password?: string;
     onChangePassword?: (value: string) => void;
+    clickLogin?: () => void;
     clickRegister?: () => void;
 }
 

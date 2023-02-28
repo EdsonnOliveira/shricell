@@ -20,6 +20,7 @@ const MainLogin: React.FC<IndexProps> = ({
     onChangeEmail,
     password,
     onChangePassword,
+    clickLogin,
     clickRegister
 }) => {
     return (
@@ -42,7 +43,7 @@ const MainLogin: React.FC<IndexProps> = ({
                             </BoxCommon>
                             <BoxCommon width='100%' flexDirection='row' justifyContent='space-between' alignItems='center'>
                                 <Button text='Forgot password?' type='ghost' onClick={() => null} />
-                                <Button text='Login' type={type === 'admin' ? 'primaryMedium' : 'secundaryMedium'} onClick={() => null} />
+                                <Button text='Login' type={type === 'admin' ? 'primaryMedium' : 'secundaryMedium'} onClick={clickLogin} />
                             </BoxCommon>
                             {
                                 type === 'customer' && (

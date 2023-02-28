@@ -19,6 +19,7 @@
       "~/*": ["./src/*"],
       "@assets/*": ["./src/assets/*"],
       "@atomic/*": ["./src/atomic/*"],
+      "@api/*": ["./src/services/api"]
     }
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "src/atomic/organisms/mainLogin/style.tsx"],
