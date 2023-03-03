@@ -1,32 +1,19 @@
-import React, { useEffect, useState } from "react";
-import { useAxios } from "use-axios-client";
-import user from "../services/api/user";
-import { Steps } from "./models";
+import React, { useState } from "react";
 
+import user from "../services/api/user";
+
+import { Steps } from "./models";
 import View from "./view";
 
 const Home: React.FC = ({
 }) => {
-  // const { data, error, loading } = useAxios({
-  //   url: 'https://api.shricell.com/api/v1/login',
-  //   data: {
-  //     email: 'devsite4@gmail.com',
-  //     password: '12345678',
-  //   },
-  // });
-
-  const [email, setEmail] = useState<string>('devsite4@gmail.com')
+  const [email, setEmail] = useState<string>('shricell@gmail.com')
   const [password, setPassword] = useState<string>('12345678')
   const [steps, setSteps] = useState<Steps>('login')
 
   const [dunsNumber, setDunsNumber] = useState<string>('')
 
   const [certificate, setCertificate] = useState<FileList | null>(null)
-
-  useEffect(() => {
-    
-    // console.warn(data)
-  }, [])
 
   const clickLogin = () => {
     user.login({ email, password })

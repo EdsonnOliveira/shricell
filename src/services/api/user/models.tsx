@@ -4,15 +4,10 @@ export type IndexType = {
 }
 
 export interface LoginProps {
-    accessToken: string;
-    token_type: string;
-    expiresIn: number;
+    access_token: string;
     user: {
         id: number;
-        name: string;
         email: string;
-        emailVerifiedAt: string;
-        createdAt: string;
-        updatedAt: string;
+        name: string;
     }
 }
