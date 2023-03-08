@@ -6,4 +6,5 @@ export const white = '#FFF';
 export const black = '#0F0F0F';
 export const gray = '#696969';
 export const grey = '#F4F4F4';
+export const blue = '#132538';
 export const lightBlue = '#EBF6FF';
