@@ -28,7 +28,7 @@ const FileDnD: React.FC<IndexProps> = ({
                 ? <h4>{ file[0].name }</h4>
                 : dragEnter
                     ? <h4 className='fontPrimary'>Drop file!</h4>
-                    : <h4>Drop file here, or <b className='fontPrimary w400'>browse</b></h4>
+                    : <h4>Drop file here, or <b className='fontPrimary fontW400'>browse</b></h4>
             }
             <FileInput
                 type='file'
