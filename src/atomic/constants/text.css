@@ -47,6 +47,14 @@ h5 {
 }
 
 /* WEIGHT */
-.w400 {
+.fontW300 {
+    font-weight: 300;
+}
+
+.fontW400 {
     font-weight: 400;
+}
+
+.fontW600 {
+    font-weight: 600;
 }
