@@ -1,0 +1,1 @@
+export type SetText = (value: string) => void;
