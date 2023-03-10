@@ -19,7 +19,7 @@ const Input: React.FC<IndexProps> = ({
         <Main width={width} mt={mt} ml={ml} mr={mr} mb={mb}>
             <TextInput
                 value={value}
-                onChangeText={onChangeText}
+                onChange={e => onChangeText(e.target.value)}
                 placeholder={placeholder}
                 type={type}
                 autoFocus={autoFocus}
