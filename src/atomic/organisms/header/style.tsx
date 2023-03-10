@@ -28,6 +28,21 @@ export const Nav = styled.nav`
     margin-top: -20px;
 `
 
+export const NavMobile = styled.div`
+    width: 100%;
+    height: 100%;
+    display: ${(props: IndexStyledProps) => ( props.mobile ? 'flex' : 'none' )};
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    gap: 20px;
+    background-color: ${( props: IndexStyledProps ) => ( props.bgColor == 'primary' ? `${primary}` : `${secondary}` )};
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+`
+
 export const Logo = styled(Image)`
     width: 50px;
     height: 50px;
@@ -38,10 +53,39 @@ export const Logo = styled(Image)`
     bottom: 0;
 `
 
+export const Hamburguer = styled.button`
+    all: unset;
+    cursor: pointer;
+    width: 27px;
+    height: 20px;
+    position: absolute;
+    display: none;
+    flex-direction: column;
+    justify-content: space-between;
+    right: 0;
+    top: 0;
+    top: 10px;
+
+    @media only screen and (max-width: 800px) {
+        display: flex;
+    }
+`
+
+export const HamburguerBar = styled.div`
+    width: 100%;
+    height: 3px;
+    background-color: ${white};
+`
+
 export const Ul = styled.ul`
     display: flex;
     gap: 40px;
     margin-top: -20px;
+    flex-direction: ${(props: IndexStyledProps) => ( props.mobile ? 'column' : 'row' )};
+
+    @media only screen and (max-width: 800px) {
+        display: ${(props: IndexStyledProps) => ( props.mobile ? 'flex' : 'none' )};
+    }
 `
 
 export const Li = styled(Link)`

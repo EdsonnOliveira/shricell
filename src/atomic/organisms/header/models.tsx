@@ -12,4 +12,5 @@ export type IndexStyledProps = StyledProps<{
     bgColor?: BGColorType;
     size?: SizeType;
     pageCurrent?: boolean;
+    mobile?: boolean;
 }>
