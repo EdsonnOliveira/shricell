@@ -1,12 +1,12 @@
-import { ChangeEvent, HTMLInputTypeAttribute } from "react";
+import { HTMLInputTypeAttribute } from "react";
 import { StyledProps } from "styled-components";
-import { Margins } from "../../constants/spacing";
-import { TextAlign } from "../../constants/text";
+import { Margins } from "@atomic/constants/spacing";
+import { TextAlign } from "@atomic/constants/text";
 
 export interface IndexProps extends Margins {
     width?: string;
     value: string;
-    onChange?: (e: ChangeEvent<HTMLInputElement>) => void
+    onChangeText: (e: string) => void
     placeholder: string;
     textAlign?: TextAlign;
     type?: HTMLInputTypeAttribute;
