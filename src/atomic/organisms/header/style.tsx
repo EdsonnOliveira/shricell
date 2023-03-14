@@ -15,6 +15,13 @@ export const Main = styled.section`
     display: flex;
     flex-direction: column;
     justify-content: space-around;
+
+    @media only screen and (max-width: 800px) {
+        & {
+            height: 450px;
+            justify-content: space-between
+        }
+    }
 `
 
 export const Nav = styled.nav`
@@ -24,8 +31,15 @@ export const Nav = styled.nav`
     justify-content: center;
     align-items: center;
     position: relative;
-    margin-bottom: 35px;
-    margin-top: -20px;
+    margin-bottom: ${( props: IndexStyledProps ) => ( props.size == 'large' ? '35px' : '0' )};
+    margin-top: ${( props: IndexStyledProps ) => ( props.size == 'large' ? '-20px' : '0' )};
+
+    @media only screen and (max-width: 800px) {
+        & {
+            margin-top: 20px;
+            margin-bottom: 0;
+        }
+    }
 `
 
 export const NavMobile = styled.div`
@@ -49,7 +63,7 @@ export const Logo = styled(Image)`
     object-fit: contain;
     position: absolute;
     left: 0;
-    top: 0;
+    top: ${( props: IndexStyledProps ) => ( props.bgColor == 'primary' ? '0px' : '10px' )};
     bottom: 0;
 `
 
@@ -63,8 +77,7 @@ export const Hamburguer = styled.button`
     flex-direction: column;
     justify-content: space-between;
     right: 0;
-    top: 0;
-    top: 10px;
+    top: ${( props: IndexStyledProps ) => ( props.bgColor == 'primary' ? '25px' : '10px' )};
 
     @media only screen and (max-width: 800px) {
         display: flex;
@@ -80,7 +93,7 @@ export const HamburguerBar = styled.div`
 export const Ul = styled.ul`
     display: flex;
     gap: 40px;
-    margin-top: -20px;
+    margin-top: ${( props: IndexStyledProps ) => ( props.size == 'large' ? '-20px' : '0' )};
     flex-direction: ${(props: IndexStyledProps) => ( props.mobile ? 'column' : 'row' )};
 
     @media only screen and (max-width: 800px) {
@@ -129,6 +142,12 @@ export const BoxInfo = styled.section`
     width: 100%;
     gap: 20px;
     margin-top: -30px;
+
+    @media only screen and (max-width: 800px) {
+        .txtHello {
+            text-align: center;
+        }
+    }
 `
 
 export const BoxValues = styled.div`
@@ -138,4 +157,13 @@ export const BoxValues = styled.div`
     flex-direction: row;
     flex-wrap: wrap;
     gap: 100px;
+
+    @media only screen and (max-width: 800px) {
+        & {
+            height: max-content;
+            margin-bottom: 20px;
+            gap: 50px;
+            justify-content: center;
+        }
+    }
 `
