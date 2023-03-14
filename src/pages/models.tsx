@@ -1,3 +1,6 @@
+import { SetFile, SetText, SetVoid } from "@types/set";
+import { GetFile } from "@types/get";
+
 export interface ViewProps extends LoginProps, RegisterProps, AttachmentProps {
     steps: Steps;
 }
@@ -7,23 +10,54 @@ export interface LoginProps {
     setEmail: SetText;
     password: string;
     setPassword: SetText;
-    clickLogin: () => void;
-    clickRegister: () => void;
+    clickLogin: SetVoid;
+    clickRegister: SetVoid;
 }
 
 export interface RegisterProps {
     dunsNumber: string;
     setDunsNumber: SetText;
-    haveAccount: () => void;
-    clickAttachment: () => void;
+    federalTax: string;
+    setFederalTax: SetText;
+    companyLegal: string;
+    setCompanyLegal: SetText;
+    phone: string;
+    setPhone: SetText;
+    zipCode: string;
+    setZipCode: SetText;
+    companyAddress: string;
+    setCompanyAddress: SetText;
+    state: string;
+    setState: SetText;
+    city: string;
+    setCity: SetText;
+    country: string;
+    setCountry: SetText;
+    stateCorporation: string;
+    setStateCorporation: SetText;
+    typeIndustry: string;
+    setTypeIndustry: SetText;
+    emailCorporation: string;
+    setEmailCorporation: SetText;
+    businessIdentity: string;
+    setBusinessIdentity: SetText;
+    webSite: string;
+    setWebSite: SetText;
+    aboutUs: string;
+    setAboutUs: SetText;
+    haveAccount: SetVoid;
+    clickAttachment: SetVoid;
 }
 
 export interface AttachmentProps {
-    certificate: FileList | null
-    setCertificate: (file: FileList | null) => void;
-    haveAccount: () => void;
-    clickFinalize: () => void;
+    certificate: GetFile;
+    setCertificate: SetFile;
+    photoID: GetFile;
+    setPhotoID: SetFile;
+    resaleTax: GetFile;
+    setResaleTax: SetFile;
+    haveAccount: SetVoid;
+    clickFinalize: SetVoid;
 }
 
 export type Steps = 'login' | 'register' | 'attachment' | 'success'
-type SetText = (value: string) => void;
