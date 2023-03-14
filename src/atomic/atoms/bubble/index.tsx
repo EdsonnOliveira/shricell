@@ -8,7 +8,7 @@ const Bubble: React.FC<IndexProps> = ({
     title,
 }) => {
     return (
-        <Main>
+        <Main className='bubble'>
             <Round>
                 
             </Round>
