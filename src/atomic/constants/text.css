@@ -1,6 +1,7 @@
 :root {
     --font-white: #FFF;
     --font-primary: #0473E3;
+    --font-gray: #696969;
 }
 
 h1 {
@@ -27,6 +28,11 @@ h5 {
     font-weight: 500;
 }
 
+h6 {
+    font-size: 16px;
+    font-weight: 500;
+}
+
 @media only screen and (max-width: 600px) {
     h1 {
         font-size: 50px;
@@ -46,6 +52,10 @@ h5 {
     color: var(--font-primary);
 }
 
+.fontGray {
+    color: var(--font-gray)
+}
+
 /* WEIGHT */
 .fontW300 {
     font-weight: 300;
@@ -53,6 +63,10 @@ h5 {
 
 .fontW400 {
     font-weight: 400;
+}
+
+.fontW500 {
+    font-weight: 500;
 }
 
 .fontW600 {
