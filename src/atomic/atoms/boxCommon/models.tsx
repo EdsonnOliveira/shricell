@@ -1,4 +1,3 @@
-import { ColorValue } from "react-native";
 import { StyledProps } from "styled-components";
 
 export type IndexStyledProps = StyledProps<{
@@ -7,6 +6,6 @@ export type IndexStyledProps = StyledProps<{
 
     height?: string | number;
     flex?: string | number;
-    bgColor?: ColorValue | undefined;
+    bgColor?: String | undefined;
     scroll?: string;
 }>;
