@@ -28,13 +28,13 @@ const View: React.FC<ViewProps> = ({
                 gap='20px'
                 flexWrap='wrap'
             >
-                <BoxShadow title='Billed amount' size={useMediaQuery('(max-width: 1100px)') && { width: '100%' }}>
+                <BoxShadow title='Billed amount' size={useMediaQuery('(max-width: 1000px)') && { width: '100%' }}>
                     <BoxCommon flexDirection='row' alignItems='center' justifyContent='space-between' flex='1'>
                         <h2>$ 4239,12</h2>
                         <Stamp value='+7.3%' bgColor={green} />
                     </BoxCommon>
                 </BoxShadow>
-                <BoxShadow title='Cellphones' size={useMediaQuery('(max-width: 1100px)') && { width: '100%' }}>
+                <BoxShadow title='Cellphones' size={useMediaQuery('(max-width: 1000px)') && { width: '100%' }}>
                     <BoxCommon flexDirection='row' alignItems='center' justifyContent='space-between' flex='1'>
                         <h2>78</h2>
                         <Stamp value='+10.1%' />
