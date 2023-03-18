@@ -8,6 +8,8 @@ import Stamp from "@atomic/atoms/stamp";
 import BoxCommon from "@atomic/atoms/boxCommon";
 import Table from "@atomic/mocelules/table";
 
+import useMediaQuery from "@hooks/useMediaQuery";
+
 import { ViewProps } from "./models";
 
 const View: React.FC<ViewProps> = ({
@@ -19,21 +21,27 @@ const View: React.FC<ViewProps> = ({
         </Head>
         <Header />
         <main className="main">
-            <BoxCommon flex='1' flexDirection='row' gap='20px' flexWrap='wrap'>
-                <BoxShadow title='Billed amount'>
+            <BoxCommon
+                flex={useMediaQuery('(max-width: 1100px)') ? 'unset' : '1'}
+                width={useMediaQuery('(max-width: 1100px)') && '100%'}
+                flexDirection='row'
+                gap='20px'
+                flexWrap='wrap'
+            >
+                <BoxShadow title='Billed amount' size={useMediaQuery('(max-width: 1100px)') && { width: '100%' }}>
                     <BoxCommon flexDirection='row' alignItems='center' justifyContent='space-between' flex='1'>
                         <h2>$ 4239,12</h2>
                         <Stamp value='+7.3%' bgColor={green} />
                     </BoxCommon>
                 </BoxShadow>
-                <BoxShadow title='Cellphones sold' size={{ width: '630px', height: '440px' }}>
-
+                <BoxShadow title='Cellphones' size={useMediaQuery('(max-width: 1100px)') && { width: '100%' }}>
+                    <BoxCommon flexDirection='row' alignItems='center' justifyContent='space-between' flex='1'>
+                        <h2>78</h2>
+                        <Stamp value='+10.1%' />
+                    </BoxCommon>
                 </BoxShadow>
-                <BoxShadow title='Cellphones'>
-                <BoxCommon flexDirection='row' alignItems='center' justifyContent='space-between' flex='1'>
-                    <h2>78</h2>
-                    <Stamp value='+10.1%' />
-                </BoxCommon>
+                <BoxShadow title='Cellphones sold' size={{ width: '100%' }}>
+
                 </BoxShadow>
                 <BoxShadow title='Latest sales' size={{ width: '100%' }}>
                     <Table
@@ -42,21 +50,25 @@ const View: React.FC<ViewProps> = ({
                     />
                 </BoxShadow>
             </BoxCommon>
-            <BoxCommon flex='0.3' gap='20px' mt='-100px'>
-                <BoxShadow>
+            <BoxCommon
+                flex={useMediaQuery('(max-width: 1100px)') ? '1' : '0.4'}
+                gap='20px'
+                mt={useMediaQuery('(max-width: 1100px)') ? '0' : '-100px'}
+            >
+                <BoxShadow size={{ width: '100%' }}>
                     <BoxCommon alignItems='center' justifyContent='center' gap='10px' flex='1'>
                         <h3 className="fontW500">iPhone 14 Pro</h3>
                         <Stamp value='4' bgColor={red} />
                         <h6 className='fontGray fontW300'>Low stock</h6>
                     </BoxCommon>
                 </BoxShadow>
-                <BoxShadow size={{height: '80px'}}>
+                <BoxShadow size={{ width: '100%', height: '80px' }}>
                     <BoxCommon flexDirection='row' alignItems='center' justifyContent='center' gap='20px' flex='1'>
                         <h3 className="fontW500">Galaxy 22</h3>
                         <Stamp value='sold off' bgColor={red} />
                     </BoxCommon>
                 </BoxShadow>
-                <BoxShadow size={{height: '80px'}}>
+                <BoxShadow size={{ width: '100%', height: '80px' }}>
                     <BoxCommon flexDirection='row' alignItems='center' justifyContent='center' gap='20px' flex='1'>
                         <h3 className="fontW500">iPhone 11</h3>
                         <Stamp value='sold off' bgColor={red} />
