@@ -14,6 +14,7 @@ const BoxCommon = styled.div`
     justify-content: ${( props: AlignmentsStyledProps ) => ( props.justifyContent ?? 'flex-start' )};
     align-items: ${( props: AlignmentsStyledProps ) => ( props.alignItems ?? 'flex-start' )};
     gap: ${( props: AlignmentsStyledProps ) => ( props.gap ?? '0px' )};
+    flex-wrap: ${( props: AlignmentsStyledProps ) => ( props.flexWrap ?? 'unset' )};
 
     @media only screen and (max-width: 800px) {
         & {
