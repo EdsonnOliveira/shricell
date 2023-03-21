@@ -35,7 +35,8 @@ const optionsComponents = [
 
 const Header: React.FC<IndexProps> = ({
     bgColor = 'secondary',
-    size = 'large'
+    size = 'large',
+    itemsPreview
 }) => {
     const router = useRouter()
     const [mobile, setMobile] = useState<boolean>(false)
@@ -68,14 +69,11 @@ const Header: React.FC<IndexProps> = ({
                 <Button type={bgColor == 'primary' ? 'secundaryMedium' : 'primaryMedium'} text='Close Menu' onClick={() => setMobile(false)} />
             </NavMobile>
             {
-                bgColor == 'secondary' && (
+                bgColor == 'secondary' && size == 'large' && (
                     <BoxInfo>
                         <h2 className='fontWhite txtHello'>Hello, Shri!</h2>
                         <BoxValues>
-                            <Bubble title='Sales' value='34' />
-                            <Bubble title='Unfinished' value='5' />
-                            <Bubble title='Addition' value='7.3%' />
-                            <Bubble title='Visits' value='61' />
+                            { itemsPreview?.map((item, index) => <Bubble title={item.title} value={item.value} icon={item.icon} />) }
                         </BoxValues>
                     </BoxInfo>
                 )

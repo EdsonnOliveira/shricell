@@ -1,8 +1,10 @@
 import { StyledProps } from "styled-components";
+import { HeaderItemsPreview } from "@atomic/constants/header";
 
 export interface IndexProps {
     bgColor?: BGColorType;
-    size?: SizeType
+    size?: SizeType;
+    itemsPreview?: HeaderItemsPreview[]
 }
 
 type BGColorType = 'primary' | 'secondary'
