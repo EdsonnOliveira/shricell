@@ -34,6 +34,7 @@ const optionsComponents = [
 ]
 
 const Header: React.FC<IndexProps> = ({
+    title,
     bgColor = 'secondary',
     size = 'large',
     itemsPreview
@@ -71,7 +72,9 @@ const Header: React.FC<IndexProps> = ({
             {
                 bgColor == 'secondary' && size == 'large' && (
                     <BoxInfo>
-                        <h2 className='fontWhite txtHello'>Hello, Shri!</h2>
+                        <h2 className='fontWhite txtHello'>
+                            { title ?? optionsComponents.find(page => page.page == router.pathname)?.name }
+                        </h2>
                         <BoxValues>
                             { itemsPreview?.map((item, index) => <Bubble title={item.title} value={item.value} icon={item.icon} />) }
                         </BoxValues>

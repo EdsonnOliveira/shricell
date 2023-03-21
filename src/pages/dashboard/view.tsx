@@ -20,7 +20,7 @@ const View: React.FC<ViewProps> = ({
         <Head>
             <title>Dashboard - ShriCell</title>
         </Head>
-        <Header itemsPreview={itemsPreview} />
+        <Header title='Hello, Shri!' itemsPreview={itemsPreview} />
         <main className="main">
             <BoxCommon
                 flex={useMediaQuery('(max-width: 1100px)') ? 'unset' : '1'}
