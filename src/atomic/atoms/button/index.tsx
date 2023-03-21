@@ -12,7 +12,7 @@ import {
 import IndexProps from "./models";
 
 const Button: React.FC<IndexProps> = ({
-    type,
+    type = 'primaryLarge',
     text,
     textColor,
     onClick,
