@@ -3,6 +3,7 @@ import { StyledProps } from "styled-components";
 
 export type TR = {
     td: TD[];
+    onClick?: () => void;
 }
 
 export type TRStyledProps = StyledProps<TR>

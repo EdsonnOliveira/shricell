@@ -17,7 +17,7 @@ const Table: React.FC<IndexProps> = ({
             <TBody>
                 {
                     tr.map((item, index) => (
-                        <TR>
+                        <TR onClick={() => item.onClick ? item.onClick() : null}>
                             {
                                 item.td.map((item, index) => (
                                     <TD
