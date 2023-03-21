@@ -1,14 +1,10 @@
 import React from "react";
 import Head from "next/head";
 
-import { green, red } from "@atomic/constants/colors";
 import Header from "@atomic/organisms/header";
 import BoxShadow from "@atomic/atoms/boxShadow";
-import Stamp from "@atomic/atoms/stamp";
 import BoxCommon from "@atomic/atoms/boxCommon";
 import Table from "@atomic/mocelules/table";
-
-import useMediaQuery from "@hooks/useMediaQuery";
 
 import { ViewProps } from "./models";
 

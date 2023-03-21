@@ -5,345 +5,7 @@ import { green, red } from "@atomic/constants/colors";
 import { HeaderItemsPreview } from "@atomic/constants/header";
 
 import View from "./view";
-
-const latestSales: TR[] = [
-    {
-        td: [
-                {
-                    description: 'iPhone 14',
-                    textAlign: 'left',
-                    textWeight: '500',
-                    type: 'text'
-                },
-                {
-                    description: '128GB',
-                    textAlign: 'center',
-                    textWeight: '300',
-                    type: 'text'
-                },
-                {
-                    description: 'Blue',
-                    textAlign: 'center',
-                    textWeight: '300',
-                    type: 'text'
-                },
-                {
-                    description: '13',
-                    textAlign: 'center',
-                    textWeight: '500',
-                    type: 'text'
-                },
-                {
-                    description: '$ 799',
-                    textAlign: 'center',
-                    textWeight: '500',
-                    type: {
-                        color: 'fontWhite',
-                        bgColor: green
-                    }
-                },
-        ]
-    },
-    {
-        td: [
-                {
-                    description: 'iPhone 14',
-                    textAlign: 'left',
-                    textWeight: '500',
-                    type: 'text'
-                },
-                {
-                    description: '128GB',
-                    textAlign: 'center',
-                    textWeight: '300',
-                    type: 'text'
-                },
-                {
-                    description: 'Blue',
-                    textAlign: 'center',
-                    textWeight: '300',
-                    type: 'text'
-                },
-                {
-                    description: '13',
-                    textAlign: 'center',
-                    textWeight: '500',
-                    type: 'text'
-                },
-                {
-                    description: '$ 799',
-                    textAlign: 'center',
-                    textWeight: '500',
-                    type: {
-                        color: 'fontWhite',
-                        bgColor: green
-                    }
-                },
-        ]
-    },
-    {
-        td: [
-                {
-                    description: 'iPhone 14',
-                    textAlign: 'left',
-                    textWeight: '500',
-                    type: 'text'
-                },
-                {
-                    description: '128GB',
-                    textAlign: 'center',
-                    textWeight: '300',
-                    type: 'text'
-                },
-                {
-                    description: 'Blue',
-                    textAlign: 'center',
-                    textWeight: '300',
-                    type: 'text'
-                },
-                {
-                    description: '13',
-                    textAlign: 'center',
-                    textWeight: '500',
-                    type: 'text'
-                },
-                {
-                    description: '$ 799',
-                    textAlign: 'center',
-                    textWeight: '500',
-                    type: {
-                        color: 'fontWhite',
-                        bgColor: green
-                    }
-                },
-        ]
-    },
-    {
-        td: [
-                {
-                    description: 'iPhone 14',
-                    textAlign: 'left',
-                    textWeight: '500',
-                    type: 'text'
-                },
-                {
-                    description: '128GB',
-                    textAlign: 'center',
-                    textWeight: '300',
-                    type: 'text'
-                },
-                {
-                    description: 'Blue',
-                    textAlign: 'center',
-                    textWeight: '300',
-                    type: 'text'
-                },
-                {
-                    description: '13',
-                    textAlign: 'center',
-                    textWeight: '500',
-                    type: 'text'
-                },
-                {
-                    description: '$ 799',
-                    textAlign: 'center',
-                    textWeight: '500',
-                    type: {
-                        color: 'fontWhite',
-                        bgColor: green
-                    }
-                },
-        ]
-    },
-    {
-        td: [
-                {
-                    description: 'iPhone 14',
-                    textAlign: 'left',
-                    textWeight: '500',
-                    type: 'text'
-                },
-                {
-                    description: '128GB',
-                    textAlign: 'center',
-                    textWeight: '300',
-                    type: 'text'
-                },
-                {
-                    description: 'Blue',
-                    textAlign: 'center',
-                    textWeight: '300',
-                    type: 'text'
-                },
-                {
-                    description: '13',
-                    textAlign: 'center',
-                    textWeight: '500',
-                    type: 'text'
-                },
-                {
-                    description: '$ 799',
-                    textAlign: 'center',
-                    textWeight: '500',
-                    type: {
-                        color: 'fontWhite',
-                        bgColor: green
-                    }
-                },
-        ]
-    },
-    {
-        td: [
-                {
-                    description: 'iPhone 14',
-                    textAlign: 'left',
-                    textWeight: '500',
-                    type: 'text'
-                },
-                {
-                    description: '128GB',
-                    textAlign: 'center',
-                    textWeight: '300',
-                    type: 'text'
-                },
-                {
-                    description: 'Blue',
-                    textAlign: 'center',
-                    textWeight: '300',
-                    type: 'text'
-                },
-                {
-                    description: '13',
-                    textAlign: 'center',
-                    textWeight: '500',
-                    type: 'text'
-                },
-                {
-                    description: '$ 799',
-                    textAlign: 'center',
-                    textWeight: '500',
-                    type: {
-                        color: 'fontWhite',
-                        bgColor: green
-                    }
-                },
-        ]
-    },
-    {
-        td: [
-                {
-                    description: 'iPhone 14',
-                    textAlign: 'left',
-                    textWeight: '500',
-                    type: 'text'
-                },
-                {
-                    description: '128GB',
-                    textAlign: 'center',
-                    textWeight: '300',
-                    type: 'text'
-                },
-                {
-                    description: 'Blue',
-                    textAlign: 'center',
-                    textWeight: '300',
-                    type: 'text'
-                },
-                {
-                    description: '4',
-                    textAlign: 'center',
-                    textWeight: '500',
-                    type: {
-                        color: 'fontWhite',
-                        bgColor: red
-                    }
-                },
-                {
-                    description: '$ 799',
-                    textAlign: 'center',
-                    textWeight: '500',
-                    type: {
-                        color: 'fontWhite',
-                        bgColor: green
-                    }
-                },
-        ]
-    },
-    {
-        td: [
-                {
-                    description: 'iPhone 14',
-                    textAlign: 'left',
-                    textWeight: '500',
-                    type: 'text'
-                },
-                {
-                    description: '128GB',
-                    textAlign: 'center',
-                    textWeight: '300',
-                    type: 'text'
-                },
-                {
-                    description: 'Blue',
-                    textAlign: 'center',
-                    textWeight: '300',
-                    type: 'text'
-                },
-                {
-                    description: '13',
-                    textAlign: 'center',
-                    textWeight: '500',
-                    type: 'text'
-                },
-                {
-                    description: '$ 799',
-                    textAlign: 'center',
-                    textWeight: '500',
-                    type: {
-                        color: 'fontWhite',
-                        bgColor: green
-                    }
-                },
-        ]
-    },
-    {
-        td: [
-                {
-                    description: 'iPhone 14',
-                    textAlign: 'left',
-                    textWeight: '500',
-                    type: 'text'
-                },
-                {
-                    description: '128GB',
-                    textAlign: 'center',
-                    textWeight: '300',
-                    type: 'text'
-                },
-                {
-                    description: 'Purple',
-                    textAlign: 'center',
-                    textWeight: '300',
-                    type: 'text'
-                },
-                {
-                    description: '13',
-                    textAlign: 'center',
-                    textWeight: '500',
-                    type: 'text'
-                },
-                {
-                    description: '$ 799',
-                    textAlign: 'center',
-                    textWeight: '500',
-                    type: {
-                        color: 'fontWhite',
-                        bgColor: green
-                    }
-                },
-        ]
-    },
-]
+import { useRouter } from "next/router";
 
 const itemsPreview: HeaderItemsPreview[] = [
     {
@@ -360,6 +22,348 @@ const itemsPreview: HeaderItemsPreview[] = [
 
 const Stock: React.FC = ({
 }) => {
+    const router = useRouter();
+
+    const latestSales: TR[] = [
+        {
+            td: [
+                    {
+                        description: 'iPhone 14',
+                        textAlign: 'left',
+                        textWeight: '500',
+                        type: 'text'
+                    },
+                    {
+                        description: '128GB',
+                        textAlign: 'center',
+                        textWeight: '300',
+                        type: 'text'
+                    },
+                    {
+                        description: 'Blue',
+                        textAlign: 'center',
+                        textWeight: '300',
+                        type: 'text'
+                    },
+                    {
+                        description: '13',
+                        textAlign: 'center',
+                        textWeight: '500',
+                        type: 'text'
+                    },
+                    {
+                        description: '$ 799',
+                        textAlign: 'center',
+                        textWeight: '500',
+                        type: {
+                            color: 'fontWhite',
+                            bgColor: green
+                        }
+                    },
+            ],
+            onClick: () => router.push('/stock/details')
+        },
+        {
+            td: [
+                    {
+                        description: 'iPhone 14',
+                        textAlign: 'left',
+                        textWeight: '500',
+                        type: 'text'
+                    },
+                    {
+                        description: '128GB',
+                        textAlign: 'center',
+                        textWeight: '300',
+                        type: 'text'
+                    },
+                    {
+                        description: 'Blue',
+                        textAlign: 'center',
+                        textWeight: '300',
+                        type: 'text'
+                    },
+                    {
+                        description: '13',
+                        textAlign: 'center',
+                        textWeight: '500',
+                        type: 'text'
+                    },
+                    {
+                        description: '$ 799',
+                        textAlign: 'center',
+                        textWeight: '500',
+                        type: {
+                            color: 'fontWhite',
+                            bgColor: green
+                        }
+                    },
+            ]
+        },
+        {
+            td: [
+                    {
+                        description: 'iPhone 14',
+                        textAlign: 'left',
+                        textWeight: '500',
+                        type: 'text'
+                    },
+                    {
+                        description: '128GB',
+                        textAlign: 'center',
+                        textWeight: '300',
+                        type: 'text'
+                    },
+                    {
+                        description: 'Blue',
+                        textAlign: 'center',
+                        textWeight: '300',
+                        type: 'text'
+                    },
+                    {
+                        description: '13',
+                        textAlign: 'center',
+                        textWeight: '500',
+                        type: 'text'
+                    },
+                    {
+                        description: '$ 799',
+                        textAlign: 'center',
+                        textWeight: '500',
+                        type: {
+                            color: 'fontWhite',
+                            bgColor: green
+                        }
+                    },
+            ]
+        },
+        {
+            td: [
+                    {
+                        description: 'iPhone 14',
+                        textAlign: 'left',
+                        textWeight: '500',
+                        type: 'text'
+                    },
+                    {
+                        description: '128GB',
+                        textAlign: 'center',
+                        textWeight: '300',
+                        type: 'text'
+                    },
+                    {
+                        description: 'Blue',
+                        textAlign: 'center',
+                        textWeight: '300',
+                        type: 'text'
+                    },
+                    {
+                        description: '13',
+                        textAlign: 'center',
+                        textWeight: '500',
+                        type: 'text'
+                    },
+                    {
+                        description: '$ 799',
+                        textAlign: 'center',
+                        textWeight: '500',
+                        type: {
+                            color: 'fontWhite',
+                            bgColor: green
+                        }
+                    },
+            ]
+        },
+        {
+            td: [
+                    {
+                        description: 'iPhone 14',
+                        textAlign: 'left',
+                        textWeight: '500',
+                        type: 'text'
+                    },
+                    {
+                        description: '128GB',
+                        textAlign: 'center',
+                        textWeight: '300',
+                        type: 'text'
+                    },
+                    {
+                        description: 'Blue',
+                        textAlign: 'center',
+                        textWeight: '300',
+                        type: 'text'
+                    },
+                    {
+                        description: '13',
+                        textAlign: 'center',
+                        textWeight: '500',
+                        type: 'text'
+                    },
+                    {
+                        description: '$ 799',
+                        textAlign: 'center',
+                        textWeight: '500',
+                        type: {
+                            color: 'fontWhite',
+                            bgColor: green
+                        }
+                    },
+            ]
+        },
+        {
+            td: [
+                    {
+                        description: 'iPhone 14',
+                        textAlign: 'left',
+                        textWeight: '500',
+                        type: 'text'
+                    },
+                    {
+                        description: '128GB',
+                        textAlign: 'center',
+                        textWeight: '300',
+                        type: 'text'
+                    },
+                    {
+                        description: 'Blue',
+                        textAlign: 'center',
+                        textWeight: '300',
+                        type: 'text'
+                    },
+                    {
+                        description: '13',
+                        textAlign: 'center',
+                        textWeight: '500',
+                        type: 'text'
+                    },
+                    {
+                        description: '$ 799',
+                        textAlign: 'center',
+                        textWeight: '500',
+                        type: {
+                            color: 'fontWhite',
+                            bgColor: green
+                        }
+                    },
+            ]
+        },
+        {
+            td: [
+                    {
+                        description: 'iPhone 14',
+                        textAlign: 'left',
+                        textWeight: '500',
+                        type: 'text'
+                    },
+                    {
+                        description: '128GB',
+                        textAlign: 'center',
+                        textWeight: '300',
+                        type: 'text'
+                    },
+                    {
+                        description: 'Blue',
+                        textAlign: 'center',
+                        textWeight: '300',
+                        type: 'text'
+                    },
+                    {
+                        description: '4',
+                        textAlign: 'center',
+                        textWeight: '500',
+                        type: {
+                            color: 'fontWhite',
+                            bgColor: red
+                        }
+                    },
+                    {
+                        description: '$ 799',
+                        textAlign: 'center',
+                        textWeight: '500',
+                        type: {
+                            color: 'fontWhite',
+                            bgColor: green
+                        }
+                    },
+            ]
+        },
+        {
+            td: [
+                    {
+                        description: 'iPhone 14',
+                        textAlign: 'left',
+                        textWeight: '500',
+                        type: 'text'
+                    },
+                    {
+                        description: '128GB',
+                        textAlign: 'center',
+                        textWeight: '300',
+                        type: 'text'
+                    },
+                    {
+                        description: 'Blue',
+                        textAlign: 'center',
+                        textWeight: '300',
+                        type: 'text'
+                    },
+                    {
+                        description: '13',
+                        textAlign: 'center',
+                        textWeight: '500',
+                        type: 'text'
+                    },
+                    {
+                        description: '$ 799',
+                        textAlign: 'center',
+                        textWeight: '500',
+                        type: {
+                            color: 'fontWhite',
+                            bgColor: green
+                        }
+                    },
+            ]
+        },
+        {
+            td: [
+                    {
+                        description: 'iPhone 14',
+                        textAlign: 'left',
+                        textWeight: '500',
+                        type: 'text'
+                    },
+                    {
+                        description: '128GB',
+                        textAlign: 'center',
+                        textWeight: '300',
+                        type: 'text'
+                    },
+                    {
+                        description: 'Purple',
+                        textAlign: 'center',
+                        textWeight: '300',
+                        type: 'text'
+                    },
+                    {
+                        description: '13',
+                        textAlign: 'center',
+                        textWeight: '500',
+                        type: 'text'
+                    },
+                    {
+                        description: '$ 799',
+                        textAlign: 'center',
+                        textWeight: '500',
+                        type: {
+                            color: 'fontWhite',
+                            bgColor: green
+                        }
+                    },
+            ]
+        },
+    ]
+
     return (
         <View
             latestSales={latestSales}
