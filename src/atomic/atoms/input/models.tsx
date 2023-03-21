@@ -7,6 +7,7 @@ export interface IndexProps extends Margins {
     width?: string;
     value: string;
     onChangeText: (e: string) => void
+    label?: string;
     placeholder: string;
     textAlign?: TextAlign;
     type?: HTMLInputTypeAttribute;

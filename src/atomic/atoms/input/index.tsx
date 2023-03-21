@@ -1,11 +1,12 @@
 import React from "react";
 import { IndexProps } from "./models";
-import { Main, TextInput } from "./style";
+import { InputBox, Main, TextInput } from "./style";
 
 const Input: React.FC<IndexProps> = ({
     width,
     value,
     onChangeText,
+    label,
     placeholder,
     type = 'text',
     actionButton,
@@ -16,14 +17,17 @@ const Input: React.FC<IndexProps> = ({
     mb
 }) => {
     return (
-        <Main width={width} mt={mt} ml={ml} mr={mr} mb={mb}>
-            <TextInput
-                value={value}
-                onChange={e => onChangeText(e.target.value)}
-                placeholder={placeholder}
-                type={type}
-                autoFocus={autoFocus}
-            />
+        <Main>
+            { label && <h5 className="fontW600" style={{ marginBottom: 5 }}>{ label }</h5> }
+            <InputBox width={width} mt={mt} ml={ml} mr={mr} mb={mb}>
+                <TextInput
+                    value={value}
+                    onChange={e => onChangeText(e.target.value)}
+                    placeholder={placeholder}
+                    type={type}
+                    autoFocus={autoFocus}
+                />
+            </InputBox>
         </Main>
     )
 }
