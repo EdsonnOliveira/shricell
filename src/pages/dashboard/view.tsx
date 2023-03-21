@@ -13,13 +13,14 @@ import useMediaQuery from "@hooks/useMediaQuery";
 import { ViewProps } from "./models";
 
 const View: React.FC<ViewProps> = ({
-    latestSales
+    latestSales,
+    itemsPreview
 }) => (
     <>
         <Head>
             <title>Dashboard - ShriCell</title>
         </Head>
-        <Header />
+        <Header itemsPreview={itemsPreview} />
         <main className="main">
             <BoxCommon
                 flex={useMediaQuery('(max-width: 1100px)') ? 'unset' : '1'}

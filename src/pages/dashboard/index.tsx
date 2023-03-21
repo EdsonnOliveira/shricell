@@ -1,6 +1,8 @@
 import React from "react";
-import { TR } from "~/atomic/constants/table";
+
+import { TR } from "@atomic/constants/table";
 import { green } from "@atomic/constants/colors";
+import { HeaderItemsPreview } from "@atomic/constants/header";
 
 import View from "./view";
 
@@ -69,11 +71,35 @@ const latestSales: TR[] = [
     },
 ]
 
+const itemsPreview: HeaderItemsPreview[] = [
+    {
+        icon: '',
+        title: 'Sales',
+        value: '34'
+    },
+    {
+        icon: '',
+        title: 'Unfinished',
+        value: '5'
+    },
+    {
+        icon: '',
+        title: 'Addition',
+        value: '7.3%'
+    },
+    {
+        icon: '',
+        title: 'Visits',
+        value: '61'
+    },
+]
+
 const Dashboard: React.FC = ({
 }) => {
     return (
         <View
             latestSales={latestSales}
+            itemsPreview={itemsPreview}
         />
     )
 }
