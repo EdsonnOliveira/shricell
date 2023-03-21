@@ -18,7 +18,7 @@ export const Main = styled.section`
 
     @media only screen and (max-width: 800px) {
         & {
-            height: 450px;
+            height: max-content;
             justify-content: space-between
         }
     }
@@ -36,8 +36,9 @@ export const Nav = styled.nav`
 
     @media only screen and (max-width: 800px) {
         & {
-            margin-top: 20px;
+            height: 100px;
             margin-bottom: 0;
+            justify-content: space-between;
         }
     }
 `
@@ -65,6 +66,10 @@ export const Logo = styled(Image)`
     left: 0;
     top: ${( props: IndexStyledProps ) => ( props.bgColor == 'primary' ? '0px' : '10px' )};
     bottom: 0;
+
+    @media only screen and (max-width: 800px) {
+        & { position: relative }
+    }
 `
 
 export const Hamburguer = styled.button`
@@ -81,6 +86,7 @@ export const Hamburguer = styled.button`
 
     @media only screen and (max-width: 800px) {
         display: flex;
+        position: relative;
     }
 `
 
@@ -144,9 +150,7 @@ export const BoxInfo = styled.section`
     margin-top: -30px;
 
     @media only screen and (max-width: 800px) {
-        .txtHello {
-            text-align: center;
-        }
+        & { display: none }
     }
 `
 
@@ -157,13 +161,4 @@ export const BoxValues = styled.div`
     flex-direction: row;
     flex-wrap: wrap;
     gap: 100px;
-
-    @media only screen and (max-width: 800px) {
-        & {
-            height: max-content;
-            margin-bottom: 20px;
-            gap: 50px;
-            justify-content: center;
-        }
-    }
 `
