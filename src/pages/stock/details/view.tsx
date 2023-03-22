@@ -21,14 +21,14 @@ const View: React.FC<ViewProps> = ({}) => (
         <Header title='iPhone 14 Pro Max' />
         <main className="main">
             <BoxCommon flex={1} mt={useMediaQuery('(max-width: 1100px)') ? '0' : '-100px'} alignItems='center' gap='20px'>
-                <BoxShadow size={{ width: 'max-content', height: 'max-content' }}>
+                <BoxShadow size={{ width: useMediaQuery('(max-width: 1000px)') ? '100%' : 'max-content', height: 'max-content' }}>
                     <BoxCommon gap='20px' alignItems='center'>
-                        <BoxCommon flexDirection='row' gap='20px'>
+                        <BoxCommon flexDirection={useMediaQuery('(max-width: 1000px)') ? 'column' : 'row'} gap='20px'>
                             <Input placeholder='Brand' label='Brand' />
                             <Input placeholder='Model' label='Model' />
                             <Input placeholder='Color' label='Color' />
                         </BoxCommon>
-                        <BoxCommon flexDirection='row' gap='20px'>
+                        <BoxCommon flexDirection={useMediaQuery('(max-width: 1000px)') ? 'column' : 'row'} gap='20px'>
                             <Input placeholder='Storage' label='Storage' />
                             <Input placeholder='Price' label='Price' />
                             <Input placeholder='Cost' label='Cost' />
