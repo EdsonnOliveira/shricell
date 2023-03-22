@@ -17,7 +17,7 @@ const Input: React.FC<IndexProps> = ({
     mb
 }) => {
     return (
-        <Main>
+        <Main width={width}>
             { label && <h5 className="fontW600" style={{ marginBottom: 5 }}>{ label }</h5> }
             <InputBox width={width} mt={mt} ml={ml} mr={mr} mb={mb}>
                 <TextInput

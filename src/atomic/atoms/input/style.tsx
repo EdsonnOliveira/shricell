@@ -4,7 +4,7 @@ import { MarginsStyledProps } from "@atomic/constants/spacing";
 import { IndexStyledProps } from "./models";
 
 export const Main = styled.div`
-    width: max-content;
+    width: ${( props: IndexStyledProps ) => ( props.width ?? 'null' )};
 `
 
 export const InputBox = styled.div`
