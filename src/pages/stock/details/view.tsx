@@ -13,12 +13,15 @@ import useMediaQuery from "@hooks/useMediaQuery";
 
 import { ViewProps } from "./models";
 
-const View: React.FC<ViewProps> = ({}) => (
+const View: React.FC<ViewProps> = ({
+    isEdit,
+    stock
+}) => (
     <>
         <Head>
-            <title>Stock - ShriCell</title>
+            <title>Stock Details - ShriCell</title>
         </Head>
-        <Header title='iPhone 14 Pro Max' />
+        <Header title={isEdit ? stock.name : 'Add Stock'} />
         <main className="main">
             <BoxCommon flex={1} mt={useMediaQuery('(max-width: 1100px)') ? '0' : '-100px'} alignItems='center' gap='20px'>
                 <BoxShadow size={{ width: useMediaQuery('(max-width: 1000px)') ? '100%' : 'max-content', height: 'max-content' }}>
@@ -37,12 +40,16 @@ const View: React.FC<ViewProps> = ({}) => (
                         <Button text='Save' />
                     </BoxCommon>
                 </BoxShadow>
-                <BoxShadow title='Billed amount' size={useMediaQuery('(max-width: 1000px)') && { width: '100%' }}>
-                    <BoxCommon flexDirection='row' alignItems='center' justifyContent='space-between' flex='1'>
-                        <h2>$ 4239,12</h2>
-                        <Stamp value='+7.3%' bgColor={green} />
-                    </BoxCommon>
-                </BoxShadow>
+                {
+                    isEdit && (
+                        <BoxShadow title='Billed amount' size={useMediaQuery('(max-width: 1000px)') && { width: '100%' }}>
+                            <BoxCommon flexDirection='row' alignItems='center' justifyContent='space-between' flex='1'>
+                                <h2>$ 4239,12</h2>
+                                <Stamp value='+7.3%' bgColor={green} />
+                            </BoxCommon>
+                        </BoxShadow>
+                    )
+                }
             </BoxCommon>
         </main>
     </>
