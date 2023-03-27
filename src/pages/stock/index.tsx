@@ -61,7 +61,15 @@ const Stock: React.FC = ({
                         }
                     },
             ],
-            onClick: () => router.push('/stock/details')
+            onClick: () => {
+                router.push({
+                    pathname: '/stock/details',
+                    query: {
+                        isEdit: true,
+                        stockName: 'iPhone 14 Pro Max'
+                    }}
+                )
+            }
         },
         {
             td: [
@@ -366,6 +374,7 @@ const Stock: React.FC = ({
 
     return (
         <View
+            router={router}
             latestSales={latestSales}
             itemsPreview={itemsPreview}
         />
