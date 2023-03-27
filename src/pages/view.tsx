@@ -65,8 +65,8 @@ const View: React.FC<ViewProps> = ({
                         <title>ShriCell</title>
                     </Head>
                     <MainLogin
-                        title='Customer'
-                        type='customer'
+                        title='Administrator'
+                        type='admin'
                         email={email}
                         onChangeEmail={setEmail}
                         password={password}
