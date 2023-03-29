@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import { borderRadius, transition } from "@atomic/constants/button";
-import { grey, primary, secondary } from "@atomic/constants/colors";
+import { green, grey, primary, secondary } from "@atomic/constants/colors";
 import { MarginsStyledProps } from "@atomic/constants/spacing";
 import { IndexStyledProps } from "./models";
 
@@ -78,6 +78,21 @@ export const SecundaryMedium = styled.button`
     &:hover {
         background-color: ${( props: IndexStyledProps ) => ( props.disabled ? `${grey}` : `${primary}` )};
     }
+`
+
+export const GreenLarge = styled.button`
+    width: 100%;
+    height: 65px;
+    justify-content: center;
+    align-items: center;
+    background-color: ${( props: IndexStyledProps ) => ( props.disabled ? `${grey}` : `${green}` )};
+    border-radius: ${borderRadius};
+    transition: ${transition};
+
+    margin-top: ${( props: MarginsStyledProps ) => (props.mt ?? 0)};
+    margin-left: ${( props: MarginsStyledProps ) => (props.ml ?? 0)};
+    margin-right: ${( props: MarginsStyledProps ) => (props.mr ?? 0)};
+    margin-bottom: ${( props: MarginsStyledProps ) => (props.mb ?? 0)};
 `
 
 export const GhostSmall = styled.button`

@@ -14,6 +14,7 @@ export default interface IndexProps extends Margins {
 export type ButtonTypes = 'primaryLarge' | 'primaryMedium' | 'primarySmall' |
             'secundaryLarge' | 'secundaryMedium' | 'secundarySmall' |
             'tertiaryLarge' | 'tertiaryMedium' | 'tertiarySmall' |
+            'greenLarge' |
             'ghost'
 
 export type IndexStyledProps = StyledProps<{
