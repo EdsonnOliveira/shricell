@@ -7,8 +7,6 @@ const StockDetails: React.FC = ({
 }) => {
     const router = useRouter().query
 
-    console.log(router)
-
     return (
         <View
             isEdit={!!router.isEdit}
