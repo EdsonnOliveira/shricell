@@ -72,3 +72,8 @@ h6 {
 .fontW600 {
     font-weight: 600;
 }
+
+/* SIZE */
+.fontSmall {
+    font-size: 11px;
+}
