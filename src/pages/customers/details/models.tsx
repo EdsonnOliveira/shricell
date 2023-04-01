@@ -4,6 +4,8 @@ export interface ViewProps {
     isEdit: boolean;
     data: DataType
     latestSales: TR[];
+    modalDetails: boolean;
+    setModalDetails: (visible: boolean) => void;
 }
 
 export type DataType = {

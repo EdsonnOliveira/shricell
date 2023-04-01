@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { useRouter } from "next/router";
 
 import { green } from "@atomic/constants/colors";
@@ -106,11 +106,15 @@ const CustomersDetails: React.FC = ({
         },
     ]
 
+    const [modalDetails, setModalDetails] = useState<boolean>(false)
+
     return (
         <View
             isEdit={!!router.query.isEdit}
             data={data}
             latestSales={latestSales}
+            modalDetails={modalDetails}
+            setModalDetails={setModalDetails}
         />
     )
 }
