@@ -6,6 +6,7 @@ export interface IndexProps extends Margins {
     title?: string;
     children: React.ReactNode | React.ReactNode[] | undefined;
     size?: Size;
+    onClick?: () => void;
 }
 
 export type IndexStyledProps = StyledProps<{
