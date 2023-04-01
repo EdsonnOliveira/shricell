@@ -24,11 +24,11 @@ const optionsComponents = [
         name: 'Stock',
     },
     {
-        page: '/Customers',
+        page: '/customers',
         name: 'Customers',
     },
     {
-        page: '/Reports',
+        page: '/reports',
         name: 'Reports',
     },
 ]
