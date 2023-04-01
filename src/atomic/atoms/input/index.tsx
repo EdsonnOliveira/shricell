@@ -23,7 +23,7 @@ const Input: React.FC<IndexProps> = ({
                 <TextInput
                     value={value}
                     onChange={e => onChangeText(e.target.value)}
-                    placeholder={placeholder}
+                    placeholder={placeholder ?? label}
                     type={type}
                     autoFocus={autoFocus}
                 />
