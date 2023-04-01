@@ -2,6 +2,7 @@
     --font-white: #FFF;
     --font-primary: #0473E3;
     --font-gray: #696969;
+    --font-red: #E31504;
 }
 
 h1 {
@@ -54,6 +55,10 @@ h6 {
 
 .fontGray {
     color: var(--font-gray)
+}
+
+.fontRed {
+    color: var(--font-red)
 }
 
 /* WEIGHT */
