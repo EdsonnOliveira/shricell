@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import { borderRadius, transition } from "@atomic/constants/button";
-import { green, grey, primary, secondary } from "@atomic/constants/colors";
+import { green, grey, primary, red, secondary, white } from "@atomic/constants/colors";
 import { MarginsStyledProps } from "@atomic/constants/spacing";
 import { IndexStyledProps } from "./models";
 
@@ -88,6 +88,30 @@ export const GreenLarge = styled.button`
     background-color: ${( props: IndexStyledProps ) => ( props.disabled ? `${grey}` : `${green}` )};
     border-radius: ${borderRadius};
     transition: ${transition};
+
+    margin-top: ${( props: MarginsStyledProps ) => (props.mt ?? 0)};
+    margin-left: ${( props: MarginsStyledProps ) => (props.ml ?? 0)};
+    margin-right: ${( props: MarginsStyledProps ) => (props.mr ?? 0)};
+    margin-bottom: ${( props: MarginsStyledProps ) => (props.mb ?? 0)};
+`
+
+export const RedLightLarge = styled.button`
+    width: 100%;
+    height: 65px;
+    justify-content: center;
+    align-items: center;
+    background-color: ${grey};
+    border: 2px solid ${( props: IndexStyledProps ) => ( props.disabled ? `${grey}` : `${red}` )};
+    border-radius: ${borderRadius};
+    transition: ${transition};
+
+    &:hover {
+        background-color: ${( props: IndexStyledProps ) => ( props.disabled ? `${grey}` : `${red}` )};
+
+        & > h4 {
+            color: ${white}
+        }
+    }
 
     margin-top: ${( props: MarginsStyledProps ) => (props.mt ?? 0)};
     margin-left: ${( props: MarginsStyledProps ) => (props.ml ?? 0)};

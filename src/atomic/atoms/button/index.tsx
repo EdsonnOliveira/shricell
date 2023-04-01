@@ -9,6 +9,7 @@ import {
     GhostSmall,
     SecundaryLarge,
     GreenLarge,
+    RedLightLarge,
 } from "./style";
 import IndexProps from "./models";
 
@@ -75,6 +76,16 @@ const Button: React.FC<IndexProps> = ({
                 >
                     <h4 className='fontWhite'>{ text }</h4>
                 </GreenLarge>
+            )
+        case 'redLightLarge':
+            return (
+                <RedLightLarge
+                    onClick={onClick}
+                    mt={mt} ml={ml} mr={mr} mb={mb}
+                    disabled={disabled}
+                >
+                    <h4 className={disabled ? 'fontGray' : 'fontRed'}>{ text }</h4>
+                </RedLightLarge>
             )
         case 'ghost':
             return (
