@@ -17,7 +17,7 @@ const Modal: React.FC<IndexProps> = ({
     secondButton
 }) => {
     return !visible ? <></> : (
-        <Backdrop onClick={onClose}>
+        <Backdrop>
             <Main>
                 <Header>
                     <h4 className="fontWhite fontW400">{ title }</h4>
