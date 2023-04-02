@@ -15,6 +15,7 @@ export const Main = styled.div`
     -webkit-box-shadow: 0px 3px 11px -1px rgba(176,176,176,0.62);
     -moz-box-shadow: 0px 3px 11px -1px rgba(176,176,176,0.62);
     box-shadow: 0px 3px 11px -1px rgba(176,176,176,0.62);
+    cursor: ${( props: IndexStyledProps ) => ( props.onClick ? 'pointer' : 'default' )};
 
     margin-top: ${( props: MarginsStyledProps ) => (props.mt ?? 0)};
     margin-left: ${( props: MarginsStyledProps ) => (props.ml ?? 0)};

@@ -11,4 +11,5 @@ export interface IndexProps extends Margins {
 
 export type IndexStyledProps = StyledProps<{
     size?: Size
+    onClick?: boolean;
 }>
