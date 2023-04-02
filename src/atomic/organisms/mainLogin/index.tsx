@@ -39,7 +39,7 @@ const MainLogin: React.FC<IndexProps> = ({
                         <BoxCommon gap='10px'>
                             <BoxCommon width='100%' gap='10px'>
                                 <Input width='100%' value={email} onChangeText={onChangeEmail} placeholder='Email' mt='20px' />
-                                <Input width='100%' value={password} onChangeText={onChangePassword} placeholder='Password' />
+                                <Input width='100%' type='password' value={password} onChangeText={onChangePassword} placeholder='Password' />
                             </BoxCommon>
                             <BoxCommon width='100%' flexDirection='row' justifyContent='space-between' alignItems='center'>
                                 <Button text='Forgot password?' type='ghost' onClick={() => null} />
