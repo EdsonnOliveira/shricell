@@ -3,7 +3,7 @@ import { IndexType, LoginProps } from './models'
 
 const login = ({ email, password }: IndexType) => {
     return new Promise(async (resolve, reject) => {
-        await api.post('authControllers/login-admin.php', { email, password })
+        await api.post('auth/login-admin.php', { email, password })
         .then((response) => {
             let res:LoginProps = response.data
             let json: LoginProps = {
