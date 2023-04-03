@@ -1,13 +1,14 @@
 import React from "react";
 import Head from "next/head";
 
+import { green } from "@atomic/constants/colors";
 import Header from "@atomic/organisms/header";
 import BoxShadow from "@atomic/atoms/boxShadow";
 import BoxCommon from "@atomic/atoms/boxCommon";
 import Input from "@atomic/atoms/input";
 import Button from "@atomic/atoms/button";
 import Stamp from "@atomic/atoms/stamp";
-import { green } from "@atomic/constants/colors";
+import Select from "@atomic/atoms/select";
 
 import useMediaQuery from "@hooks/useMediaQuery";
 
@@ -15,7 +16,28 @@ import { ViewProps } from "./models";
 
 const View: React.FC<ViewProps> = ({
     isEdit,
-    stock
+    stock,
+    brandItems,
+    brand,
+    setBrand,
+    modelItems,
+    model,
+    setModel,
+    colorItems,
+    color,
+    setColor,
+    gradeItems,
+    grade,
+    setGrade,
+    storageItems,
+    storage,
+    setStorage,
+    price,
+    setPrice,
+    cost,
+    setCost,
+    quantity,
+    setQuantity
 }) => (
     <>
         <Head>
@@ -27,15 +49,22 @@ const View: React.FC<ViewProps> = ({
                 <BoxShadow size={{ width: useMediaQuery('(max-width: 1000px)') ? '100%' : 'max-content', height: 'max-content' }}>
                     <BoxCommon gap='20px' alignItems='center'>
                         <BoxCommon flexDirection={useMediaQuery('(max-width: 1000px)') ? 'column' : 'row'} gap='20px'>
-                            <Input placeholder='Brand' label='Brand' />
-                            <Input placeholder='Model' label='Model' />
-                            <Input placeholder='Color' label='Color' />
+                            <Select label='Brand' options={brandItems} value={brand} onChange={setBrand} width='277px' />
+                            <Select label='Model' options={modelItems} value={model} onChange={setModel} width='277px' />
+                            <Select label='Color' options={colorItems} value={color} onChange={setColor} width='277px' />
+                            <Select label='Grade' options={gradeItems} value={grade} onChange={setGrade} width='277px' />
                         </BoxCommon>
                         <BoxCommon flexDirection={useMediaQuery('(max-width: 1000px)') ? 'column' : 'row'} gap='20px'>
-                            <Input placeholder='Storage' label='Storage' />
-                            <Input placeholder='Price' label='Price' />
-                            <Input placeholder='Cost' label='Cost' />
-                            <Input placeholder='Quantity' label='Quantity' />
+                            <Select label='Storage' options={storageItems} value={storage} onChange={setStorage} width='277px' />
+                            {
+                                isEdit && (
+                                    <>
+                                        <Input label='Price' value={price} onChangeText={setPrice} />
+                                        <Input label='Cost' value={cost} onChangeText={setCost} />
+                                        <Input label='Quantity' value={quantity} onChangeText={setQuantity} />
+                                    </>
+                                )
+                            }
                         </BoxCommon>
                         <Button text='Save' />
                     </BoxCommon>
