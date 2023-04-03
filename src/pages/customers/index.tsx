@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 
 import { TR } from "@atomic/constants/table";
 import { green, primary, red } from "@atomic/constants/colors";
@@ -298,11 +298,15 @@ const Customers: React.FC = ({
         },
     ]
 
+    const [modalAdd, setModalAdd] = useState<boolean>(false)
+
     return (
         <View
             router={router}
             data={data}
             itemsPreview={itemsPreview}
+            modalAdd={modalAdd}
+            setModalAdd={setModalAdd}
         />
     )
 }

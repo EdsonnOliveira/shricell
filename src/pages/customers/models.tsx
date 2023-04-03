@@ -6,4 +6,6 @@ export interface ViewProps {
     router: NextRouter;
     data: TR[];
     itemsPreview: HeaderItemsPreview[]
+    modalAdd: boolean;
+    setModalAdd: (visible: boolean) => void;
 }
