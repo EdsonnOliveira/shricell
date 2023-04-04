@@ -4,6 +4,6 @@ import { TR } from "@atomic/constants/table";
 
 export interface ViewProps {
     router: NextRouter;
-    latestSales: TR[];
+    data: TR[];
     itemsPreview: HeaderItemsPreview[]
 }

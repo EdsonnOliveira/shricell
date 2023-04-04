@@ -13,7 +13,7 @@ import { ViewProps } from "./models";
 
 const View: React.FC<ViewProps> = ({
     router,
-    latestSales,
+    data,
     itemsPreview
 }) => (
     <>
@@ -33,7 +33,7 @@ const View: React.FC<ViewProps> = ({
                 />
                 <BoxShadow title='Items' size={{ width: '100%', height: 'max-content' }}>
                     <Table
-                        tr={latestSales}
+                        tr={data}
                         mt='10px'
                     />
                 </BoxShadow>
