@@ -8,6 +8,7 @@ import Button from "@atomic/atoms/button";
 import FileDnD from "@atomic/mocelules/fileDnD";
 
 import { ViewProps, RegisterProps, AttachmentProps } from "./models";
+import Modal from "~/atomic/mocelules/modal";
 
 const View: React.FC<ViewProps> = ({
     steps,
@@ -17,6 +18,8 @@ const View: React.FC<ViewProps> = ({
     setPassword,
     clickLogin,
     clickRegister,
+    modalError,
+    setModalError,
     dunsNumber,
     setDunsNumber,
     federalTax,
@@ -74,6 +77,21 @@ const View: React.FC<ViewProps> = ({
                         clickLogin={clickLogin}
                         clickRegister={clickRegister}
                     />
+                    <Modal
+                        title="Incorrect credentials"
+                        visible={modalError}
+                        onClose={() => setModalError(false)}
+                        type='error'
+                        firstButton={
+                            {
+                                text: 'Ok',
+                                type: 'redLightLarge',
+                                onClick: () => setModalError(false)
+                            }
+                        }
+                    >
+                        <h4 className="fontCenter">Incorrect <b>username</b> or <b>password</b>. <br />Please try again.</h4>
+                    </Modal>
                 </>
             )
         case 'register':

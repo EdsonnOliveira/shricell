@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import { useRouter } from "next/router";
 
 import user from '@api/user';
-import { LoginProps as LoginType } from '@api/user/models'
 
 import { Steps } from "./models";
 import View from "./view";
@@ -10,8 +9,8 @@ import View from "./view";
 const Home: React.FC = ({
 }) => {
   const router = useRouter()
-  const [email, setEmail] = useState<string>('shricell@gmail.com')
-  const [password, setPassword] = useState<string>('12345678')
+  const [email, setEmail] = useState<string>('')
+  const [password, setPassword] = useState<string>('')
   const [steps, setSteps] = useState<Steps>('login')
 
   const [dunsNumber, setDunsNumber] = useState<string>('')
@@ -33,16 +32,12 @@ const Home: React.FC = ({
   const [certificate, setCertificate] = useState<FileList | null>(null)
   const [photoID, setPhotoID] = useState<FileList | null>(null)
   const [resaleTax, setResaleTax] = useState<FileList | null>(null)
+  const [modalError, setModalError] = useState<boolean>(false)
 
   const clickLogin = () => {
-    // router.push('/dashboard')
-    // return
     user.login({ email, password })
-    .then((res) => {
-      // alert(JSON.stringify(res))
-      // if (!res.access_token) return
-      // router.push('/dashboard')
-    })
+    .then(() => router.push('/dashboard'))
+    .catch(() => setModalError(true))
   }
 
   const clickRegister = () => {
@@ -70,6 +65,8 @@ const Home: React.FC = ({
       setPassword={setPassword}
       clickLogin={clickLogin}
       clickRegister={clickRegister}
+      modalError={modalError}
+      setModalError={setModalError}
       dunsNumber={dunsNumber}
       setDunsNumber={setDunsNumber}
       federalTax={federalTax}

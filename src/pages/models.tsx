@@ -1,4 +1,4 @@
-import { SetFile, SetText, SetVoid } from "@types/set";
+import { SetBoolean, SetFile, SetText, SetVoid } from "@types/set";
 import { GetFile } from "@types/get";
 
 export interface ViewProps extends LoginProps, RegisterProps, AttachmentProps {
@@ -12,6 +12,8 @@ export interface LoginProps {
     setPassword: SetText;
     clickLogin: SetVoid;
     clickRegister: SetVoid;
+    modalError: boolean;
+    setModalError: SetBoolean;
 }
 
 export interface RegisterProps {
