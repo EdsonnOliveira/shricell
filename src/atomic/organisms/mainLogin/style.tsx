@@ -1,6 +1,6 @@
 import Image from "next/image";
 import styled from 'styled-components'
-import { white } from '~/atomic/constants/colors'
+import { white } from '@atomic/constants/colors'
 import { IndexStyledProps } from './models'
 
 export const Main = styled.div`

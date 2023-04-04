@@ -1,6 +1,6 @@
 import { Stock } from "@types/stock";
 import { OptionsType } from "@atomic/constants/select";
-import { SetText } from "~/types/set";
+import { SetText } from "@types/set";
 
 export interface ViewProps {
     isEdit: boolean;

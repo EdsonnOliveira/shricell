@@ -3,9 +3,9 @@ import { useRouter } from "next/router";
 
 import { TR } from "@atomic/constants/table";
 import { green } from "@atomic/constants/colors";
+import { ItemStep } from "@atomic/constants/steps";
 
 import View from "./view";
-import { ItemStep } from "~/atomic/constants/steps";
 
 const SalesDetails: React.FC = ({
 }) => {
