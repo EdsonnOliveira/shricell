@@ -8,6 +8,7 @@ import models from "@api/stock/models";
 import colors from "@api/stock/colors";
 import grades from "@api/stock/grades";
 import storages from "@api/stock/storages";
+import devices from "@api/stock/devices";
 import { BrandProps } from "@api/stock/brands/models";
 import { ModelsProps } from "@api/stock/models/models";
 import { ColorsProps } from "@api/stock/colors/models";
@@ -15,7 +16,6 @@ import { GradesProps } from "@api/stock/grades/models";
 import { StoragesProps } from "@api/stock/storages/models";
 
 import View from "./view";
-import devices from "~/services/api/stock/devices";
 
 const StockDetails: React.FC = ({
 }) => {
