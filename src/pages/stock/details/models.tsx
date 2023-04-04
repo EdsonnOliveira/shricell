@@ -1,6 +1,6 @@
 import { Stock } from "@types/stock";
 import { OptionsType } from "@atomic/constants/select";
-import { SetText } from "@types/set";
+import { SetBoolean, SetText } from "@types/set";
 
 export interface ViewProps {
     isEdit: boolean;
@@ -26,4 +26,8 @@ export interface ViewProps {
     setCost: SetText;
     quantity: string;
     setQuantity: SetText;
+    save: () => void;
+    fieldRequired: string;
+    modalRequired: boolean;
+    setModalRequired: SetBoolean;
 }

@@ -15,10 +15,11 @@ import { GradesProps } from "@api/stock/grades/models";
 import { StoragesProps } from "@api/stock/storages/models";
 
 import View from "./view";
+import devices from "~/services/api/stock/devices";
 
 const StockDetails: React.FC = ({
 }) => {
-    const router = useRouter().query
+    const router = useRouter()
 
     const [brand, setBrand] = useState<string>('')
     const [brandsItems, setBrandsItems] = useState<OptionsType[]>([{ label: 'Select the Brand', value: '-1' }])
@@ -61,7 +62,7 @@ const StockDetails: React.FC = ({
             let options: OptionsType[] = [{ label: 'Select the Grade', value: '-1' }]
             let array = data.map(item => (
                 {
-                    label: item.gradeDescription,
+                    label: item.gradeName,
                     value: String(item.gradeId)
                 }
             ))
@@ -129,11 +130,69 @@ const StockDetails: React.FC = ({
         })
     }
 
+    const [fieldRequired, setFieldRequired] = useState<string>('')
+    const [modalRequired, setModalRequired] = useState<boolean>(false)
+
+    const save = () => {
+        if (brand === '-1' || brand.length <= 0) {
+            setFieldRequired('Brand')
+            setModalRequired(true)
+            return
+        }
+
+        if (model === '-1' || model.length <= 0) {
+            setFieldRequired('Model')
+            setModalRequired(true)
+            return
+        }
+
+        if (color === '-1' || color.length <= 0) {
+            setFieldRequired('Color')
+            setModalRequired(true)
+            return
+        }
+
+        if (grade === '-1' || grade.length <= 0) {
+            setFieldRequired('Grade')
+            setModalRequired(true)
+            return
+        }
+
+        if (storage === '-1' || storage.length <= 0) {
+            setFieldRequired('Storage')
+            setModalRequired(true)
+            return
+        }
+
+        if (!!!router.query.isEdit) {
+            devices.insert({ brandId: brand, modelId: model, colorId: color, gradeId: grade, storageId: storage })
+            .then(() => router.push('/stock'))
+        } else {
+            if (price === '-1' || price.length <= 0) {
+                setFieldRequired('Price')
+                setModalRequired(true)
+                return
+            }
+
+            if (cost === '-1' || cost.length <= 0) {
+                setFieldRequired('Cost')
+                setModalRequired(true)
+                return
+            }
+
+            if (quantity === '-1' || quantity.length <= 0) {
+                setFieldRequired('Quantity')
+                setModalRequired(true)
+                return
+            }
+        }
+    }
+
     return (
         <View
-            isEdit={!!router.isEdit}
+            isEdit={!!router.query.isEdit}
             stock={{
-                name: String(router.stockName) || null
+                name: String(router.query.stockName) || null
             }}
             brandItems={brandsItems}
             brand={brand}
@@ -156,6 +215,10 @@ const StockDetails: React.FC = ({
             setCost={setCost}
             quantity={quantity}
             setQuantity={setQuantity}
+            save={save}
+            fieldRequired={fieldRequired}
+            modalRequired={modalRequired}
+            setModalRequired={setModalRequired}
         />
     )
 }

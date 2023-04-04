@@ -9,6 +9,7 @@ import Input from "@atomic/atoms/input";
 import Button from "@atomic/atoms/button";
 import Stamp from "@atomic/atoms/stamp";
 import Select from "@atomic/atoms/select";
+import ModalRequired from "@atomic/mocelules/modalRequired";
 
 import useMediaQuery from "@hooks/useMediaQuery";
 
@@ -37,7 +38,11 @@ const View: React.FC<ViewProps> = ({
     cost,
     setCost,
     quantity,
-    setQuantity
+    setQuantity,
+    save,
+    fieldRequired,
+    modalRequired,
+    setModalRequired
 }) => (
     <>
         <Head>
@@ -48,25 +53,25 @@ const View: React.FC<ViewProps> = ({
             <BoxCommon flex={1} mt={useMediaQuery('(max-width: 1100px)') ? '0' : '-100px'} alignItems='center' gap='20px'>
                 <BoxShadow size={{ width: useMediaQuery('(max-width: 1000px)') ? '100%' : 'max-content', height: 'max-content' }}>
                     <BoxCommon gap='20px' alignItems='center'>
-                        <BoxCommon flexDirection={useMediaQuery('(max-width: 1000px)') ? 'column' : 'row'} gap='20px'>
-                            <Select label='Brand' options={brandItems} value={brand} onChange={setBrand} width='277px' />
-                            <Select label='Model' options={modelItems} value={model} onChange={setModel} width='277px' />
-                            <Select label='Color' options={colorItems} value={color} onChange={setColor} width='277px' />
-                            <Select label='Grade' options={gradeItems} value={grade} onChange={setGrade} width='277px' />
+                        <BoxCommon width='100%' flexDirection={useMediaQuery('(max-width: 1000px)') ? 'column' : 'row'} gap='20px'>
+                            <Select label='Brand' options={brandItems} value={brand} onChange={setBrand} width={useMediaQuery('(max-width: 1000px)') ? '100%' : '277px'} />
+                            <Select label='Model' options={modelItems} value={model} onChange={setModel} width={useMediaQuery('(max-width: 1000px)') ? '100%' : '277px'} />
+                            <Select label='Color' options={colorItems} value={color} onChange={setColor} width={useMediaQuery('(max-width: 1000px)') ? '100%' : '277px'} />
+                            <Select label='Grade' options={gradeItems} value={grade} onChange={setGrade} width={useMediaQuery('(max-width: 1000px)') ? '100%' : '277px'} />
                         </BoxCommon>
-                        <BoxCommon flexDirection={useMediaQuery('(max-width: 1000px)') ? 'column' : 'row'} gap='20px'>
-                            <Select label='Storage' options={storageItems} value={storage} onChange={setStorage} width='277px' />
+                        <BoxCommon width='100%' flexDirection={useMediaQuery('(max-width: 1000px)') ? 'column' : 'row'} gap='20px'>
+                            <Select label='Storage' options={storageItems} value={storage} onChange={setStorage} width={useMediaQuery('(max-width: 1000px)') ? '100%' : '277px'} />
                             {
                                 isEdit && (
                                     <>
-                                        <Input label='Price' value={price} onChangeText={setPrice} />
-                                        <Input label='Cost' value={cost} onChangeText={setCost} />
-                                        <Input label='Quantity' value={quantity} onChangeText={setQuantity} />
+                                        <Input label='Price' value={price} onChangeText={setPrice} width={useMediaQuery('(max-width: 1000px)') ? '100%' : '277px'} />
+                                        <Input label='Cost' value={cost} onChangeText={setCost} width={useMediaQuery('(max-width: 1000px)') ? '100%' : '277px'} />
+                                        <Input label='Quantity' value={quantity} onChangeText={setQuantity} width={useMediaQuery('(max-width: 1000px)') ? '100%' : '277px'} />
                                     </>
                                 )
                             }
                         </BoxCommon>
-                        <Button text='Save' />
+                        <Button text='Save' onClick={save} />
                     </BoxCommon>
                 </BoxShadow>
                 {
@@ -80,6 +85,7 @@ const View: React.FC<ViewProps> = ({
                     )
                 }
             </BoxCommon>
+            <ModalRequired field={fieldRequired} visible={modalRequired} onClose={() => setModalRequired(false)} />
         </main>
     </>
 )
