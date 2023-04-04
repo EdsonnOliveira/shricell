@@ -1,6 +1,7 @@
 import styled from "styled-components";
-import { primary, white } from "@atomic/constants/colors";
+import { green, primary, red, white } from "@atomic/constants/colors";
 import Image from "next/image";
+import { IndexStyledProps } from "./models";
 
 export const Backdrop = styled.section`
     width: 100%;
@@ -40,7 +41,12 @@ export const Header = styled.header`
     width: 100%;
     height: 60px;
     border-radius: 20px 20px 0 0;
-    background-color: ${primary};
+    background-color: ${( props: IndexStyledProps ) => ( props.type === 'normal'
+                                                                    ? `${primary}`
+                                                                    : props.type === 'error'
+                                                                    ? `${red}`
+                                                                    : `${green}`
+                                                                    )};
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -48,14 +54,29 @@ export const Header = styled.header`
     padding: 15px;
 `
 
-export const ButtonClose = styled(Image)`
+export const ButtonClose = styled.button`
+    all: unset;
     width: 35px;
     height: 35px;
+    background-color: ${( props: IndexStyledProps ) => ( props.type === 'normal'
+                                                                    ? '#176CC1'
+                                                                    : props.type === 'error'
+                                                                    ? '#AD170B'
+                                                                    : '#09B156'
+                                                                    )};
+    border-radius: 35px;
     cursor: pointer;
     transition: 0.5s;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 
     &:hover {
         opacity: 0.6;
+    }
+
+    & > h5 {
+        margin-left: 2px;
     }
 `
 

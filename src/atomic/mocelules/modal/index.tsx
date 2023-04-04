@@ -14,14 +14,17 @@ const Modal: React.FC<IndexProps> = ({
     onClose,
     onShow,
     firstButton,
-    secondButton
+    secondButton,
+    type = 'normal'
 }) => {
     return !visible ? <></> : (
         <Backdrop>
             <Main>
-                <Header>
+                <Header type={type}>
                     <h4 className="fontWhite fontW400">{ title }</h4>
-                    <ButtonClose src={ButtonCloseIMG} alt='buttonClose' onClick={onClose} />
+                    <ButtonClose onClick={onClose} type={type}>
+                        <h5 className="fontWhite fontW400">X</h5>
+                    </ButtonClose>
                 </Header>
                 <Container>
                     { children }
