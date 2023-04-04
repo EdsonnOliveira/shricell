@@ -12,23 +12,11 @@ import { DevicesProps } from "@api/stock/devices/models";
 
 import View from "./view";
 
-const itemsPreview: HeaderItemsPreview[] = [
-    {
-        icon: '',
-        title: 'Items',
-        value: '432'
-    },
-    {
-        icon: '',
-        title: 'Low Stock',
-        value: '2'
-    },
-]
-
 const Stock: React.FC = ({
 }) => {
     const router = useRouter();
 
+    const [itemsPreview, setItemsPreview] = useState<HeaderItemsPreview[]>([])
     const [data, setData] = useState<TR[]>([])
 
     useEffect(() => {
@@ -38,6 +26,19 @@ const Stock: React.FC = ({
     const loadData = () => {
         devices.listAll()
         .then((data: DevicesProps[]) => {
+            setItemsPreview([
+                {
+                    icon: '',
+                    title: 'Items',
+                    value: String(data.length)
+                },
+                {
+                    icon: '',
+                    title: 'Low Stock',
+                    value: String(data.reduce((accumulator, value) => Number(accumulator) + Number(value.quantityStock), 0))
+                }
+            ])
+
             let array = data.map(item => (
                 {
                     td: [
