@@ -82,3 +82,8 @@ h6 {
 .fontSmall {
     font-size: 11px;
 }
+
+/* ALIGN */
+.fontCenter {
+    text-align: center;
+}
