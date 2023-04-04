@@ -1,5 +1,5 @@
 import api from '@api/index'
-import { DevicesProps } from './models'
+import { DevicesProps, IndexType } from './models'
 
 const listAll = () => {
     return new Promise(async (resolve, reject) => {
@@ -33,6 +33,18 @@ const listAll = () => {
     })
 }
 
+const insert = ({ brandId, modelId, colorId, storageId, gradeId }: IndexType) => {
+    return new Promise(async (resolve, reject) => {
+        await api.post('devices/new-device.php', { brandId, modelId, colorId, storageId, gradeId })
+        .then(response => {
+            let res:DevicesProps[] = response.data
+            resolve('success')
+        })
+        .catch((response) => reject(response))
+    })
+}
+
 export default {
-    listAll
+    listAll,
+    insert
 }

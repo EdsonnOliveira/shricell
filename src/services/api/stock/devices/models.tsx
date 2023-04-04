@@ -1,3 +1,11 @@
+export type IndexType = {
+    brandId: string;
+    modelId: string;
+    colorId: string;
+    storageId: string;
+    gradeId: string;
+}
+
 export interface DevicesProps {
     deviceId: string | null;
     brandId: string | null;
