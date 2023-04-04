@@ -21,7 +21,8 @@
       "@atomic/*": ["./src/atomic/*"],
       "@api/*": ["./src/services/api/*"],
       "@types/*": ["./src/types/*"],
-      "@hooks/*": ["./src/hooks/*"]
+      "@hooks/*": ["./src/hooks/*"],
+      "@constants/*": ["./src/constants/*"]
     }
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "src/atomic/organisms/mainLogin/style.tsx"],
