@@ -28,6 +28,10 @@ const optionsComponents = [
         name: 'Customers',
     },
     {
+        page: '/suppliers',
+        name: 'Suppliers',
+    },
+    {
         page: '/reports',
         name: 'Reports',
     },
