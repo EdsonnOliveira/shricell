@@ -9,6 +9,7 @@ import { currency } from "@constants/formats";
 
 import devices from "@api/stock/devices";
 import { DevicesProps } from "@api/stock/devices/models";
+import supplier from "@api/supplier";
 
 import View from "./view";
 
@@ -91,11 +92,68 @@ const Stock: React.FC = ({
         })
     }
 
+    const [modalSupplier, setModalSupplier] = useState<boolean>(false)
+    const [nameSupplier, setNameSupplier] = useState<string>('')
+    const [phoneSupplier, setPhoneSupplier] = useState<string>('')
+    const [emailSupplier, setEmailSupplier] = useState<string>('')
+    const [addressSupplier, setAddressSupplier] = useState<string>('')
+    const [citySupplier, setCitySupplier] = useState<string>('')
+    const [stateSupplier, setStateSupplier] = useState<string>('')
+    const [zipCodeSupplier, setZipCodeSupplier] = useState<string>('')
+
+    const [fieldRequired, setFieldRequired] = useState<string>('')
+    const [modalRequired, setModalRequired] = useState<boolean>(false)
+
+    const saveSupplier = () => {
+        if (nameSupplier.length <= 0) {
+            setFieldRequired('Name')
+            setModalRequired(true)
+            return
+        }
+
+        if (phoneSupplier.length <= 0) {
+            setFieldRequired('Name')
+            setModalRequired(true)
+            return
+        }
+        
+        supplier.insert({
+            name: nameSupplier,
+            phone: phoneSupplier,
+            email: emailSupplier,
+            address: addressSupplier,
+            city: citySupplier,
+            state: stateSupplier,
+            zipCode: zipCodeSupplier
+        })
+        .then(() => router.push('/suppliers'))
+    }
+
     return (
         <View
             router={router}
             data={data}
             itemsPreview={itemsPreview}
+            modalSupplier={modalSupplier}
+            setModalSupplier={setModalSupplier}
+            nameSupplier={nameSupplier}
+            setNameSupplier={setNameSupplier}
+            addressSupplier={addressSupplier}
+            setAddressSupplier={setAddressSupplier}
+            phoneSupplier={phoneSupplier}
+            setPhoneSupplier={setPhoneSupplier}
+            emailSupplier={emailSupplier}
+            setEmailSupplier={setEmailSupplier}
+            citySupplier={citySupplier}
+            setCitySupplier={setCitySupplier}
+            stateSupplier={stateSupplier}
+            setStateSupplier={setStateSupplier}
+            zipCodeSupplier={zipCodeSupplier}
+            setZipCodeSupplier={setZipCodeSupplier}
+            saveSupplier={saveSupplier}
+            fieldRequired={fieldRequired}
+            modalRequired={modalRequired}
+            setModalRequired={setModalRequired}
         />
     )
 }
