@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 import { MarginsStyledProps } from "@atomic/constants/spacing";
-import { grey } from "@atomic/constants/colors";
+import { grey, lightBlue, white } from "@atomic/constants/colors";
 
 import { IndexStyledProps } from "./models";
 
@@ -39,4 +39,34 @@ export const SelectOption = styled.select`
     @media only screen and (max-width: 600px) {
         font-size: 17px;
     }
+`
+
+export const BoxInputDrop = styled.div`
+    position: relative;
+`
+
+export const Drop = styled.div`
+    width: 100%;
+    height: 150px;
+    overflow: auto;
+    padding: 10px 0;
+    top: 65px;
+    position: absolute;
+    background-color: ${white};
+    border-radius: 14px;
+    -webkit-box-shadow: 0px 3px 11px -1px rgba(0,0,0 ,0.62);
+    -moz-box-shadow: 0px 3px 11px -1px rgba(0,0,0 ,0.62);
+    box-shadow: 0px 3px 11px -1px rgba(0,0,0 ,0.62);
+    cursor: 'pointer';
+`
+
+export const Option = styled.li`
+    list-style-type: none;
+    font-size: 16px;
+    padding: 10px 10px;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+
+    &:hover { background-color: ${lightBlue} }
 `

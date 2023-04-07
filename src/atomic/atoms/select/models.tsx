@@ -1,16 +1,20 @@
 import { StyledProps } from "styled-components";
 
 import { Margins } from "@atomic/constants/spacing";
-import { OptionsType } from "@atomic/constants/select";
+import { OptionsType, SetOptionsType } from "@atomic/constants/select";
 import { TextAlign } from "@atomic/constants/text";
+
+import { SetText } from "@types/set";
 
 export interface IndexProps extends Margins {
     width?: string;
     value: string;
-    onChange: (e: string) => void
+    onChange: SetText | SetOptionsType
+    onChangeText?: SetText
     label: string;
     options: OptionsType[];
     textAlign?: TextAlign;
+    isSearch?: boolean;
 }
 
 export type IndexStyledProps = StyledProps<IndexProps>
