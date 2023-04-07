@@ -9,6 +9,7 @@ import Table from "@atomic/mocelules/table";
 import Modal from "@atomic/mocelules/modal";
 import Input from "@atomic/atoms/input";
 import ModalRequired from "@atomic/mocelules/modalRequired";
+import Select from "@atomic/atoms/select";
 
 import useMediaQuery from "@hooks/useMediaQuery";
 
@@ -37,7 +38,20 @@ const View: React.FC<ViewProps> = ({
     setZipCodeSupplier,
     fieldRequired,
     modalRequired,
-    setModalRequired
+    setModalRequired,
+    modalStock,
+    setModalStock,
+    supplierStock,
+    setSupplierStock,
+    setFilterNameSupplierStock,
+    suppliersItems,
+    quantityStock,
+    setQuantityStock,
+    unitPriceStock,
+    setUnitPriceStock,
+    annotationStock,
+    setAnnotationStock,
+    saveStock
 }) => (
     <>
         <Head>
@@ -93,6 +107,39 @@ const View: React.FC<ViewProps> = ({
                         <Input label='City' value={citySupplier} onChangeText={setCitySupplier} width={useMediaQuery('(max-width: 1000px)') ? '100%' : '275px'} />
                         <Input label='State' value={stateSupplier} onChangeText={setStateSupplier} width={useMediaQuery('(max-width: 1000px)') ? '100%' : '275px'} />
                         <Input label='ZIP Code' value={zipCodeSupplier} onChangeText={setZipCodeSupplier} width={useMediaQuery('(max-width: 1000px)') ? '100%' : '275px'} />
+                    </BoxCommon>
+                </BoxCommon>
+            </Modal>
+            <Modal
+                title='Add stock'
+                visible={modalStock}
+                onClose={() => setModalStock(false)}
+                firstButton={
+                    {
+                        type: 'primaryLarge',
+                        text: 'Save',
+                        onClick: () => saveStock()
+                    }
+                }
+            >
+                <BoxCommon gap='20px'>
+                    <BoxCommon width='100%' flexDirection={useMediaQuery('(max-width: 1000px)') ? 'column' : 'row'} gap='20px'>
+                        <Select
+                            label='Supplier'
+                            options={suppliersItems}
+                            isSearch
+                            value={supplierStock.label}
+                            onChange={(label: string, value: string) => setSupplierStock({label, value})}
+                            onChangeText={setFilterNameSupplierStock}
+                            width="100%"
+                        />
+                    </BoxCommon>
+                    <BoxCommon width='100%' flexDirection={useMediaQuery('(max-width: 1000px)') ? 'column' : 'row'} gap='20px'>
+                        <Input label='Quantity' value={quantityStock} onChangeText={setQuantityStock} width={useMediaQuery('(max-width: 1000px)') ? '100%' : '275px'} />
+                        <Input label='Unit Price' value={unitPriceStock} onChangeText={setUnitPriceStock} width={useMediaQuery('(max-width: 1000px)') ? '100%' : '275px'} />
+                    </BoxCommon>
+                    <BoxCommon width='100%' flexDirection={useMediaQuery('(max-width: 1000px)') ? 'column' : 'row'} gap='20px'>
+                        <Input label='Annotation' value={annotationStock} onChangeText={setAnnotationStock} width='100%' />
                     </BoxCommon>
                 </BoxCommon>
             </Modal>

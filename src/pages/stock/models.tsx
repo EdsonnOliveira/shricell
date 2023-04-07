@@ -1,6 +1,9 @@
 import { NextRouter } from "next/router";
+
 import { HeaderItemsPreview } from "@atomic/constants/header";
 import { TR } from "@atomic/constants/table";
+import { OptionsType, SetOptionsType } from "@atomic/constants/select";
+
 import { SetBoolean, SetText, SetVoid } from "@types/set";
 
 export interface ViewProps {
@@ -27,4 +30,18 @@ export interface ViewProps {
     fieldRequired: string;
     modalRequired: boolean;
     setModalRequired: SetBoolean;
+
+    modalStock: boolean;
+    setModalStock: SetBoolean;
+    supplierStock: OptionsType;
+    setSupplierStock: SetOptionsType;
+    setFilterNameSupplierStock: SetText;
+    suppliersItems: OptionsType[]
+    quantityStock: string;
+    setQuantityStock: SetText;
+    unitPriceStock: string;
+    setUnitPriceStock: SetText;
+    annotationStock: string;
+    setAnnotationStock: SetText;
+    saveStock: SetVoid;
 }

@@ -4,14 +4,17 @@ import { useRouter } from "next/router";
 import { TR } from "@atomic/constants/table";
 import { green } from "@atomic/constants/colors";
 import { HeaderItemsPreview } from "@atomic/constants/header";
+import { OptionsType } from "@atomic/constants/select";
 
 import { currency } from "@constants/formats";
 
 import devices from "@api/stock/devices";
 import { DevicesProps } from "@api/stock/devices/models";
 import supplier from "@api/supplier";
+import { SupplierProps } from "@api/supplier/models";
 
 import View from "./view";
+import stock from "~/services/api/stock";
 
 const Stock: React.FC = ({
 }) => {
@@ -129,6 +132,78 @@ const Stock: React.FC = ({
         .then(() => router.push('/suppliers'))
     }
 
+    const [modalStock, setModalStock] = useState<boolean>(true)
+    const [supplierItems, setSupplierItems] = useState<OptionsType[]>([{ label: 'Select the Supplier', value: '-1' }])
+    const [supplierStock, setSupplierStock] = useState<OptionsType>({ label: '', value: '-1' })
+    const [filterNameSupplierStock, setFilterNameSupplierStock] = useState<string>('')
+
+    const [quantityStock, setQuantityStock] = useState<string>('')
+    const [unitPriceStock, setUnitPriceStock] = useState<string>('')
+    const [annotationStock, setAnnotationStock] = useState<string>('')
+
+    useEffect(() => {
+        loadSuppliers()
+    }, [filterNameSupplierStock])
+
+    const loadSuppliers = () => {
+        setSupplierStock({label: filterNameSupplierStock, value: '-1'})
+
+        if (filterNameSupplierStock.length <= 0) {
+            supplier.listAll()
+            .then((data: SupplierProps[]) => {
+                let options: OptionsType[] = [{ label: 'Select the Supplier', value: '-1' }]
+                let array = data.map(item => (
+                    {
+                        label: item.supplierName,
+                        value: String(item.supplierId)
+                    }
+                ))
+                setSupplierItems([...options, ...array])
+            })
+        } else {
+            supplier.autoComplete({ name: filterNameSupplierStock })
+            .then((data: SupplierProps[]) => {
+                let options: OptionsType[] = [{ label: 'Select the Supplier', value: '-1' }]
+                let array = data.map(item => (
+                    {
+                        label: item.supplierName,
+                        value: String(item.supplierId)
+                    }
+                ))
+                setSupplierItems([...options, ...array])
+            })
+        }
+    }
+
+    const saveStock = () => {
+        if (supplierStock.value == '-1' || supplierStock.label.length <= 0) {
+            setFieldRequired('Supplier')
+            setModalRequired(true)
+            return
+        }
+
+        if (quantityStock.length <= 0) {
+            setFieldRequired('Quantity')
+            setModalRequired(true)
+            return
+        }
+
+        if (unitPriceStock.length <= 0) {
+            setFieldRequired('Unit Price')
+            setModalRequired(true)
+            return
+        }
+
+        stock.insert({
+            supplierId: supplierStock.value,
+            deviceId: '1',
+            quantity: quantityStock,
+            unitPrice: unitPriceStock,
+            annotation: annotationStock
+        })
+        .then(() => setModalStock(false))
+    }
+
     return (
         <View
             router={router}
@@ -154,6 +229,20 @@ const Stock: React.FC = ({
             fieldRequired={fieldRequired}
             modalRequired={modalRequired}
             setModalRequired={setModalRequired}
+            modalStock={modalStock}
+            setModalStock={setModalStock}
+
+            supplierStock={supplierStock}
+            setSupplierStock={setSupplierStock}
+            setFilterNameSupplierStock={setFilterNameSupplierStock}
+            suppliersItems={supplierItems}
+            quantityStock={quantityStock}
+            setQuantityStock={setQuantityStock}
+            unitPriceStock={unitPriceStock}
+            setUnitPriceStock={setUnitPriceStock}
+            annotationStock={annotationStock}
+            setAnnotationStock={setAnnotationStock}
+            saveStock={saveStock}
         />
     )
 }
