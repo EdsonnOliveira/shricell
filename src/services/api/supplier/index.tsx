@@ -10,6 +10,7 @@ const listAll = () => {
 
             for (let i = 0; i < res.length; i++ ) {
                 let json: SupplierProps = {
+                    supplierId: res[i].supplierId,
                     supplierName: res[i].supplierName,
                     supplierPhone: res[i].supplierPhone,
                     supplierEmail: res[i].supplierEmail,
@@ -37,7 +38,34 @@ const insert = ({ name, phone, email, address, city, state, zipCode }: IndexType
     })
 }
 
+const autoComplete = ({name}: IndexType) => {
+    return new Promise(async (resolve, reject) => {
+        await api.post('supplier/auto-complete-supplier.php', { name })
+        .then(response => {
+            let res:SupplierProps[] = response.data.suppliers
+            let array:SupplierProps[] = []
+
+            for (let i = 0; i < res.length; i++ ) {
+                let json: SupplierProps = {
+                    supplierId: res[i].supplierId,
+                    supplierName: res[i].supplierName,
+                    supplierPhone: res[i].supplierPhone,
+                    supplierEmail: res[i].supplierEmail,
+                    supplierAddress: res[i].supplierAddress,
+                    supplierCity: res[i].supplierCity,
+                    supplierState: res[i].supplierState,
+                    supplierZipCode: res[i].supplierZipCode
+                }
+                array.push(json)
+            }
+            resolve(array)
+        })
+        .catch((response) => reject(response))
+    })
+}
+
 export default {
     listAll,
-    insert
+    insert,
+    autoComplete
 }
