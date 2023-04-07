@@ -12,6 +12,7 @@ export const PrimaryLarge = styled.button`
     background-color: ${( props: IndexStyledProps ) => ( props.disabled ? `${grey}` : `${primary}` )};
     border-radius: ${borderRadius};
     transition: ${transition};
+    text-align: center;
 
     margin-top: ${( props: MarginsStyledProps ) => (props.mt ?? 0)};
     margin-left: ${( props: MarginsStyledProps ) => (props.ml ?? 0)};
@@ -31,6 +32,7 @@ export const PrimaryMedium = styled.button`
     background-color: ${( props: IndexStyledProps ) => ( props.disabled ? `${grey}` : `${primary}` )};
     border-radius: ${borderRadius};
     transition: ${transition};
+    text-align: center;
 
     margin-top: ${( props: MarginsStyledProps ) => (props.mt ?? 0)};
     margin-left: ${( props: MarginsStyledProps ) => (props.ml ?? 0)};
@@ -50,6 +52,7 @@ export const SecundaryLarge = styled.button`
     background-color: ${( props: IndexStyledProps ) => ( props.disabled ? `${grey}` : `${secondary}` )};
     border-radius: ${borderRadius};
     transition: ${transition};
+    text-align: center;
 
     margin-top: ${( props: MarginsStyledProps ) => (props.mt ?? 0)};
     margin-left: ${( props: MarginsStyledProps ) => (props.ml ?? 0)};
@@ -69,6 +72,7 @@ export const SecundaryMedium = styled.button`
     background-color: ${( props: IndexStyledProps ) => ( props.disabled ? `${grey}` : `${secondary}` )};
     border-radius: ${borderRadius};
     transition: ${transition};
+    text-align: center;
 
     margin-top: ${( props: MarginsStyledProps ) => (props.mt ?? 0)};
     margin-left: ${( props: MarginsStyledProps ) => (props.ml ?? 0)};
@@ -88,6 +92,7 @@ export const GreenLarge = styled.button`
     background-color: ${( props: IndexStyledProps ) => ( props.disabled ? `${grey}` : `${green}` )};
     border-radius: ${borderRadius};
     transition: ${transition};
+    text-align: center;
 
     margin-top: ${( props: MarginsStyledProps ) => (props.mt ?? 0)};
     margin-left: ${( props: MarginsStyledProps ) => (props.ml ?? 0)};
@@ -104,6 +109,7 @@ export const RedLightLarge = styled.button`
     border: 2px solid ${( props: IndexStyledProps ) => ( props.disabled ? `${grey}` : `${red}` )};
     border-radius: ${borderRadius};
     transition: ${transition};
+    text-align: center;
 
     &:hover {
         background-color: ${( props: IndexStyledProps ) => ( props.disabled ? `${grey}` : `${red}` )};
@@ -124,6 +130,7 @@ export const GhostSmall = styled.button`
     padding: 20px;
     justify-content: center;
     align-items: center;
+    text-align: center;
 
     margin-top: ${( props: MarginsStyledProps ) => (props.mt ?? 0)};
     margin-left: ${( props: MarginsStyledProps ) => (props.ml ?? 0)};
