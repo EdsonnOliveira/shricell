@@ -2,13 +2,10 @@ import React, { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 
 import { TR } from "@atomic/constants/table";
-import { green } from "@atomic/constants/colors";
 import { HeaderItemsPreview } from "@atomic/constants/header";
 
-import { currency } from "@constants/formats";
-
-import supplier from "~/services/api/supplier";
-import { SupplierProps } from "~/services/api/supplier/models";
+import supplier from "@api/supplier";
+import { SupplierProps } from "@api/supplier/models";
 
 import View from "./view";
 
@@ -103,7 +100,7 @@ const Supplier: React.FC = ({
         }
 
         if (phoneSupplier.length <= 0) {
-            setFieldRequired('Name')
+            setFieldRequired('Phone')
             setModalRequired(true)
             return
         }
