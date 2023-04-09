@@ -10,29 +10,44 @@ import Button from "@atomic/atoms/button";
 import { IndexProps } from "./models";
 import { BoxInfo, BoxValues, Hamburguer, HamburguerBar, Li, Logo, Main, Nav, NavMobile, Ul } from "./style";
 
-const optionsComponents = [
+const optionsPrimary = [
     {
-        page: '/dashboard',
+        page: '/customer/dashboard',
         name: 'Dashboard',
     },
     {
-        page: '/sales',
+        page: '/customer/orders',
+        name: 'My Orders',
+    },
+    {
+        page: '/customer/account',
+        name: 'My Account',
+    },
+]
+
+const optionsSecondary = [
+    {
+        page: '/admin/dashboard',
+        name: 'Dashboard',
+    },
+    {
+        page: '/admin/sales',
         name: 'Sales',
     },
     {
-        page: '/stock',
+        page: '/admin/stock',
         name: 'Stock',
     },
     {
-        page: '/customers',
+        page: '/admin/customers',
         name: 'Customers',
     },
     {
-        page: '/suppliers',
+        page: '/admin/suppliers',
         name: 'Suppliers',
     },
     {
-        page: '/reports',
+        page: '/admin/reports',
         name: 'Reports',
     },
 ]
@@ -52,7 +67,11 @@ const Header: React.FC<IndexProps> = ({
                 { bgColor == 'primary' ? <Logo src={LogoSecondary} alt='Logo' /> : <Logo src={LogoPrimary} alt='Logo' /> }
                 <Ul size={size}>
                     {
-                        optionsComponents.map(option => (
+                        bgColor === 'secondary'
+                        ? optionsSecondary.map(option => (
+                            <Li href={option.page} bgColor={bgColor} pageCurrent={router.pathname == option.page}>{ option.name }</Li>
+                        ))
+                        : optionsPrimary.map(option => (
                             <Li href={option.page} bgColor={bgColor} pageCurrent={router.pathname == option.page}>{ option.name }</Li>
                         ))
                     }
@@ -66,7 +85,11 @@ const Header: React.FC<IndexProps> = ({
             <NavMobile bgColor={bgColor} mobile={mobile}>
                 <Ul mobile={mobile}>
                     {
-                        optionsComponents.map(option => (
+                        bgColor === 'secondary'
+                        ? optionsSecondary.map(option => (
+                            <Li href={option.page} bgColor={bgColor} pageCurrent={router.pathname == option.page}>{ option.name }</Li>
+                        ))
+                        : optionsPrimary.map(option => (
                             <Li href={option.page} bgColor={bgColor} pageCurrent={router.pathname == option.page}>{ option.name }</Li>
                         ))
                     }
@@ -74,13 +97,13 @@ const Header: React.FC<IndexProps> = ({
                 <Button type={bgColor == 'primary' ? 'secundaryMedium' : 'primaryMedium'} text='Close Menu' onClick={() => setMobile(false)} />
             </NavMobile>
             {
-                bgColor == 'secondary' && size == 'large' && (
+                size == 'large' && (
                     <BoxInfo>
                         <h2 className='fontWhite txtHello'>
-                            { title ?? optionsComponents.find(page => page.page == router.pathname)?.name }
+                            { title ?? optionsSecondary.find(page => page.page == router.pathname)?.name }
                         </h2>
                         <BoxValues>
-                            { itemsPreview?.map((item, index) => <Bubble title={item.title} value={item.value} icon={item.icon} />) }
+                            { itemsPreview?.map((item, index) => <Bubble title={item.title} value={item.value} icon={item.icon} type={bgColor} />) }
                         </BoxValues>
                     </BoxInfo>
                 )
