@@ -1,7 +1,5 @@
 import React from "react";
 
-import ButtonCloseIMG from '@assets/vector/buttonClose.png'
-
 import Button from "@atomic/atoms/button";
 
 import { IndexProps } from "./models";
