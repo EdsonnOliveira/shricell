@@ -6,11 +6,12 @@ import { Main, Round, Text } from "./style";
 const Bubble: React.FC<IndexProps> = ({
     value,
     title,
-    icon
+    icon,
+    type = 'secondary'
 }) => {
     return (
         <Main className='bubble'>
-            <Round>
+            <Round type={type}>
                 { icon }
             </Round>
             <Text>

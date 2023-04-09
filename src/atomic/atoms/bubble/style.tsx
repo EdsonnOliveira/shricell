@@ -1,6 +1,7 @@
 import styled from "styled-components";
 
-import { blue } from "@atomic/constants/colors";
+import { BlueCian, blue } from "@atomic/constants/colors";
+import { IndexStyledProps } from "./models";
 
 export const Main = styled.div`
     width: max-content;
@@ -13,7 +14,7 @@ export const Main = styled.div`
 export const Round = styled.div`
     width: 65px;
     height: 65px;
-    background-color: ${blue};
+    background-color: ${( props: IndexStyledProps ) => ( props.type === 'secondary' ? `${blue}` : `${BlueCian}` )};
     border-radius: 70px;
 `
 
