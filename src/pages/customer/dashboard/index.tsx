@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 
 import { HeaderItemsPreview } from "@atomic/constants/header";
 import { black, white, yellow } from "@atomic/constants/colors";
@@ -6,6 +6,7 @@ import { black, white, yellow } from "@atomic/constants/colors";
 import { ItemsCart } from "@types/itemsCart";
 
 import View from "./view";
+import { RadioButtonType } from "~/atomic/constants/radioButton";
 
 const itemsPreview: HeaderItemsPreview[] = [
     {
@@ -48,10 +49,14 @@ const itemsCart: ItemsCart[] = [
 
 const Dashboard: React.FC = ({
 }) => {
+    const [selectedIncludeOutStock, setSelectedIncludeOutStock] = useState<boolean>(false)
+
     return (
         <View
             itemsPreview={itemsPreview}
             itemsCart={itemsCart}
+            selectedIncludeOutStock={selectedIncludeOutStock}
+            setSelectedIncludeOutStock={setSelectedIncludeOutStock}
         />
     )
 }
