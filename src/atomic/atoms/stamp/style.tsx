@@ -9,6 +9,7 @@ export const Main = styled.div`
     padding: 15px;
     border-radius: 30px;
     background-color: ${( props: IndexStyledProps ) => ( props.bgColor ?? `${primary}` )};
+    border: 2px solid ${( props: IndexStyledProps ) => ( props.borderColor ?? 'transparent' )};
     justify-content: center;
     align-items: center;
 `

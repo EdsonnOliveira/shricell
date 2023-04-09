@@ -6,10 +6,11 @@ import { Main } from "./style";
 const Stamp:React.FC<IndexProps> = ({
     value,
     color = 'fontWhite',
-    bgColor
+    bgColor,
+    borderColor
 }) => {
     return (
-        <Main bgColor={bgColor}>
+        <Main bgColor={bgColor} borderColor={borderColor}>
             <h6 className={color}>{ value }</h6>
         </Main>
     )
