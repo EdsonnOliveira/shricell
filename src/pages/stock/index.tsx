@@ -9,12 +9,12 @@ import { OptionsType } from "@atomic/constants/select";
 import { currency } from "@constants/formats";
 
 import devices from "@api/stock/devices";
-import { DevicesProps } from "@api/stock/devices/models";
 import supplier from "@api/supplier";
+import stock from "@api/stock";
+import { DevicesProps } from "@api/stock/devices/models";
 import { SupplierProps } from "@api/supplier/models";
 
 import View from "./view";
-import stock from "~/services/api/stock";
 
 const Stock: React.FC = ({
 }) => {
