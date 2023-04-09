@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { borderRadius, transition } from "@atomic/constants/button";
+import { borderRadius, borderRadiusSmall, transition } from "@atomic/constants/button";
 import { green, grey, primary, red, secondary, white } from "@atomic/constants/colors";
 import { MarginsStyledProps } from "@atomic/constants/spacing";
 import { IndexStyledProps } from "./models";
@@ -44,6 +44,26 @@ export const PrimaryMedium = styled.button`
     }
 `
 
+export const PrimarySmall = styled.button`
+    width: 100px;
+    height: 40px;
+    justify-content: center;
+    align-items: center;
+    background-color: ${( props: IndexStyledProps ) => ( props.disabled ? `${grey}` : `${primary}` )};
+    border-radius: ${borderRadiusSmall};
+    transition: ${transition};
+    text-align: center;
+
+    margin-top: ${( props: MarginsStyledProps ) => (props.mt ?? 0)};
+    margin-left: ${( props: MarginsStyledProps ) => (props.ml ?? 0)};
+    margin-right: ${( props: MarginsStyledProps ) => (props.mr ?? 0)};
+    margin-bottom: ${( props: MarginsStyledProps ) => (props.mb ?? 0)};
+
+    &:hover {
+        background-color: ${( props: IndexStyledProps ) => ( props.disabled ? `${grey}` : `${secondary}` )};
+    }
+`
+
 export const SecundaryLarge = styled.button`
     width: 100%;
     height: 65px;
@@ -71,6 +91,26 @@ export const SecundaryMedium = styled.button`
     align-items: center;
     background-color: ${( props: IndexStyledProps ) => ( props.disabled ? `${grey}` : `${secondary}` )};
     border-radius: ${borderRadius};
+    transition: ${transition};
+    text-align: center;
+
+    margin-top: ${( props: MarginsStyledProps ) => (props.mt ?? 0)};
+    margin-left: ${( props: MarginsStyledProps ) => (props.ml ?? 0)};
+    margin-right: ${( props: MarginsStyledProps ) => (props.mr ?? 0)};
+    margin-bottom: ${( props: MarginsStyledProps ) => (props.mb ?? 0)};
+
+    &:hover {
+        background-color: ${( props: IndexStyledProps ) => ( props.disabled ? `${grey}` : `${primary}` )};
+    }
+`
+
+export const SecundarySmall = styled.button`
+    width: 100px;
+    height: 40px;
+    justify-content: center;
+    align-items: center;
+    background-color: ${( props: IndexStyledProps ) => ( props.disabled ? `${grey}` : `${secondary}` )};
+    border-radius: ${borderRadiusSmall};
     transition: ${transition};
     text-align: center;
 
