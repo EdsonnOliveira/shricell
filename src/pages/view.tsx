@@ -6,9 +6,9 @@ import Input from "@atomic/atoms/input";
 import BoxCommon from "@atomic/atoms/boxCommon";
 import Button from "@atomic/atoms/button";
 import FileDnD from "@atomic/mocelules/fileDnD";
+import Modal from "@atomic/mocelules/modal";
 
 import { ViewProps, RegisterProps, AttachmentProps } from "./models";
-import Modal from "~/atomic/mocelules/modal";
 
 const View: React.FC<ViewProps> = ({
     steps,
@@ -68,8 +68,8 @@ const View: React.FC<ViewProps> = ({
                         <title>ShriCell</title>
                     </Head>
                     <MainLogin
-                        title='Administrator'
-                        type='admin'
+                        title='Customer'
+                        type='customer'
                         email={email}
                         onChangeEmail={setEmail}
                         password={password}

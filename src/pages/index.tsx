@@ -36,7 +36,7 @@ const Home: React.FC = ({
 
   const clickLogin = () => {
     user.login({ email, password })
-    .then(() => router.push('/dashboard'))
+    .then(() => router.push('/customer/dashboard'))
     .catch(() => setModalError(true))
   }
 
