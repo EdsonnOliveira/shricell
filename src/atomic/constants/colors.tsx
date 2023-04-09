@@ -8,6 +8,8 @@ export const gray = '#696969';
 export const grey = '#F4F4F4';
 
 export const blue = '#132538';
+export const BlueCian = '#265689';
 export const lightBlue = '#EBF6FF';
 export const green = '#04E36B';
 export const red = '#E31504';
+export const yellow = '#DED838'
