@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-import { white } from "@atomic/constants/colors";
+import { gray, white } from "@atomic/constants/colors";
 import { MarginsStyledProps } from "@atomic/constants/spacing";
 
 import { IndexStyledProps } from "./models";
@@ -21,4 +21,9 @@ export const Main = styled.div`
     margin-left: ${( props: MarginsStyledProps ) => (props.ml ?? 0)};
     margin-right: ${( props: MarginsStyledProps ) => (props.mr ?? 0)};
     margin-bottom: ${( props: MarginsStyledProps ) => (props.mb ?? 0)};
+`
+
+export const Action = styled.h4`
+    font-size: 16px;
+    color: ${gray}
 `

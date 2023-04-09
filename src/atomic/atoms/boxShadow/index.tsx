@@ -1,10 +1,13 @@
 import React from "react";
 
+import BoxCommon from "../boxCommon";
+
 import { IndexProps } from "./models";
-import { Main } from "./style";
+import { Action, Main } from "./style";
 
 const BoxShadow:React.FC<IndexProps> = ({
     title,
+    action,
     children,
     size,
     onClick,
@@ -15,7 +18,10 @@ const BoxShadow:React.FC<IndexProps> = ({
 }) => {
     return (
         <Main size={size} onClick={onClick} mt={mt} ml={ml} mr={mr} mb={mb}>
-            { title && <h5 className="fontW600">{ title }</h5> }
+            <BoxCommon flexDirection='row' justifyContent='space-between' alignItems='center' >
+                { title && <h5 className="fontW600">{ title }</h5> }
+                { action && <Action onClick={action.onClick}>{ action.name }</Action> }
+            </BoxCommon>
             { children }
         </Main>
     )
