@@ -12,7 +12,8 @@ const listAll = () => {
                 let json: GradesProps = {
                     gradeId: res[i].gradeId,
                     gradeName: res[i].gradeName,
-                    gradeDescription: res[i].gradeDescription
+                    gradeDescription: res[i].gradeDescription,
+                    gradeQuantityStock: res[i].gradeQuantityStock
                 }
                 array.push(json)
             }
