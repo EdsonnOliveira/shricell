@@ -43,8 +43,37 @@ const insert = ({ brandId, modelId, colorId, storageId, gradeId }: IndexType) =>
         .catch((response) => reject(response))
     })
 }
+const toSellCardList = () => {
+    return new Promise(async (resolve, reject) => {
+        await api.post('devices/to-sell-card-list.php')
+        .then(response => {
+            let res:DevicesProps[] = response.data.devices
+            let array:DevicesProps[] = []
+
+            for (let i = 0; i < res.length; i++ ) {
+                let json: DevicesProps = {
+                    deviceId: res[i].deviceId,
+                    brandId: res[i].brandId,
+                    brand: res[i].brand,
+                    modelId: res[i].modelId,
+                    model: res[i].model,
+                    storageId: res[i].storageId,
+                    storage: res[i].storage,
+                    quantityStock: res[i].quantityStock,
+                    gradeId: res[i].gradeId,
+                    gradeName: res[i].gradeName,
+                    salePrice: res[i].salePrice,
+                }
+                array.push(json)
+            }
+            resolve(array)
+        })
+        .catch((response) => reject(response))
+    })
+}
 
 export default {
     listAll,
-    insert
+    insert,
+    toSellCardList
 }
