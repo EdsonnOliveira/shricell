@@ -6,7 +6,6 @@ import BoxCommon from "@atomic/atoms/boxCommon";
 import ItemCart from "@atomic/organisms/itemCart";
 import BoxShadow from "@atomic/atoms/boxShadow";
 import CheckBox from "@atomic/atoms/checkBox";
-import RadioButton from "@atomic/atoms/radioButton";
 
 import useMediaQuery from "@hooks/useMediaQuery";
 
@@ -14,9 +13,10 @@ import { ViewProps } from "./models";
 
 const View: React.FC<ViewProps> = ({
     itemsPreview,
-    itemsCart,
     selectedIncludeOutStock,
     setSelectedIncludeOutStock,
+    gradesItems,
+    devicesItems
 }) => (
     <>
         <Head>
@@ -27,14 +27,13 @@ const View: React.FC<ViewProps> = ({
             <BoxCommon
                 flex={useMediaQuery('(max-width: 1100px)') ? 'unset' : '1'}
                 width={useMediaQuery('(max-width: 1100px)') && '100%'}
-                flexDirection='row'
+                flexDirection={useMediaQuery('(max-width: 1100px)') ? 'column' : 'row'}
                 gap='20px'
-                flexWrap='wrap'
             >
                 <BoxShadow
                     title='Filters'
                     action={{ name: 'Clear', onClick: () => null }}
-                    size={{ height: 'max-content' }}
+                    size={{ height: 'max-content', ...useMediaQuery('(max-width: 1100px)') && { width: '100%' } }}
                 >
                     <BoxCommon gap='10px'>
                         <CheckBox
@@ -45,36 +44,17 @@ const View: React.FC<ViewProps> = ({
                         />
                         <BoxCommon>
                             <h5 className='fontW400'>Grade</h5>
-                            <CheckBox
-                                name='Grade A'
-                                value='85'
-                                mt='10px'
-                            />
-                            <CheckBox
-                                name='Grade B'
-                                value='145'
-                                mt='10px'
-                            />
-                            <CheckBox
-                                name='Grade BX'
-                                value='29'
-                                mt='10px'
-                            />
-                            <CheckBox
-                                name='Grade C'
-                                value='131'
-                                mt='10px'
-                            />
-                            <CheckBox
-                                name='Grade FINGERPRINT'
-                                value='21'
-                                mt='10px'
-                            />
-                            <CheckBox
-                                name='Grade PTG'
-                                value='49'
-                                mt='10px'
-                            />
+                            {
+                                gradesItems.map(item => (
+                                    <CheckBox
+                                        name={`Grade ${item.label}`}
+                                        value={item.value}
+                                        mt='10px'
+                                        selected
+                                        setSelected={() => null}
+                                    />
+                                ))
+                            }
                         </BoxCommon>
                         <BoxCommon>
                             <h5 className='fontW400'>Manufacturer</h5>
@@ -91,19 +71,25 @@ const View: React.FC<ViewProps> = ({
                         </BoxCommon>
                     </BoxCommon>
                 </BoxShadow>
-                {
-                    itemsCart.map(item => (
-                        <ItemCart
-                            brand={item.brand}
-                            name={item.name}
-                            storage={item.storage}
-                            grade={item.grade}
-                            colors={item.colors}
-                            quantity={item.quantity}
-                            price={item.price}
-                        />
-                    ))
-                }
+                <BoxCommon
+                    flex={useMediaQuery('(max-width: 1100px)') ? 'unset' : '1'}
+                    width={useMediaQuery('(max-width: 1100px)') && '100%'}
+                    gap='20px'
+                >
+                    {
+                        devicesItems.map(item => (
+                            <ItemCart
+                                brand={item.brand}
+                                name={item.name}
+                                storage={item.storage}
+                                grade={item.grade}
+                                colors={item.colors}
+                                quantity={item.quantity}
+                                price={item.price}
+                            />
+                        ))
+                    }
+                </BoxCommon>
             </BoxCommon>
         </main>
     </>
