@@ -10,10 +10,10 @@ const Brand: React.FC<IndexProps> = ({
     type
 }) => {
     const searchImage = () => {
-        switch (type) {
-            case 'apple':
+        switch (type.toUpperCase()) {
+            case 'APPLE':
                 return AppleIcon;
-            case 'samsung':
+            case 'SAMSUNG':
                 return SamsungIcon;
         }
     }
