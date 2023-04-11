@@ -23,7 +23,7 @@ const ItemCart:React.FC<IndexProps> = ({
     const [open, setOpen] = useState<boolean>(false)
 
     return (
-        <BoxShadow size={{ flex: '1', height: 'max-content' }} onClick={() => setOpen(!open)}>
+        <BoxShadow size={{ width: '100%', height: 'max-content' }} onClick={() => setOpen(!open)}>
             <BoxCommon width='100%' height='100%' justifyContent='space-between' gap='20px'>
                 <BoxCommon width='100%' flexDirection='row' justifyContent='space-between'>
                     <BoxCommon flexDirection='row' alignItems='center' gap='15px'>
@@ -41,7 +41,7 @@ const ItemCart:React.FC<IndexProps> = ({
                             gap='10px'
                         >
                                 {
-                                    colors.map((item, index) => (
+                                    colors.map(item => (
                                         <BoxCommon
                                             flexDirection='row'
                                             gap='40px'
