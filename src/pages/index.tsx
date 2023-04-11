@@ -35,7 +35,7 @@ const Home: React.FC = ({
   const [modalError, setModalError] = useState<boolean>(false)
 
   const clickLogin = () => {
-    user.login({ email, password })
+    user.loginCustomer({ email, password })
     .then(() => router.push('/customer/dashboard'))
     .catch(() => setModalError(true))
   }

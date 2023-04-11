@@ -3,8 +3,7 @@ import { useRouter } from "next/router";
 
 import user from '@api/user';
 
-import { Steps } from "../admin/models";
-import View from "../admin/view";
+import View from "./view";
 
 const Home: React.FC = ({
 }) => {
@@ -14,7 +13,7 @@ const Home: React.FC = ({
   const [modalError, setModalError] = useState<boolean>(false)
 
   const clickLogin = () => {
-    user.login({ email, password })
+    user.loginAdmin({ email, password })
     .then(() => router.push('/admin/dashboard'))
     .catch(() => setModalError(true))
   }
