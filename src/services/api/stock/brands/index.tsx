@@ -5,13 +5,14 @@ const listAll = () => {
     return new Promise(async (resolve, reject) => {
         await api.get('devices/brands.php')
         .then(response => {
-            let res:BrandProps[] = response.data
+            let res:BrandProps[] = response.data.brands
             let array:BrandProps[] = []
 
             for (let i = 0; i < res.length; i++ ) {
                 let json: BrandProps = {
                     brandId: res[i].brandId,
-                    brand: res[i].brand
+                    brand: res[i].brand,
+                    quantityStock: res[i].quantityStock
                 }
                 array.push(json)
             }
