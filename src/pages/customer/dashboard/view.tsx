@@ -16,6 +16,11 @@ const View: React.FC<ViewProps> = ({
     selectedIncludeOutStock,
     setSelectedIncludeOutStock,
     gradesItems,
+    gradesSelecteds,
+    setGradesSelecteds,
+    manufacturerItems,
+    manufacturerSelecteds,
+    setManufacturerSelecteds,
     devicesItems
 }) => (
     <>
@@ -50,24 +55,25 @@ const View: React.FC<ViewProps> = ({
                                         name={`Grade ${item.label}`}
                                         value={item.value}
                                         mt='10px'
-                                        selected
-                                        setSelected={() => null}
+                                        selected={!!(gradesSelecteds && gradesSelecteds.find(grade => grade == item.label))}
+                                        setSelected={() => setGradesSelecteds(item.label, 'G')}
                                     />
                                 ))
                             }
                         </BoxCommon>
                         <BoxCommon>
                             <h5 className='fontW400'>Manufacturer</h5>
-                            <CheckBox
-                                name='Apple'
-                                value='452'
-                                mt='10px'
-                            />
-                            <CheckBox
-                                name='Samsung'
-                                value='8'
-                                mt='10px'
-                            />
+                            {
+                                manufacturerItems.map(item => (
+                                    <CheckBox
+                                        name={`${item.label.toLowerCase()}`}
+                                        value={item.value}
+                                        mt='10px'
+                                        selected={!!(manufacturerSelecteds && manufacturerSelecteds.find(manufacturer => manufacturer == item.label))}
+                                        setSelected={() => setManufacturerSelecteds(item.label, 'M')}
+                                    />
+                                ))
+                            }
                         </BoxCommon>
                     </BoxCommon>
                 </BoxShadow>
