@@ -13,7 +13,7 @@ const listAll = () => {
                     gradeId: res[i].gradeId,
                     gradeName: res[i].gradeName,
                     gradeDescription: res[i].gradeDescription,
-                    gradeQuantityStock: res[i].gradeQuantityStock
+                    quantityStock: res[i].quantityStock
                 }
                 array.push(json)
             }
