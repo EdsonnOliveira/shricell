@@ -13,9 +13,10 @@ import View from "./view";
 
 const Home: React.FC<IndexProps> = ({
   setToken,
-  setData
+  setDataLogin
 }) => {
   const router = useRouter()
+
   const [email, setEmail] = useState<string>('')
   const [password, setPassword] = useState<string>('')
   const [modalError, setModalError] = useState<boolean>(false)
@@ -24,7 +25,7 @@ const Home: React.FC<IndexProps> = ({
     user.loginAdmin({ email, password })
     .then((data: LoginProps) => {
       setToken(data.access_token)
-      setData({
+      setDataLogin({
         id: data.user.id,
         email: data.user.email,
         name: data.user.name,
@@ -52,7 +53,7 @@ const mapStateToProps = ({}) => {}
 
 const mapDispatchToProps = (dispatch: Dispatch) => ({
   setToken: (token: string) => dispatch({ type: 'SET_LOGIN_TOKEN', payload: { token } }),
-  setData: (data: LoginTypes['data']) => dispatch({ type: 'SET_LOGIN_DATA', payload: { data } }),
+  setDataLogin: (data: LoginTypes['data']) => dispatch({ type: 'SET_LOGIN_DATA', payload: { data } }),
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(Home);
