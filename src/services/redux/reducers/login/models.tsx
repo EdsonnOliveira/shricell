@@ -1,11 +1,11 @@
 export interface IndexProps {
     token: string;
-    data: DataLogin;
+    data: Data;
 }
 
 export type LoginTypes = IndexProps;
 
-type DataLogin = {
+type Data = {
     id: number;
     name: string;
     email: string;

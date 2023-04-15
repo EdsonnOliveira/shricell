@@ -1,21 +1,15 @@
 import { IndexProps } from "./models";
 
 const initialState: IndexProps = {
-    token: '',
     data: {
-        id: 0,
-        name: '',
-        email: '',
-        type: 'customer'
+        id: '',
+        name: ''
     }
 };
 
 export default (state = initialState, action) => {
     switch(action.type) {
-        case 'SET_LOGIN_TOKEN':
-            return{...state, token: action.payload.token};
-            break;
-        case 'SET_LOGIN_DATA':
+        case 'SET_CUSTOMER':
             return{...state, data: action.payload.data};
             break;
     }

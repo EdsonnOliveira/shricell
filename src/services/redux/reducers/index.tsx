@@ -1,11 +1,11 @@
 import { combineReducers } from 'redux';
 
 import loginReducer from './login'
-import supplierReducer from './supplier';
+import suppliersReducer from './suppliers';
 
 const appReducer = combineReducers({
     loginReducer,
-    supplierReducer
+    suppliersReducer
 });
 
 export default appReducer;

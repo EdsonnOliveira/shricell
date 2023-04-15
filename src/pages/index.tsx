@@ -129,8 +129,8 @@ const Home: React.FC<IndexProps> = ({
 const mapStateToProps = ({}) => {}
 
 const mapDispatchToProps = (dispatch: Dispatch) => ({
-  setToken: (token: string) => dispatch({ type: 'SET_CUSTOMER_TOKEN', payload: {token} }),
-  setData: (data: LoginTypes['data']) => dispatch({ type: 'SET_CUSTOMER_DATA', payload: {data} }),
+  setToken: (token: string) => dispatch({ type: 'SET_LOGIN_TOKEN', payload: {token} }),
+  setData: (data: LoginTypes['data']) => dispatch({ type: 'SET_LOGIN_DATA', payload: {data} }),
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(Home);

@@ -1,8 +1,8 @@
 export interface IndexProps {
-    data: DataSupplier;
+    data: Data;
 }
 
-type DataSupplier = {
+type Data = {
     id: string | number;
     name: string;
 }
