@@ -9,7 +9,7 @@ export interface IndexProps {
 }
 
 export interface ViewProps {
-    nameCustomer: string;
+    nameUser: string;
     itemsPreview: HeaderItemsPreview[];
     selectedIncludeOutStock: boolean;
     setSelectedIncludeOutStock: SetBoolean;

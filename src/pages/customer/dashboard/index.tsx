@@ -110,7 +110,7 @@ const Dashboard: React.FC<IndexProps> = ({
 
     return (
         <View
-            nameCustomer={dataUser.name || 'Customer'}
+            nameUser={dataUser.name || 'Customer'}
             itemsPreview={itemsPreview}
             selectedIncludeOutStock={selectedIncludeOutStock}
             setSelectedIncludeOutStock={setSelectedIncludeOutStock}

@@ -13,6 +13,7 @@ import useMediaQuery from "@hooks/useMediaQuery";
 import { ViewProps } from "./models";
 
 const View: React.FC<ViewProps> = ({
+    nameUser,
     latestSales,
     itemsPreview
 }) => (
@@ -20,7 +21,7 @@ const View: React.FC<ViewProps> = ({
         <Head>
             <title>Dashboard - ShriCell</title>
         </Head>
-        <Header title='Hello, Shri!' itemsPreview={itemsPreview} />
+        <Header title={`Hello, ${nameUser}!`} itemsPreview={itemsPreview} />
         <main className="main">
             <BoxCommon
                 flex={useMediaQuery('(max-width: 1100px)') ? 'unset' : '1'}

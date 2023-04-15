@@ -4,7 +4,12 @@ import { TR } from "@atomic/constants/table";
 import { green } from "@atomic/constants/colors";
 import { HeaderItemsPreview } from "@atomic/constants/header";
 
+import { Dispatch } from "redux";
+import { connect } from "react-redux";
+import { LoginTypes } from "@redux/reducers/login/models";
+
 import View from "./view";
+import { IndexProps } from "./models";
 
 const latestSales: TR[] = [
     {
@@ -94,14 +99,28 @@ const itemsPreview: HeaderItemsPreview[] = [
     },
 ]
 
-const Dashboard: React.FC = ({
+const Dashboard: React.FC<IndexProps> = ({
+    dataUser,
 }) => {
+    console.error(dataUser)
     return (
         <View
+            nameUser={dataUser.name || 'Shri'}
             latestSales={latestSales}
             itemsPreview={itemsPreview}
         />
     )
 }
 
-export default Dashboard;
+const mapStateToProps = ({
+    loginReducer
+}: {
+    loginReducer: LoginTypes
+}) => ({
+    token: loginReducer.token,
+    dataUser: loginReducer.data
+})
+
+const mapDispatchToProps = (dispatch: Dispatch) => {}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Dashboard);
