@@ -22,7 +22,6 @@ const loginAdmin = ({ email, password }: IndexType) => {
 
 const loginCustomer = ({ email, password }: IndexType) => {
     return new Promise(async (resolve, reject) => {
-        console.log('a')
         await api.post('auth/login.php', { email, password })
         .then((response) => {
             let res:LoginProps = response.data
