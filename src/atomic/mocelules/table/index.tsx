@@ -16,24 +16,34 @@ const Table: React.FC<IndexProps> = ({
         <Main mt={mt} ml={ml} mr={mr} mb={mb}>
             <TBody>
                 {
-                    tr.map((item, index) => (
-                        <TR onClick={() => item.onClick ? item.onClick() : null}>
+                    tr.map((row, index) => (
+                        <TR>
                             {
-                                item.td.map((item, index) => (
+                                row.td.map((column, index) => (
                                     <TD
                                         td={{
-                                            textAlign: item.textAlign,
-                                            textWeight: item.textWeight,
+                                            textAlign: column.textAlign,
+                                            textWeight: column.textWeight,
                                         }}
+                                        onClick={() => (row.onClick && (column.type == 'text' || column.type.action == undefined)) ? row.onClick() : null}
                                     >
                                         {
-                                            item.type != 'text'
+                                            column.type != 'text'
                                             ? (
-                                                <BoxCommon flex='1' alignItems='center'>
-                                                    <Stamp value={item.description} bgColor={item.type.bgColor} />
+                                                <BoxCommon
+                                                    flex='1'
+                                                    alignItems='center'
+                                                    onClick={column.type.action}
+                                                >
+                                                    <Stamp
+                                                        value={column.description}
+                                                        bgColor={column.type.bgColor}
+                                                        borderColor={column.type.borderColor}
+                                                        color={column.type.color}
+                                                    />
                                                 </BoxCommon>
                                             )
-                                            : ( item.description )
+                                            : ( column.description )
                                         }
                                     </TD>
                                 ))

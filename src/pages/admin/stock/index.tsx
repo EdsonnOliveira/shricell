@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 
 import { TR } from "@atomic/constants/table";
-import { green } from "@atomic/constants/colors";
+import { green, primary } from "@atomic/constants/colors";
 import { HeaderItemsPreview } from "@atomic/constants/header";
 import { OptionsType } from "@atomic/constants/select";
 
@@ -47,6 +47,15 @@ const Stock: React.FC = ({
                 {
                     td: [
                             {
+                                description: '+',
+                                type: {
+                                    bgColor: 'transparent',
+                                    borderColor: primary,
+                                    color: 'fontPrimary',
+                                    action: () => setModalStock(true),
+                                }
+                            },
+                            {
                                 description: item.model,
                                 textAlign: 'left',
                                 textWeight: '500',
@@ -82,7 +91,7 @@ const Stock: React.FC = ({
                     ],
                     onClick: () => {
                         router.push({
-                            pathname: '/stock/details',
+                            pathname: '/admin/stock/details',
                             query: {
                                 isEdit: true,
                                 stockName: item.model
@@ -132,7 +141,7 @@ const Stock: React.FC = ({
         .then(() => router.push('/suppliers'))
     }
 
-    const [modalStock, setModalStock] = useState<boolean>(true)
+    const [modalStock, setModalStock] = useState<boolean>(false)
     const [supplierItems, setSupplierItems] = useState<OptionsType[]>([{ label: 'Select the Supplier', value: '-1' }])
     const [supplierStock, setSupplierStock] = useState<OptionsType>({ label: '', value: '-1' })
     const [filterNameSupplierStock, setFilterNameSupplierStock] = useState<string>('')

@@ -1,5 +1,6 @@
 import { TextAlign, TextWeight } from "@atomic/constants/text";
 import { StyledProps } from "styled-components";
+import { SetVoid } from "@types/set";
 
 export type TR = {
     td: TD[];
@@ -20,4 +21,4 @@ export type TDStyledProps = StyledProps<{
     textWeight: TextWeight;
 }>
 
-type TDType = 'text' | { color: string; bgColor: string }
+type TDType = 'text' | { color: string; bgColor: string, borderColor: string, action: SetVoid }
