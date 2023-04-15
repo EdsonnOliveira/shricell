@@ -67,7 +67,7 @@ const View: React.FC<ViewProps> = ({
                     <Button
                         text='Add device'
                         type={useMediaQuery('(max-width: 1000px)') ? 'primaryLarge' : 'primaryMedium'}
-                        onClick={() => router.push('/stock/details')}
+                        onClick={() => router.push('/admin/stock/details')}
                     />
                     <Button
                         text='Add supplier'

@@ -1,14 +1,21 @@
 import { NextRouter } from "next/router";
 
+import { StockTypes } from "@redux/reducers/stock/models";
+
 import { HeaderItemsPreview } from "@atomic/constants/header";
 import { TR } from "@atomic/constants/table";
 import { OptionsType, SetOptionsType } from "@atomic/constants/select";
 
 import { SetBoolean, SetText, SetVoid } from "@types/set";
 
+export interface IndexProps {
+    setDataStock: (data: StockTypes['data']) => void;
+}
+
 export interface ViewProps {
     router: NextRouter;
     data: TR[];
+    dataStock: StockTypes['data'];
     itemsPreview: HeaderItemsPreview[];
     modalSupplier: boolean;
     setModalSupplier: SetBoolean;

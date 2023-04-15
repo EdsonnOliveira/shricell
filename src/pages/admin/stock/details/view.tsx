@@ -48,7 +48,7 @@ const View: React.FC<ViewProps> = ({
         <Head>
             <title>Stock Details - ShriCell</title>
         </Head>
-        <Header title={isEdit ? stock.name : 'Add Stock'} />
+        <Header title={isEdit ? stock.model : 'Add Stock'} />
         <main className="main">
             <BoxCommon flex={1} mt={useMediaQuery('(max-width: 1100px)') ? '0' : '-100px'} alignItems='center' gap='20px'>
                 <BoxShadow size={{ width: useMediaQuery('(max-width: 1000px)') ? '100%' : 'max-content', height: 'max-content' }}>

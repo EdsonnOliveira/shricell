@@ -1,10 +1,14 @@
 import React, { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 
+import { connect } from "react-redux";
+import { Dispatch } from "redux";
+import { StockTypes } from "@redux/reducers/stock/models";
+
 import { OptionsType } from "@atomic/constants/select";
 
 import brands from "@api/stock/brands";
-import models from "@api/stock/models";
+import models from "@api/stock/models/index";
 import colors from "@api/stock/colors";
 import grades from "@api/stock/grades";
 import storages from "@api/stock/storages";
@@ -15,9 +19,11 @@ import { ColorsProps } from "@api/stock/colors/models";
 import { GradesProps } from "@api/stock/grades/models";
 import { StoragesProps } from "@api/stock/storages/models";
 
+import { IndexProps } from "./models";
 import View from "./view";
 
-const StockDetails: React.FC = ({
+const StockDetails: React.FC<IndexProps> = ({
+    dataStock,
 }) => {
     const router = useRouter()
 
@@ -48,18 +54,29 @@ const StockDetails: React.FC = ({
         brands.listAll()
         .then((data: BrandProps[]) => {
             let options: OptionsType[] = [{ label: 'Select the Brand', value: '-1' }]
+            if (router.query.isEdit) {
+                setBrand(String(dataStock.brandId))
+                options = [{ label: String(dataStock.brand), value: String(dataStock.brandId) }]
+            }
+
             let array = data.map(item => (
                 {
                     label: item.brand,
                     value: String(item.brandId)
                 }
             ))
+
             setBrandsItems([...options, ...array])
         })
 
         grades.listAll()
         .then((data: GradesProps[]) => {
             let options: OptionsType[] = [{ label: 'Select the Grade', value: '-1' }]
+            if (router.query.isEdit) {
+                setGrade(String(dataStock.gradeId))
+                options = [{ label: String(dataStock.gradeName), value: String(dataStock.gradeId) }]
+            }
+
             let array = data.map(item => (
                 {
                     label: item.gradeName,
@@ -72,6 +89,11 @@ const StockDetails: React.FC = ({
         storages.listAll()
         .then((data: StoragesProps[]) => {
             let options: OptionsType[] = [{ label: 'Select the Storages', value: '-1' }]
+            if (router.query.isEdit) {
+                setStorage(String(dataStock.storageId))
+                options = [{ label: String(dataStock.storage), value: String(dataStock.storageId) }]
+            }
+
             let array = data.map(item => (
                 {
                     label: item.storage,
@@ -87,7 +109,7 @@ const StockDetails: React.FC = ({
     }, [brand])
 
     const loadModels = () => {
-        if (brand === '-1' || brand.length <= 0)
+        if (!router.query.isEdit && (brand === '-1' || brand.length <= 0))
             return
 
         setModelsItems([{label: 'Loading...', value: '-1'}])
@@ -96,6 +118,11 @@ const StockDetails: React.FC = ({
         models.listAll({ brandId: brand })
         .then((data: ModelsProps[]) => {
             let options: OptionsType[] = [{ label: 'Select the Model', value: '-1' }]
+            if (router.query.isEdit) {
+                setModel(String(dataStock.modelId))
+                options = [{ label: String(dataStock.model), value: String(dataStock.modelId) }]
+            }
+
             let array = data.map(item => (
                 {
                     label: item.model,
@@ -111,7 +138,7 @@ const StockDetails: React.FC = ({
     }, [model])
 
     const loadColors = () => {
-        if (model === '-1' || model.length <= 0)
+        if (!router.query.isEdit && (model === '-1' || model.length <= 0))
             return
 
         setColorsItems([{label: 'Loading...', value: '-1'}])
@@ -120,6 +147,11 @@ const StockDetails: React.FC = ({
         colors.listAll({ brandId: brand, modelId: model })
         .then((data: ColorsProps[]) => {
             let options: OptionsType[] = [{ label: 'Select the Color', value: '-1' }]
+            if (router.query.isEdit) {
+                setColor(String(dataStock.colorId))
+                options = [{ label: String(dataStock.color), value: String(dataStock.colorId) }]
+            }
+
             let array = data.map(item => (
                 {
                     label: item.color,
@@ -191,9 +223,7 @@ const StockDetails: React.FC = ({
     return (
         <View
             isEdit={!!router.query.isEdit}
-            stock={{
-                name: String(router.query.stockName) || null
-            }}
+            stock={dataStock}
             brandItems={brandsItems}
             brand={brand}
             setBrand={setBrand}
@@ -223,4 +253,14 @@ const StockDetails: React.FC = ({
     )
 }
 
-export default StockDetails;
+const mapStateToProps = ({
+    stockReducer
+}: {
+    stockReducer: StockTypes
+}) => ({
+    dataStock: stockReducer.data
+})
+
+const mapDispatchToProps = (dispatch: Dispatch) => ({})
+
+export default connect(mapStateToProps, mapDispatchToProps)(StockDetails);

@@ -1,10 +1,14 @@
-import { Stock } from "@types/stock";
 import { OptionsType } from "@atomic/constants/select";
 import { SetBoolean, SetText } from "@types/set";
+import { StockTypes } from "~/services/redux/reducers/stock/models";
+
+export interface IndexProps {
+    dataStock: StockTypes['data']
+}
 
 export interface ViewProps {
     isEdit: boolean;
-    stock: Stock;
+    stock: StockTypes['data'];
     brandItems: OptionsType[];
     brand: string;
     setBrand: SetText;

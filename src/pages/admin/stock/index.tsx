@@ -1,6 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 
+import { connect } from "react-redux";
+import { Dispatch } from "redux";
+import { StockTypes } from "@redux/reducers/stock/models";
+
 import { TR } from "@atomic/constants/table";
 import { green, primary } from "@atomic/constants/colors";
 import { HeaderItemsPreview } from "@atomic/constants/header";
@@ -15,8 +19,10 @@ import { DevicesProps } from "@api/stock/devices/models";
 import { SupplierProps } from "@api/supplier/models";
 
 import View from "./view";
+import { IndexProps } from "./models";
 
-const Stock: React.FC = ({
+const Stock: React.FC<IndexProps> = ({
+    setDataStock
 }) => {
     const router = useRouter();
 
@@ -43,7 +49,7 @@ const Stock: React.FC = ({
                 }
             ])
 
-            let array = data.map(item => (
+            let array = data.map((item, index) => (
                 {
                     td: [
                             {
@@ -90,13 +96,13 @@ const Stock: React.FC = ({
                             },
                     ],
                     onClick: () => {
+                        setDataStock(data[index])
                         router.push({
                             pathname: '/admin/stock/details',
                             query: {
-                                isEdit: true,
-                                stockName: item.model
-                            }}
-                        )
+                                isEdit: true
+                            }
+                        })
                     }
                 }
             ))
@@ -256,4 +262,10 @@ const Stock: React.FC = ({
     )
 }
 
-export default Stock;
+const mapStateToProps = ({}) => ({})
+
+const mapDispatchToProps = (dispatch: Dispatch) => ({
+    setDataStock: (data: StockTypes['data']) => dispatch({ type: 'SET_STOCK_DATA', payload: { data } }),
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(Stock);
