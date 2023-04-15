@@ -1,9 +1,15 @@
 import { HeaderItemsPreview } from "@atomic/constants/header";
 import { ItemsCart } from "@types/itemsCart";
-import { SetBoolean, SetText } from "@types/set";
+import { SetBoolean } from "@types/set";
 import { OptionsType } from "@atomic/constants/select";
+import { LoginTypes } from "@redux/reducers/login/models";
+
+export interface IndexProps {
+    dataUser: LoginTypes['data']
+}
 
 export interface ViewProps {
+    nameCustomer: string;
     itemsPreview: HeaderItemsPreview[];
     selectedIncludeOutStock: boolean;
     setSelectedIncludeOutStock: SetBoolean;

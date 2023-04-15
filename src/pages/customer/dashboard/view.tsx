@@ -12,6 +12,7 @@ import useMediaQuery from "@hooks/useMediaQuery";
 import { ViewProps } from "./models";
 
 const View: React.FC<ViewProps> = ({
+    nameCustomer,
     itemsPreview,
     selectedIncludeOutStock,
     setSelectedIncludeOutStock,
@@ -27,7 +28,7 @@ const View: React.FC<ViewProps> = ({
         <Head>
             <title>Dashboard - ShriCell</title>
         </Head>
-        <Header title='Hello, Customer!' itemsPreview={itemsPreview} bgColor='primary' />
+        <Header title={`Hello, ${nameCustomer}!`} itemsPreview={itemsPreview} bgColor='primary' />
         <main className="main">
             <BoxCommon
                 flex={useMediaQuery('(max-width: 1100px)') ? 'unset' : '1'}

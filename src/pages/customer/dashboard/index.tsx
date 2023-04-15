@@ -1,5 +1,9 @@
 import React, { useEffect, useState } from "react";
 
+import { connect } from "react-redux";
+import { Dispatch } from "redux";
+import { LoginTypes } from "@redux/reducers/login/models";
+
 import { HeaderItemsPreview } from "@atomic/constants/header";
 import { OptionsType } from "@atomic/constants/select";
 
@@ -12,6 +16,7 @@ import { GradesProps } from "@api/stock/grades/models";
 import { DevicesProps } from "@api/stock/devices/models";
 import { BrandProps } from "@api/stock/brands/models";
 
+import { IndexProps } from "./models";
 import View from "./view";
 
 const itemsPreview: HeaderItemsPreview[] = [
@@ -22,7 +27,8 @@ const itemsPreview: HeaderItemsPreview[] = [
     },
 ]
 
-const Dashboard: React.FC = ({
+const Dashboard: React.FC<IndexProps> = ({
+    dataUser
 }) => {
     const [selectedIncludeOutStock, setSelectedIncludeOutStock] = useState<boolean>(false)
     
@@ -104,6 +110,7 @@ const Dashboard: React.FC = ({
 
     return (
         <View
+            nameCustomer={dataUser.name || 'Customer'}
             itemsPreview={itemsPreview}
             selectedIncludeOutStock={selectedIncludeOutStock}
             setSelectedIncludeOutStock={setSelectedIncludeOutStock}
@@ -118,4 +125,15 @@ const Dashboard: React.FC = ({
     )
 }
 
-export default Dashboard;
+const mapStateToProps = ({
+    loginReducer
+}: {
+    loginReducer: LoginTypes
+}) => ({
+    token: loginReducer.token,
+    dataUser: loginReducer.data
+})
+
+const mapDispatchToProps = (dispatch: Dispatch) => {}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Dashboard);
