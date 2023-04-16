@@ -1,4 +1,5 @@
 import { StyledProps } from "styled-components";
+import { SetVoid } from "@types/set";
 
 export type IndexStyledProps = StyledProps<{
     width?: string | number;
@@ -8,4 +9,6 @@ export type IndexStyledProps = StyledProps<{
     flex?: string | number;
     bgColor?: String | undefined;
     scroll?: string;
+
+    onClick: SetVoid;
 }>;

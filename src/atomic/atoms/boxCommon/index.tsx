@@ -16,6 +16,8 @@ const BoxCommon = styled.div`
     gap: ${( props: AlignmentsStyledProps ) => ( props.gap ?? '0px' )};
     flex-wrap: ${( props: AlignmentsStyledProps ) => ( props.flexWrap ?? 'unset' )};
 
+    cursor: ${( props: IndexStyledProps ) => ( props.onClick ? 'pointer' : 'default' )};
+
     @media only screen and (max-width: 800px) {
         & {
             width: ${( props: IndexStyledProps ) => ( props.width800 ?? props.width )};
