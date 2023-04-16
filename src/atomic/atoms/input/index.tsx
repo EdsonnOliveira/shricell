@@ -9,6 +9,7 @@ const Input: React.FC<IndexProps> = ({
     label,
     placeholder,
     type = 'text',
+    textAlign,
     actionButton,
     autoFocus,
     onFocus,
@@ -30,6 +31,7 @@ const Input: React.FC<IndexProps> = ({
                     autoFocus={autoFocus}
                     onFocus={onFocus}
                     onBlur={onBlur}
+                    textAlign={textAlign}
                 />
             </InputBox>
         </Main>
