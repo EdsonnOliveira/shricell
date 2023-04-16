@@ -25,5 +25,6 @@ export const Main = styled.div`
 
 export const Action = styled.h4`
     font-size: 16px;
-    color: ${gray}
+    color: ${gray};
+    cursor: pointer;
 `
