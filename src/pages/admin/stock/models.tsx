@@ -15,7 +15,6 @@ export interface IndexProps {
 export interface ViewProps {
     router: NextRouter;
     data: TR[];
-    dataStock: StockTypes['data'];
     itemsPreview: HeaderItemsPreview[];
     modalSupplier: boolean;
     setModalSupplier: SetBoolean;
