@@ -13,4 +13,5 @@ export const Main = styled(Image)`
                                                     ? 'rotateZ(90deg)'
                                                     : null)};
     transition: 0.4s;
+    cursor: ${( props: IndexStyledProps ) => ( props.onClick ? 'pointer' : 'default' )};
 `
