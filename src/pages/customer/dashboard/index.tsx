@@ -12,24 +12,37 @@ import { ItemsCart } from "@types/itemsCart";
 import grades from "@api/stock/grades";
 import devices from "@api/stock/devices";
 import brands from "@api/stock/brands";
+import cart from "@api/sales/cart";
 import { GradesProps } from "@api/stock/grades/models";
 import { DevicesProps } from "@api/stock/devices/models";
 import { BrandProps } from "@api/stock/brands/models";
+import { CartProps } from "@api/sales/cart/models";
 
 import { IndexProps } from "./models";
 import View from "./view";
 
-const itemsPreview: HeaderItemsPreview[] = [
-    {
-        icon: '',
-        title: 'Cart',
-        value: '34'
-    },
-]
-
 const Dashboard: React.FC<IndexProps> = ({
     dataUser
 }) => {
+    const [itemsPreview, setItemsPreview] = useState<HeaderItemsPreview[]>([])
+
+    useEffect(() => {
+        loadStock()
+    }, [])
+
+    const loadStock = () => {
+        cart.total({ customerId: dataUser.id })
+        .then((data: CartProps) => {
+            setItemsPreview([
+                {
+                    icon: '',
+                    title: 'Cart',
+                    value: String(data.totalQuantity)
+                },
+            ])
+        })
+    }
+
     const [selectedIncludeOutStock, setSelectedIncludeOutStock] = useState<boolean>(false)
     
     const [gradesItems, setGradesItems] = useState<OptionsType[]>([])
