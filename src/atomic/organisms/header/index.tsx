@@ -16,6 +16,10 @@ const optionsPrimary = [
         name: 'Dashboard',
     },
     {
+        page: '/customer/cart',
+        name: 'My Cart',
+    },
+    {
         page: '/customer/orders',
         name: 'My Orders',
     },
