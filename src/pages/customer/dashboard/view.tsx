@@ -41,6 +41,7 @@ const View: React.FC<ViewProps> = ({
                 width={useMediaQuery('(max-width: 1100px)') && '100%'}
                 flexDirection={useMediaQuery('(max-width: 1100px)') ? 'column' : 'row'}
                 gap='20px'
+                justifyContent='center'
             >
                 <BoxShadow
                     title='Filters'
@@ -85,8 +86,7 @@ const View: React.FC<ViewProps> = ({
                     </BoxCommon>
                 </BoxShadow>
                 <BoxCommon
-                    flex={useMediaQuery('(max-width: 1100px)') ? 'unset' : '1'}
-                    width={useMediaQuery('(max-width: 1100px)') && '100%'}
+                    width={useMediaQuery('(max-width: 1100px)') ? '100%' : '900px'}
                     gap='20px'
                 >
                     {
@@ -101,7 +101,6 @@ const View: React.FC<ViewProps> = ({
                                 quantity={item.quantity}
                                 price={item.price}
                                 onClickBuy={onClickBuy}
-                                showItems
                             />
                         ))
                     }

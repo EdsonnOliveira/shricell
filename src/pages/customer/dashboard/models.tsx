@@ -24,5 +24,5 @@ export interface ViewProps {
     fieldRequired: string;
     modalRequired: boolean;
     setModalRequired: SetBoolean;
-    onClickBuy: (id: string, qt: string, salePrice: string) => void;
+    onClickBuy: (id: string, qt: string, salePrice: string, action: 'Buy' | 'Update' | 'Delete') => void;
 }

@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { useRouter } from "next/router";
 
 import { connect } from "react-redux";
 import { Dispatch } from "redux";
@@ -6,6 +7,8 @@ import { LoginTypes } from "@redux/reducers/login/models";
 
 import { HeaderItemsPreview } from "@atomic/constants/header";
 import { OptionsType } from "@atomic/constants/select";
+import Alert from "@atomic/atoms/alert";
+import { AlertType } from "@atomic/constants/alert";
 
 import { ItemsCart } from "@types/itemsCart";
 
@@ -24,6 +27,7 @@ import View from "./view";
 const Dashboard: React.FC<IndexProps> = ({
     dataUser
 }) => {
+    const route = useRouter()
     const [itemsPreview, setItemsPreview] = useState<HeaderItemsPreview[]>([])
 
     useEffect(() => {
@@ -124,47 +128,106 @@ const Dashboard: React.FC<IndexProps> = ({
     const [fieldRequired, setFieldRequired] = useState<string>('')
     const [modalRequired, setModalRequired] = useState<boolean>(false)
 
-    const onClickBuy = (id: string, qt: string, salePrice: string) => {
-        if (qt == undefined ||
+    const [alertVisible, setAlertVisible] = useState<boolean>(false)
+    const [alertType, setAlertType] = useState<AlertType>('error')
+    const [alertText, setAlertText] = useState<string>('')
+
+    const onClickBuy = (deviceId: string, qt: string, salePrice: string, action: 'Buy' | 'Update' | 'Delete') => {
+        if ((qt == undefined ||
             qt == null ||
             qt.length <= 0 ||
             qt == '' ||
-            Number(qt) <= 0) {
+            Number(qt) <= 0) && action != 'Delete') {
             setFieldRequired('Quantity')
             setModalRequired(true)
             return
         }
-        
-        cart.insert({
-            customerId: dataUser.id,
-            deviceId: id,
-            quantity: qt,
-            salePrice
-        })
-        .then((data: CartProps) => {
 
-        })
+        switch (action) {
+            case 'Buy':
+                cart.insert({
+                    customerId: dataUser.id,
+                    deviceId: deviceId,
+                    quantity: qt,
+                    salePrice
+                })
+                .then(() => {
+                    setAlertType('success')
+                    setAlertText('Item added successfully!')
+                    setAlertVisible(true)
+                    route.push('/customer/cart')
+                })
+                .catch(() => {
+                    setAlertType('error')
+                    setAlertText('Item added error!')
+                    setAlertVisible(true)
+                })
+                break;
+            case 'Update':
+                cart.update({
+                    customerId: dataUser.id,
+                    deviceId: deviceId,
+                    quantity: qt,
+                })
+                .then(() => {
+                    setAlertType('success')
+                    setAlertText('Item updated successfully!')
+                    setAlertVisible(true)
+                    route.push('/customer/cart')
+                })
+                .catch(() => {
+                    setAlertType('error')
+                    setAlertText('Item updated error!')
+                    setAlertVisible(true)
+                })
+                break;
+            case 'Delete':
+                cart.remove({
+                    customerId: dataUser.id,
+                    deviceId: deviceId,
+                })
+                .then(() => {
+                    setAlertType('success')
+                    setAlertText('Item removing successfully!')
+                    setAlertVisible(true)
+                    route.push('/customer/cart')
+                })
+                .catch(() => {
+                    setAlertType('error')
+                    setAlertText('Item removing error!')
+                    setAlertVisible(true)
+                })
+                break;
+        }
     }
 
     return (
-        <View
-            idUser={dataUser.id || '0'}
-            nameUser={dataUser.name || 'Customer'}
-            itemsPreview={itemsPreview}
-            selectedIncludeOutStock={selectedIncludeOutStock}
-            setSelectedIncludeOutStock={setSelectedIncludeOutStock}
-            gradesItems={gradesItems}
-            gradesSelecteds={gradesSelecteds}
-            setGradesSelecteds={updateFilter}
-            manufacturerItems={manufacturerItems}
-            manufacturerSelecteds={manufacturerSelecteds}
-            setManufacturerSelecteds={updateFilter}
-            devicesItems={devicesItems}
-            onClickBuy={onClickBuy}
-            fieldRequired={fieldRequired}
-            modalRequired={modalRequired}
-            setModalRequired={setModalRequired}
-        />
+        <>
+            <View
+                idUser={dataUser.id || '0'}
+                nameUser={dataUser.name || 'Customer'}
+                itemsPreview={itemsPreview}
+                selectedIncludeOutStock={selectedIncludeOutStock}
+                setSelectedIncludeOutStock={setSelectedIncludeOutStock}
+                gradesItems={gradesItems}
+                gradesSelecteds={gradesSelecteds}
+                setGradesSelecteds={updateFilter}
+                manufacturerItems={manufacturerItems}
+                manufacturerSelecteds={manufacturerSelecteds}
+                setManufacturerSelecteds={updateFilter}
+                devicesItems={devicesItems}
+                onClickBuy={onClickBuy}
+                fieldRequired={fieldRequired}
+                modalRequired={modalRequired}
+                setModalRequired={setModalRequired}
+            />
+            <Alert
+                type={alertType}
+                text={alertText}
+                visible={alertVisible}
+                setVisible={setAlertVisible}
+            />
+        </>
     )
 }
 
