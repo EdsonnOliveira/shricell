@@ -29,6 +29,7 @@ export const TextInput = styled.input.attrs({
     placeholderTextColor: gray
 })`
     color: ${black};
+    width: 100%;
     flex: 1;
     text-align: ${( props: IndexStyledProps ) => ( props.textAlign ?? 'left' )};
     font-size: 21px;

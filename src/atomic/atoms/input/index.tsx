@@ -6,6 +6,7 @@ const Input: React.FC<IndexProps> = ({
     width,
     value,
     onChangeText,
+    changeComplete,
     label,
     placeholder,
     type = 'text',
@@ -14,6 +15,9 @@ const Input: React.FC<IndexProps> = ({
     autoFocus,
     onFocus,
     onBlur,
+    max,
+    min,
+    id,
     mt,
     ml,
     mr,
@@ -25,13 +29,16 @@ const Input: React.FC<IndexProps> = ({
             <InputBox width={width} mt={mt} ml={ml} mr={mr} mb={mb}>
                 <TextInput
                     value={value}
-                    onChange={e => onChangeText(e.target.value)}
+                    onChange={e => onChangeText( !changeComplete ? e.target.value : e)}
                     placeholder={placeholder ?? label}
                     type={type}
                     autoFocus={autoFocus}
                     onFocus={onFocus}
                     onBlur={onBlur}
                     textAlign={textAlign}
+                    max={max}
+                    min={min}
+                    id={id}
                 />
             </InputBox>
         </Main>
