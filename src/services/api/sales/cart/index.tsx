@@ -1,22 +1,44 @@
 import api from '@api/index'
 import { IndexType, CartProps } from './models'
+import devices from '../../stock/devices'
 
 const listAll = ({ customerId }: IndexType) => {
     return new Promise(async (resolve, reject) => {
         await api.post('sales/cart.php', { customerId })
-        .then(response => {
+        .then(async response => {
             let res:CartProps[] = response.data.cart
             let array:CartProps[] = []
 
-            for (let i = 0; i < res.length; i++ ) {
-                let json: CartProps = {
-                    itemsId: res[i].itemsId,
-                    deviceId: res[i].device?.deviceId,
-                    colorId: res[i].device?.colorId,
-                    quantity: res[i].quantity,
-                    costPrice: res[i].costPrice,
-                    salePrice: res[i].salePrice,
-                }
+            for (const data of res) {
+                let json: CartProps
+                await devices.select({
+                    deviceId: data.device?.deviceId
+                }).then((dataDevice) => {
+                    json = {
+                        itemsId: data.itemsId,
+                        deviceId: data.device?.deviceId,
+                        colorId: data.device?.colorId,
+                        brand: data.device?.brand,
+                        model: data.device?.model,
+                        storage: data.device?.storage,
+                        gradeName: data.device?.gradeName,
+                        quantity: data.quantity,
+                        costPrice: data.costPrice,
+                        salePrice: data.salePrice,
+                        color: [
+                            {
+                                deviceId: data.device?.deviceId,
+                                colorId: data.device?.colorId,
+                                color: data.device?.color,
+                                name: data.device?.color,
+                                quantity: dataDevice.quantityStock,
+                                price: data.salePrice
+                            }
+                        ]
+                    }
+                })
+
+                
                 array.push(json)
             }
 
@@ -45,7 +67,6 @@ const insert = ({ customerId, deviceId, quantity, salePrice }: IndexType) => {
     return new Promise(async (resolve, reject) => {
         await api.post('sales/add-cart.php', { customerId, deviceId, quantity, salePrice })
         .then((response) => {
-            console.warn(response)
             let res: CartProps = response.data
             resolve(res)
         })
@@ -53,11 +74,10 @@ const insert = ({ customerId, deviceId, quantity, salePrice }: IndexType) => {
     })
 }
 
-const remove = ({ itemsId }: IndexType) => {
+const remove = ({ deviceId, customerId }: IndexType) => {
     return new Promise(async (resolve, reject) => {
-        await api.post('sales/remove-cart.php', { itemsId })
+        await api.post('sales/remove-cart.php', { deviceId, customerId })
         .then((response) => {
-            console.warn(response)
             let res: CartProps = response.data
             resolve(res)
         })
@@ -69,7 +89,6 @@ const update = ({ deviceId, customerId, quantity }: IndexType) => {
     return new Promise(async (resolve, reject) => {
         await api.post('sales/update-cart.php', { deviceId, customerId, quantity })
         .then((response) => {
-            console.warn(response)
             let res: CartProps = response.data
             resolve(res)
         })
