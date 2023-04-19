@@ -1,12 +1,15 @@
 import React, { useEffect, useState } from "react";
-import { useRouter } from "next/router";
 
+import { connect } from "react-redux";
+import { Dispatch } from "redux";
+import { SuppliersTypes } from "@redux/reducers/suppliers/models";
+
+import { IndexProps } from "./models";
 import View from "./view";
 
-const SupplierDetails: React.FC = ({
+const SupplierDetails: React.FC<IndexProps> = ({
+    dataSupplier
 }) => {
-    const router = useRouter()
-
     const [nameSupplier, setNameSupplier] = useState<string>('')
     const [phoneSupplier, setPhoneSupplier] = useState<string>('')
     const [emailSupplier, setEmailSupplier] = useState<string>('')
@@ -15,16 +18,9 @@ const SupplierDetails: React.FC = ({
     const [stateSupplier, setStateSupplier] = useState<string>('')
     const [zipCodeSupplier, setZipCodeSupplier] = useState<string>('')
 
-    useEffect(() => {
-        loadData()
-    }, [])
-
-    const loadData = () => {
-        
-    }
-
     return (
         <View
+            supplier={dataSupplier}
             nameSupplier={nameSupplier}
             setNameSupplier={setNameSupplier}
             addressSupplier={addressSupplier}
@@ -43,4 +39,14 @@ const SupplierDetails: React.FC = ({
     )
 }
 
-export default SupplierDetails;
+const mapStateToProps = ({
+    supplierReducer
+}: {
+    supplierReducer: SuppliersTypes
+}) => ({
+    dataSupplier: supplierReducer.data
+})
+
+const mapDispatchToProps = (dispatch: Dispatch) => ({})
+
+export default connect(mapStateToProps, mapDispatchToProps)(SupplierDetails);

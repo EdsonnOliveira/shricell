@@ -1,6 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 
+import { connect } from "react-redux";
+import { Dispatch } from "redux";
+import { SuppliersTypes } from "@redux/reducers/suppliers/models";
+
 import { TR } from "@atomic/constants/table";
 import { HeaderItemsPreview } from "@atomic/constants/header";
 
@@ -8,8 +12,10 @@ import supplier from "@api/supplier";
 import { SupplierProps } from "@api/supplier/models";
 
 import View from "./view";
+import { IndexProps } from "./models";
 
-const Supplier: React.FC = ({
+const Supplier: React.FC<IndexProps> = ({
+    setDataSupplier
 }) => {
     const router = useRouter();
 
@@ -31,7 +37,7 @@ const Supplier: React.FC = ({
                 },
             ])
 
-            let array = data.map(item => (
+            let array = data.map((item, index) => (
                 {
                     td: [
                             {
@@ -66,11 +72,11 @@ const Supplier: React.FC = ({
                             },
                     ],
                     onClick: () => {
+                        setDataSupplier(data[index])
                         router.push({
-                            pathname: '/suppliers/details',
+                            pathname: '/admin/suppliers/details',
                             query: {
                                 isEdit: true,
-                                supplierName: item.supplierName
                             }}
                         )
                     }
@@ -146,4 +152,10 @@ const Supplier: React.FC = ({
     )
 }
 
-export default Supplier;
+const mapStateToProps = ({}) => ({})
+
+const mapDispatchToProps = (dispatch: Dispatch) => ({
+    setDataSupplier: (data: SuppliersTypes['data']) => dispatch({ type: 'SET_SUPPLIER_DATA', payload: { data } }),
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(Supplier);

@@ -2,6 +2,11 @@ import { NextRouter } from "next/router";
 import { HeaderItemsPreview } from "@atomic/constants/header";
 import { TR } from "@atomic/constants/table";
 import { SetBoolean, SetText, SetVoid } from "@types/set";
+import { SuppliersTypes } from "@redux/reducers/suppliers/models";
+
+export interface IndexProps {
+    setDataSupplier: (data: SuppliersTypes['data']) => void
+}
 
 export interface ViewProps {
     router: NextRouter;

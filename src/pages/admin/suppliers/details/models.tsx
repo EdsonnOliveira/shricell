@@ -1,6 +1,12 @@
 import { SetText } from "@types/set";
+import { SuppliersTypes } from "@redux/reducers/suppliers/models";
+
+export interface IndexProps {
+    dataSupplier: SuppliersTypes['data']
+}
 
 export interface ViewProps {
+    supplier: SuppliersTypes['data']
     nameSupplier: string;
     setNameSupplier: SetText;
     phoneSupplier: string;
