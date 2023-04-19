@@ -62,6 +62,8 @@ const toSellCardList = () => {
                 .then((data: DevicesProps[]) => {
                     colors = data.map(item => (
                         {
+                            deviceId: item.deviceId,
+                            colorId: item.colorId,
                             color: item.color,
                             name: item.color,
                             quantity: item.quantityStock,
