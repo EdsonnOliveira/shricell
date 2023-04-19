@@ -14,6 +14,8 @@ export const PrimaryLarge = styled.button`
     transition: ${transition};
     text-align: center;
 
+    cursor: ${( props: IndexStyledProps ) => ( props.disabled ? 'not-allowed' : 'pointer' )};
+
     margin-top: ${( props: MarginsStyledProps ) => (props.mt ?? 0)};
     margin-left: ${( props: MarginsStyledProps ) => (props.ml ?? 0)};
     margin-right: ${( props: MarginsStyledProps ) => (props.mr ?? 0)};
@@ -33,6 +35,8 @@ export const PrimaryMedium = styled.button`
     border-radius: ${borderRadius};
     transition: ${transition};
     text-align: center;
+
+    cursor: ${( props: IndexStyledProps ) => ( props.disabled ? 'not-allowed' : 'pointer' )};
 
     margin-top: ${( props: MarginsStyledProps ) => (props.mt ?? 0)};
     margin-left: ${( props: MarginsStyledProps ) => (props.ml ?? 0)};
@@ -54,6 +58,8 @@ export const PrimarySmall = styled.button`
     transition: ${transition};
     text-align: center;
 
+    cursor: ${( props: IndexStyledProps ) => ( props.disabled ? 'not-allowed' : 'pointer' )};
+
     margin-top: ${( props: MarginsStyledProps ) => (props.mt ?? 0)};
     margin-left: ${( props: MarginsStyledProps ) => (props.ml ?? 0)};
     margin-right: ${( props: MarginsStyledProps ) => (props.mr ?? 0)};
@@ -73,6 +79,8 @@ export const SecundaryLarge = styled.button`
     border-radius: ${borderRadius};
     transition: ${transition};
     text-align: center;
+
+    cursor: ${( props: IndexStyledProps ) => ( props.disabled ? 'not-allowed' : 'pointer' )};
 
     margin-top: ${( props: MarginsStyledProps ) => (props.mt ?? 0)};
     margin-left: ${( props: MarginsStyledProps ) => (props.ml ?? 0)};
@@ -94,6 +102,8 @@ export const SecundaryMedium = styled.button`
     transition: ${transition};
     text-align: center;
 
+    cursor: ${( props: IndexStyledProps ) => ( props.disabled ? 'not-allowed' : 'pointer' )};
+
     margin-top: ${( props: MarginsStyledProps ) => (props.mt ?? 0)};
     margin-left: ${( props: MarginsStyledProps ) => (props.ml ?? 0)};
     margin-right: ${( props: MarginsStyledProps ) => (props.mr ?? 0)};
@@ -113,6 +123,8 @@ export const SecundarySmall = styled.button`
     border-radius: ${borderRadiusSmall};
     transition: ${transition};
     text-align: center;
+
+    cursor: ${( props: IndexStyledProps ) => ( props.disabled ? 'not-allowed' : 'pointer' )};
 
     margin-top: ${( props: MarginsStyledProps ) => (props.mt ?? 0)};
     margin-left: ${( props: MarginsStyledProps ) => (props.ml ?? 0)};
@@ -134,6 +146,8 @@ export const GreenLarge = styled.button`
     transition: ${transition};
     text-align: center;
 
+    cursor: ${( props: IndexStyledProps ) => ( props.disabled ? 'not-allowed' : 'pointer' )};
+
     margin-top: ${( props: MarginsStyledProps ) => (props.mt ?? 0)};
     margin-left: ${( props: MarginsStyledProps ) => (props.ml ?? 0)};
     margin-right: ${( props: MarginsStyledProps ) => (props.mr ?? 0)};
@@ -150,6 +164,35 @@ export const RedLightLarge = styled.button`
     border-radius: ${borderRadius};
     transition: ${transition};
     text-align: center;
+
+    cursor: ${( props: IndexStyledProps ) => ( props.disabled ? 'not-allowed' : 'pointer' )};
+
+    &:hover {
+        background-color: ${( props: IndexStyledProps ) => ( props.disabled ? `${grey}` : `${red}` )};
+
+        & > h4 {
+            color: ${white}
+        }
+    }
+
+    margin-top: ${( props: MarginsStyledProps ) => (props.mt ?? 0)};
+    margin-left: ${( props: MarginsStyledProps ) => (props.ml ?? 0)};
+    margin-right: ${( props: MarginsStyledProps ) => (props.mr ?? 0)};
+    margin-bottom: ${( props: MarginsStyledProps ) => (props.mb ?? 0)};
+`
+
+export const RedLightSmall = styled.button`
+    width: 100px;
+    height: 40px;
+    justify-content: center;
+    align-items: center;
+    background-color: ${grey};
+    border: 2px solid ${( props: IndexStyledProps ) => ( props.disabled ? `${grey}` : `${red}` )};
+    border-radius: ${borderRadiusSmall};
+    transition: ${transition};
+    text-align: center;
+
+    cursor: ${( props: IndexStyledProps ) => ( props.disabled ? 'not-allowed' : 'pointer' )};
 
     &:hover {
         background-color: ${( props: IndexStyledProps ) => ( props.disabled ? `${grey}` : `${red}` )};
@@ -171,6 +214,8 @@ export const GhostSmall = styled.button`
     justify-content: center;
     align-items: center;
     text-align: center;
+
+    cursor: ${( props: IndexStyledProps ) => ( props.disabled ? 'not-allowed' : 'pointer' )};
 
     margin-top: ${( props: MarginsStyledProps ) => (props.mt ?? 0)};
     margin-left: ${( props: MarginsStyledProps ) => (props.ml ?? 0)};

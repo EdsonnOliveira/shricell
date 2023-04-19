@@ -12,6 +12,7 @@ import {
     RedLightLarge,
     PrimarySmall,
     SecundarySmall,
+    RedLightSmall,
 } from "./style";
 import IndexProps from "./models";
 
@@ -36,7 +37,7 @@ const Button: React.FC<IndexProps> = ({
                     mt={mt} ml={ml} mr={mr} mb={mb}
                     disabled={disabled}
                 >
-                    <h4 className='fontWhite'>{ text }</h4>
+                    <h4 className={disabled ? 'fontGray' : 'fontWhite'}>{ text }</h4>
                 </PrimaryLarge>
             )
         case 'primaryMedium':
@@ -86,7 +87,7 @@ const Button: React.FC<IndexProps> = ({
                     mt={mt} ml={ml} mr={mr} mb={mb}
                     disabled={disabled}
                 >
-                    <h5 className='fontWhite fontW400'>{ text }</h5>
+                    <h5 className={disabled ? 'fontGray fontW400' : 'fontWhite fontW400'}>{ text }</h5>
                 </SecundarySmall>
             )
         case 'greenLarge':
@@ -108,6 +109,16 @@ const Button: React.FC<IndexProps> = ({
                 >
                     <h4 className={disabled ? 'fontGray' : 'fontRed'}>{ text }</h4>
                 </RedLightLarge>
+            )
+        case 'redLightSmall':
+            return (
+                <RedLightSmall
+                    onClick={onClick}
+                    mt={mt} ml={ml} mr={mr} mb={mb}
+                    disabled={disabled}
+                >
+                    <h5 className={disabled ? 'fontGray' : 'fontRed'}>{ text }</h5>
+                </RedLightSmall>
             )
         case 'ghost':
             return (

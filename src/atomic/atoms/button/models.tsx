@@ -15,7 +15,7 @@ export type ButtonTypes = 'primaryLarge' | 'primaryMedium' | 'primarySmall' |
             'secundaryLarge' | 'secundaryMedium' | 'secundarySmall' |
             'tertiaryLarge' | 'tertiaryMedium' | 'tertiarySmall' |
             'greenLarge' |
-            'redLightLarge' |
+            'redLightLarge' | 'redLightSmall'
             'ghost'
 
 export type IndexStyledProps = StyledProps<{
