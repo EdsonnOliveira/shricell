@@ -9,9 +9,9 @@ export type ItemsCart = {
     grade: string;
     price: string;
     quantity: string;
-    onClickBuy: (id: string, qt: string, salePrice: string) => void;
+    onClickBuy: (id: string, qt: string, salePrice: string, action: 'Buy' | 'Update' | 'Delete') => void;
     colors: ColorsType[];
-    showItems: boolean;
+    expandable?: boolean;
 }
 
 type ColorsType = {
