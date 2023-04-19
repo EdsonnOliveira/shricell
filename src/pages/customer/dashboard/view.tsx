@@ -10,8 +10,10 @@ import CheckBox from "@atomic/atoms/checkBox";
 import useMediaQuery from "@hooks/useMediaQuery";
 
 import { ViewProps } from "./models";
+import ModalRequired from "~/atomic/mocelules/modalRequired";
 
 const View: React.FC<ViewProps> = ({
+    idUser,
     nameUser,
     itemsPreview,
     selectedIncludeOutStock,
@@ -22,7 +24,11 @@ const View: React.FC<ViewProps> = ({
     manufacturerItems,
     manufacturerSelecteds,
     setManufacturerSelecteds,
-    devicesItems
+    devicesItems,
+    onClickBuy,
+    fieldRequired,
+    modalRequired,
+    setModalRequired,
 }) => (
     <>
         <Head>
@@ -86,6 +92,7 @@ const View: React.FC<ViewProps> = ({
                     {
                         devicesItems.map(item => (
                             <ItemCart
+                                idUser={idUser}
                                 brand={item.brand}
                                 name={item.name}
                                 storage={item.storage}
@@ -93,11 +100,14 @@ const View: React.FC<ViewProps> = ({
                                 colors={item.colors}
                                 quantity={item.quantity}
                                 price={item.price}
+                                onClickBuy={onClickBuy}
+                                showItems
                             />
                         ))
                     }
                 </BoxCommon>
             </BoxCommon>
+            <ModalRequired field={fieldRequired} visible={modalRequired} onClose={() => setModalRequired(false)} />
         </main>
     </>
 )

@@ -121,8 +121,34 @@ const Dashboard: React.FC<IndexProps> = ({
         }
     }
 
+    const [fieldRequired, setFieldRequired] = useState<string>('')
+    const [modalRequired, setModalRequired] = useState<boolean>(false)
+
+    const onClickBuy = (id: string, qt: string, salePrice: string) => {
+        if (qt == undefined ||
+            qt == null ||
+            qt.length <= 0 ||
+            qt == '' ||
+            Number(qt) <= 0) {
+            setFieldRequired('Quantity')
+            setModalRequired(true)
+            return
+        }
+        
+        cart.insert({
+            customerId: dataUser.id,
+            deviceId: id,
+            quantity: qt,
+            salePrice
+        })
+        .then((data: CartProps) => {
+
+        })
+    }
+
     return (
         <View
+            idUser={dataUser.id || '0'}
             nameUser={dataUser.name || 'Customer'}
             itemsPreview={itemsPreview}
             selectedIncludeOutStock={selectedIncludeOutStock}
@@ -134,6 +160,10 @@ const Dashboard: React.FC<IndexProps> = ({
             manufacturerSelecteds={manufacturerSelecteds}
             setManufacturerSelecteds={updateFilter}
             devicesItems={devicesItems}
+            onClickBuy={onClickBuy}
+            fieldRequired={fieldRequired}
+            modalRequired={modalRequired}
+            setModalRequired={setModalRequired}
         />
     )
 }

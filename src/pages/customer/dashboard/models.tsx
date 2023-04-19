@@ -9,15 +9,20 @@ export interface IndexProps {
 }
 
 export interface ViewProps {
+    idUser: string;
     nameUser: string;
     itemsPreview: HeaderItemsPreview[];
     selectedIncludeOutStock: boolean;
     setSelectedIncludeOutStock: SetBoolean;
     gradesItems: OptionsType[]
     gradesSelecteds: [];
-    setGradesSelecteds: (label: string, type: string) => void;;
+    setGradesSelecteds: (label: string, type: string) => void;
     manufacturerItems: OptionsType[];
     manufacturerSelecteds: []
     setManufacturerSelecteds: (label: string, type: string) => void;
     devicesItems: ItemsCart[]
+    fieldRequired: string;
+    modalRequired: boolean;
+    setModalRequired: SetBoolean;
+    onClickBuy: (id: string, qt: string, salePrice: string) => void;
 }
