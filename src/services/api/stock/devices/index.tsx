@@ -33,6 +33,34 @@ const listAll = () => {
     })
 }
 
+const select = ({ deviceId }: IndexType) => {
+    return new Promise(async (resolve, reject) => {
+        await api.post('devices/device.php', { deviceId })
+        .then(response => {
+            let res:DevicesProps[] = response.data.device
+
+            let json: DevicesProps = {
+                deviceId: res[0].deviceId,
+                brandId: res[0].brandId,
+                brand: res[0].brand,
+                modelId: res[0].modelId,
+                model: res[0].model,
+                colorId: res[0].colorId,
+                color: res[0].color,
+                storageId: res[0].storageId,
+                storage: res[0].storage,
+                quantityStock: res[0].quantityStock,
+                gradeId: res[0].gradeId,
+                gradeName: res[0].gradeName,
+                gradeDescription: res[0].gradeDescription,
+                salePrice: res[0].salePrice,
+            }
+            resolve(json)
+        })
+        .catch((response) => reject(response))
+    })
+}
+
 const insert = ({ brandId, modelId, colorId, storageId, gradeId }: IndexType) => {
     return new Promise(async (resolve, reject) => {
         await api.post('devices/new-device.php', { brandId, modelId, colorId, storageId, gradeId })
@@ -128,6 +156,7 @@ const toSell = ({ brandId, modelId, storageId, gradeId }: IndexType) => {
 
 export default {
     listAll,
+    select,
     insert,
     toSellCardList,
     toSell

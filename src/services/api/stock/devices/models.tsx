@@ -1,4 +1,5 @@
 export type IndexType = {
+    deviceId?: string;
     brandId?: string;
     modelId?: string;
     colorId?: string;
