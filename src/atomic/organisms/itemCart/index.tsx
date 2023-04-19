@@ -11,9 +11,9 @@ import Button from "@atomic/atoms/button";
 import Input from "@atomic/atoms/input";
 
 import cart from "@api/sales/cart";
+import { CartProps } from "@api/sales/cart/models";
 
 import { IndexProps } from "./models";
-import { CartProps } from "~/services/api/sales/cart/models";
 
 const ItemCart:React.FC<IndexProps> = ({
     idUser,
@@ -25,9 +25,9 @@ const ItemCart:React.FC<IndexProps> = ({
     quantity,
     onClickBuy,
     price,
-    showItems
+    expandable = true
 }) => {
-    const [open, setOpen] = useState<boolean>(false)
+    const [open, setOpen] = useState<boolean>(!!!expandable)
 
     const [itemUpdate, setItemUpdate] = useState<[string]>([''])
     const [qt, setQt] = useState({})
@@ -45,17 +45,17 @@ const ItemCart:React.FC<IndexProps> = ({
         .then((data: CartProps[]) => {
             let qtDefault = {}
             let itemsUpdate:[string] = ['']
-
-            colors.map((item, index) => {
+            
+            colors.map(item => {
                 let obj = data.findIndex(value => value.deviceId === item.deviceId && value.colorId === item.colorId)
                 if (obj >= 0) {
                     qtDefault[`i${String(item.deviceId) + String(item.colorId)}`] = data[obj]?.quantity
                     itemsUpdate.push(`i${String(item.deviceId) + String(item.colorId)}`)
-                } else {
+                } else
                     qtDefault[`i${String(item.deviceId) + String(item.colorId)}`] = '0'
-                }
             })
-
+            
+            console.log(qtDefault)
             setQt(qtDefault)
             setItemUpdate(itemsUpdate)
         })
@@ -63,22 +63,16 @@ const ItemCart:React.FC<IndexProps> = ({
 
     const configButton = (deviceId: string, colorId: string) => {
         let obj = itemUpdate.findIndex(value => value === `i${String(deviceId) + String(colorId)}`)
-        if (Number(qt[`i${String(deviceId) + String(colorId)}`]) > 0) {
-            if (obj >= 0) {
-                return 'Update'
-            } else {
-                return 'Buy'
-            }
-        } else {
-            return 'Delete'
-        }
-
+        if (Number(qt[`i${String(deviceId) + String(colorId)}`]) > 0)
+            return obj >= 0 ? { text: 'Update', index: obj } : { text: 'Buy', index: obj }
+        else
+            return obj >= 0 ? { text: 'Delete', index: obj } : { text: 'Buy', index: obj }
     }
 
     return (
-        <BoxShadow size={{ width: '100%', height: 'max-content' }}>
+        <BoxShadow size={{ width: '100%', height: 'max-content', maxWidth: '1000px' }}>
             <BoxCommon width='100%' height='100%' justifyContent='space-between' gap='20px'>
-                <BoxCommon width='100%' flexDirection='row' justifyContent='space-between' onClick={() => showItems && setOpen(!open)}>
+                <BoxCommon width='100%' flexDirection='row' justifyContent='space-between' onClick={() => expandable && setOpen(!open)}>
                     <BoxCommon flexDirection='row' alignItems='center' gap='15px'>
                         <Brand type={brand} />
                         <h3 className="fontW500">{`${name} - ${storage}`}</h3>
@@ -126,12 +120,13 @@ const ItemCart:React.FC<IndexProps> = ({
                                             </BoxCommon>
                                             <BoxCommon alignItems='center' flexDirection='row' gap='10px'>
                                                 <Button
-                                                    text={configButton(item.deviceId, item.colorId)}
-                                                    type={configButton(item.deviceId, item.colorId) != 'Delete' ? 'secundarySmall' : 'redLightSmall'}
-                                                    onClick={() => onClickBuy(item.deviceId, qt[`i${String(item.deviceId) + String(item.colorId)}`], item.price)}
+                                                    text={configButton(item.deviceId, item.colorId).text}
+                                                    type={configButton(item.deviceId, item.colorId).text == 'Delete' &&
+                                                        Number(configButton(item.deviceId, item.colorId).index) >= 0 ? 'redLightSmall' : 'secundarySmall'}
+                                                    onClick={() => onClickBuy(item.deviceId, qt[`i${String(item.deviceId) + String(item.colorId)}`], item.price, configButton(item.deviceId, item.colorId).text)}
                                                     disabled={Number(qt[`i${String(item.deviceId) + String(item.colorId)}`]) > Number(item.quantity) }
                                                 />
-                                                <Button text='Offer' type='primarySmall' onClick={() => null} />
+                                                { expandable && <Button text='Offer' type='primarySmall' onClick={() => null} /> }
                                             </BoxCommon>
                                         </BoxCommon>
                                     ))
@@ -144,7 +139,7 @@ const ItemCart:React.FC<IndexProps> = ({
                     flexDirection='row'
                     justifyContent={open ? 'center' : 'space-between'}
                     alignItems='flex-end'
-                    onClick={() => showItems && setOpen(!open)}
+                    onClick={() => expandable && setOpen(!open)}
                 >
                     {
                         !open && (
@@ -154,12 +149,16 @@ const ItemCart:React.FC<IndexProps> = ({
                             </BoxCommon>
                         )
                     }
-                    <BoxCommon mb='-13px'>
-                        <Arrow
-                            direction={open ? 'top' : 'bottom'}
-                            onClick={() => showItems && setOpen(!open)}
-                        />
-                    </BoxCommon>
+                    {
+                        expandable && (
+                            <BoxCommon mb='-13px'>
+                                <Arrow
+                                    direction={open ? 'top' : 'bottom'}
+                                    onClick={() => expandable && setOpen(!open)}
+                                />
+                            </BoxCommon>
+                        )
+                    }
                     { !open && <h3 className="fontW500">$ { price }</h3> }
                 </BoxCommon>
             </BoxCommon>
