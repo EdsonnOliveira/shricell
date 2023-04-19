@@ -11,10 +11,11 @@ const listAll = ({ customerId }: IndexType) => {
             for (let i = 0; i < res.length; i++ ) {
                 let json: CartProps = {
                     itemsId: res[i].itemsId,
-                    deviceId: res[i].deviceId,
+                    deviceId: res[i].device?.deviceId,
+                    colorId: res[i].device?.colorId,
                     quantity: res[i].quantity,
                     costPrice: res[i].costPrice,
-                    salePrice: res[i].salePrice
+                    salePrice: res[i].salePrice,
                 }
                 array.push(json)
             }
@@ -44,6 +45,31 @@ const insert = ({ customerId, deviceId, quantity, salePrice }: IndexType) => {
     return new Promise(async (resolve, reject) => {
         await api.post('sales/add-cart.php', { customerId, deviceId, quantity, salePrice })
         .then((response) => {
+            console.warn(response)
+            let res: CartProps = response.data
+            resolve(res)
+        })
+        .catch((response) => reject(response))
+    })
+}
+
+const remove = ({ itemsId }: IndexType) => {
+    return new Promise(async (resolve, reject) => {
+        await api.post('sales/remove-cart.php', { itemsId })
+        .then((response) => {
+            console.warn(response)
+            let res: CartProps = response.data
+            resolve(res)
+        })
+        .catch((response) => reject(response))
+    })
+}
+
+const update = ({ deviceId, customerId, quantity }: IndexType) => {
+    return new Promise(async (resolve, reject) => {
+        await api.post('sales/update-cart.php', { deviceId, customerId, quantity })
+        .then((response) => {
+            console.warn(response)
             let res: CartProps = response.data
             resolve(res)
         })
@@ -54,5 +80,7 @@ const insert = ({ customerId, deviceId, quantity, salePrice }: IndexType) => {
 export default {
     listAll,
     insert,
-    total
+    total,
+    remove,
+    update
 }

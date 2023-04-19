@@ -1,4 +1,5 @@
 export type IndexType = {
+    itemsId?: string | number;
     customerId: string | number;
     deviceId?: string | number;
     quantity?: string;
@@ -10,9 +11,14 @@ export interface CartProps {
     message?: string;
     itemsId?: string | number;
     deviceId?: string | number;
+    colorId?: string | number;
     quantity?: string;
     costPrice?: string;
     salePrice?: string;
     totalQuantity?: string | number;
     totalValue?: string | number;
+    device?: {
+        deviceId?: string | number;
+        colorId?: string | number;
+    }
 }
