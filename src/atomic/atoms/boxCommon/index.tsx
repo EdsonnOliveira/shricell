@@ -9,6 +9,7 @@ const BoxCommon = styled.div`
     flex: ${( props: IndexStyledProps ) => ( props.flex ?? 'none' )};
     background-color: ${( props: IndexStyledProps ) => ( props.bgColor ?? 'transparent' )};
     overflow: ${( props: IndexStyledProps ) => ( props.scroll ?? 'unset' )};
+    border-radius: ${( props: IndexStyledProps ) => ( props.borderRadius ?? 'unset' )};
 
     flex-direction: ${( props: AlignmentsStyledProps ) => ( props.flexDirection ?? 'column' )};
     justify-content: ${( props: AlignmentsStyledProps ) => ( props.justifyContent ?? 'flex-start' )};

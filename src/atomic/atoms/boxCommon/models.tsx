@@ -9,6 +9,7 @@ export type IndexStyledProps = StyledProps<{
     flex?: string | number;
     bgColor?: String | undefined;
     scroll?: string;
+    borderRadius: string | number;
 
     onClick: SetVoid;
 }>;
