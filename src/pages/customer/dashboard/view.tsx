@@ -6,11 +6,11 @@ import BoxCommon from "@atomic/atoms/boxCommon";
 import ItemCart from "@atomic/organisms/itemCart";
 import BoxShadow from "@atomic/atoms/boxShadow";
 import CheckBox from "@atomic/atoms/checkBox";
+import ModalRequired from "@atomic/mocelules/modalRequired";
 
 import useMediaQuery from "@hooks/useMediaQuery";
 
 import { ViewProps } from "./models";
-import ModalRequired from "~/atomic/mocelules/modalRequired";
 
 const View: React.FC<ViewProps> = ({
     idUser,

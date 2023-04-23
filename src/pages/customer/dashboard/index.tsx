@@ -41,10 +41,11 @@ const Dashboard: React.FC<IndexProps> = ({
                 {
                     icon: '',
                     title: 'Cart',
-                    value: String(data.totalQuantity)
+                    value: String(data?.totalQuantity) || '0'
                 },
             ])
         })
+        .catch(() => null)
     }
 
     const [selectedIncludeOutStock, setSelectedIncludeOutStock] = useState<boolean>(false)
