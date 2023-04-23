@@ -9,7 +9,7 @@ const initialState: IndexProps = {
 
 export default (state = initialState, action) => {
     switch(action.type) {
-        case 'SET_CUSTOMER':
+        case 'SET_CUSTOMER_DATA':
             return{...state, data: action.payload.data};
             break;
     }
