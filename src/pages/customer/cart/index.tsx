@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { useRouter } from "next/router";
 
 import { connect } from "react-redux";
 import { Dispatch } from "redux";
@@ -18,6 +19,8 @@ import View from "./view";
 const Cart: React.FC<IndexProps> = ({
     dataUser
 }) => {
+    const router = useRouter();
+
     const [devicesItems, setDevicesItems] = useState<ItemsCart[]>([])
     const [totalQuantity, setTotalQuantity] = useState<string>('0')
     const [totalValue, setTotalValue] = useState<string>('0,00')
@@ -43,11 +46,12 @@ const Cart: React.FC<IndexProps> = ({
             
             setDevicesItems(array)
         })
+        .catch(() => null)
 
         cart.total({ customerId: dataUser.id })
         .then((dataCart: CartProps) => {
-            setTotalQuantity(String(dataCart.totalQuantity))
-            setTotalValue(String(dataCart.totalValue))
+            setTotalQuantity(String(dataCart?.totalQuantity) || '0')
+            setTotalValue(String(dataCart?.totalValue) || '0')
         })
     }
 
@@ -127,6 +131,10 @@ const Cart: React.FC<IndexProps> = ({
         }
     }
 
+    const finishCart = () => {
+        router.push('/customer/finish/step1/')
+    }
+
     return (
         <>
             <View
@@ -138,6 +146,7 @@ const Cart: React.FC<IndexProps> = ({
                 fieldRequired={fieldRequired}
                 modalRequired={modalRequired}
                 setModalRequired={setModalRequired}
+                finishCart={finishCart}
             />
             <Alert
                 type={alertType}

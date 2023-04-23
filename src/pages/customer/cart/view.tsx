@@ -23,6 +23,7 @@ const View: React.FC<ViewProps> = ({
     fieldRequired,
     modalRequired,
     setModalRequired,
+    finishCart,
 }) => (
     <>
         <Head>
@@ -69,7 +70,12 @@ const View: React.FC<ViewProps> = ({
                     <BoxCommon
                         width={useMediaQuery('(max-width: 1100px)') ? '100%' : '500px'}
                     >
-                        <Button text='Finish' type='greenLarge' onClick={() => null} />
+                        <Button
+                            text='Finish'
+                            type='greenLarge'
+                            onClick={() => finishCart()}
+                            disabled={Number(totalQuantity) > 0 ? false : true}
+                        />
                     </BoxCommon>
                 </BoxCommon>
                 <BoxCommon
