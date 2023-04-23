@@ -59,6 +59,7 @@ const ItemCart:React.FC<IndexProps> = ({
             setQt(qtDefault)
             setItemUpdate(itemsUpdate)
         })
+        .catch(() => null)
     }
 
     const configButton = (deviceId: string, colorId: string) => {
