@@ -37,7 +37,6 @@ const listAll = ({ customerId }: IndexType) => {
                         ]
                     }
                 })
-
                 
                 array.push(json)
             }
