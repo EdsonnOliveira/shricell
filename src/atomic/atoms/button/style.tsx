@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import { borderRadius, borderRadiusSmall, transition } from "@atomic/constants/button";
-import { green, grey, primary, red, secondary, white } from "@atomic/constants/colors";
+import { gray, green, grey, greyDark, primary, red, secondary, white } from "@atomic/constants/colors";
 import { MarginsStyledProps } from "@atomic/constants/spacing";
 import { IndexStyledProps } from "./models";
 
@@ -141,7 +141,7 @@ export const GreenLarge = styled.button`
     height: 65px;
     justify-content: center;
     align-items: center;
-    background-color: ${( props: IndexStyledProps ) => ( props.disabled ? `${grey}` : `${green}` )};
+    background-color: ${( props: IndexStyledProps ) => ( props.disabled ? `${greyDark}` : `${green}` )};
     border-radius: ${borderRadius};
     transition: ${transition};
     text-align: center;
