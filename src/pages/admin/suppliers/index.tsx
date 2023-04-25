@@ -72,7 +72,16 @@ const Supplier: React.FC<IndexProps> = ({
                             },
                     ],
                     onClick: () => {
-                        setDataSupplier(data[index])
+                        setDataSupplier({
+                            id: data[index].supplierId,
+                            name: data[index].supplierName,
+                            email: data[index].supplierEmail,
+                            phone: data[index].supplierPhone,
+                            city: data[index].supplierCity,
+                            state: data[index].supplierState,
+                            zipCode: data[index].supplierZipCode,
+                            address: data[index].supplierAddress
+                        })
                         router.push({
                             pathname: '/admin/suppliers/details',
                             query: {

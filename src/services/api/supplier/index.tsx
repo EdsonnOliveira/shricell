@@ -38,6 +38,17 @@ const insert = ({ name, phone, email, address, city, state, zipCode }: IndexType
     })
 }
 
+const update = ({ id, name, phone, email, address, city, state, zipCode }: IndexType) => {
+    return new Promise(async (resolve, reject) => {
+        await api.post('supplier/edit-supplier.php', { supplierId: id, name, phone, email, address, city, state, zipCode })
+        .then((response) => {
+            let res:SupplierProps = response.data
+            resolve('success')
+        })
+        .catch((response) => reject(response))
+    })
+}
+
 const autoComplete = ({name}: IndexType) => {
     return new Promise(async (resolve, reject) => {
         await api.post('supplier/auto-complete-supplier.php', { name })
@@ -67,5 +78,6 @@ const autoComplete = ({name}: IndexType) => {
 export default {
     listAll,
     insert,
+    update,
     autoComplete
 }

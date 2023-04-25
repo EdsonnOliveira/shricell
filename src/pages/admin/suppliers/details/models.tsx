@@ -1,4 +1,4 @@
-import { SetText } from "@types/set";
+import { SetBoolean, SetText, SetVoid } from "@types/set";
 import { SuppliersTypes } from "@redux/reducers/suppliers/models";
 
 export interface IndexProps {
@@ -6,19 +6,22 @@ export interface IndexProps {
 }
 
 export interface ViewProps {
-    supplier: SuppliersTypes['data']
-    nameSupplier: string;
-    setNameSupplier: SetText;
-    phoneSupplier: string;
-    setPhoneSupplier: SetText;
-    emailSupplier: string;
-    setEmailSupplier: SetText;
-    addressSupplier: string;
-    setAddressSupplier: SetText;
-    citySupplier: string;
-    setCitySupplier: SetText;
-    stateSupplier: string;
-    setStateSupplier: SetText;
-    zipCodeSupplier: string;
-    setZipCodeSupplier: SetText;
+    name: string;
+    setName: SetText;
+    phone: string;
+    setPhone: SetText;
+    email: string;
+    setEmail: SetText;
+    address: string;
+    setAddress: SetText;
+    city: string;
+    setCity: SetText;
+    state: string;
+    setState: SetText;
+    zipCode: string;
+    setZipCode: SetText;
+    save: SetVoid;
+    fieldRequired: string;
+    modalRequired: boolean;
+    setModalRequired: SetBoolean;
 }
