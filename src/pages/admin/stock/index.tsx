@@ -144,7 +144,7 @@ const Stock: React.FC<IndexProps> = ({
             state: stateSupplier,
             zipCode: zipCodeSupplier
         })
-        .then(() => router.push('/suppliers'))
+        .then(() => router.push('/admin/suppliers'))
     }
 
     const [modalStock, setModalStock] = useState<boolean>(false)

@@ -198,7 +198,7 @@ const StockDetails: React.FC<IndexProps> = ({
 
         if (!!!router.query.isEdit) {
             devices.insert({ brandId: brand, modelId: model, colorId: color, gradeId: grade, storageId: storage })
-            .then(() => router.push('/stock'))
+            .then(() => router.push('/admin/stock'))
         } else {
             if (price === '-1' || price.length <= 0) {
                 setFieldRequired('Price')
