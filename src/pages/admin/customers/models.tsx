@@ -8,7 +8,6 @@ export interface IndexProps {
 }
 
 export interface ViewProps {
-    router: NextRouter;
     data: TR[];
     itemsPreview: HeaderItemsPreview[]
     modalAdd: boolean;

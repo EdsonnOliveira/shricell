@@ -14,7 +14,6 @@ import useMediaQuery from "@hooks/useMediaQuery";
 import { ViewProps } from "./models";
 
 const View: React.FC<ViewProps> = ({
-    router,
     data,
     itemsPreview,
     modalAdd,

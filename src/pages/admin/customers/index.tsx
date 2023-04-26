@@ -94,7 +94,6 @@ const Customers: React.FC<IndexProps> = ({
 
     return (
         <View
-            router={router}
             data={data}
             itemsPreview={itemsPreview}
             modalAdd={modalAdd}
