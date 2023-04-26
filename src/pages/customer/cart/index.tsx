@@ -132,7 +132,7 @@ const Cart: React.FC<IndexProps> = ({
     }
 
     const finishCart = () => {
-        router.push('/customer/finish/step1/')
+        router.push('/customer/finish/')
     }
 
     return (
