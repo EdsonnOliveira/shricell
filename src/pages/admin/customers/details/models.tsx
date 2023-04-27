@@ -1,19 +1,14 @@
 import { TR } from "@atomic/constants/table";
+import { CustomersTypes } from "@redux/reducers/customers/models";
+
+export interface IndexProps {
+    dataCustomer: CustomersTypes['data']
+}
 
 export interface ViewProps {
     isEdit: boolean;
-    data: DataType
+    dataCustomer: CustomersTypes['data']
     latestSales: TR[];
     modalDetails: boolean;
     setModalDetails: (visible: boolean) => void;
-}
-
-export type DataType = {
-    name: string;
-    phone: string;
-    email: string;
-    status: {
-        description: string;
-        bgColor: string;
-    }
 }

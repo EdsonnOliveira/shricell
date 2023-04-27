@@ -1,25 +1,20 @@
 import React, { useState } from "react";
 import { useRouter } from "next/router";
 
+import { Dispatch } from "redux";
+import { connect } from "react-redux";
+import { CustomersTypes } from "@redux/reducers/customers/models";
+
 import { green } from "@atomic/constants/colors";
 import { TR } from "@atomic/constants/table";
 
-import { DataType } from "./models";
+import { IndexProps } from "./models";
 import View from "./view";
 
-const CustomersDetails: React.FC = ({
+const CustomersDetails: React.FC<IndexProps> = ({
+    dataCustomer
 }) => {
     const router = useRouter()
-
-    const data: DataType = {
-        name: 'iTech',
-        phone: '+55 (00) 00000-0000',
-        email: 'email@email.com',
-        status: {
-            description: 'Approved',
-            bgColor: green
-        }
-    }
 
     const latestSales: TR[] = [
         {
@@ -111,7 +106,7 @@ const CustomersDetails: React.FC = ({
     return (
         <View
             isEdit={!!router.query.isEdit}
-            data={data}
+            dataCustomer={dataCustomer}
             latestSales={latestSales}
             modalDetails={modalDetails}
             setModalDetails={setModalDetails}
@@ -119,4 +114,14 @@ const CustomersDetails: React.FC = ({
     )
 }
 
-export default CustomersDetails;
+const mapStateToProps = ({
+    customersReducer
+}: {
+    customersReducer: CustomersTypes
+}) => ({
+    dataCustomer: customersReducer.data
+})
+
+const mapDispatchToProps = (dispatch: Dispatch) => ({})
+
+export default connect(mapStateToProps, mapDispatchToProps)(CustomersDetails);

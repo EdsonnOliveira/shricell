@@ -1,7 +1,7 @@
 import React from "react";
 import Head from "next/head";
 
-import { green } from "@atomic/constants/colors";
+import { green, red } from "@atomic/constants/colors";
 import Header from "@atomic/organisms/header";
 import BoxShadow from "@atomic/atoms/boxShadow";
 import BoxCommon from "@atomic/atoms/boxCommon";
@@ -16,7 +16,7 @@ import { ViewProps } from "./models";
 
 const View: React.FC<ViewProps> = ({
     isEdit,
-    data,
+    dataCustomer,
     latestSales,
     modalDetails,
     setModalDetails
@@ -25,7 +25,7 @@ const View: React.FC<ViewProps> = ({
         <Head>
             <title>Customer Details - ShriCell</title>
         </Head>
-        <Header title={isEdit ? data.name : 'Add Stock'} />
+        <Header title={isEdit ? dataCustomer.companyName : 'Add Stock'} />
         <main className="main">
             <BoxCommon
                 flex={1}
@@ -40,10 +40,10 @@ const View: React.FC<ViewProps> = ({
                     onClick={() => setModalDetails(true)}
                 >
                     <BoxCommon alignItems='center' justifyContent='center' gap='10px' flex='1'>
-                        <h3 className="fontW500">{ data.name }</h3>
-                        <h6 className='fontW300'>{ data.phone }</h6>
-                        <h6 className='fontW300'>{ data.email }</h6>
-                        <Stamp value={data.status.description} bgColor={data.status.bgColor} />
+                        <h3 className="fontW500">{ dataCustomer.companyName }</h3>
+                        <h6 className='fontW300'>{ dataCustomer.phone }</h6>
+                        <h6 className='fontW300'>{ dataCustomer.email }</h6>
+                        <Stamp value={dataCustomer.status} bgColor={dataCustomer.status ? green : red} />
                         <h6 className='fontGray fontW300'>Click to show details</h6>
                     </BoxCommon>
                 </BoxShadow>
