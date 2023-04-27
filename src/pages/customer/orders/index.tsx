@@ -6,7 +6,7 @@ import { Dispatch } from "redux";
 import { LoginTypes } from "@redux/reducers/login/models";
 import { SalesTypes } from "@redux/reducers/sales/models";
 
-import { green } from "@atomic/constants/colors";
+import { green, red, yellow } from "@atomic/constants/colors";
 import { HeaderItemsPreview } from "@atomic/constants/header";
 import { TR } from "@atomic/constants/table";
 
@@ -56,10 +56,18 @@ const Dashboard: React.FC<IndexProps> = ({
                                 type: 'text'
                             },
                             {
-                                description: '3 items',
+                                description: item.status,
                                 textAlign: 'center',
-                                textWeight: '300',
-                                type: 'text'
+                                textWeight: '500',
+                                type: {
+                                    color: 'fontGray',
+                                    bgColor: 'transparent',
+                                    borderColor: item.status === 'APPROVED'
+                                            ? green
+                                            : item.status === 'PENDING'
+                                            ? yellow
+                                            : red,
+                                }
                             },
                             {
                                 description: `$ ${item.saleValue}`,
