@@ -16,7 +16,8 @@ const listAll = () => {
                     dateTimeInsert: res[i].dateTimeInsert,
                     hash: res[i].hash,
                     saleCost: res[i].saleCost,
-                    paymentReceipt: res[i].paymentReceipt
+                    paymentReceipt: res[i].paymentReceipt,
+                    status: res[i].status
                 }
                 array.push(json)
             }
@@ -42,7 +43,8 @@ const listAllCustomer = ({ customerId }: IndexType) => {
                     dateTimeInsert: res[i].dateTimeInsert,
                     hash: res[i].hash,
                     saleCost: res[i].saleCost,
-                    paymentReceipt: res[i].paymentReceipt
+                    paymentReceipt: res[i].paymentReceipt,
+                    status: res[i].status
                 }
                 array.push(json)
             }

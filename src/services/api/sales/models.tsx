@@ -1,5 +1,6 @@
 export type IndexType = {
     customerId?: string | number;
+    saleId?: string | number;
     paymentReceipt?: FileList | null;
 }
 
@@ -13,4 +14,5 @@ export interface SaleProps {
     hash?: string | number;
     saleCost?: string | number;
     paymentReceipt?: string | number;
+    status?: 'PENDING' | 'APPROVED' | 'DENIED';
 }
