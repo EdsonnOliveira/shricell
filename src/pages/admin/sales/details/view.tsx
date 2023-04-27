@@ -14,14 +14,16 @@ import useMediaQuery from "@hooks/useMediaQuery";
 import { ViewProps } from "./models";
 
 const View: React.FC<ViewProps> = ({
-    items,
-    steps
+    dataItems,
+    dataSale,
+    steps,
+    totalQuantity
 }) => (
     <>
         <Head>
             <title>Sales Details - ShriCell</title>
         </Head>
-        <Header title='#134' />
+        <Header title={`#${dataSale.saleId}`} />
         <main className="main">
             <BoxCommon
                 flex={useMediaQuery('(max-width: 1100px)') ? 'unset' : '1'}
@@ -46,17 +48,17 @@ const View: React.FC<ViewProps> = ({
                 </BoxShadow>
                 <BoxShadow title='Amount' size={useMediaQuery('(max-width: 1000px)') && { width: '100%' }}>
                     <BoxCommon flexDirection='row' alignItems='center' justifyContent='space-between' flex='1'>
-                        <h2>$ 1598,00</h2>
+                        <h2>$ { dataSale.saleValue }</h2>
                     </BoxCommon>
                 </BoxShadow>
                 <BoxShadow title='Items' size={useMediaQuery('(max-width: 1000px)') && { width: '100%' }}>
                     <BoxCommon flexDirection='row' alignItems='center' justifyContent='space-between' flex='1'>
-                        <h2>2</h2>
+                        <h2>{ totalQuantity }</h2>
                     </BoxCommon>
                 </BoxShadow>
                 <BoxShadow title='Items' size={{ width: '100%', height: 'max-content' }}>
                     <Table
-                        tr={items}
+                        tr={dataItems}
                         mt='10px'
                     />
                 </BoxShadow>

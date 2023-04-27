@@ -1,107 +1,100 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useRouter } from "next/router";
+
+import { connect } from "react-redux";
+import { Dispatch } from "redux";
+import { LoginTypes } from "@redux/reducers/login/models";
+import { SalesTypes } from "@redux/reducers/sales/models";
 
 import { TR } from "@atomic/constants/table";
 import { green } from "@atomic/constants/colors";
 import { ItemStep } from "@atomic/constants/steps";
 
+import items from "@api/sales/items";
+import { ItemsProps } from "@api/sales/items/models";
+
+import { IndexProps } from "./models";
 import View from "./view";
 
-const SalesDetails: React.FC = ({
+const SalesDetails: React.FC<IndexProps> = ({
+    dataSale,
+    dataUser
 }) => {
-    const router = useRouter()
+    const [dataItems, setDataItems] = useState<TR[]>([])
+    const [totalQuantity, setTotalQuantity] = useState<string>('0')
 
-    const items: TR[] = [
-        {
-            td: [
-                    {
-                        description: 'iPhone 14',
-                        textAlign: 'left',
-                        textWeight: '500',
-                        type: 'text'
-                    },
-                    {
-                        description: '128GB',
-                        textAlign: 'center',
-                        textWeight: '300',
-                        type: 'text'
-                    },
-                    {
-                        description: 'Blue',
-                        textAlign: 'center',
-                        textWeight: '300',
-                        type: 'text'
-                    },
-                    {
-                        description: '13',
-                        textAlign: 'center',
-                        textWeight: '500',
-                        type: 'text'
-                    },
-                    {
-                        description: '$ 799',
-                        textAlign: 'center',
-                        textWeight: '500',
-                        type: {
-                            color: 'fontWhite',
-                            bgColor: green
-                        }
-                    },
-            ],
-            onClick: () => {
-                router.push({
-                    pathname: '/stock/details',
-                    query: {
-                        isEdit: true,
-                        stockName: 'iPhone 14 Pro Max'
-                    }}
-                )
-            }
-        },
-        {
-            td: [
-                    {
-                        description: 'iPhone 14',
-                        textAlign: 'left',
-                        textWeight: '500',
-                        type: 'text'
-                    },
-                    {
-                        description: '128GB',
-                        textAlign: 'center',
-                        textWeight: '300',
-                        type: 'text'
-                    },
-                    {
-                        description: 'Blue',
-                        textAlign: 'center',
-                        textWeight: '300',
-                        type: 'text'
-                    },
-                    {
-                        description: '13',
-                        textAlign: 'center',
-                        textWeight: '500',
-                        type: 'text'
-                    },
-                    {
-                        description: '$ 799',
-                        textAlign: 'center',
-                        textWeight: '500',
-                        type: {
-                            color: 'fontWhite',
-                            bgColor: green
-                        }
-                    },
-            ]
-        },
-    ]
+    useEffect(() => {
+        loadData()
+    }, [])
+
+    const loadData = () => {
+        items.listAll({
+            customerId: dataUser.id,
+            saleId: dataSale.saleId
+        })
+        .then((data: ItemsProps[]) => {
+            let totalQuantity = String(data.reduce((accumulator, value) => Number(accumulator) + Number(value.quantity), 0))
+            let array = data.map((item, index) => (
+                {
+                    td: [
+                            {
+                                description: item.model,
+                                textAlign: 'left',
+                                textWeight: '500',
+                                type: 'text'
+                            },
+                            {
+                                description: item.storage,
+                                textAlign: 'center',
+                                textWeight: '300',
+                                type: 'text'
+                            },
+                            {
+                                description: item.color,
+                                textAlign: 'center',
+                                textWeight: '500',
+                                type: {
+                                    color: 'fontGray',
+                                    bgColor: 'transparent',
+                                    borderColor: item.color
+                                }
+                            },
+                            {
+                                description: item.quantity,
+                                textAlign: 'center',
+                                textWeight: '300',
+                                type: 'text'
+                            },
+                            {
+                                description: `$ ${item.salePrice}`,
+                                textAlign: 'center',
+                                textWeight: '300',
+                                type: 'text'
+                            },
+                            {
+                                description: `$ ${item.saleTotal}`,
+                                textAlign: 'center',
+                                textWeight: '500',
+                                type: {
+                                    color: 'fontWhite',
+                                    bgColor: green
+                                }
+                            },
+                    ],
+                    onClick: () => null
+                }
+            ))
+
+            setTotalQuantity(totalQuantity)
+            setDataItems(array)
+        })
+    }
 
     const steps: ItemStep[] = [
         {
             index: 0,
             description: 'Order placed',
-            label: '28/03/2023 10:43',
+            label: String(dataSale.dateTimeInsert),
             icon: ''
         },
         {
@@ -119,8 +112,26 @@ const SalesDetails: React.FC = ({
     ]
 
     return (
-        <View items={items} steps={steps} />
+        <View
+            steps={steps}
+            dataSale={dataSale}
+            dataItems={dataItems}
+            totalQuantity={totalQuantity}
+        />
     )
 }
 
-export default SalesDetails;
+const mapStateToProps = ({
+    loginReducer,
+    salesReducer,
+}: {
+    loginReducer: LoginTypes
+    salesReducer: SalesTypes
+}) => ({
+    dataUser: loginReducer.data,
+    dataSale: salesReducer.data,
+})
+
+const mapDispatchToProps = (dispatch: Dispatch) => ({})
+
+export default connect(mapStateToProps, mapDispatchToProps)(SalesDetails);
