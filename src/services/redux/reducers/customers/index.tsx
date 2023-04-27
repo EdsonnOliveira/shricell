@@ -2,8 +2,22 @@ import { IndexProps } from "./models";
 
 const initialState: IndexProps = {
     data: {
-        id: '',
-        name: ''
+        customerId: 0,
+        companyName: '',
+        phone: '',
+        email: '',
+        website: '',
+        companyAddress: '',
+        city: '',
+        state: '',
+        zipCode: '',
+        stateCorporation: '',
+        businessIdentify: '',
+        federalTaxId: '',
+        acquisitionMethod: '',
+        photoId: '',
+        taxExemptCertificate: '',
+        status: '',
     }
 };
 
