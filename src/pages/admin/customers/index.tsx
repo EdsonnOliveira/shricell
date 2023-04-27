@@ -6,7 +6,7 @@ import { Dispatch } from "redux";
 import { CustomersTypes } from "@redux/reducers/customers/models";
 
 import { TR } from "@atomic/constants/table";
-import { green, primary, red } from "@atomic/constants/colors";
+import { green, red, yellow } from "@atomic/constants/colors";
 import { HeaderItemsPreview } from "@atomic/constants/header";
 
 import customer from "@api/customer";
@@ -42,7 +42,7 @@ const Customers: React.FC<IndexProps> = ({
                 {
                     td: [
                             {
-                                description: 'item.name',
+                                description: item.companyName,
                                 textAlign: 'left',
                                 textWeight: '500',
                                 type: 'text'
@@ -66,12 +66,23 @@ const Customers: React.FC<IndexProps> = ({
                                 type: 'text'
                             },
                             {
+                                description: item.phone,
+                                textAlign: 'center',
+                                textWeight: '300',
+                                type: 'text'
+                            },
+                            {
                                 description: item.status,
                                 textAlign: 'center',
                                 textWeight: '500',
                                 type: {
-                                    color: 'fontWhite',
-                                    bgColor: green
+                                    color: 'fontGray',
+                                    bgColor: 'transparent',
+                                    borderColor: item.status === 'APPROVED'
+                                            ? green
+                                            : item.status === 'PENDING'
+                                            ? yellow
+                                            : red,
                                 }
                             },
                     ],
