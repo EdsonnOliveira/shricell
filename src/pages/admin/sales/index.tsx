@@ -1,190 +1,104 @@
-import React from "react";
-
-import { TR } from "@atomic/constants/table";
-import { green } from "@atomic/constants/colors";
-import { HeaderItemsPreview } from "@atomic/constants/header";
-
-import View from "./view";
+import React, { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 
-const itemsPreview: HeaderItemsPreview[] = [
-    {
-        icon: '',
-        title: "Today's sales",
-        value: '13'
-    },
-]
+import { connect } from "react-redux";
+import { Dispatch } from "redux";
+import { SalesTypes } from "@redux/reducers/sales/models";
 
-const Sales: React.FC = ({
+import { TR } from "@atomic/constants/table";
+import { green, red, yellow } from "@atomic/constants/colors";
+import { HeaderItemsPreview } from "@atomic/constants/header";
+
+import sales from "@api/sales";
+import { SaleProps } from "@api/sales/models";
+
+import { IndexProps } from "./models";
+import View from "./view";
+
+const Sales: React.FC<IndexProps> = ({
+    setDataSale
 }) => {
     const router = useRouter();
 
-    const latestSales: TR[] = [
-        {
-            td: [
-                    {
-                        description: '#134',
-                        textAlign: 'left',
-                        textWeight: '500',
-                        type: 'text'
-                    },
-                    {
-                        description: 'iTech',
-                        textAlign: 'center',
-                        textWeight: '300',
-                        type: 'text'
-                    },
-                    {
-                        description: '28/03/2023',
-                        textAlign: 'center',
-                        textWeight: '300',
-                        type: 'text'
-                    },
-                    {
-                        description: '10:43',
-                        textAlign: 'center',
-                        textWeight: '300',
-                        type: 'text'
-                    },
-                    {
-                        description: '$ 799',
-                        textAlign: 'center',
-                        textWeight: '500',
-                        type: {
-                            color: 'fontWhite',
-                            bgColor: green
-                        }
-                    },
-            ],
-            onClick: () => {
-                router.push({
-                    pathname: '/sales/details',
-                    query: {
-                        idSale: 134
-                    }}
-                )
-            }
-        },
-        {
-            td: [
-                    {
-                        description: '#134',
-                        textAlign: 'left',
-                        textWeight: '500',
-                        type: 'text'
-                    },
-                    {
-                        description: 'iTech',
-                        textAlign: 'center',
-                        textWeight: '300',
-                        type: 'text'
-                    },
-                    {
-                        description: '28/03/2023',
-                        textAlign: 'center',
-                        textWeight: '300',
-                        type: 'text'
-                    },
-                    {
-                        description: '10:43',
-                        textAlign: 'center',
-                        textWeight: '300',
-                        type: 'text'
-                    },
-                    {
-                        description: '$ 799',
-                        textAlign: 'center',
-                        textWeight: '500',
-                        type: {
-                            color: 'fontWhite',
-                            bgColor: green
-                        }
-                    },
-            ],
-        },
-        {
-            td: [
-                    {
-                        description: '#134',
-                        textAlign: 'left',
-                        textWeight: '500',
-                        type: 'text'
-                    },
-                    {
-                        description: 'iTech',
-                        textAlign: 'center',
-                        textWeight: '300',
-                        type: 'text'
-                    },
-                    {
-                        description: '28/03/2023',
-                        textAlign: 'center',
-                        textWeight: '300',
-                        type: 'text'
-                    },
-                    {
-                        description: '10:43',
-                        textAlign: 'center',
-                        textWeight: '300',
-                        type: 'text'
-                    },
-                    {
-                        description: '$ 799',
-                        textAlign: 'center',
-                        textWeight: '500',
-                        type: {
-                            color: 'fontWhite',
-                            bgColor: green
-                        }
-                    },
-            ],
-        },
-        {
-            td: [
-                    {
-                        description: '#134',
-                        textAlign: 'left',
-                        textWeight: '500',
-                        type: 'text'
-                    },
-                    {
-                        description: 'iTech',
-                        textAlign: 'center',
-                        textWeight: '300',
-                        type: 'text'
-                    },
-                    {
-                        description: '28/03/2023',
-                        textAlign: 'center',
-                        textWeight: '300',
-                        type: 'text'
-                    },
-                    {
-                        description: '10:43',
-                        textAlign: 'center',
-                        textWeight: '300',
-                        type: 'text'
-                    },
-                    {
-                        description: '$ 799',
-                        textAlign: 'center',
-                        textWeight: '500',
-                        type: {
-                            color: 'fontWhite',
-                            bgColor: green
-                        }
-                    },
-            ],
-        },
-    ]
+    const [itemsPreview, setItemsPreview] = useState<HeaderItemsPreview[]>([])
+    const [data, setData] = useState<TR[]>([])
+
+    useEffect(() => {
+        loadData()
+    }, [])
+
+    const loadData = () => {
+        sales.listAll()
+        .then((data: SaleProps[]) => {
+            setItemsPreview([
+                {
+                    icon: '',
+                    title: 'Sales',
+                    value: String(data.length)
+                },
+            ])
+
+            let array = data.map((item, index) => (
+                {
+                    td: [
+                            {
+                                description: `#${item.saleId}`,
+                                textAlign: 'left',
+                                textWeight: '500',
+                                type: 'text'
+                            },
+                            {
+                                description: item.dateTimeInsert,
+                                textAlign: 'center',
+                                textWeight: '300',
+                                type: 'text'
+                            },
+                            {
+                                description: item.status,
+                                textAlign: 'center',
+                                textWeight: '500',
+                                type: {
+                                    color: 'fontGray',
+                                    bgColor: 'transparent',
+                                    borderColor: item.status === 'APPROVED'
+                                            ? green
+                                            : item.status === 'PENDING'
+                                            ? yellow
+                                            : red,
+                                }
+                            },
+                            {
+                                description: `$ ${item.saleValue}`,
+                                textAlign: 'center',
+                                textWeight: '500',
+                                type: {
+                                    color: 'fontWhite',
+                                    bgColor: green
+                                }
+                            },
+                    ],
+                    onClick: () => {
+                        setDataSale(data[index])
+                        router.push('/admin/sales/details')
+                    }
+                }
+            ))
+            setData(array)
+        })
+    }
 
     return (
         <View
-            router={router}
-            latestSales={latestSales}
+            data={data}
             itemsPreview={itemsPreview}
         />
     )
 }
 
-export default Sales;
+const mapStateToProps = ({}) => ({})
+
+const mapDispatchToProps = (dispatch: Dispatch) => ({
+    setDataSale: (data: SalesTypes['data']) => dispatch({ type: 'SET_SALE_DATA', payload: { data } }),
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(Sales);
