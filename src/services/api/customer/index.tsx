@@ -11,6 +11,7 @@ const listAll = () => {
             for (let i = 0; i < res.length; i++ ) {
                 let json: CustomerProps = {
                     customerId: res[i].customerId,
+                    companyName: res[i].companyName,
                     phone: res[i].phone,
                     email: res[i].email,
                     website: res[i].website,

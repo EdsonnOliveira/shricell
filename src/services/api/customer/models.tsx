@@ -10,6 +10,7 @@ export type IndexType = {
 
 export interface CustomerProps {
     customerId: number;
+    companyName: string
     phone: string
     email: string
     website: string
