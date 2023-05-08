@@ -10,6 +10,8 @@ export interface SaleProps {
     customerId?: string | number;
     companyName?: string | number;
     saleValue?: string | number;
+    totalSales?: string | number;
+    dateSale?: string | number;
     dateTimeInsert?: string | number;
     hash?: string | number;
     saleCost?: string | number;

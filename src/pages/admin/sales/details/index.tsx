@@ -10,21 +10,46 @@ import { TR } from "@atomic/constants/table";
 import { green } from "@atomic/constants/colors";
 import { ItemStep } from "@atomic/constants/steps";
 
+import sales from "@api/sales";
 import items from "@api/sales/items";
 import { ItemsProps } from "@api/sales/items/models";
 
 import { IndexProps } from "./models";
 import View from "./view";
 
+const stepLoad = [
+    {
+        index: 0,
+        description: 'Order placed',
+        label: '0000-00-00 00:00:00',
+        icon: ''
+    },
+    {
+        index: 1,
+        description: 'Waiting confirmation',
+        label: '',
+        icon: ''
+    },
+    {
+        index: 2,
+        description: `Success`,
+        label: '',
+        icon: ''
+    },
+]
+
 const SalesDetails: React.FC<IndexProps> = ({
     dataSale,
     dataUser
 }) => {
+    const router = useRouter();
+
     const [dataItems, setDataItems] = useState<TR[]>([])
     const [totalQuantity, setTotalQuantity] = useState<string>('0')
 
     useEffect(() => {
         loadData()
+        loadStatus()
     }, [])
 
     const loadData = () => {
@@ -90,26 +115,41 @@ const SalesDetails: React.FC<IndexProps> = ({
         })
     }
 
-    const steps: ItemStep[] = [
-        {
+    const [steps, setSteps] = useState<ItemStep[]>(stepLoad)
+    
+    const loadStatus = () => {
+        let step = steps;
+        step[0] = {
             index: 0,
             description: 'Order placed',
             label: String(dataSale.dateTimeInsert),
             icon: ''
-        },
-        {
+        }
+
+        step[1] = {
             index: 1,
-            description: 'Waiting confirmation',
-            label: '',
+            description: dataSale.status === 'PENDING'
+                        ? 'Waiting confirmation'
+                        : dataSale.status === 'APPROVED'
+                        ? 'Confirmed'
+                        : 'Denied',
+            label: dataSale.status === 'APPROVED'
+                ? String(dataSale.dateSale)
+                : '',
             icon: ''
-        },
-        {
-            index: 2,
-            description: `Success`,
-            label: '',
-            icon: ''
-        },
-    ]
+        }
+
+        setSteps(step)
+    }
+
+    const confirmPayment = () => {
+        sales.approve({ saleId: dataSale.saleId })
+        .then(() => router.push('/admin/sales'))
+    }
+
+    const denyPayment = () => {
+
+    }
 
     return (
         <View
@@ -117,6 +157,8 @@ const SalesDetails: React.FC<IndexProps> = ({
             dataSale={dataSale}
             dataItems={dataItems}
             totalQuantity={totalQuantity}
+            confirmPayment={confirmPayment}
+            denyPayment={denyPayment}
         />
     )
 }

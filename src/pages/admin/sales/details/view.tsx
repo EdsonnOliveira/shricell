@@ -17,7 +17,9 @@ const View: React.FC<ViewProps> = ({
     dataItems,
     dataSale,
     steps,
-    totalQuantity
+    totalQuantity,
+    confirmPayment,
+    denyPayment
 }) => (
     <>
         <Head>
@@ -35,13 +37,20 @@ const View: React.FC<ViewProps> = ({
             >
                 <BoxShadow size={{ width: useMediaQuery('(max-width: 1600px)') ? '100%' : '800px', height: 'max-content'}}>
                     <BoxCommon alignItems='center' justifyContent='center' gap='25px' flex='1'>
-                        <Steps items={steps} currentStep={1} />
-                        <Button type='greenLarge' text='Confirm payment' />
+                        <Steps items={steps} currentStep={dataSale.status === 'APPROVED' ? 3 : 1} />
+                        {
+                            dataSale.status === 'PENDING' && (
+                                <BoxCommon width='100%' gap='10px'>
+                                    <Button type='greenLarge' text='Confirm payment' onClick={() => confirmPayment()} />
+                                    <Button type='redLightLarge' text='Deny payment' onClick={() => denyPayment()} />
+                                </BoxCommon>
+                            )
+                        }
                     </BoxCommon>
                 </BoxShadow>
                 <BoxShadow size={useMediaQuery('(max-width: 1000px)') && { width: '100%' }}>
                     <BoxCommon alignItems='center' justifyContent='center' gap='10px' flex='1'>
-                        <h3 className="fontW500">iTech</h3>
+                        <h3 className="fontW500">{ dataSale.companyName }</h3>
                         <Stamp value='4' bgColor={primary} />
                         <h6 className='fontGray fontW300'>This month</h6>
                     </BoxCommon>

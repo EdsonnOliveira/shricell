@@ -13,6 +13,7 @@ const listAll = () => {
                     customerId: res[i].customerId,
                     companyName: res[i].companyName,
                     saleValue: res[i].saleValue,
+                    dateSale: res[i].dateSale,
                     dateTimeInsert: res[i].dateTimeInsert,
                     hash: res[i].hash,
                     saleCost: res[i].saleCost,
@@ -40,6 +41,7 @@ const listAllCustomer = ({ customerId }: IndexType) => {
                     customerId: res[i].customerId,
                     companyName: res[i].companyName,
                     saleValue: res[i].saleValue,
+                    dateSale: res[i].dateSale,
                     dateTimeInsert: res[i].dateTimeInsert,
                     hash: res[i].hash,
                     saleCost: res[i].saleCost,
@@ -69,8 +71,60 @@ const insert = ({ customerId, paymentReceipt }: IndexType) => {
     })
 }
 
+const approve = ({ saleId }: IndexType) => {
+    return new Promise(async (resolve, reject) => {
+        await api.post('sales/approve-sale.php', { saleId })
+        .then(async response => {
+            let res:SaleProps = response.data
+            resolve(res.message)
+        })
+        .catch((response) => reject(response))
+    })
+}
+
+const customerMonthly = ({ customerId }: IndexType) => {
+    return new Promise(async (resolve, reject) => {
+        await api.post('sales/sales-by-customer-monthly.php', { customerId })
+        .then(response => {
+            let res:SaleProps = response.data
+            resolve(res.totalSales)
+        })
+        .catch((response) => reject(response))
+    })
+}
+
+const currentWeek = () => {
+    return new Promise(async (resolve, reject) => {
+        await api.post('sales/sales-current-week.php')
+        .then(response => {
+            let res:SaleProps[] = response.data.sales
+            let array:SaleProps[] = []
+            for (let i = 0; i < res.length; i++ ) {
+                let json: SaleProps = {
+                    saleId: res[i].saleId,
+                    customerId: res[i].customerId,
+                    companyName: res[i].companyName,
+                    saleValue: res[i].saleValue,
+                    dateSale: res[i].dateSale,
+                    dateTimeInsert: res[i].dateTimeInsert,
+                    hash: res[i].hash,
+                    saleCost: res[i].saleCost,
+                    paymentReceipt: res[i].paymentReceipt,
+                    status: res[i].status
+                }
+                array.push(json)
+            }
+            resolve(array || [])
+        })
+        .catch((response) => reject(response))
+    })
+}
+
 export default {
     listAll,
     listAllCustomer,
-    insert
+    insert,
+    approve,
+    customerMonthly,
+    currentWeek
 }
