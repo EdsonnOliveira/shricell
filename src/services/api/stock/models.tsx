@@ -8,4 +8,5 @@ export type IndexType = {
 
 export interface StockProps {
     stockId: string | number;
+    model: string
 }
