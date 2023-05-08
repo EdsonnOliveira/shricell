@@ -15,7 +15,8 @@ import { ViewProps } from "./models";
 const View: React.FC<ViewProps> = ({
     nameUser,
     latestSales,
-    itemsPreview
+    itemsPreview,
+    outOfStock
 }) => (
     <>
         <Head>
@@ -45,7 +46,7 @@ const View: React.FC<ViewProps> = ({
                 <BoxShadow title='Cellphones sold' size={{ width: '100%' }}>
 
                 </BoxShadow>
-                <BoxShadow title='Latest sales' size={{ width: '100%' }}>
+                <BoxShadow title='Latest sales' size={{ width: '100%', height: 'max-content' }}>
                     <Table
                         tr={latestSales}
                         mt='10px'
@@ -57,25 +58,16 @@ const View: React.FC<ViewProps> = ({
                 gap='20px'
                 mt={useMediaQuery('(max-width: 1100px)') ? '0' : '-100px'}
             >
-                <BoxShadow size={{ width: '100%' }}>
-                    <BoxCommon alignItems='center' justifyContent='center' gap='10px' flex='1'>
-                        <h3 className="fontW500">iPhone 14 Pro</h3>
-                        <Stamp value='4' bgColor={red} />
-                        <h6 className='fontGray fontW300'>Low stock</h6>
-                    </BoxCommon>
-                </BoxShadow>
-                <BoxShadow size={{ width: '100%', height: '80px' }}>
-                    <BoxCommon flexDirection='row' alignItems='center' justifyContent='center' gap='20px' flex='1'>
-                        <h3 className="fontW500">Galaxy 22</h3>
-                        <Stamp value='sold off' bgColor={red} />
-                    </BoxCommon>
-                </BoxShadow>
-                <BoxShadow size={{ width: '100%', height: '80px' }}>
-                    <BoxCommon flexDirection='row' alignItems='center' justifyContent='center' gap='20px' flex='1'>
-                        <h3 className="fontW500">iPhone 11</h3>
-                        <Stamp value='sold off' bgColor={red} />
-                    </BoxCommon>
-                </BoxShadow>
+                {
+                    outOfStock.map(item => (
+                        <BoxShadow size={{ width: '100%', height: '80px' }}>
+                            <BoxCommon flexDirection='row' alignItems='center' justifyContent='center' gap='20px' flex='1'>
+                                <h3 className="fontW500">{ item.model }</h3>
+                                <Stamp value='sold off' bgColor={red} />
+                            </BoxCommon>
+                        </BoxShadow>
+                    ))
+                }
             </BoxCommon>
         </main>
     </>
