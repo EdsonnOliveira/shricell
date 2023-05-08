@@ -44,7 +44,7 @@ const Stock: React.FC<IndexProps> = ({
                 },
                 {
                     icon: '',
-                    title: 'Low Stock',
+                    title: 'Stock',
                     value: String(data.reduce((accumulator, value) => Number(accumulator) + Number(value.quantityStock), 0))
                 }
             ])
