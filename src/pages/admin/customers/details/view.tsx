@@ -17,6 +17,34 @@ import { ViewProps } from "./models";
 const View: React.FC<ViewProps> = ({
     isEdit,
     dataCustomer,
+    dunsNumber,
+    setDunsNumber,
+    federalTax,
+    setFederalTax,
+    companyLegal,
+    setCompanyLegal,
+    phone,
+    setPhone,
+    zipCode,
+    setZipCode,
+    companyAddress,
+    setCompanyAddress,
+    state,
+    setState,
+    city,
+    setCity,
+    country,
+    setCountry,
+    stateCorporation,
+    setStateCorporation,
+    typeIndustry,
+    setTypeIndustry,
+    emailCorporation,
+    setEmailCorporation,
+    businessIdentity,
+    setBusinessIdentity,
+    webSite,
+    setWebSite,
     latestSales,
     modalDetails,
     setModalDetails,
@@ -86,26 +114,97 @@ const View: React.FC<ViewProps> = ({
             >
                 <BoxCommon gap='20px'>
                     <BoxCommon width='100%' flexDirection={useMediaQuery('(max-width: 1000px)') ? 'column' : 'row'} gap='20px'>
-                        <Input label='DUNS' width={useMediaQuery('(max-width: 1000px)') ? '100%' : '140px'} />
-                        <Input label='Tax ID' width={useMediaQuery('(max-width: 1000px)') ? '100%' : '140px'} />
-                        <Input label='Business ID' width={useMediaQuery('(max-width: 1000px)') ? '100%' : '140px'} placeholder="Business" />
-                        <Input label='Phone' placeholder="+00 00000-0000" width={useMediaQuery('(max-width: 1000px)') ? '100%' : '275px'} />
+                        <Input
+                            label='DUNS'
+                            width={useMediaQuery('(max-width: 1000px)') ? '100%' : '140px'}
+                            value={dunsNumber}
+                            onChangeText={setDunsNumber}
+                        />
+                        <Input
+                            label='Tax ID'
+                            width={useMediaQuery('(max-width: 1000px)') ? '100%' : '140px'}
+                            value={federalTax}
+                            onChangeText={setFederalTax}
+                        />
+                        <Input
+                            label='Business ID'
+                            width={useMediaQuery('(max-width: 1000px)') ? '100%' : '140px'} placeholder="Business"
+                            value={businessIdentity}
+                            onChangeText={setBusinessIdentity}
+                        />
+                        <Input
+                            label='Phone'
+                            placeholder="+00 00000-0000"
+                            width={useMediaQuery('(max-width: 1000px)') ? '100%' : '275px'}
+                            value={phone}
+                            onChangeText={setPhone}
+                        />
                     </BoxCommon>
                     <BoxCommon flexDirection={useMediaQuery('(max-width: 1000px)') ? 'column' : 'row'} gap='20px'>
-                        <Input label='Company Legal Name' width="400px" />
-                        <Input label='E-Mail' width="335px" />
+                        <Input
+                            label='Company Legal Name' width="400px"
+                            value={companyLegal}
+                            onChangeText={setCompanyLegal}
+                        />
+                        <Input
+                            label='E-Mail'
+                            width="335px"
+                            value={emailCorporation}
+                            onChangeText={setEmailCorporation}
+                        />
                     </BoxCommon>
                     <BoxCommon width='100%' flexDirection={useMediaQuery('(max-width: 1000px)') ? 'column' : 'row'} gap='20px'>
-                        <Input label='ZIP Code' width={useMediaQuery('(max-width: 1000px)') ? '100%' : '140px'} />
-                        <Input label='Address' width={useMediaQuery('(max-width: 1000px)') ? '100%' : '240px'} />
-                        <Input label='State' width={useMediaQuery('(max-width: 1000px)') ? '100%' : '140px'} />
-                        <Input label='City' width={useMediaQuery('(max-width: 1000px)') ? '100%' : '175px'}  />
+                        <Input
+                            label='ZIP Code'
+                            width={useMediaQuery('(max-width: 1000px)') ? '100%' : '140px'}
+                            value={zipCode}
+                            onChangeText={setZipCode}
+                        />
+                        <Input
+                            label='Address'
+                            width={useMediaQuery('(max-width: 1000px)') ? '100%' : '240px'}
+                            value={companyAddress}
+                            onChangeText={setCompanyAddress}
+                        />
+                        <Input
+                            label='State'
+                            width={useMediaQuery('(max-width: 1000px)') ? '100%' : '140px'}
+                            value={state}
+                            onChangeText={setState}
+                        />
+                        <Input
+                            label='City'
+                            width={useMediaQuery('(max-width: 1000px)') ? '100%' : '175px'}
+                            value={city}
+                            onChangeText={setCity}
+                        />
                     </BoxCommon>
                     <BoxCommon width='100%' flexDirection={useMediaQuery('(max-width: 1000px)') ? 'column' : 'row'} gap='20px'>
-                        <Input label='Country' width={useMediaQuery('(max-width: 1000px)') ? '100%' : '140px'} />
-                        <Input label='Web Site' width={useMediaQuery('(max-width: 1000px)') ? '100%' : '240px'} />
-                        <Input label='Type Industry' width={useMediaQuery('(max-width: 1000px)') ? '100%' : '150px'} placeholder="Type" />
-                        <Input label='State Corp.' width={useMediaQuery('(max-width: 1000px)') ? '100%' : '165px'}  />
+                        <Input
+                            label='Country'
+                            width={useMediaQuery('(max-width: 1000px)') ? '100%' : '140px'}
+                            value={country}
+                            onChangeText={setCountry}
+                        />
+                        <Input
+                            label='Web Site'
+                            width={useMediaQuery('(max-width: 1000px)') ? '100%' : '240px'}
+                            value={webSite}
+                            onChangeText={setWebSite}
+                        />
+                        <Input
+                            label='Type Industry'
+                            width={useMediaQuery('(max-width: 1000px)') ? '100%' : '150px'}
+                            placeholder="Type"
+                            value={typeIndustry}
+                            onChangeText={setTypeIndustry}
+                        />
+                        <Input
+                            label='State Corp.'
+                            width={useMediaQuery('(max-width: 1000px)') ? '100%' : '165px'}
+                            value={stateCorporation}
+                            onChangeText={setStateCorporation}
+                        />
                     </BoxCommon>
                 </BoxCommon>
             </Modal>
