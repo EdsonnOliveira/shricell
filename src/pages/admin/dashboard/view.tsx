@@ -1,7 +1,7 @@
 import React from "react";
 import Head from "next/head";
 
-import { green, red } from "@atomic/constants/colors";
+import { green, primary, red, terciary } from "@atomic/constants/colors";
 import Header from "@atomic/organisms/header";
 import BoxShadow from "@atomic/atoms/boxShadow";
 import Stamp from "@atomic/atoms/stamp";
@@ -16,7 +16,9 @@ const View: React.FC<ViewProps> = ({
     nameUser,
     latestSales,
     itemsPreview,
-    outOfStock
+    outOfStock,
+    stampSelected,
+    setStampSelected
 }) => (
     <>
         <Head>
@@ -44,7 +46,18 @@ const View: React.FC<ViewProps> = ({
                     </BoxCommon>
                 </BoxShadow>
                 <BoxShadow title='Cellphones sold' size={{ width: '100%' }}>
-
+                    <BoxCommon flexDirection='row' gap='5px' mt='-25px' justifyContent='flex-end'>
+                        <Stamp
+                            value='DEVICE'
+                            bgColor={stampSelected == 0 ? primary : terciary}
+                            onClick={() => setStampSelected(0)}
+                        />
+                        <Stamp
+                            value='BRAND'
+                            bgColor={stampSelected == 1 ? primary : terciary}
+                            onClick={() => setStampSelected(1)}
+                        />
+                    </BoxCommon>
                 </BoxShadow>
                 <BoxShadow title='Latest sales' size={{ width: '100%', height: 'max-content' }}>
                     <Table

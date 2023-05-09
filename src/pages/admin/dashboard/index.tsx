@@ -97,12 +97,16 @@ const Dashboard: React.FC<IndexProps> = ({
         })
     }
 
+    const [stampSelected, setStampSelected] = useState<number>(0)
+
     return (
         <View
             nameUser={dataUser.name || 'Shri'}
             latestSales={latestSales}
             itemsPreview={itemsPreview}
             outOfStock={outOfStock}
+            stampSelected={stampSelected}
+            setStampSelected={setStampSelected}
         />
     )
 }

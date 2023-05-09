@@ -1,7 +1,11 @@
+import { LoginTypes } from "@redux/reducers/login/models";
+import { SalesTypes } from "@redux/reducers/sales/models";
+
 import { TR } from "@atomic/constants/table";
 import { HeaderItemsPreview } from "@atomic/constants/header";
-import { LoginTypes } from "@redux/reducers/login/models";
+
 import { StockProps } from "@api/stock/models";
+import { SetIndex } from "@types/set";
 
 export interface IndexProps {
     dataUser: LoginTypes['data']
@@ -13,4 +17,6 @@ export interface ViewProps {
     latestSales: TR[]
     itemsPreview: HeaderItemsPreview[]
     outOfStock: StockProps[];
+    stampSelected: number;
+    setStampSelected: SetIndex;
 }
