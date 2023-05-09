@@ -5,6 +5,7 @@ import { Dispatch } from "redux";
 import { LoginTypes } from "@redux/reducers/login/models";
 import { SalesTypes } from "@redux/reducers/sales/models";
 
+import { ItemStep } from "@atomic/constants/steps";
 import { green } from "@atomic/constants/colors";
 import { TR } from "@atomic/constants/table";
 
@@ -13,7 +14,27 @@ import { ItemsProps } from "@api/sales/items/models";
 
 import { IndexProps } from "./models";
 import View from "./view";
-import { ItemStep } from "~/atomic/constants/steps";
+
+const stepLoad = [
+    {
+        index: 0,
+        description: 'Order placed',
+        label: '0000-00-00 00:00:00',
+        icon: ''
+    },
+    {
+        index: 1,
+        description: 'Waiting confirmation',
+        label: '',
+        icon: ''
+    },
+    {
+        index: 2,
+        description: `Success`,
+        label: '',
+        icon: ''
+    },
+]
 
 const Orders: React.FC<IndexProps> = ({
     dataUser,
@@ -24,6 +45,7 @@ const Orders: React.FC<IndexProps> = ({
 
     useEffect(() => {
         loadData()
+        loadStatus()
     }, [])
 
     const loadData = () => {
@@ -88,26 +110,32 @@ const Orders: React.FC<IndexProps> = ({
         })
     }
 
-    const steps: ItemStep[] = [
-        {
+    const [steps, setSteps] = useState<ItemStep[]>(stepLoad)
+
+    const loadStatus = () => {
+        let step = steps;
+        step[0] = {
             index: 0,
             description: 'Order placed',
             label: String(dataSale.dateTimeInsert),
             icon: ''
-        },
-        {
+        }
+
+        step[1] = {
             index: 1,
-            description: 'Waiting confirmation',
-            label: '',
+            description: dataSale.status === 'PENDING'
+                        ? 'Waiting confirmation'
+                        : dataSale.status === 'APPROVED'
+                        ? 'Confirmed'
+                        : 'Denied',
+            label: dataSale.status === 'APPROVED'
+                ? String(dataSale.dateSale)
+                : '',
             icon: ''
-        },
-        {
-            index: 2,
-            description: `Success`,
-            label: '',
-            icon: ''
-        },
-    ]
+        }
+
+        setSteps(step)
+    }
 
     return (
         <View

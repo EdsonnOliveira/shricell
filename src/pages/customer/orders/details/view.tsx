@@ -33,7 +33,7 @@ const View: React.FC<ViewProps> = ({
             >
                 <BoxShadow size={{ width: useMediaQuery('(max-width: 1600px)') ? '100%' : '800px', height: 'max-content'}}>
                     <BoxCommon alignItems='center' justifyContent='center' gap='25px' flex='1'>
-                        <Steps items={steps} currentStep={1} />
+                        <Steps items={steps} currentStep={dataSale.status === 'APPROVED' ? 3 : 1} />
                     </BoxCommon>
                 </BoxShadow>
                 <BoxShadow title='Amount' size={useMediaQuery('(max-width: 1000px)') && { width: '100%' }}>
