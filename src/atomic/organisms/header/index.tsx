@@ -103,9 +103,18 @@ const Header: React.FC<IndexProps> = ({
             {
                 size == 'large' && (
                     <BoxInfo>
-                        <h2 className='fontWhite txtHello'>
-                            { title ?? optionsSecondary.find(page => page.page == router.pathname)?.name }
-                        </h2>
+                        {
+                            bgColor == 'green'
+                            ? (
+                                <h1 className='fontWhite txtHello fontCenter'>
+                                    { title }
+                                </h1>
+                            ) : (
+                                <h2 className='fontWhite txtHello'>
+                                    { title ?? optionsSecondary.find(page => page.page == router.pathname)?.name }
+                                </h2>
+                            )
+                        }
                         <BoxValues>
                             { itemsPreview?.map((item, index) => <Bubble title={item.title} value={item.value} icon={item.icon} type={bgColor} />) }
                         </BoxValues>

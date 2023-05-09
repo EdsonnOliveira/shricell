@@ -3,14 +3,18 @@ import styled from "styled-components";
 import Image from "next/image";
 import Link from "next/link";
 
-import { primary, secondary, white } from "@atomic/constants/colors";
+import { green, primary, secondary, white } from "@atomic/constants/colors";
 
 import { IndexStyledProps } from "./models";
 
 export const Main = styled.section`
     width: 100%;
     height: ${( props: IndexStyledProps ) => ( props.size == 'large' ? '350px' : 'max-content' )};
-    background-color: ${( props: IndexStyledProps ) => ( props.bgColor == 'primary' ? `${primary}` : `${secondary}` )};
+    background-color: ${( props: IndexStyledProps ) => ( props.bgColor == 'primary'
+                                                        ? `${primary}`
+                                                        : props.bgColor == 'green'
+                                                        ? `${green}`
+                                                        : `${secondary}` )};
     padding: 0 50px;
     display: flex;
     flex-direction: column;

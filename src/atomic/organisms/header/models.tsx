@@ -8,7 +8,7 @@ export interface IndexProps {
     itemsPreview?: HeaderItemsPreview[]
 }
 
-type BGColorType = 'primary' | 'secondary'
+type BGColorType = 'primary' | 'secondary' | 'green'
 type SizeType = 'small' | 'large'
 
 export type IndexStyledProps = StyledProps<{
