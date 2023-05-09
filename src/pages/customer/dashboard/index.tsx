@@ -41,7 +41,7 @@ const Dashboard: React.FC<IndexProps> = ({
                 {
                     icon: '',
                     title: 'Cart',
-                    value: String(data?.totalQuantity) || '0'
+                    value: String(data?.totalQuantity || '0')
                 },
             ])
         })

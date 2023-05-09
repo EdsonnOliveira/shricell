@@ -50,8 +50,8 @@ const Cart: React.FC<IndexProps> = ({
 
         cart.total({ customerId: dataUser.id })
         .then((dataCart: CartProps) => {
-            setTotalQuantity(String(dataCart?.totalQuantity) || '0')
-            setTotalValue(String(dataCart?.totalValue) || '0')
+            setTotalQuantity(String(dataCart?.totalQuantity || '0'))
+            setTotalValue(String(dataCart?.totalValue || '0,00'))
         })
     }
 
@@ -139,7 +139,7 @@ const Cart: React.FC<IndexProps> = ({
         <>
             <View
                 idUser={String(dataUser.id)}
-                totalQuantity={totalQuantity}
+                totalQuantity={totalQuantity ?? '0'}
                 totalValue={totalValue}
                 devicesItems={devicesItems}
                 onClickBuy={onClickBuy}
