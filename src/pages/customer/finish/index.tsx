@@ -18,7 +18,7 @@ import { BankProps } from "@api/bank/models";
 import { IndexProps } from "./models";
 import View from "./view";
 
-const Dashboard: React.FC<IndexProps> = ({
+const Finish: React.FC<IndexProps> = ({
     dataUser
 }) => {
     const route = useRouter()
@@ -36,12 +36,12 @@ const Dashboard: React.FC<IndexProps> = ({
                 {
                     icon: '',
                     title: 'Items',
-                    value: String(data?.totalQuantity) || '0'
+                    value: String(data?.totalQuantity || '0')
                 },
                 {
                     icon: '',
                     title: 'Total',
-                    value: `$ ${String(data?.totalValue) || '0'}`
+                    value: `$ ${String(data?.totalValue || '0,00')}`
                 },
             ])
         })
@@ -75,9 +75,7 @@ const Dashboard: React.FC<IndexProps> = ({
 
         sales.insert({ customerId: dataUser.id, paymentReceipt: payment[0] })
         .then((data) => {
-            setAlertText(String(data))
-            setAlertType('success')
-            setAlertVisible(true)
+            route.push('customer/success')
         })
         .catch((data) => {
             setAlertText(data.message)
@@ -119,4 +117,4 @@ const mapStateToProps = ({
 
 const mapDispatchToProps = (dispatch: Dispatch) => {}
 
-export default connect(mapStateToProps, mapDispatchToProps)(Dashboard);
+export default connect(mapStateToProps, mapDispatchToProps)(Finish);
