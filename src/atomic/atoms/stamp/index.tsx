@@ -7,10 +7,11 @@ const Stamp:React.FC<IndexProps> = ({
     value,
     color = 'fontWhite',
     bgColor,
-    borderColor
+    borderColor,
+    onClick
 }) => {
     return (
-        <Main bgColor={bgColor} borderColor={borderColor}>
+        <Main bgColor={bgColor} borderColor={borderColor} onClick={onClick}>
             <h6 className={color}>{ value }</h6>
         </Main>
     )

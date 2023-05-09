@@ -12,4 +12,6 @@ export const Main = styled.div`
     border: 2px solid ${( props: IndexStyledProps ) => ( props.borderColor ?? 'transparent' )};
     justify-content: center;
     align-items: center;
+    cursor: ${( props: IndexStyledProps ) => ( props.onClick ? 'pointer' : 'initial' )};
+    transition: 0.3s;
 `
