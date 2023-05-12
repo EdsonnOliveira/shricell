@@ -19,7 +19,8 @@ const View: React.FC<ViewProps> = ({
     steps,
     totalQuantity,
     confirmPayment,
-    denyPayment
+    denyPayment,
+    totalSales
 }) => (
     <>
         <Head>
@@ -51,7 +52,7 @@ const View: React.FC<ViewProps> = ({
                 <BoxShadow size={useMediaQuery('(max-width: 1000px)') && { width: '100%' }}>
                     <BoxCommon alignItems='center' justifyContent='center' gap='10px' flex='1'>
                         <h3 className="fontW500">{ dataSale.companyName }</h3>
-                        <Stamp value='4' bgColor={primary} />
+                        <Stamp value={totalSales} bgColor={primary} />
                         <h6 className='fontGray fontW300'>This month</h6>
                     </BoxCommon>
                 </BoxShadow>

@@ -13,6 +13,7 @@ import { ItemStep } from "@atomic/constants/steps";
 import sales from "@api/sales";
 import items from "@api/sales/items";
 import { ItemsProps } from "@api/sales/items/models";
+import { SaleProps } from "@api/sales/models";
 
 import { IndexProps } from "./models";
 import View from "./view";
@@ -44,6 +45,7 @@ const SalesDetails: React.FC<IndexProps> = ({
 }) => {
     const router = useRouter();
 
+    const [totalSales, setTotalSales] = useState<string>(0)
     const [dataItems, setDataItems] = useState<TR[]>([])
     const [totalQuantity, setTotalQuantity] = useState<string>('0')
 
@@ -113,6 +115,13 @@ const SalesDetails: React.FC<IndexProps> = ({
             setTotalQuantity(totalQuantity)
             setDataItems(array)
         })
+
+        sales.listAllCustomer({
+            customerId: dataSale.customerId
+        })
+        .then((data: SaleProps[]) => {
+            setTotalSales(String(data.length))
+        })
     }
 
     const [steps, setSteps] = useState<ItemStep[]>(stepLoad)
@@ -159,6 +168,7 @@ const SalesDetails: React.FC<IndexProps> = ({
             totalQuantity={totalQuantity}
             confirmPayment={confirmPayment}
             denyPayment={denyPayment}
+            totalSales={totalSales}
         />
     )
 }

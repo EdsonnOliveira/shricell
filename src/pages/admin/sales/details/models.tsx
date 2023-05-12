@@ -16,4 +16,5 @@ export interface ViewProps {
     totalQuantity: string;
     confirmPayment: SetVoid;
     denyPayment: SetVoid;
+    totalSales: string;
 }

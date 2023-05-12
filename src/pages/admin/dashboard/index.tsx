@@ -5,6 +5,8 @@ import { TR } from "@atomic/constants/table";
 import { green } from "@atomic/constants/colors";
 import { HeaderItemsPreview } from "@atomic/constants/header";
 
+import { getDateCurrent } from "@constants/date";
+
 import { Dispatch } from "redux";
 import { connect } from "react-redux";
 import { LoginTypes } from "@redux/reducers/login/models";
@@ -18,35 +20,14 @@ import { SaleProps } from "@api/sales/models";
 import { IndexProps } from "./models";
 import View from "./view";
 
-const itemsPreview: HeaderItemsPreview[] = [
-    {
-        icon: '',
-        title: 'Sales',
-        value: '34'
-    },
-    {
-        icon: '',
-        title: 'Unfinished',
-        value: '5'
-    },
-    {
-        icon: '',
-        title: 'Addition',
-        value: '7.3%'
-    },
-    {
-        icon: '',
-        title: 'Visits',
-        value: '61'
-    },
-]
-
 const Dashboard: React.FC<IndexProps> = ({
     dataUser,
     setDataSale
 }) => {
     const router = useRouter();
 
+    const [itemsPreview, setItemsPreview] = useState<HeaderItemsPreview[]>([])
+    const [billedAmount, setBilledAmount] = useState<string>('0,00')
     const [latestSales, setLatestSales] = useState<TR[]>([])
     const [outOfStock, setOutOfStock] = useState<StockProps[]>([])
     
@@ -55,8 +36,50 @@ const Dashboard: React.FC<IndexProps> = ({
     }, [])
 
     const loadData = () => {
+        let itemsPreview = [
+            {
+                icon: '',
+                title: 'Sales',
+                value: '0'
+            },
+            {
+                icon: '',
+                title: 'Unfinished',
+                value: '0'
+            },
+            {
+                icon: '',
+                title: 'Profit',
+                value: '0'
+            },
+        ]
+
+        sales.listAll()
+        .then((data: SaleProps[]) => {
+            itemsPreview[0].value = String(data.length)
+        })
+
+        sales.listAllPending()
+        .then((data: SaleProps[]) => {
+            itemsPreview[1].value = String(data.length)
+        })
+
+        sales.profit({ dateStart: getDateCurrent(), dateEnd: getDateCurrent() })
+        .then((data) => {
+            itemsPreview[2].value = String(data || '0,00')
+        })
+        
+        setItemsPreview(itemsPreview)
+
+        sales.totalSold({ dateStart: getDateCurrent(), dateEnd: getDateCurrent() })
+        .then((data) => {
+            setBilledAmount(String(data || '0,00'))
+        })
+        
+
         sales.currentWeek()
         .then((data: SaleProps[]) => {
+            console.error(data)
             let array = data.map((item, index) => (
                 {
                     td: [
@@ -104,6 +127,7 @@ const Dashboard: React.FC<IndexProps> = ({
             nameUser={dataUser.name || 'Shri'}
             latestSales={latestSales}
             itemsPreview={itemsPreview}
+            billedAmount={billedAmount}
             outOfStock={outOfStock}
             stampSelected={stampSelected}
             setStampSelected={setStampSelected}

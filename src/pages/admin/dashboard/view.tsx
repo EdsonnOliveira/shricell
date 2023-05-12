@@ -18,7 +18,8 @@ const View: React.FC<ViewProps> = ({
     itemsPreview,
     outOfStock,
     stampSelected,
-    setStampSelected
+    setStampSelected,
+    billedAmount
 }) => (
     <>
         <Head>
@@ -35,8 +36,7 @@ const View: React.FC<ViewProps> = ({
             >
                 <BoxShadow title='Billed amount' size={useMediaQuery('(max-width: 1000px)') && { width: '100%' }}>
                     <BoxCommon flexDirection='row' alignItems='center' justifyContent='space-between' flex='1'>
-                        <h2>$ 4239,12</h2>
-                        <Stamp value='+7.3%' bgColor={green} />
+                        <h2>$ { billedAmount }</h2>
                     </BoxCommon>
                 </BoxShadow>
                 <BoxShadow title='Cellphones' size={useMediaQuery('(max-width: 1000px)') && { width: '100%' }}>

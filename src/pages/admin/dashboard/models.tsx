@@ -16,6 +16,7 @@ export interface ViewProps {
     nameUser: string;
     latestSales: TR[]
     itemsPreview: HeaderItemsPreview[]
+    billedAmount: string;
     outOfStock: StockProps[];
     stampSelected: number;
     setStampSelected: SetIndex;

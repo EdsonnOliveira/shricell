@@ -2,6 +2,8 @@ export type IndexType = {
     customerId?: string | number;
     saleId?: string | number;
     paymentReceipt?: FileList | null;
+    dateStart?: string
+    dateEnd?: string;
 }
 
 export interface SaleProps {
