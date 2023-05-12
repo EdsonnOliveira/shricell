@@ -2,10 +2,10 @@ import React, { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 
 import { TR } from "@atomic/constants/table";
-import { green } from "@atomic/constants/colors";
+import { green, primary } from "@atomic/constants/colors";
 import { HeaderItemsPreview } from "@atomic/constants/header";
 
-import { getDateCurrent } from "@constants/date";
+import { getDateCurrent, getFirstLastDay } from "@constants/date";
 
 import { Dispatch } from "redux";
 import { connect } from "react-redux";
@@ -15,7 +15,7 @@ import { SalesTypes } from "@redux/reducers/sales/models";
 import stock from "@api/stock";
 import sales from "@api/sales";
 import { StockProps } from "@api/stock/models";
-import { SaleProps } from "@api/sales/models";
+import { BrandProps, DevicesProps, SaleProps } from "@api/sales/models";
 
 import { IndexProps } from "./models";
 import View from "./view";
@@ -28,6 +28,8 @@ const Dashboard: React.FC<IndexProps> = ({
 
     const [itemsPreview, setItemsPreview] = useState<HeaderItemsPreview[]>([])
     const [billedAmount, setBilledAmount] = useState<string>('0,00')
+    const [dataDevices, setDataDevices] = useState<Object>({})
+    const [dataBrands, setDataBrands] = useState<Object>({})
     const [latestSales, setLatestSales] = useState<TR[]>([])
     const [outOfStock, setOutOfStock] = useState<StockProps[]>([])
     
@@ -76,10 +78,40 @@ const Dashboard: React.FC<IndexProps> = ({
             setBilledAmount(String(data || '0,00'))
         })
         
+        sales.bestSellerDevices({ dateStart: getFirstLastDay().first, dateEnd: getFirstLastDay().last })
+        .then((data: DevicesProps[]) => {
+            let labels = data.map(item => `${item.model} - ${item.storage} - ${item.color}`)
+            const dataDevices = {
+                labels,
+                datasets: [
+                    {
+                        label: 'Total Sold',
+                        data: data.map(item => item.totalSold),
+                        backgroundColor: primary,
+                    },
+                ],
+            };
+            setDataDevices(dataDevices)
+        })
+
+        sales.bestSellerBrands({ dateStart: getFirstLastDay().first, dateEnd: getFirstLastDay().last })
+        .then((data: BrandProps[]) => {
+            let labels = data.map(item => item.brand)
+            const dataBrands = {
+                labels,
+                datasets: [
+                    {
+                        label: 'Total Sold',
+                        data: data.map(item => item.quantity),
+                        backgroundColor: primary,
+                    },
+                ],
+            };
+            setDataBrands(dataBrands)
+        })
 
         sales.currentWeek()
         .then((data: SaleProps[]) => {
-            console.error(data)
             let array = data.map((item, index) => (
                 {
                     td: [
@@ -128,6 +160,8 @@ const Dashboard: React.FC<IndexProps> = ({
             latestSales={latestSales}
             itemsPreview={itemsPreview}
             billedAmount={billedAmount}
+            dataDevices={dataDevices}
+            dataBrands={dataBrands}
             outOfStock={outOfStock}
             stampSelected={stampSelected}
             setStampSelected={setStampSelected}

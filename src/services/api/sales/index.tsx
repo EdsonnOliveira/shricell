@@ -1,5 +1,5 @@
 import api from '@api/index'
-import { IndexType, SaleProps } from './models'
+import { BrandProps, DevicesProps, IndexType, SaleProps } from './models'
 
 const listAll = () => {
     return new Promise(async (resolve, reject) => {
@@ -169,6 +169,58 @@ const profit = ({ dateStart, dateEnd }: IndexType) => {
     })
 }
 
+const bestSellerDevices = ({ dateStart, dateEnd }: IndexType) => {
+    return new Promise(async (resolve, reject) => {
+        await api.post('sales/best-seller-devices.php', { dateStart, dateEnd })
+        .then(response => {
+            let res:DevicesProps[] = response.data.devices
+            let array:DevicesProps[] = []
+            for (let i = 0; i < res.length; i++ ) {
+                let json: DevicesProps = {
+                    deviceId: res[i].deviceId,
+                    brandId: res[i].brandId,
+                    brand: res[i].brand,
+                    modelId: res[i].modelId,
+                    model: res[i].model,
+                    colorId: res[i].colorId,
+                    color: res[i].color,
+                    storageId: res[i].storageId,
+                    storage: res[i].storage,
+                    totalSold: res[i].totalSold,
+                    gradeId: res[i].gradeId,
+                    gradeName: res[i].gradeName,
+                    gradeDescription: res[i].gradeDescription,
+                    salePrice: res[i].salePrice,
+                }
+                array.push(json)
+            }
+            resolve(array)
+        })
+        .catch((response) => reject(response))
+    })
+}
+
+const bestSellerBrands = ({ dateStart, dateEnd }: IndexType) => {
+    return new Promise(async (resolve, reject) => {
+        await api.post('sales/best-seller-brands.php', { dateStart, dateEnd })
+        .then(response => {
+            let res:BrandProps[] = response.data.brands
+            let array:BrandProps[] = []
+            
+            for (let i = 0; i < res.length; i++ ) {
+                let json: BrandProps = {
+                    brandId: res[i].brandId,
+                    brand: res[i].brand,
+                    quantity: res[i].quantity
+                }
+                array.push(json)
+            }
+            resolve(array)
+        })
+        .catch((response) => reject(response))
+    })
+}
+
 export default {
     listAll,
     listAllPending,
@@ -178,5 +230,7 @@ export default {
     customerMonthly,
     currentWeek,
     totalSold,
-    profit
+    profit,
+    bestSellerDevices,
+    bestSellerBrands
 }

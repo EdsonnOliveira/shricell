@@ -1,7 +1,7 @@
 import React from "react";
 import Head from "next/head";
 
-import { green, primary, red, terciary } from "@atomic/constants/colors";
+import { primary, red, terciary } from "@atomic/constants/colors";
 import Header from "@atomic/organisms/header";
 import BoxShadow from "@atomic/atoms/boxShadow";
 import Stamp from "@atomic/atoms/stamp";
@@ -10,7 +10,34 @@ import Table from "@atomic/mocelules/table";
 
 import useMediaQuery from "@hooks/useMediaQuery";
 
+import { BarElement, CategoryScale, Chart, Legend, LinearScale, Title, Tooltip } from "chart.js";
+import { Bar } from "react-chartjs-2";
+
 import { ViewProps } from "./models";
+
+Chart.register(
+    CategoryScale,
+    LinearScale,
+    BarElement,
+    Title,
+    Tooltip,
+    Legend
+)
+
+const options = {
+    indexAxis: 'y' as const,
+    elements: {
+        bar: {
+            borderWidth: 2,
+        },
+    },
+    responsive: true,
+    plugins: {
+        legend: {
+            display: false
+        },
+    },
+};
 
 const View: React.FC<ViewProps> = ({
     nameUser,
@@ -19,7 +46,9 @@ const View: React.FC<ViewProps> = ({
     outOfStock,
     stampSelected,
     setStampSelected,
-    billedAmount
+    billedAmount,
+    dataDevices,
+    dataBrands
 }) => (
     <>
         <Head>
@@ -39,13 +68,7 @@ const View: React.FC<ViewProps> = ({
                         <h2>$ { billedAmount }</h2>
                     </BoxCommon>
                 </BoxShadow>
-                <BoxShadow title='Cellphones' size={useMediaQuery('(max-width: 1000px)') && { width: '100%' }}>
-                    <BoxCommon flexDirection='row' alignItems='center' justifyContent='space-between' flex='1'>
-                        <h2>78</h2>
-                        <Stamp value='+10.1%' />
-                    </BoxCommon>
-                </BoxShadow>
-                <BoxShadow title='Cellphones sold' size={{ width: '100%' }}>
+                <BoxShadow title='Cellphones sold' size={{ width: '100%', height: 700 }}>
                     <BoxCommon flexDirection='row' gap='5px' mt='-25px' justifyContent='flex-end'>
                         <Stamp
                             value='DEVICE'
@@ -58,6 +81,22 @@ const View: React.FC<ViewProps> = ({
                             onClick={() => setStampSelected(1)}
                         />
                     </BoxCommon>
+                    {
+                        dataDevices?.labels && stampSelected === 0 && (
+                            <Bar
+                                options={options}
+                                data={dataDevices}
+                            />
+                        )
+                    }
+                    {
+                        dataBrands?.labels && stampSelected === 1 && (
+                            <Bar
+                                options={options}
+                                data={dataBrands}
+                            />
+                        )
+                    }
                 </BoxShadow>
                 <BoxShadow title='Latest sales' size={{ width: '100%', height: 'max-content' }}>
                     <Table

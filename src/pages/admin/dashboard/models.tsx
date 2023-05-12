@@ -20,4 +20,6 @@ export interface ViewProps {
     outOfStock: StockProps[];
     stampSelected: number;
     setStampSelected: SetIndex;
+    dataDevices: any;
+    dataBrands: any;
 }
