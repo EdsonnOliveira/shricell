@@ -1,5 +1,7 @@
+import { Icons } from "./icon";
+
 export type HeaderItemsPreview = {
-    icon: string;
+    icon: Icons;
     value: string;
     title: string;
 }

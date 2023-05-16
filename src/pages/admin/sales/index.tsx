@@ -32,7 +32,7 @@ const Sales: React.FC<IndexProps> = ({
         .then((data: SaleProps[]) => {
             setItemsPreview([
                 {
-                    icon: '',
+                    icon: 'cart',
                     title: 'Sales',
                     value: String(data.length)
                 },

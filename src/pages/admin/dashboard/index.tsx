@@ -40,17 +40,17 @@ const Dashboard: React.FC<IndexProps> = ({
     const loadData = () => {
         let itemsPreview = [
             {
-                icon: '',
+                icon: 'cart',
                 title: 'Sales',
                 value: '0'
             },
             {
-                icon: '',
+                icon: 'unfinished',
                 title: 'Unfinished',
                 value: '0'
             },
             {
-                icon: '',
+                icon: '$',
                 title: 'Profit',
                 value: '0'
             },

@@ -7,6 +7,7 @@ import BoxShadow from "@atomic/atoms/boxShadow";
 import Stamp from "@atomic/atoms/stamp";
 import BoxCommon from "@atomic/atoms/boxCommon";
 import Table from "@atomic/mocelules/table";
+import Icon from "@atomic/atoms/icon";
 
 import useMediaQuery from "@hooks/useMediaQuery";
 
@@ -68,7 +69,7 @@ const View: React.FC<ViewProps> = ({
                         <h2>$ { billedAmount }</h2>
                     </BoxCommon>
                 </BoxShadow>
-                <BoxShadow title='Cellphones sold' size={{ width: '100%', height: 700 }}>
+                <BoxShadow title='Best sellers' size={{ width: '100%', height: 700 }}>
                     <BoxCommon flexDirection='row' gap='5px' mt='-25px' justifyContent='flex-end'>
                         <Stamp
                             value='DEVICE'

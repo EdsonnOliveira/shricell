@@ -39,7 +39,7 @@ const Dashboard: React.FC<IndexProps> = ({
         .then((data: CartProps) => {
             setItemsPreview([
                 {
-                    icon: '',
+                    icon: 'cart',
                     title: 'Cart',
                     value: String(data?.totalQuantity || '0')
                 },
