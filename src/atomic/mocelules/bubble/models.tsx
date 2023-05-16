@@ -1,9 +1,10 @@
 import { StyledProps } from "styled-components";
+import { Icons } from "@atomic/constants/icon";
 
 export interface IndexProps {
     value: string;
     title: string;
-    icon: string
+    icon: Icons
     type: ColorType
 }
 

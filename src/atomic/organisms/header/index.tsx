@@ -4,7 +4,7 @@ import { useRouter } from "next/router";
 import LogoPrimary from '@assets/logo/Logo2.png'
 import LogoSecondary from '@assets/logo/Logo3.png'
 
-import Bubble from "@atomic/atoms/bubble";
+import Bubble from "@atomic/mocelules/bubble";
 import Button from "@atomic/atoms/button";
 
 import { IndexProps } from "./models";

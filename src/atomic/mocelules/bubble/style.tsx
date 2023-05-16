@@ -16,6 +16,8 @@ export const Round = styled.div`
     height: 65px;
     background-color: ${( props: IndexStyledProps ) => ( props.type === 'secondary' ? `${blue}` : `${BlueCian}` )};
     border-radius: 70px;
+    justify-content: center;
+    align-items: center;
 `
 
 export const Text = styled.hgroup`

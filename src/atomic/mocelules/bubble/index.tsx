@@ -1,5 +1,8 @@
 import React from "react";
 
+import { white } from "@atomic/constants/colors";
+import Icon from "../../atoms/icon";
+
 import { IndexProps } from "./models";
 import { Main, Round, Text } from "./style";
 
@@ -12,7 +15,7 @@ const Bubble: React.FC<IndexProps> = ({
     return (
         <Main className='bubble'>
             <Round type={type}>
-                { icon }
+                <Icon name={icon} size={30} color={white} />
             </Round>
             <Text>
                 <h4 className='fontWhite fontW600'>{ value }</h4>
