@@ -14,5 +14,5 @@ type Data = {
     hash: string | number;
     saleCost: string | number;
     paymentReceipt: string | number;
-    status: 'PENDING' | 'APPROVED' | 'DENIED';
+    status: 'PENDING' | 'APPROVED' | 'DENIED' | '';
 }

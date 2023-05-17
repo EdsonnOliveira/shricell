@@ -1,1 +1,1 @@
-export type Icons = 'cart' | 'unfinished'
+export type Icons = 'cart' | 'unfinished' | ''

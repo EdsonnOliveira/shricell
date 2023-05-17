@@ -3,4 +3,4 @@ export type OptionsType = {
     value: string;
 }
 
-export type SetOptionsType = ({label, value}) => void
+export type SetOptionsType = ({label, value}: { label: string, value: string }) => void
