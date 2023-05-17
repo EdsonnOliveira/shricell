@@ -8,7 +8,7 @@ import { LoginTypes } from "@redux/reducers/login/models";
 import Alert from "@atomic/atoms/alert";
 import { AlertType } from "@atomic/constants/alert";
 
-import { ItemsCart } from "@types/itemsCart";
+import { ItemsCart } from "@typing/itemsCart";
 
 import cart from "@api/sales/cart";
 import { CartProps } from "@api/sales/cart/models";

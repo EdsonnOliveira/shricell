@@ -10,7 +10,7 @@ import { OptionsType } from "@atomic/constants/select";
 import Alert from "@atomic/atoms/alert";
 import { AlertType } from "@atomic/constants/alert";
 
-import { ItemsCart } from "@types/itemsCart";
+import { ItemsCart } from "@typing/itemsCart";
 
 import grades from "@api/stock/grades";
 import devices from "@api/stock/devices";

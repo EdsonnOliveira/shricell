@@ -1,4 +1,4 @@
-import { SetVoid } from "@types/set";
+import { SetVoid } from "@typing/set";
 import { StyledProps } from "styled-components";
 import { Margins } from "@atomic/constants/spacing";
 

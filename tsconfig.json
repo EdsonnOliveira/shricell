@@ -21,7 +21,7 @@
       "@atomic/*": ["./src/atomic/*"],
       "@api/*": ["./src/services/api/*"],
       "@redux/*": ["./src/services/redux/*"],
-      "@types/*": ["./src/types/*"],
+      "@typing/*": ["./src/types/*"],
       "@hooks/*": ["./src/hooks/*"],
       "@constants/*": ["./src/constants/*"]
     }

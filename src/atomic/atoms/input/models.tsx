@@ -2,7 +2,7 @@ import { ChangeEventHandler, HTMLInputTypeAttribute } from "react";
 import { StyledProps } from "styled-components";
 import { Margins } from "@atomic/constants/spacing";
 import { TextAlign } from "@atomic/constants/text";
-import { SetBoolean, SetVoid } from "@types/set";
+import { SetBoolean, SetVoid } from "@typing/set";
 
 export interface IndexProps extends Margins {
     width?: string;

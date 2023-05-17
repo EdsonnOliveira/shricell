@@ -1,8 +1,8 @@
 import { HeaderItemsPreview } from "@atomic/constants/header";
 import { LoginTypes } from "@redux/reducers/login/models";
 import { BankProps } from "@api/bank/models";
-import { SetBoolean, SetFile, SetVoid } from "@types/set";
-import { GetFile } from "@types/get";
+import { SetBoolean, SetFile, SetVoid } from "@typing/set";
+import { GetFile } from "@typing/get";
 
 export interface IndexProps {
     dataUser: LoginTypes['data']

@@ -6,7 +6,7 @@ import { HeaderItemsPreview } from "@atomic/constants/header";
 import { TR } from "@atomic/constants/table";
 import { OptionsType, SetOptionsType } from "@atomic/constants/select";
 
-import { SetBoolean, SetText, SetVoid } from "@types/set";
+import { SetBoolean, SetText, SetVoid } from "@typing/set";
 
 export interface IndexProps {
     setDataStock: (data: StockTypes['data']) => void;

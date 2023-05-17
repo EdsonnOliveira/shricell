@@ -1,5 +1,5 @@
-import { ItemsCart } from "@types/itemsCart";
-import { SetBoolean, SetVoid } from "@types/set";
+import { ItemsCart } from "@typing/itemsCart";
+import { SetBoolean, SetVoid } from "@typing/set";
 import { LoginTypes } from "@redux/reducers/login/models";
 
 export interface IndexProps {

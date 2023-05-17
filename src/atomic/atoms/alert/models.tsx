@@ -1,6 +1,6 @@
 import { AlertType } from "@atomic/constants/alert";
 import { StyledProps } from "styled-components";
-import { SetBoolean } from "@types/set";
+import { SetBoolean } from "@typing/set";
 
 export interface IndexProps {
     type: AlertType;

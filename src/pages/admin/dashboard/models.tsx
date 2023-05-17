@@ -5,7 +5,7 @@ import { TR } from "@atomic/constants/table";
 import { HeaderItemsPreview } from "@atomic/constants/header";
 
 import { StockProps } from "@api/stock/models";
-import { SetIndex } from "@types/set";
+import { SetIndex } from "@typing/set";
 
 export interface IndexProps {
     dataUser: LoginTypes['data']

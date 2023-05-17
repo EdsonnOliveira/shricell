@@ -1,4 +1,4 @@
-import { SetIndex } from "@types/set";
+import { SetIndex } from "@typing/set";
 import { StyledProps } from "styled-components";
 import { Margins } from "@atomic/constants/spacing";
 import { RadioButtonType } from "@atomic/constants/radioButton";

@@ -1,4 +1,4 @@
-import { SetBoolean, SetText, SetVoid } from "@types/set";
+import { SetBoolean, SetText, SetVoid } from "@typing/set";
 import { SuppliersTypes } from "@redux/reducers/suppliers/models";
 
 export interface IndexProps {

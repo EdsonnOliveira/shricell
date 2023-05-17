@@ -1,5 +1,5 @@
-import { SetBoolean, SetFile, SetText, SetVoid } from "@types/set";
-import { GetFile } from "@types/get";
+import { SetBoolean, SetFile, SetText, SetVoid } from "@typing/set";
+import { GetFile } from "@typing/get";
 import { LoginTypes } from "@redux/reducers/login/models";
 
 export interface IndexProps {

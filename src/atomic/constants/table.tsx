@@ -1,6 +1,6 @@
 import { TextAlign, TextWeight } from "@atomic/constants/text";
 import { StyledProps } from "styled-components";
-import { SetVoid } from "@types/set";
+import { SetVoid } from "@typing/set";
 
 export type TR = {
     td: TD[];

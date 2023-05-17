@@ -1,5 +1,5 @@
 import { OptionsType } from "@atomic/constants/select";
-import { SetBoolean, SetText } from "@types/set";
+import { SetBoolean, SetText } from "@typing/set";
 import { StockTypes } from "~/services/redux/reducers/stock/models";
 
 export interface IndexProps {

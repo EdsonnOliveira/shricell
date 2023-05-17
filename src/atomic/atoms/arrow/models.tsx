@@ -1,5 +1,5 @@
 import { StyledProps } from "styled-components"
-import { SetVoid } from "@types/set";
+import { SetVoid } from "@typing/set";
 
 export interface IndexProps {
     direction?: DirectionType;

@@ -1,6 +1,6 @@
 import { HeaderItemsPreview } from "@atomic/constants/header";
-import { ItemsCart } from "@types/itemsCart";
-import { SetBoolean } from "@types/set";
+import { ItemsCart } from "@typing/itemsCart";
+import { SetBoolean } from "@typing/set";
 import { OptionsType } from "@atomic/constants/select";
 import { LoginTypes } from "@redux/reducers/login/models";
 

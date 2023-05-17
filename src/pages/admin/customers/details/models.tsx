@@ -1,7 +1,7 @@
 import { TR } from "@atomic/constants/table";
 import { CustomersTypes } from "@redux/reducers/customers/models";
 import { SalesTypes } from "@redux/reducers/sales/models";
-import { SetText } from "@types/set";
+import { SetText } from "@typing/set";
 
 export interface IndexProps {
     dataCustomer: CustomersTypes['data']

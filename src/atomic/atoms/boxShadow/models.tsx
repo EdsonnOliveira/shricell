@@ -1,6 +1,6 @@
 import { StyledProps } from "styled-components";
-import { Size } from "@types/size";
-import { SetVoid } from "@types/set";
+import { Size } from "@typing/size";
+import { SetVoid } from "@typing/set";
 import { Margins } from "@atomic/constants/spacing";
 
 export interface IndexProps extends Margins {

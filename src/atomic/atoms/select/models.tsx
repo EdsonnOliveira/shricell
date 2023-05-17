@@ -4,7 +4,7 @@ import { Margins } from "@atomic/constants/spacing";
 import { OptionsType, SetOptionsType } from "@atomic/constants/select";
 import { TextAlign } from "@atomic/constants/text";
 
-import { SetText } from "@types/set";
+import { SetText } from "@typing/set";
 
 export interface IndexProps extends Margins {
     width?: string;
