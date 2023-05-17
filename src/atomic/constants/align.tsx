@@ -13,7 +13,7 @@ export type Alignments = {
     alignItems?: AlignItems;
     alignItems800?: AlignItems;
     gap?: string;
-    flexWrap: FlexWrap;
+    flexWrap?: FlexWrap;
 }
 
 export type AlignmentsStyledProps = StyledProps<Alignments>
