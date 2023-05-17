@@ -29,6 +29,7 @@ const Customers: React.FC<IndexProps> = ({
 
     const loadData = () => {
         customer.listAll()
+        // @ts-ignore
         .then((data: CustomerProps[]) => {
             setItemsPreview([
                 {
@@ -87,6 +88,7 @@ const Customers: React.FC<IndexProps> = ({
                             },
                     ],
                     onClick: () => {
+                        // @ts-ignore
                         setDataCustomer(data[index])
                         router.push({
                             pathname: '/admin/customers/details',
@@ -97,6 +99,7 @@ const Customers: React.FC<IndexProps> = ({
                     }
                 }
             ))
+            // @ts-ignore
             setData(array)
         })
     }

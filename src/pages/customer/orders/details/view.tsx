@@ -25,6 +25,7 @@ const View: React.FC<ViewProps> = ({
         <main className="main">
             <BoxCommon
                 flex={useMediaQuery('(max-width: 1100px)') ? 'unset' : '1'}
+                // @ts-ignore
                 width={useMediaQuery('(max-width: 1100px)') && '100%'}
                 flexDirection='row'
                 gap='20px'
@@ -36,11 +37,13 @@ const View: React.FC<ViewProps> = ({
                         <Steps items={steps} currentStep={dataSale.status === 'APPROVED' ? 3 : 1} />
                     </BoxCommon>
                 </BoxShadow>
+                {/* @ts-ignore */}
                 <BoxShadow title='Amount' size={useMediaQuery('(max-width: 1000px)') && { width: '100%' }}>
                     <BoxCommon flexDirection='row' alignItems='center' justifyContent='space-between' flex='1'>
                         <h2>$ { dataSale.saleValue }</h2>
                     </BoxCommon>
                 </BoxShadow>
+                {/* @ts-ignore */}
                 <BoxShadow title='Items' size={useMediaQuery('(max-width: 1000px)') && { width: '100%' }}>
                     <BoxCommon flexDirection='row' alignItems='center' justifyContent='space-between' flex='1'>
                         <h2>{ totalQuantity }</h2>

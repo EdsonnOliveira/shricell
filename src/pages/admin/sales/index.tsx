@@ -29,6 +29,7 @@ const Sales: React.FC<IndexProps> = ({
 
     const loadData = () => {
         sales.listAll()
+        // @ts-ignore
         .then((data: SaleProps[]) => {
             setItemsPreview([
                 {
@@ -78,11 +79,13 @@ const Sales: React.FC<IndexProps> = ({
                             },
                     ],
                     onClick: () => {
+                        // @ts-ignore
                         setDataSale(data[index])
                         router.push('/admin/sales/details')
                     }
                 }
             ))
+            // @ts-ignore
             setData(array)
         })
     }

@@ -45,7 +45,7 @@ const SalesDetails: React.FC<IndexProps> = ({
 }) => {
     const router = useRouter();
 
-    const [totalSales, setTotalSales] = useState<string>(0)
+    const [totalSales, setTotalSales] = useState<string>('0')
     const [dataItems, setDataItems] = useState<TR[]>([])
     const [totalQuantity, setTotalQuantity] = useState<string>('0')
 
@@ -59,6 +59,7 @@ const SalesDetails: React.FC<IndexProps> = ({
             customerId: dataUser.id,
             saleId: dataSale.saleId
         })
+        // @ts-ignore
         .then((data: ItemsProps[]) => {
             let totalQuantity = String(data.reduce((accumulator, value) => Number(accumulator) + Number(value.quantity), 0))
             let array = data.map((item, index) => (
@@ -113,12 +114,14 @@ const SalesDetails: React.FC<IndexProps> = ({
             ))
 
             setTotalQuantity(totalQuantity)
+            // @ts-ignore
             setDataItems(array)
         })
 
         sales.listAllCustomer({
             customerId: dataSale.customerId
         })
+        // @ts-ignore
         .then((data: SaleProps[]) => {
             setTotalSales(String(data.length))
         })

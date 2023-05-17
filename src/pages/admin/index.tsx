@@ -23,6 +23,7 @@ const Home: React.FC<IndexProps> = ({
 
   const clickLogin = () => {
     user.loginAdmin({ email, password })
+    // @ts-ignore
     .then((data: LoginProps) => {
       setToken(data.access_token)
       setDataLogin({

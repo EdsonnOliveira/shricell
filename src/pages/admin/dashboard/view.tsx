@@ -59,11 +59,13 @@ const View: React.FC<ViewProps> = ({
         <main className="main">
             <BoxCommon
                 flex={useMediaQuery('(max-width: 1100px)') ? 'unset' : '1'}
+                // @ts-ignore
                 width={useMediaQuery('(max-width: 1100px)') && '100%'}
                 flexDirection='row'
                 gap='20px'
                 flexWrap='wrap'
             >
+                {/* @ts-ignore */}
                 <BoxShadow title='Billed amount' size={useMediaQuery('(max-width: 1000px)') && { width: '100%' }}>
                     <BoxCommon flexDirection='row' alignItems='center' justifyContent='space-between' flex='1'>
                         <h2>$ { billedAmount }</h2>

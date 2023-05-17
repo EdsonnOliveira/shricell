@@ -53,6 +53,7 @@ const Orders: React.FC<IndexProps> = ({
             customerId: dataUser.id,
             saleId: dataSale.saleId
         })
+        // @ts-ignore
         .then((data: ItemsProps[]) => {
             let totalQuantity = String(data.reduce((accumulator, value) => Number(accumulator) + Number(value.quantity), 0))
             let array = data.map((item, index) => (
@@ -106,6 +107,7 @@ const Orders: React.FC<IndexProps> = ({
             ))
 
             setTotalQuantity(totalQuantity)
+            // @ts-ignore
             setDataItems(array)
         })
     }

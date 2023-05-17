@@ -55,25 +55,39 @@ const View: React.FC<ViewProps> = ({
             >
                 <BoxCommon gap='20px'>
                     <BoxCommon width='100%' flexDirection={useMediaQuery('(max-width: 1000px)') ? 'column' : 'row'} gap='20px'>
+                        {/* @ts-ignore */}
                         <Input label='DUNS' width={useMediaQuery('(max-width: 1000px)') ? '100%' : '140px'} />
+                        {/* @ts-ignore */}
                         <Input label='Tax ID' width={useMediaQuery('(max-width: 1000px)') ? '100%' : '140px'} />
+                        {/* @ts-ignore */}
                         <Input label='Business ID' width={useMediaQuery('(max-width: 1000px)') ? '100%' : '140px'} placeholder="Business" />
+                        {/* @ts-ignore */}
                         <Input label='Phone' placeholder="+00 00000-0000" width={useMediaQuery('(max-width: 1000px)') ? '100%' : '275px'} />
                     </BoxCommon>
                     <BoxCommon flexDirection={useMediaQuery('(max-width: 1000px)') ? 'column' : 'row'} gap='20px'>
+                        {/* @ts-ignore */}
                         <Input label='Company Legal Name' width="400px" />
+                        {/* @ts-ignore */}
                         <Input label='E-Mail' width="335px" />
                     </BoxCommon>
                     <BoxCommon width='100%' flexDirection={useMediaQuery('(max-width: 1000px)') ? 'column' : 'row'} gap='20px'>
+                        {/* @ts-ignore */}
                         <Input label='ZIP Code' width={useMediaQuery('(max-width: 1000px)') ? '100%' : '140px'} />
+                        {/* @ts-ignore */}
                         <Input label='Address' width={useMediaQuery('(max-width: 1000px)') ? '100%' : '240px'} />
+                        {/* @ts-ignore */}
                         <Input label='State' width={useMediaQuery('(max-width: 1000px)') ? '100%' : '140px'} />
+                        {/* @ts-ignore */}
                         <Input label='City' width={useMediaQuery('(max-width: 1000px)') ? '100%' : '175px'}  />
                     </BoxCommon>
                     <BoxCommon width='100%' flexDirection={useMediaQuery('(max-width: 1000px)') ? 'column' : 'row'} gap='20px'>
+                        {/* @ts-ignore */}
                         <Input label='Country' width={useMediaQuery('(max-width: 1000px)') ? '100%' : '140px'} />
+                        {/* @ts-ignore */}
                         <Input label='Web Site' width={useMediaQuery('(max-width: 1000px)') ? '100%' : '240px'} />
+                        {/* @ts-ignore */}
                         <Input label='Type Industry' width={useMediaQuery('(max-width: 1000px)') ? '100%' : '150px'} placeholder="Type" />
+                        {/* @ts-ignore */}
                         <Input label='State Corp.' width={useMediaQuery('(max-width: 1000px)') ? '100%' : '165px'}  />
                     </BoxCommon>
                 </BoxCommon>

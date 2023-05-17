@@ -31,6 +31,7 @@ const Dashboard: React.FC<IndexProps> = ({
 
     const loadData = () => {
         sales.listAllCustomer({ customerId: dataUser.id })
+        // @ts-ignore
         .then((data: SaleProps[]) => {
             setItemsPreview([
                 {
@@ -80,11 +81,13 @@ const Dashboard: React.FC<IndexProps> = ({
                             },
                     ],
                     onClick: () => {
+                        // @ts-ignore
                         setDataSale(data[index])
                         router.push('/customer/orders/details')
                     }
                 }
             ))
+            // @ts-ignore
             setData(array)
         })
     }

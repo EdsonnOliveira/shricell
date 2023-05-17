@@ -82,11 +82,12 @@ const toSellCardList = () => {
                 let colors;
                 let json: DevicesProps
                 await toSell({
-                    brandId: data.brandId,
-                    modelId: data.modelId,
-                    storageId: data.storageId,
-                    gradeId: data.gradeId
+                    brandId: String(data.brandId),
+                    modelId: String(data.modelId),
+                    storageId: String(data.storageId),
+                    gradeId: String(data.gradeId)
                 })
+                // @ts-ignore
                 .then((data: DevicesProps[]) => {
                     colors = data.map(item => (
                         {
@@ -112,6 +113,7 @@ const toSellCardList = () => {
                     gradeId: data.gradeId,
                     gradeName: data.gradeName,
                     salePrice: data.salePrice,
+                    // @ts-ignore
                     color: colors
                 }
                 array.push(json)

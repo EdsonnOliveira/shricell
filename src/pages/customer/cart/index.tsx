@@ -31,6 +31,7 @@ const Cart: React.FC<IndexProps> = ({
 
     const loadData = () => {
         cart.listAll({ customerId: dataUser.id })
+        // @ts-ignore
         .then((dataCart: CartProps[]) => {
             let array = dataCart.map(item => (
                 {
@@ -43,12 +44,13 @@ const Cart: React.FC<IndexProps> = ({
                     colors: item.color,
                 }
             ))
-            
+            // @ts-ignore
             setDevicesItems(array)
         })
         .catch(() => null)
 
         cart.total({ customerId: dataUser.id })
+        // @ts-ignore
         .then((dataCart: CartProps) => {
             setTotalQuantity(String(dataCart?.totalQuantity || '0'))
             setTotalValue(String(dataCart?.totalValue || '0,00'))

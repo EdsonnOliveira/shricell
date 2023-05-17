@@ -52,6 +52,7 @@ const StockDetails: React.FC<IndexProps> = ({
 
     const loadData = () => {
         brands.listAll()
+        // @ts-ignore
         .then((data: BrandProps[]) => {
             let options: OptionsType[] = [{ label: 'Select the Brand', value: '-1' }]
             if (router.query.isEdit) {
@@ -70,6 +71,7 @@ const StockDetails: React.FC<IndexProps> = ({
         })
 
         grades.listAll()
+        // @ts-ignore
         .then((data: GradesProps[]) => {
             let options: OptionsType[] = [{ label: 'Select the Grade', value: '-1' }]
             if (router.query.isEdit) {
@@ -87,6 +89,7 @@ const StockDetails: React.FC<IndexProps> = ({
         })
 
         storages.listAll()
+        // @ts-ignore
         .then((data: StoragesProps[]) => {
             let options: OptionsType[] = [{ label: 'Select the Storages', value: '-1' }]
             if (router.query.isEdit) {
@@ -116,6 +119,7 @@ const StockDetails: React.FC<IndexProps> = ({
         setModel('-1')
         
         models.listAll({ brandId: brand })
+        // @ts-ignore
         .then((data: ModelsProps[]) => {
             let options: OptionsType[] = [{ label: 'Select the Model', value: '-1' }]
             if (router.query.isEdit) {
@@ -145,6 +149,7 @@ const StockDetails: React.FC<IndexProps> = ({
         setColor('-1')
         
         colors.listAll({ brandId: brand, modelId: model })
+        // @ts-ignore
         .then((data: ColorsProps[]) => {
             let options: OptionsType[] = [{ label: 'Select the Color', value: '-1' }]
             if (router.query.isEdit) {

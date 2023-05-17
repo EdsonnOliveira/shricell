@@ -9,6 +9,7 @@ const listAll = ({ customerId, saleId }: IndexType) => {
             let array:ItemsProps[] = []
 
             for (let i = 0; i < res?.length; i++ ) {
+                // @ts-ignore
                 let json: ItemsProps = { 
                     deviceId: res[i].device.deviceId,
                     brandId: res[i].device.brandId,

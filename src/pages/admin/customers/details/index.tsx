@@ -45,9 +45,11 @@ const CustomersDetails: React.FC<IndexProps> = ({
 
     const loadData = () => {
         sales.customerMonthly({ customerId: dataCustomer.customerId })
+        // @ts-ignore
         .then((data: SaleProps) => setBilledAmount(data))
 
         sales.listAllCustomer({ customerId: dataCustomer.customerId })
+        // @ts-ignore
         .then((data: SaleProps[]) => {
             let array = data.map((item, index) => (
                 {
@@ -89,11 +91,13 @@ const CustomersDetails: React.FC<IndexProps> = ({
                             },
                     ],
                     onClick: () => {
+                        // @ts-ignore
                         setDataSale(data[index])
                         router.push('/admin/sales/details')
                     }
                 }
             ))
+            // @ts-ignore
             setLatestSales(array)
         })
     }

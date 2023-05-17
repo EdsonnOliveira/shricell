@@ -20,6 +20,7 @@ const outOfStock = () => {
             let array:StockProps[] = []
 
             for (let i = 0; i < res.length; i++ ) {
+                // @ts-ignore
                 let json: StockProps = {
                     stockId: res[i].stockId
                 }

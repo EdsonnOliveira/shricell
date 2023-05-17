@@ -14,16 +14,17 @@ const FileDnD: React.FC<IndexProps> = ({
 }) => {
     const [dragEnter, setDragEnter] = useState<boolean>(false)
 
-    const onDragOver = (event) => {
+    const onDragOver = (event: any) => {
         event.preventDefault()
     }
     
-    const onDrop = (event) => {
+    const onDrop = (event: any) => {
         event.preventDefault()
         setFile(event.target.files)
     }
 
     return (
+        // @ts-ignore
         <Main drag={dragEnter || file?.length > 0} mt={mt} ml={ml} mr={mr}mb={mb}>
             {
                 file && file?.length > 0

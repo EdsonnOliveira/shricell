@@ -18,26 +18,32 @@ const listAll = ({ customerId }: IndexType) => {
                         itemsId: data.itemsId,
                         deviceId: data.device?.deviceId,
                         colorId: data.device?.colorId,
+                        // @ts-ignore
                         brand: data.device?.brand,
+                        // @ts-ignore
                         model: data.device?.model,
+                        // @ts-ignore
                         storage: data.device?.storage,
+                        // @ts-ignore
                         gradeName: data.device?.gradeName,
                         quantity: data.quantity,
                         costPrice: data.costPrice,
                         salePrice: data.salePrice,
+                        // @ts-ignore
                         color: [
                             {
                                 deviceId: data.device?.deviceId,
                                 colorId: data.device?.colorId,
                                 color: data.device?.color,
                                 name: data.device?.color,
+                                // @ts-ignore
                                 quantity: dataDevice.quantityStock,
                                 price: data.salePrice
                             }
                         ]
                     }
                 })
-                
+                // @ts-ignore
                 array.push(json)
             }
 

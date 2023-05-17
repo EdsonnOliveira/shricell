@@ -19,7 +19,7 @@ const initialState: IndexProps = {
     }
 };
 
-export default (state = initialState, action) => {
+export default (state = initialState, action: any) => {
     switch(action.type) {
         case 'SET_STOCK_DATA':
             return{...state, data: action.payload.data};

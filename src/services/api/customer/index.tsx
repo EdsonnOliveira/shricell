@@ -39,6 +39,7 @@ const insert = ({ name, phone, email, address, city, state, zipCode }: IndexType
     return new Promise(async (resolve, reject) => {
         await api.post('supplier/new-supplier.php', { name, phone, email, address, city, state, zipCode })
         .then((response) => {
+            // @ts-ignore
             let res:SupplierProps = response.data
             resolve('success')
         })

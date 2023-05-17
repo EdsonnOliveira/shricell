@@ -30,6 +30,7 @@ const View: React.FC<ViewProps> = ({
         <main className="main">
             <BoxCommon
                 flex={useMediaQuery('(max-width: 1100px)') ? 'unset' : '1'}
+                // @ts-ignore
                 width={useMediaQuery('(max-width: 1100px)') && '100%'}
                 flexDirection='row'
                 gap='20px'
@@ -49,6 +50,7 @@ const View: React.FC<ViewProps> = ({
                         }
                     </BoxCommon>
                 </BoxShadow>
+                {/* @ts-ignore */}
                 <BoxShadow size={useMediaQuery('(max-width: 1000px)') && { width: '100%' }}>
                     <BoxCommon alignItems='center' justifyContent='center' gap='10px' flex='1'>
                         <h3 className="fontW500">{ dataSale.companyName }</h3>
@@ -56,11 +58,13 @@ const View: React.FC<ViewProps> = ({
                         <h6 className='fontGray fontW300'>This month</h6>
                     </BoxCommon>
                 </BoxShadow>
+                {/* @ts-ignore */}
                 <BoxShadow title='Amount' size={useMediaQuery('(max-width: 1000px)') && { width: '100%' }}>
                     <BoxCommon flexDirection='row' alignItems='center' justifyContent='space-between' flex='1'>
                         <h2>$ { dataSale.saleValue }</h2>
                     </BoxCommon>
                 </BoxShadow>
+                {/* @ts-ignore */}
                 <BoxShadow title='Items' size={useMediaQuery('(max-width: 1000px)') && { width: '100%' }}>
                     <BoxCommon flexDirection='row' alignItems='center' justifyContent='space-between' flex='1'>
                         <h2>{ totalQuantity }</h2>

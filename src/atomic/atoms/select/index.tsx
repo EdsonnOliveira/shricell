@@ -27,8 +27,10 @@ const Select: React.FC<IndexProps> = ({
                     <BoxInputDrop>
                         <Input
                             value={value}
+                            // @ts-ignore
                             onChangeText={onChangeText}
                             placeholder={options[0].label}
+                            // @ts-ignore
                             onFocus={setOnFocus}
                             onBlur={() => {
                                 setTimeout(() => {
@@ -41,6 +43,7 @@ const Select: React.FC<IndexProps> = ({
                                 <Drop>
                                     {
                                         options.map((item, index) => (
+                                            // @ts-ignore
                                             <Option onClick={() => onChange(item.label, item.value)} key={index}>{ item.label }</Option>
                                         ))
                                     }
@@ -53,6 +56,7 @@ const Select: React.FC<IndexProps> = ({
                 : (
                     <>
                         <SelectBox width={width} mt={mt} ml={ml} mr={mr} mb={mb}>
+                            {/* @ts-ignore */}
                             <SelectOption value={value} onChange={(event) => onChange(event.target.value)}>
                                 {
                                     options.map((item, index) => (

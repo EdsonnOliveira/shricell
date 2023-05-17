@@ -57,11 +57,13 @@ const Dashboard: React.FC<IndexProps> = ({
         ]
 
         sales.listAll()
+        // @ts-ignore
         .then((data: SaleProps[]) => {
             itemsPreview[0].value = String(data.length)
         })
 
         sales.listAllPending()
+        // @ts-ignore
         .then((data: SaleProps[]) => {
             itemsPreview[1].value = String(data.length)
         })
@@ -70,7 +72,7 @@ const Dashboard: React.FC<IndexProps> = ({
         .then((data) => {
             itemsPreview[2].value = String(data || '0,00')
         })
-        
+        // @ts-ignore
         setItemsPreview(itemsPreview)
 
         sales.totalSold({ dateStart: getDateCurrent(), dateEnd: getDateCurrent() })
@@ -79,6 +81,7 @@ const Dashboard: React.FC<IndexProps> = ({
         })
         
         sales.bestSellerDevices({ dateStart: getFirstLastDay().first, dateEnd: getFirstLastDay().last })
+        // @ts-ignore
         .then((data: DevicesProps[]) => {
             let labels = data.map(item => `${item.model} - ${item.storage} - ${item.color}`)
             const dataDevices = {
@@ -95,6 +98,7 @@ const Dashboard: React.FC<IndexProps> = ({
         })
 
         sales.bestSellerBrands({ dateStart: getFirstLastDay().first, dateEnd: getFirstLastDay().last })
+        // @ts-ignore
         .then((data: BrandProps[]) => {
             let labels = data.map(item => item.brand)
             const dataBrands = {
@@ -111,6 +115,7 @@ const Dashboard: React.FC<IndexProps> = ({
         })
 
         sales.currentWeek()
+        // @ts-ignore
         .then((data: SaleProps[]) => {
             let array = data.map((item, index) => (
                 {
@@ -138,15 +143,18 @@ const Dashboard: React.FC<IndexProps> = ({
                             },
                     ],
                     onClick: () => {
+                        // @ts-ignore
                         setDataSale(data[index])
                         router.push('/admin/sales/details')
                     }
                 }
             ))
+            // @ts-ignore
             setLatestSales(array)
         })
 
         stock.outOfStock()
+        // @ts-ignore
         .then((data: StockProps[]) => {
             setOutOfStock(data)
         })

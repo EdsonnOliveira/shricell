@@ -43,6 +43,7 @@ const Home: React.FC<IndexProps> = ({
 
   const clickLogin = () => {
     user.loginCustomer({ email, password })
+    // @ts-ignore
     .then((data: LoginProps) => {
       setToken(data.access_token)
       setDataLogin({

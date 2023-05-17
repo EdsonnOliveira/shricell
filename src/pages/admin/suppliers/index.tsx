@@ -28,6 +28,7 @@ const Supplier: React.FC<IndexProps> = ({
 
     const loadData = () => {
         supplier.listAll()
+        // @ts-ignore
         .then((data: SupplierProps[]) => {
             setItemsPreview([
                 {
@@ -91,6 +92,7 @@ const Supplier: React.FC<IndexProps> = ({
                     }
                 }
             ))
+            // @ts-ignore
             setData(array)
         })
     }

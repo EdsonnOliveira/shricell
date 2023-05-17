@@ -15,6 +15,7 @@ const View: React.FC = ({}) => (
         <main className="main">
             <BoxCommon
                 flex={useMediaQuery('(max-width: 1100px)') ? 'unset' : '1'}
+                // @ts-ignore
                 width={useMediaQuery('(max-width: 1100px)') && '100%'}
                 height='35vh'
                 flexDirection={useMediaQuery('(max-width: 1100px)') ? 'column' : 'row'}

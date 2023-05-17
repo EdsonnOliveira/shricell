@@ -9,7 +9,7 @@ import FileDnD from "@atomic/mocelules/fileDnD";
 import Modal from "@atomic/mocelules/modal";
 
 import { ViewProps, RegisterProps, AttachmentProps } from "./models";
-
+// @ts-ignore
 const View: React.FC<ViewProps> = ({
     steps,
     email,
@@ -188,7 +188,7 @@ const StepRegister: React.FC<RegisterProps> = ({
         <Head>
             <title>Register - ShriCell</title>
         </Head>
-        <BoxCommon width='100%' height='450px' gap='10px' mt='20px' alignItems='center' style={{ overflow: 'auto' }}>
+        <BoxCommon width='100%' height='450px' gap='10px' mt='20px' alignItems='center'>
             <BoxCommon width='100%' flexDirection='row' flexDirection800='column' gap='10px'>
                 <BoxCommon flex='1' width='100%'>
                     <Input width='100%' value={dunsNumber} onChangeText={setDunsNumber} placeholder='DUNS Number' />
@@ -271,7 +271,7 @@ const StepAttachment: React.FC<AttachmentProps> = ({
         <Head>
             <title>Attachment - ShriCell</title>
         </Head>
-        <BoxCommon width='100%' height='450px' gap='10px' mt='20px' style={{ overflow: 'auto' }}>
+        <BoxCommon width='100%' height='450px' gap='10px' mt='20px'>
             <h2>Certificate of incorporation</h2>
             <FileDnD file={certificate} setFile={setCertificate} mb='10px' />
             <h2>Photo ID</h2>

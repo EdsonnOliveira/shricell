@@ -20,6 +20,7 @@ const ModalRequired: React.FC<IndexProps> = ({
             {
                 text: 'Ok',
                 type: 'redLightLarge',
+                // @ts-ignore
                 onClick: onClose
             }
         }

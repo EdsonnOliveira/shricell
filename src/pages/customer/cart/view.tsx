@@ -33,6 +33,7 @@ const View: React.FC<ViewProps> = ({
         <main className="main">
             <BoxCommon
                 flex={useMediaQuery('(max-width: 1100px)') ? 'unset' : '1'}
+                // @ts-ignore
                 width={useMediaQuery('(max-width: 1100px)') && '100%'}
                 alignItems='center'
                 flexDirection='column'
@@ -45,6 +46,7 @@ const View: React.FC<ViewProps> = ({
                     gap='20px'
                 >
                     <BoxShadow
+                        // @ts-ignore
                         size={useMediaQuery('(max-width: 1100px)') && { width: '100%' }}
                     >
                         <BoxCommon alignItems='center' justifyContent='center' gap='10px' flex='1'>
@@ -54,6 +56,7 @@ const View: React.FC<ViewProps> = ({
                         </BoxCommon>
                     </BoxShadow>
                     <BoxShadow
+                        // @ts-ignore
                         size={useMediaQuery('(max-width: 1100px)') && { width: '100%' }}
                     >
                         <BoxCommon alignItems='center' justifyContent='center' gap='10px' flex='1'>
@@ -80,6 +83,7 @@ const View: React.FC<ViewProps> = ({
                 </BoxCommon>
                 <BoxCommon
                     flex={useMediaQuery('(max-width: 1100px)') ? 'unset' : '1'}
+                    // @ts-ignore
                     width={useMediaQuery('(max-width: 1100px)') && '100%'}
                     gap='20px'
                 >

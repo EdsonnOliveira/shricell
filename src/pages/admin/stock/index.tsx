@@ -35,6 +35,7 @@ const Stock: React.FC<IndexProps> = ({
 
     const loadData = () => {
         devices.listAll()
+        // @ts-ignore
         .then((data: DevicesProps[]) => {
             setItemsPreview([
                 {
@@ -96,6 +97,7 @@ const Stock: React.FC<IndexProps> = ({
                             },
                     ],
                     onClick: () => {
+                        // @ts-ignore
                         setDataStock(data[index])
                         router.push({
                             pathname: '/admin/stock/details',
@@ -106,6 +108,7 @@ const Stock: React.FC<IndexProps> = ({
                     }
                 }
             ))
+            // @ts-ignore
             setData(array)
         })
     }
@@ -165,6 +168,7 @@ const Stock: React.FC<IndexProps> = ({
 
         if (filterNameSupplierStock.length <= 0) {
             supplier.listAll()
+            // @ts-ignore
             .then((data: SupplierProps[]) => {
                 let options: OptionsType[] = [{ label: 'Select the Supplier', value: '-1' }]
                 let array = data.map(item => (
@@ -177,6 +181,7 @@ const Stock: React.FC<IndexProps> = ({
             })
         } else {
             supplier.autoComplete({ name: filterNameSupplierStock })
+            // @ts-ignore
             .then((data: SupplierProps[]) => {
                 let options: OptionsType[] = [{ label: 'Select the Supplier', value: '-1' }]
                 let array = data.map(item => (

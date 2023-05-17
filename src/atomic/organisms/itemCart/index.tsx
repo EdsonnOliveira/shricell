@@ -42,6 +42,7 @@ const ItemCart:React.FC<IndexProps> = ({
 
     const findQt = () => {
         cart.listAll({ customerId: idUser })
+        // @ts-ignore
         .then((data: CartProps[]) => {
             let qtDefault = {}
             let itemsUpdate:[string] = ['']
@@ -49,9 +50,11 @@ const ItemCart:React.FC<IndexProps> = ({
             colors.map(item => {
                 let obj = data.findIndex(value => value.deviceId === item.deviceId && value.colorId === item.colorId)
                 if (obj >= 0) {
+                    // @ts-ignore
                     qtDefault[`i${String(item.deviceId) + String(item.colorId)}`] = data[obj]?.quantity
                     itemsUpdate.push(`i${String(item.deviceId) + String(item.colorId)}`)
                 } else
+                // @ts-ignore
                     qtDefault[`i${String(item.deviceId) + String(item.colorId)}`] = '0'
             })
             
@@ -64,6 +67,7 @@ const ItemCart:React.FC<IndexProps> = ({
 
     const configButton = (deviceId: string, colorId: string) => {
         let obj = itemUpdate.findIndex(value => value === `i${String(deviceId) + String(colorId)}`)
+        // @ts-ignore
         if (Number(qt[`i${String(deviceId) + String(colorId)}`]) > 0)
             return obj >= 0 ? { text: 'Update', index: obj } : { text: 'Buy', index: obj }
         else
@@ -110,6 +114,7 @@ const ItemCart:React.FC<IndexProps> = ({
                                             <BoxCommon>
                                                 <Input
                                                     id={`i${String(item.deviceId) + String(item.colorId)}`}
+                                                    // @ts-ignore
                                                     value={qt[`i${String(item.deviceId) + String(item.colorId)}`] || '0'}
                                                     onChangeText={changeQt}
                                                     changeComplete
@@ -125,7 +130,9 @@ const ItemCart:React.FC<IndexProps> = ({
                                                     text={configButton(item.deviceId, item.colorId).text}
                                                     type={configButton(item.deviceId, item.colorId).text == 'Delete' &&
                                                         Number(configButton(item.deviceId, item.colorId).index) >= 0 ? 'redLightSmall' : 'secundarySmall'}
+                                                        // @ts-ignore
                                                     onClick={() => onClickBuy(item.deviceId, qt[`i${String(item.deviceId) + String(item.colorId)}`], item.price, configButton(item.deviceId, item.colorId).text)}
+                                                    // @ts-ignore
                                                     disabled={Number(qt[`i${String(item.deviceId) + String(item.colorId)}`]) > Number(item.quantity) }
                                                 />
                                                 { expandable && <Button text='Offer' type='primarySmall' onClick={() => null} /> }

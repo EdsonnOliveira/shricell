@@ -31,6 +31,7 @@ const Finish: React.FC<IndexProps> = ({
 
     const loadStock = () => {
         cart.total({ customerId: dataUser.id })
+        // @ts-ignore
         .then((data: CartProps) => {
             setItemsPreview([
                 {
@@ -52,6 +53,7 @@ const Finish: React.FC<IndexProps> = ({
 
     const loadBanks = () => {
         bank.listAll()
+        // @ts-ignore
         .then((data: BankProps[]) => {
             setBanks(data)
         })
@@ -72,7 +74,7 @@ const Finish: React.FC<IndexProps> = ({
             setModalRequired(true)
             return
         }
-
+// @ts-ignore
         sales.insert({ customerId: dataUser.id, paymentReceipt: payment[0] })
         .then((data) => {
             route.push('customer/success')

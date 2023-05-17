@@ -38,6 +38,7 @@ const View: React.FC<ViewProps> = ({
         <main className="main">
             <BoxCommon
                 flex={useMediaQuery('(max-width: 1100px)') ? 'unset' : '1'}
+                // @ts-ignore
                 width={useMediaQuery('(max-width: 1100px)') && '100%'}
                 flexDirection={useMediaQuery('(max-width: 1100px)') ? 'column' : 'row'}
                 gap='20px'

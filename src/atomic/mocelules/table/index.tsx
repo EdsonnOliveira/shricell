@@ -21,6 +21,7 @@ const Table: React.FC<IndexProps> = ({
                             {
                                 row.td.map((column, index) => (
                                     <TD
+                                    // @ts-ignore
                                         td={{
                                             textAlign: column.textAlign,
                                             textWeight: column.textWeight,

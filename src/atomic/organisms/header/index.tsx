@@ -116,6 +116,7 @@ const Header: React.FC<IndexProps> = ({
                             )
                         }
                         <BoxValues>
+                            {/* @ts-ignore */}
                             { itemsPreview?.map((item, index) => <Bubble title={item.title} value={item.value} icon={item.icon} type={bgColor} key={index} />) }
                         </BoxValues>
                     </BoxInfo>

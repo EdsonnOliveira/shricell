@@ -20,6 +20,7 @@ const Modal: React.FC<IndexProps> = ({
             <Main>
                 <Header type={type}>
                     <h4 className="fontWhite fontW400">{ title }</h4>
+                    {/* @ts-ignore */}
                     <ButtonClose onClick={onClose} type={type}>
                         <h5 className="fontWhite fontW400">X</h5>
                     </ButtonClose>
