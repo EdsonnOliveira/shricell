@@ -40,6 +40,8 @@ const Main = styled.div`
     left: ${( props: PositionStyledProps ) => (props.left ?? 0)};
     right: ${( props: PositionStyledProps ) => (props.right ?? 0)};
     bottom: ${( props: PositionStyledProps ) => (props.bottom ?? 0)};
+    
+    display: ${( props: IndexStyledProps ) => ( props.display ?? 'flex' )};
 `
 
 export default Main;

@@ -2,6 +2,7 @@ import { StyledProps } from "styled-components";
 import { SetVoid } from "@typing/set";
 import { Alignments } from "@atomic/constants/align";
 import { Margins, Padding, Position } from "@atomic/constants/spacing";
+import { Display } from "@typing/display";
 
 export interface IndexProps extends Margins, Padding, Position, Alignments {
     width?: string;
@@ -15,6 +16,7 @@ export interface IndexProps extends Margins, Padding, Position, Alignments {
     children: React.ReactNode | React.ReactNode[] | undefined;
 
     onClick?: SetVoid;
+    display?: Display;
 }
 
 export type IndexStyledProps = StyledProps<IndexProps>;

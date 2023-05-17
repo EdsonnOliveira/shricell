@@ -32,7 +32,8 @@ const BoxCommon:React.FC<IndexProps> = ({
     mt,
     ml,
     mr,
-    mb
+    mb,
+    display
 }) => {
     return (
         <Main
@@ -64,6 +65,7 @@ const BoxCommon:React.FC<IndexProps> = ({
             ml={ml}
             mr={mr}
             mb={mb}
+            display={display}
         >
             { children }
         </Main>

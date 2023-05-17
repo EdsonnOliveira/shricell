@@ -1,4 +1,4 @@
-import { HTMLInputTypeAttribute } from "react";
+import { FocusEventHandler, HTMLInputTypeAttribute } from "react";
 import { StyledProps } from "styled-components";
 import { Margins } from "@atomic/constants/spacing";
 import { TextAlign } from "@atomic/constants/text";
@@ -17,7 +17,7 @@ export interface IndexProps extends Margins {
     type?: HTMLInputTypeAttribute;
     actionButton?: Button | undefined;
     autoFocus?: boolean;
-    onFocus?: SetBoolean
+    onFocus?: (FocusEventHandler<HTMLInputElement> & SetBoolean)
     onBlur?: SetVoid;
     max?: number;
     min?: number;
@@ -28,4 +28,8 @@ type Button = {
     onPress?: () => void;
 }
 
-export type IndexStyledProps = StyledProps<IndexProps> & Margins
+export type IndexStyledProps = StyledProps<{
+    width?: string;
+    display?: Display;
+    textAlign?: TextAlign;
+}> & Margins
