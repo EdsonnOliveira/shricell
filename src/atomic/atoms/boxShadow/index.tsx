@@ -10,6 +10,7 @@ const BoxShadow:React.FC<IndexProps> = ({
     action,
     children,
     size,
+    display,
     onClick,
     mt,
     ml,
@@ -17,7 +18,7 @@ const BoxShadow:React.FC<IndexProps> = ({
     mb
 }) => {
     return (
-        <Main size={size} onClick={onClick} mt={mt} ml={ml} mr={mr} mb={mb}>
+        <Main size={size} display={display} onClick={onClick} mt={mt} ml={ml} mr={mr} mb={mb}>
             <BoxCommon flexDirection='row' justifyContent='space-between' alignItems='center' >
                 { title && <h5 className="fontW600">{ title }</h5> }
                 { action && <Action onClick={action.onClick}>{ action.name }</Action> }

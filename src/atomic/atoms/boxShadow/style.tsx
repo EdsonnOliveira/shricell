@@ -9,6 +9,7 @@ export const Main = styled.div`
     width: ${( props: IndexStyledProps ) => ( props.size?.width ?? '350px' )};
     max-width: ${( props: IndexStyledProps ) => ( props.size?.maxWidth ?? props.size?.width )};
     height: ${( props: IndexStyledProps ) => ( props.size?.height ?? '200px' )};
+    display: ${( props: IndexStyledProps ) => ( props.display ?? 'flex' )};
     flex: ${( props: IndexStyledProps ) => ( props.size?.flex ?? 'unset' )};
     background-color: ${white};
     padding: 15px;

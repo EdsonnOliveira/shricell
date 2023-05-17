@@ -5,6 +5,7 @@ import { IndexStyledProps } from "./models";
 
 export const Main = styled.div`
     width: ${( props: IndexStyledProps ) => ( props.width ?? 'null' )};
+    display: ${( props: IndexStyledProps ) => ( props.display ?? 'flex' )};
 `
 
 export const InputBox = styled.div`

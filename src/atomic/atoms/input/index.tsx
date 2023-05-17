@@ -4,6 +4,7 @@ import { InputBox, Main, TextInput } from "./style";
 
 const Input: React.FC<IndexProps> = ({
     width,
+    display,
     value,
     onChangeText,
     changeComplete,
@@ -24,7 +25,7 @@ const Input: React.FC<IndexProps> = ({
     mb
 }) => {
     return (
-        <Main width={width}>
+        <Main width={width} display={display}>
             { label && <h5 className="fontW600" style={{ marginBottom: 5 }}>{ label }</h5> }
             <InputBox width={width} mt={mt} ml={ml} mr={mr} mb={mb}>
                 <TextInput
