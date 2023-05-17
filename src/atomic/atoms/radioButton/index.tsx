@@ -19,7 +19,7 @@ const RadioButton: React.FC<IndexProps> = ({
         <BoxCommon mt={mt} ml={ml} mr={mr} mb={mb}>
             <h5 className='fontW400'>{ title }</h5>
             {
-                items.map(item => (
+                items.map((item, index) => (
                     <BoxCommon
                         gap='10px'
                         mt='10px'
@@ -28,6 +28,7 @@ const RadioButton: React.FC<IndexProps> = ({
                             setSelected(item.id)
                             setItemSelected(Number(item.id))
                         }}
+                        key={index}
                     >
                         <Radio>
                             <RadioSelected selected={selected == item.id} />

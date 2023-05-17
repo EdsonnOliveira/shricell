@@ -40,8 +40,8 @@ const Select: React.FC<IndexProps> = ({
                             onFocus && (
                                 <Drop>
                                     {
-                                        options.map(item => (
-                                            <Option onClick={() => onChange(item.label, item.value)}>{ item.label }</Option>
+                                        options.map((item, index) => (
+                                            <Option onClick={() => onChange(item.label, item.value)} key={index}>{ item.label }</Option>
                                         ))
                                     }
                                     
@@ -55,8 +55,8 @@ const Select: React.FC<IndexProps> = ({
                         <SelectBox width={width} mt={mt} ml={ml} mr={mr} mb={mb}>
                             <SelectOption value={value} onChange={(event) => onChange(event.target.value)}>
                                 {
-                                    options.map(item => (
-                                        <option value={item.value}>{ item.label }</option>
+                                    options.map((item, index) => (
+                                        <option value={item.value} key={index}>{ item.label }</option>
                                     ))
                                 }
                             </SelectOption>

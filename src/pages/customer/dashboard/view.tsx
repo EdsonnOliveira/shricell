@@ -58,13 +58,14 @@ const View: React.FC<ViewProps> = ({
                         <BoxCommon>
                             <h5 className='fontW400'>Grade</h5>
                             {
-                                gradesItems.map(item => (
+                                gradesItems.map((item, index) => (
                                     <CheckBox
                                         name={`Grade ${item.label}`}
                                         value={item.value}
                                         mt='10px'
                                         selected={!!(gradesSelecteds && gradesSelecteds.find(grade => grade == item.label))}
                                         setSelected={() => setGradesSelecteds(item.label, 'G')}
+                                        key={index}
                                     />
                                 ))
                             }
@@ -72,13 +73,14 @@ const View: React.FC<ViewProps> = ({
                         <BoxCommon>
                             <h5 className='fontW400'>Manufacturer</h5>
                             {
-                                manufacturerItems.map(item => (
+                                manufacturerItems.map((item, index) => (
                                     <CheckBox
                                         name={`${item.label.toLowerCase()}`}
                                         value={item.value}
                                         mt='10px'
                                         selected={!!(manufacturerSelecteds && manufacturerSelecteds.find(manufacturer => manufacturer == item.label))}
                                         setSelected={() => setManufacturerSelecteds(item.label, 'M')}
+                                        key={index}
                                     />
                                 ))
                             }
@@ -90,7 +92,7 @@ const View: React.FC<ViewProps> = ({
                     gap='20px'
                 >
                     {
-                        devicesItems.map(item => (
+                        devicesItems.map((item, index) => (
                             <ItemCart
                                 idUser={idUser}
                                 brand={item.brand}
@@ -101,6 +103,7 @@ const View: React.FC<ViewProps> = ({
                                 quantity={item.quantity}
                                 price={item.price}
                                 onClickBuy={onClickBuy}
+                                key={index}
                             />
                         ))
                     }

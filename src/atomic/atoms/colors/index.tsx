@@ -11,7 +11,7 @@ const Colors: React.FC<IndexProps> = ({
             {
                 color
                 ? <Color color={color} />
-                : items?.map(item => <Color color={item.color} />)
+                : items?.map((item, index) => <Color color={item.color} key={index} />)
             }
         </Main>
     )

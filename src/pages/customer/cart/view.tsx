@@ -84,7 +84,7 @@ const View: React.FC<ViewProps> = ({
                     gap='20px'
                 >
                     {
-                        devicesItems.map(item => (
+                        devicesItems.map((item, index) => (
                             <ItemCart
                                 idUser={idUser}
                                 brand={item.brand}
@@ -96,6 +96,7 @@ const View: React.FC<ViewProps> = ({
                                 price={item.price}
                                 onClickBuy={onClickBuy}
                                 expandable={false}
+                                key={index}
                             />
                         ))
                     }

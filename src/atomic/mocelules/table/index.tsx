@@ -17,7 +17,7 @@ const Table: React.FC<IndexProps> = ({
             <TBody>
                 {
                     tr.map((row, index) => (
-                        <TR>
+                        <TR key={index}>
                             {
                                 row.td.map((column, index) => (
                                     <TD
@@ -26,6 +26,7 @@ const Table: React.FC<IndexProps> = ({
                                             textWeight: column.textWeight,
                                         }}
                                         onClick={() => (row.onClick && (column.type == 'text' || column.type.action == undefined)) ? row.onClick() : null}
+                                        key={index}
                                     >
                                         {
                                             column.type != 'text'

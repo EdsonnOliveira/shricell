@@ -72,11 +72,11 @@ const Header: React.FC<IndexProps> = ({
                 <Ul size={size}>
                     {
                         bgColor === 'secondary'
-                        ? optionsSecondary.map(option => (
-                            <Li href={option.page} bgColor={bgColor} pageCurrent={router.pathname == option.page}>{ option.name }</Li>
+                        ? optionsSecondary.map((option, index) => (
+                            <Li href={option.page} bgColor={bgColor} pageCurrent={router.pathname == option.page} key={index}>{ option.name }</Li>
                         ))
-                        : optionsPrimary.map(option => (
-                            <Li href={option.page} bgColor={bgColor} pageCurrent={router.pathname == option.page}>{ option.name }</Li>
+                        : optionsPrimary.map((option, index) => (
+                            <Li href={option.page} bgColor={bgColor} pageCurrent={router.pathname == option.page} key={index}>{ option.name }</Li>
                         ))
                     }
                 </Ul>
@@ -90,11 +90,11 @@ const Header: React.FC<IndexProps> = ({
                 <Ul mobile={mobile}>
                     {
                         bgColor === 'secondary'
-                        ? optionsSecondary.map(option => (
-                            <Li href={option.page} bgColor={bgColor} pageCurrent={router.pathname == option.page}>{ option.name }</Li>
+                        ? optionsSecondary.map((option, index) => (
+                            <Li href={option.page} bgColor={bgColor} pageCurrent={router.pathname == option.page} key={index}>{ option.name }</Li>
                         ))
-                        : optionsPrimary.map(option => (
-                            <Li href={option.page} bgColor={bgColor} pageCurrent={router.pathname == option.page}>{ option.name }</Li>
+                        : optionsPrimary.map((option, index) => (
+                            <Li href={option.page} bgColor={bgColor} pageCurrent={router.pathname == option.page} key={index}>{ option.name }</Li>
                         ))
                     }
                 </Ul>
@@ -116,7 +116,7 @@ const Header: React.FC<IndexProps> = ({
                             )
                         }
                         <BoxValues>
-                            { itemsPreview?.map((item, index) => <Bubble title={item.title} value={item.value} icon={item.icon} type={bgColor} />) }
+                            { itemsPreview?.map((item, index) => <Bubble title={item.title} value={item.value} icon={item.icon} type={bgColor} key={index} />) }
                         </BoxValues>
                     </BoxInfo>
                 )

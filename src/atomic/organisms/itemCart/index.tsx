@@ -89,12 +89,13 @@ const ItemCart:React.FC<IndexProps> = ({
                             gap='10px'
                         >
                                 {
-                                    colors.map(item => (
+                                    colors.map((item, index) => (
                                         <BoxCommon
                                             flexDirection='row'
                                             gap='40px'
                                             alignItems='center'
                                             justifyContent='space-between'
+                                            key={index}
                                         >
                                             <BoxCommon width='150px' flexDirection='row' gap='10px'>
                                                 <Colors color={item.color} />

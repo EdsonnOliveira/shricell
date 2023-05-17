@@ -112,8 +112,8 @@ const View: React.FC<ViewProps> = ({
                 mt={useMediaQuery('(max-width: 1100px)') ? '0' : '-100px'}
             >
                 {
-                    outOfStock.map(item => (
-                        <BoxShadow size={{ width: '100%', height: '80px' }}>
+                    outOfStock.map((item, index) => (
+                        <BoxShadow size={{ width: '100%', height: '80px' }} key={index}>
                             <BoxCommon flexDirection='row' alignItems='center' justifyContent='center' gap='20px' flex='1'>
                                 <h3 className="fontW500">{ item.model }</h3>
                                 <Stamp value='sold off' bgColor={red} />
