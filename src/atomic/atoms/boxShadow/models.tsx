@@ -10,7 +10,7 @@ export interface IndexProps extends Margins {
     children: React.ReactNode | React.ReactNode[] | undefined;
     size?: Size;
     display?: Display;
-    onClick?: () => void;
+    onClick?: SetVoid;
 }
 
 type ActionType = {
@@ -20,6 +20,6 @@ type ActionType = {
 
 export type IndexStyledProps = StyledProps<{
     size?: Size
-    onClick?: boolean;
+    onClick?: SetVoid;
     display?: Display;
 }>
