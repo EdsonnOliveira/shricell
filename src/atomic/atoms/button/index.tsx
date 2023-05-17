@@ -1,7 +1,5 @@
 import React from "react";
 
-import { black, white } from "../../constants/colors";
-
 import {
     PrimaryMedium,
     PrimaryLarge,
@@ -131,6 +129,7 @@ const Button: React.FC<IndexProps> = ({
                 </GhostSmall>
             )
     }
+    return <></>
 }
 
 export default Button;
