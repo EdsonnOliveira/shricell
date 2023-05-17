@@ -76,16 +76,14 @@ const View: React.FC<ViewProps> = ({
                         <h6 className='fontGray fontW300'>Click to show details</h6>
                     </BoxCommon>
                 </BoxShadow>
-                {
-                    isEdit && (
-                        <BoxShadow title='Billed amount in the month' size={useMediaQuery('(max-width: 1000px)') && { width: '100%' }}>
-                            <BoxCommon flexDirection='row' alignItems='center' justifyContent='space-between' flex='1'>
-                                <h2>$ { billedAmount }</h2>
-                                {/* <Stamp value='+7.3%' bgColor={green} /> */}
-                            </BoxCommon>
-                        </BoxShadow>
-                    )
-                }
+                <BoxShadow
+                    title='Billed amount in the month'
+                    size={useMediaQuery('(max-width: 1000px)') && { width: '100%' }}
+                >
+                    <BoxCommon flexDirection='row' alignItems='center' justifyContent='space-between' flex='1'>
+                        <h2>$ { billedAmount }</h2>
+                    </BoxCommon>
+                </BoxShadow>
                 <BoxShadow title='Latest sales' size={{ width: '100%', height: 'max-content' }}>
                     <Table
                         tr={latestSales}

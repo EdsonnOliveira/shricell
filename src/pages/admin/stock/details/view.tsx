@@ -61,29 +61,23 @@ const View: React.FC<ViewProps> = ({
                         </BoxCommon>
                         <BoxCommon width='100%' flexDirection={useMediaQuery('(max-width: 1000px)') ? 'column' : 'row'} gap='20px'>
                             <Select label='Storage' options={storageItems} value={storage} onChange={setStorage} width={useMediaQuery('(max-width: 1000px)') ? '100%' : '277px'} />
-                            {
-                                isEdit && (
-                                    <>
-                                        <Input label='Price' value={price} onChangeText={setPrice} width={useMediaQuery('(max-width: 1000px)') ? '100%' : '277px'} />
-                                        <Input label='Cost' value={cost} onChangeText={setCost} width={useMediaQuery('(max-width: 1000px)') ? '100%' : '277px'} />
-                                        <Input label='Quantity' value={quantity} onChangeText={setQuantity} width={useMediaQuery('(max-width: 1000px)') ? '100%' : '277px'} />
-                                    </>
-                                )
-                            }
+                            <Input label='Price' value={price} onChangeText={setPrice} width={useMediaQuery('(max-width: 1000px)') ? '100%' : '277px'} display={isEdit ? 'flex' : 'none'} />
+                            <Input label='Cost' value={cost} onChangeText={setCost} width={useMediaQuery('(max-width: 1000px)') ? '100%' : '277px'} display={isEdit ? 'flex' : 'none'} />
+                            <Input label='Quantity' value={quantity} onChangeText={setQuantity} width={useMediaQuery('(max-width: 1000px)') ? '100%' : '277px'} display={isEdit ? 'flex' : 'none'} />
                         </BoxCommon>
                         <Button text='Save' onClick={save} />
                     </BoxCommon>
                 </BoxShadow>
-                {
-                    isEdit && (
-                        <BoxShadow title='Billed amount' size={useMediaQuery('(max-width: 1000px)') && { width: '100%' }}>
-                            <BoxCommon flexDirection='row' alignItems='center' justifyContent='space-between' flex='1'>
-                                <h2>$ 4239,12</h2>
-                                <Stamp value='+7.3%' bgColor={green} />
-                            </BoxCommon>
-                        </BoxShadow>
-                    )
-                }
+                <BoxShadow
+                    title='Billed amount'
+                    size={useMediaQuery('(max-width: 1000px)') && { width: '100%' }}
+                    display={isEdit ? 'flex' : 'none'}
+                >
+                    <BoxCommon flexDirection='row' alignItems='center' justifyContent='space-between' flex='1'>
+                        <h2>$ 4239,12</h2>
+                        <Stamp value='+7.3%' bgColor={green} />
+                    </BoxCommon>
+                </BoxShadow>
             </BoxCommon>
             <ModalRequired field={fieldRequired} visible={modalRequired} onClose={() => setModalRequired(false)} />
         </main>
