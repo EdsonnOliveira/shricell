@@ -19,7 +19,7 @@ const Brand: React.FC<IndexProps> = ({
     }
 
     return (
-        <Main src={searchImage()} alt={type} />
+        <Main src={String(searchImage())} alt={type} />
     )
 }
 
