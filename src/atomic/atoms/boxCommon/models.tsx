@@ -1,5 +1,6 @@
 import { StyledProps } from "styled-components";
 import { SetVoid } from "@typing/set";
+import { Alignments } from "@atomic/constants/align";
 
 export type IndexStyledProps = StyledProps<{
     width?: string | number;
@@ -7,9 +8,9 @@ export type IndexStyledProps = StyledProps<{
 
     height?: string | number;
     flex?: string | number;
-    bgColor?: String | undefined;
+    bgColor?: string | undefined;
     scroll?: string;
     borderRadius: string | number;
 
-    onClick: SetVoid;
-}>;
+    onClick?: SetVoid;
+}> & Alignments;
