@@ -22,4 +22,4 @@ export type IndexStyledProps = StyledProps<{
     flex?: boolean;
     selected?: boolean;
     disabled?: boolean
-}>
+}> & Margins

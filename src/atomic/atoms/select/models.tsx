@@ -17,4 +17,4 @@ export interface IndexProps extends Margins {
     isSearch?: boolean;
 }
 
-export type IndexStyledProps = StyledProps<IndexProps>
+export type IndexStyledProps = StyledProps<IndexProps> & Margins

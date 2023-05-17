@@ -8,4 +8,4 @@ export interface IndexProps extends Margins {
 
 export type IndexStyledProps = StyledProps<{
     td: TDStyledProps;
-}>
+}> & Margins

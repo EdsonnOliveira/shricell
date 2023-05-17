@@ -12,4 +12,4 @@ export interface IndexProps extends Margins {
 
 export type IndexStyledProps = StyledProps<{
     selected: boolean;
-}>
+}> & Margins

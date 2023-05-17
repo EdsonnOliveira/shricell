@@ -28,5 +28,4 @@ type Button = {
     onPress?: () => void;
 }
 
-type TypeDisplay = 'flex' | 'none'
-export type IndexStyledProps = StyledProps<IndexProps>
+export type IndexStyledProps = StyledProps<IndexProps> & Margins

@@ -22,4 +22,4 @@ export type IndexStyledProps = StyledProps<{
     size?: Size
     onClick?: SetVoid;
     display?: Display;
-}>
+}> & Margins
