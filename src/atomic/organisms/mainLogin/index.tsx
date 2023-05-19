@@ -12,7 +12,7 @@ import styled from "styled-components"
 export const Test = styled.div`
     width: 100px;
     height: 100px;
-    background-color: red;
+    background-color: blue;
 `
 
 const MainLogin: React.FC<IndexProps> = ({
@@ -26,7 +26,12 @@ const MainLogin: React.FC<IndexProps> = ({
     clickLogin,
     clickRegister
 }) => {
-    return <Test />
+    return (
+        <>
+            <Test />
+            <div style={{ width: 200, height: 200, backgroundColor: 'red' }}></div>
+        </>
+    )
     
 }
 
