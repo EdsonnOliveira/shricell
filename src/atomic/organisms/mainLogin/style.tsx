@@ -7,7 +7,6 @@ export const Main = styled.div`
     width: 100vw;
     height: 100vh;
     flex-direction: row;
-    background-color: red;
 `
 
 export const Container = styled.div`
@@ -15,6 +14,7 @@ export const Container = styled.div`
     justify-content: center;
     align-items: center;
     background-color: ${( props: IndexStyledProps ) => ( props.bgColor ?? `${white}` )};
+    background-color: red;
     position: relative;
     padding: 20px;
 
