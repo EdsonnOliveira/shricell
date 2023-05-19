@@ -10,6 +10,7 @@ export const PrimaryLarge = styled.button`
     justify-content: center;
     align-items: center;
     background-color: ${( props: IndexStyledProps ) => ( props.disabled ? `${grey}` : `${primary}` )};
+    background-color: red;
     border-radius: ${borderRadius};
     transition: ${transition};
     text-align: center;

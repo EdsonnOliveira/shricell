@@ -14,7 +14,6 @@ export const Container = styled.div`
     justify-content: center;
     align-items: center;
     background-color: ${( props: IndexStyledProps ) => ( props.bgColor ?? `${white}` )};
-    background-color: red;
     position: relative;
     padding: 20px;
 
