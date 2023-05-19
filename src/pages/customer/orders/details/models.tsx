@@ -15,3 +15,7 @@ export interface ViewProps {
     dataItems: TR[];
     totalQuantity: string;
 }
+
+export default function Return() {
+    return <></>
+}

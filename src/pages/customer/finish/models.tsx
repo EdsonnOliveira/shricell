@@ -18,3 +18,7 @@ export interface ViewProps {
     modalRequired: boolean;
     setModalRequired: SetBoolean;
 }
+
+export default function Return() {
+    return <></>
+}

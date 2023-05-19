@@ -69,3 +69,7 @@ export interface AttachmentProps {
 }
 
 export type Steps = 'login' | 'register' | 'attachment' | 'success'
+
+export default function Return() {
+    return <></>
+}

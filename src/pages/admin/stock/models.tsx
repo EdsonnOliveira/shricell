@@ -51,3 +51,7 @@ export interface ViewProps {
     setAnnotationStock: SetText;
     saveStock: SetVoid;
 }
+
+export default function Return() {
+    return <></>
+}

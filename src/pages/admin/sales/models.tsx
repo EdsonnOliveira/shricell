@@ -10,3 +10,7 @@ export interface ViewProps {
     data: TR[];
     itemsPreview: HeaderItemsPreview[]
 }
+
+export default function Return() {
+    return <></>
+}

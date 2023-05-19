@@ -26,3 +26,7 @@ export interface ViewProps {
     setModalRequired: SetBoolean;
     onClickBuy: (id: string, qt: string, salePrice: string, action: 'Buy' | 'Update' | 'Delete') => void;
 }
+
+export default function Return() {
+    return <></>
+}

@@ -44,3 +44,7 @@ export interface ViewProps {
     setModalDetails: (visible: boolean) => void;
     billedAmount: string;
 }
+
+export default function Return() {
+    return <></>
+}

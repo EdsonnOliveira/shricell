@@ -23,3 +23,7 @@ export interface ViewProps {
     dataDevices: any;
     dataBrands: any;
 }
+
+export default function Return() {
+    return <></>
+}

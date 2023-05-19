@@ -13,3 +13,7 @@ export interface ViewProps {
     modalAdd: boolean;
     setModalAdd: (visible: boolean) => void;
 }
+
+export default function Return() {
+    return <></>
+}

@@ -18,3 +18,7 @@ export interface ViewProps {
     denyPayment: SetVoid;
     totalSales: string;
 }
+
+export default function Return() {
+    return <></>
+}

@@ -15,3 +15,7 @@ export interface ViewProps {
     modalError: boolean;
     setModalError: SetBoolean;
 }
+
+export default function Return() {
+    return <></>
+}

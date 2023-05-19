@@ -17,3 +17,7 @@ export interface ViewProps {
     onClickBuy: (id: string, qt: string, salePrice: string, action: 'Buy' | 'Update' | 'Delete') => void;
     finishCart: SetVoid;
 }
+
+export default function Return() {
+    return <></>
+}
