@@ -23,6 +23,7 @@ const MainLogin: React.FC<IndexProps> = ({
     clickLogin,
     clickRegister
 }) => {
+    return <Test />
     return (
         <Main>
             <Container bgColor={type === 'admin' ? secondary : primary}>
