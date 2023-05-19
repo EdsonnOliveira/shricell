@@ -35,8 +35,8 @@ const MainLogin: React.FC<IndexProps> = ({
                         backgroundColor: type === 'admin' ? secondary : primary,
                         position: 'relative',
                         padding: 20,
-                        display: useMediaQuery('(max-width: 800px)') ? 'none' : 'flex'
                 }}
+                id="mainLoginFirstContainer"
             >
                 <Image
                     src={type === 'admin' ? ImgBg1 : ImgBg2}
