@@ -60,91 +60,38 @@ const View: React.FC<ViewProps> = ({
     clickAttachment,
     clickFinalize
 }) => {
-    switch (steps) {
-        case 'login':
-            return (
-                <>
-                    <Head>
-                        <title>ShriCell</title>
-                    </Head>
-                    <MainLogin
-                        title='Customer'
-                        type='customer'
-                        email={email}
-                        onChangeEmail={setEmail}
-                        password={password}
-                        onChangePassword={setPassword}
-                        clickLogin={clickLogin}
-                        clickRegister={clickRegister}
-                    />
-                    <Modal
-                        title="Incorrect credentials"
-                        visible={modalError}
-                        onClose={() => setModalError(false)}
-                        type='error'
-                        firstButton={
-                            {
-                                text: 'Ok',
-                                type: 'redLightLarge',
-                                onClick: () => setModalError(false)
-                            }
-                        }
-                    >
-                        <h4 className="fontCenter">Incorrect <b>username</b> or <b>password</b>. <br />Please try again.</h4>
-                    </Modal>
-                </>
-            )
-        case 'register':
-            return (
-                <StepRegister
-                    dunsNumber={dunsNumber}
-                    setDunsNumber={setDunsNumber}
-                    federalTax={federalTax}
-                    setFederalTax={setFederalTax}
-                    companyLegal={companyLegal}
-                    setCompanyLegal={setCompanyLegal}
-                    phone={phone}
-                    setPhone={setPhone}
-                    zipCode={zipCode}
-                    setZipCode={setZipCode}
-                    companyAddress={companyAddress}
-                    setCompanyAddress={setCompanyAddress}
-                    state={state}
-                    setState={setState}
-                    city={city}
-                    setCity={setCity}
-                    country={country}
-                    setCountry={setCountry}
-                    stateCorporation={stateCorporation}
-                    setStateCorporation={setStateCorporation}
-                    typeIndustry={typeIndustry}
-                    setTypeIndustry={setTypeIndustry}
-                    emailCorporation={emailCorporation}
-                    setEmailCorporation={setEmailCorporation}
-                    businessIdentity={businessIdentity}
-                    setBusinessIdentity={setBusinessIdentity}
-                    webSite={webSite}
-                    setWebSite={setWebSite}
-                    aboutUs={aboutUs}
-                    setAboutUs={setAboutUs}
-                    haveAccount={haveAccount}
-                    clickAttachment={clickAttachment}
-                />
-            )
-        case 'attachment':
-            return (
-                <StepAttachment
-                    certificate={certificate}
-                    setCertificate={setCertificate}
-                    photoID={photoID}
-                    setPhotoID={setPhotoID}
-                    resaleTax={resaleTax}
-                    setResaleTax={setResaleTax}
-                    haveAccount={haveAccount}
-                    clickFinalize={clickFinalize}
-                />
-            )
-    }
+    return (
+        <>
+            <Head>
+                <title>ShriCell</title>
+            </Head>
+            <MainLogin
+                title='Customer'
+                type='customer'
+                email={email}
+                onChangeEmail={setEmail}
+                password={password}
+                onChangePassword={setPassword}
+                clickLogin={clickLogin}
+                clickRegister={clickRegister}
+            />
+            <Modal
+                title="Incorrect credentials"
+                visible={modalError}
+                onClose={() => setModalError(false)}
+                type='error'
+                firstButton={
+                    {
+                        text: 'Ok',
+                        type: 'redLightLarge',
+                        onClick: () => setModalError(false)
+                    }
+                }
+            >
+                <h4 className="fontCenter">Incorrect <b>username</b> or <b>password</b>. <br />Please try again.</h4>
+            </Modal>
+        </>
+    )
 }
 
 const StepRegister: React.FC<RegisterProps> = ({
