@@ -26,7 +26,7 @@ const View: React.FC<ViewProps> = ({
         <Head>
             <title>Sales Details - ShriCell</title>
         </Head>
-        <Header title={`#${dataSale.saleId}`} />
+        <Header title={`#${dataSale?.saleId}`} />
         <main className="main">
             <BoxCommon
                 flex={useMediaQuery('(max-width: 1100px)') ? 'unset' : '1'}
@@ -39,9 +39,9 @@ const View: React.FC<ViewProps> = ({
             >
                 <BoxShadow size={{ width: useMediaQuery('(max-width: 1600px)') ? '100%' : '800px', height: 'max-content'}}>
                     <BoxCommon alignItems='center' justifyContent='center' gap='25px' flex='1'>
-                        <Steps items={steps} currentStep={dataSale.status === 'APPROVED' ? 3 : 1} />
+                        <Steps items={steps} currentStep={dataSale?.status === 'APPROVED' ? 3 : 1} />
                         {
-                            dataSale.status === 'PENDING' && (
+                            dataSale && dataSale?.status === 'PENDING' && (
                                 <BoxCommon width='100%' gap='10px'>
                                     <Button type='greenLarge' text='Confirm payment' onClick={() => confirmPayment()} />
                                     <Button type='redLightLarge' text='Deny payment' onClick={() => denyPayment()} />
@@ -53,7 +53,7 @@ const View: React.FC<ViewProps> = ({
                 {/* @ts-ignore */}
                 <BoxShadow size={useMediaQuery('(max-width: 1000px)') && { width: '100%' }}>
                     <BoxCommon alignItems='center' justifyContent='center' gap='10px' flex='1'>
-                        <h3 className="fontW500">{ dataSale.companyName }</h3>
+                        <h3 className="fontW500">{ dataSale?.companyName }</h3>
                         <Stamp value={totalSales} bgColor={primary} />
                         <h6 className='fontGray fontW300'>This month</h6>
                     </BoxCommon>
@@ -61,7 +61,7 @@ const View: React.FC<ViewProps> = ({
                 {/* @ts-ignore */}
                 <BoxShadow title='Amount' size={useMediaQuery('(max-width: 1000px)') && { width: '100%' }}>
                     <BoxCommon flexDirection='row' alignItems='center' justifyContent='space-between' flex='1'>
-                        <h2>$ { dataSale.saleValue }</h2>
+                        <h2>$ { dataSale?.saleValue }</h2>
                     </BoxCommon>
                 </BoxShadow>
                 {/* @ts-ignore */}

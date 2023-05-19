@@ -5,8 +5,6 @@ import Header from "@atomic/organisms/header";
 import BoxShadow from "@atomic/atoms/boxShadow";
 import Table from "@atomic/mocelules/table";
 
-import useMediaQuery from "@hooks/useMediaQuery";
-
 import { ViewProps } from "./models";
 
 const View: React.FC<ViewProps> = ({

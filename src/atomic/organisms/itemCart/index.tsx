@@ -47,7 +47,7 @@ const ItemCart:React.FC<IndexProps> = ({
             let qtDefault = {}
             let itemsUpdate:[string] = ['']
             
-            colors.map(item => {
+            colors && colors.map(item => {
                 let obj = data.findIndex(value => value.deviceId === item.deviceId && value.colorId === item.colorId)
                 if (obj >= 0) {
                     // @ts-ignore
@@ -93,7 +93,7 @@ const ItemCart:React.FC<IndexProps> = ({
                             gap='10px'
                         >
                                 {
-                                    colors.map((item, index) => (
+                                    colors && colors.map((item, index) => (
                                         <BoxCommon
                                             flexDirection='row'
                                             gap='40px'

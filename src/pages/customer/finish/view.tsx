@@ -42,7 +42,7 @@ const View: React.FC<ViewProps> = ({
                     size={{ height: 'max-content', ...useMediaQuery('(max-width: 1100px)') && { width: '100%' } }}
                 >
                     {
-                        banks.map((item, index) => (
+                        banks && banks.map((item, index) => (
                             <BoxCommon
                                 gap='10px'
                                 bgColor={grey}

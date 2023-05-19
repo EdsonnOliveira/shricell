@@ -8,7 +8,7 @@ const Steps: React.FC<IndexProps> = ({
     return (
         <Main>
             {
-                items.map((item) => (
+                items && items.map((item) => (
                     <>
                         <Item>
                             <h6 className="fontGray fontSmall">{ item.label }</h6>

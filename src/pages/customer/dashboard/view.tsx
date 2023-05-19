@@ -59,7 +59,7 @@ const View: React.FC<ViewProps> = ({
                         <BoxCommon>
                             <h5 className='fontW400'>Grade</h5>
                             {
-                                gradesItems.map((item, index) => (
+                                gradesItems && gradesItems.map((item, index) => (
                                     <CheckBox
                                         name={`Grade ${item.label}`}
                                         value={item.value}
@@ -74,7 +74,7 @@ const View: React.FC<ViewProps> = ({
                         <BoxCommon>
                             <h5 className='fontW400'>Manufacturer</h5>
                             {
-                                manufacturerItems.map((item, index) => (
+                                manufacturerItems && manufacturerItems.map((item, index) => (
                                     <CheckBox
                                         name={`${item.label.toLowerCase()}`}
                                         value={item.value}
@@ -93,7 +93,7 @@ const View: React.FC<ViewProps> = ({
                     gap='20px'
                 >
                     {
-                        devicesItems.map((item, index) => (
+                        devicesItems && devicesItems.map((item, index) => (
                             <ItemCart
                                 idUser={idUser}
                                 brand={item.brand}

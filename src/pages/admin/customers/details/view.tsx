@@ -69,10 +69,10 @@ const View: React.FC<ViewProps> = ({
                     onClick={() => setModalDetails(true)}
                 >
                     <BoxCommon alignItems='center' justifyContent='center' gap='10px' flex='1'>
-                        <h3 className="fontW500">{ dataCustomer.companyName }</h3>
-                        <h6 className='fontW300'>{ dataCustomer.phone }</h6>
-                        <h6 className='fontW300'>{ dataCustomer.email }</h6>
-                        <Stamp value={dataCustomer.status} bgColor={dataCustomer.status ? green : red} />
+                        <h3 className="fontW500">{ dataCustomer?.companyName }</h3>
+                        <h6 className='fontW300'>{ dataCustomer?.phone }</h6>
+                        <h6 className='fontW300'>{ dataCustomer?.email }</h6>
+                        <Stamp value={dataCustomer?.status} bgColor={dataCustomer?.status ? green : red} />
                         <h6 className='fontGray fontW300'>Click to show details</h6>
                     </BoxCommon>
                 </BoxShadow>

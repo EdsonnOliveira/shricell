@@ -16,7 +16,7 @@ const Table: React.FC<IndexProps> = ({
         <Main mt={mt} ml={ml} mr={mr} mb={mb}>
             <TBody>
                 {
-                    tr.map((row, index) => (
+                    tr && tr.map((row, index) => (
                         <TR key={index}>
                             {
                                 row.td.map((column, index) => (

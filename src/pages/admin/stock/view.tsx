@@ -128,7 +128,7 @@ const View: React.FC<ViewProps> = ({
                             label='Supplier'
                             options={suppliersItems}
                             isSearch
-                            value={supplierStock.label}
+                            value={supplierStock?.label}
                             // @ts-ignore
                             onChange={(label: string, value: string) => setSupplierStock({label, value})}
                             onChangeText={setFilterNameSupplierStock}
