@@ -9,6 +9,12 @@ export const Main = styled.div`
     flex-direction: row;
 `
 
+export const Test = styled.div`
+    width: 100px;
+    height: 100px;
+    background-color: red;
+`
+
 export const Container = styled.div`
     flex: 1;
     justify-content: center;

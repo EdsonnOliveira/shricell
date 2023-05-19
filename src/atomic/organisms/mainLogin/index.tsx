@@ -10,7 +10,7 @@ import BoxCommon from "@atomic/atoms/boxCommon";
 import Button from "@atomic/atoms/button";
 
 import { IndexProps } from "./models";
-import { Background, Container, Logo, Main } from "./style";
+import { Background, Container, Logo, Main, Test } from "./style";
 
 const MainLogin: React.FC<IndexProps> = ({
     children,
@@ -34,6 +34,7 @@ const MainLogin: React.FC<IndexProps> = ({
             <Container>
                 { !children && <Logo src={ImgLogo} alt='Logo' /> }
                 <h1>{ title }</h1>
+                <Test />
                 {
                     children ?? (
                         <BoxCommon gap='10px'>

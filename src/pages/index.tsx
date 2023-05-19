@@ -18,7 +18,7 @@ const Home: React.FC<IndexProps> = ({
   const router = useRouter()
   const [email, setEmail] = useState<string>('')
   const [password, setPassword] = useState<string>('')
-  const [steps, setSteps] = useState<Steps>('register')
+  const [steps, setSteps] = useState<Steps>('login')
 
   const [dunsNumber, setDunsNumber] = useState<string>('')
   const [federalTax, setFederalTax] = useState<string>('')
