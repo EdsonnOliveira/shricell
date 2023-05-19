@@ -1,9 +1,5 @@
 import React from "react";
 
-import ImgLogo from '@assets/logo/Logo1.png';
-import ImgBg1 from '@assets/background/Background1.png'
-import ImgBg2 from '@assets/background/Background2.png'
-
 import { primary, secondary } from "@atomic/constants/colors";
 import Input from "@atomic/atoms/input";
 import BoxCommon from "@atomic/atoms/boxCommon";
@@ -23,7 +19,7 @@ const MainLogin: React.FC<IndexProps> = ({
     clickLogin,
     clickRegister
 }) => {
-    return <div style={{ width: 150, height: 100, backgroundColor: 'red' }}></div>
+    return <Test />
     return (
         <Main>
             <Container bgColor={type === 'admin' ? secondary : primary}>
