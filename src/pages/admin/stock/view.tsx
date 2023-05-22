@@ -63,7 +63,7 @@ const View: React.FC<ViewProps> = ({
                 flex={1}
                 gap='20px'
             >
-                <BoxCommon flexDirection='row' gap='20px'>
+                <BoxCommon flexDirection='row' gap='20px' width='100%'>
                     <Button
                         text='Add device'
                         type={useMediaQuery('(max-width: 1000px)') ? 'primaryLarge' : 'primaryMedium'}

@@ -49,13 +49,11 @@ const View: React.FC<ViewProps> = ({
                 flex={1}
                 gap='20px'
             >
-                <BoxCommon flexDirection='row' gap='20px'>
-                    <Button
-                        text='Add supplier'
-                        type={useMediaQuery('(max-width: 1000px)') ? 'primaryLarge' : 'primaryMedium'}
-                        onClick={() => setModalSupplier(true)}
-                    />
-                </BoxCommon>
+                <Button
+                    text='Add supplier'
+                    type={useMediaQuery('(max-width: 1000px)') ? 'primaryLarge' : 'primaryMedium'}
+                    onClick={() => setModalSupplier(true)}
+                />
                 <BoxShadow title='Items' size={{ width: '100%', height: 'max-content' }}>
                     <Table
                         tr={data}
