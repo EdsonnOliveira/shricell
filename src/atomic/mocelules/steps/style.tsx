@@ -8,6 +8,12 @@ export const Main = styled.section`
     align-items: center;
     justify-content: center;
     gap: 10px;
+
+    @media only screen and (max-width: 800px) {
+        & {
+            flex-direction: column;
+        }
+    }
 `
 
 export const Item = styled.div`
@@ -31,4 +37,11 @@ export const Row = styled.div`
     width: 90px;
     height: 3px;
     background-color: ${( props: ItemStepStyledProps ) => ( props.selected ? `${primary}` : `${gray}`)};
+
+    @media only screen and (max-width: 800px) {
+        & {
+            width: 3px;
+            height: 30px;
+        }
+    }
 `
