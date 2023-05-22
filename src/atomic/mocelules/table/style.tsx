@@ -20,9 +20,21 @@ export const TBody = styled.tbody`
 export const TR = styled.tr`
     height: 40px;
     cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     
     &:nth-child(even) { background-color: ${grey} }
     &:hover { background-color: ${lightBlue} }
+
+    @media only screen and (max-width: 800px) {
+        & {
+            height: max-content;
+            flex-direction: column;
+            gap: 10px;
+            padding: 20px 0;
+        }
+    }
 `
 
 export const TD = styled.td`
