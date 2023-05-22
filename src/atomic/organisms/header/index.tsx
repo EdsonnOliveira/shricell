@@ -50,10 +50,10 @@ const optionsSecondary = [
         page: '/admin/suppliers',
         name: 'Suppliers',
     },
-    {
-        page: '/admin/reports',
-        name: 'Reports',
-    },
+    // {
+    //     page: '/admin/reports',
+    //     name: 'Reports',
+    // },
 ]
 
 const Header: React.FC<IndexProps> = ({
