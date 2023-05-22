@@ -31,6 +31,7 @@ export const Main = styled.div`
     @media only screen and (max-width: 1000px) {
         & {
             overflow: auto;
+            width: 100%;
             max-width: calc(100% - 20px);
             max-height: 550px;
         }
@@ -84,6 +85,10 @@ export const Container = styled.div`
     width: max-content;
     height: max-content;
     padding: 15px;
+
+    @media only screen and (max-width: 1000px) {
+        & { width: 100%; }
+    }
 `
 
 export const Footer = styled.div`

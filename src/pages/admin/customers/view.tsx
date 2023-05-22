@@ -64,11 +64,11 @@ const View: React.FC<ViewProps> = ({
                         {/* @ts-ignore */}
                         <Input label='Phone' placeholder="+00 00000-0000" width={useMediaQuery('(max-width: 1000px)') ? '100%' : '275px'} />
                     </BoxCommon>
-                    <BoxCommon flexDirection={useMediaQuery('(max-width: 1000px)') ? 'column' : 'row'} gap='20px'>
+                    <BoxCommon width='100%' flexDirection={useMediaQuery('(max-width: 1000px)') ? 'column' : 'row'} gap='20px'>
                         {/* @ts-ignore */}
-                        <Input label='Company Legal Name' width="400px" />
+                        <Input label='Company Legal Name' width={useMediaQuery('(max-width: 1000px)') ? '100%' : '400px'} />
                         {/* @ts-ignore */}
-                        <Input label='E-Mail' width="335px" />
+                        <Input label='E-Mail' width={useMediaQuery('(max-width: 1000px)') ? '100%' : '335px'} />
                     </BoxCommon>
                     <BoxCommon width='100%' flexDirection={useMediaQuery('(max-width: 1000px)') ? 'column' : 'row'} gap='20px'>
                         {/* @ts-ignore */}
