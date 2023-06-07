@@ -41,4 +41,5 @@ export const TD = styled.td`
     padding: 0 10px;
     text-align: ${( props: IndexStyledProps ) => ( props.td.textAlign ?? 'left' )};
     font-weight: ${( props: IndexStyledProps ) => ( props.td.textWeight ?? '300' )};
+    flex: 1;
 `
