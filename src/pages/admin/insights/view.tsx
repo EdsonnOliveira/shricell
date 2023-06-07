@@ -40,7 +40,8 @@ const options = {
 
 const View: React.FC<ViewProps> = ({
     router,
-    data,
+    dataBestCustomers,
+    dataBestSuppliers,
     dataBrands,
     dataDevices,
     stampSelected,
@@ -58,7 +59,7 @@ const View: React.FC<ViewProps> = ({
             >
                 <BoxShadow title='Best buyers' size={{ width: '100%', height: 'max-content' }}>
                     <Table
-                        tr={data}
+                        tr={dataBestCustomers}
                         mt='10px'
                     />
                 </BoxShadow>
@@ -102,7 +103,7 @@ const View: React.FC<ViewProps> = ({
             >
                 <BoxShadow title='Best suppliers' size={{ width: '100%', height: 'max-content' }}>
                     <Table
-                        tr={data}
+                        tr={dataBestSuppliers}
                         mt='10px'
                     />
                 </BoxShadow>

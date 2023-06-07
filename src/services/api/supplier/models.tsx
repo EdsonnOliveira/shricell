@@ -18,4 +18,6 @@ export interface SupplierProps {
     supplierCity: string;
     supplierState: string;
     supplierZipCode: string;
+    totalBought?: string;
+    totalQuantity?: string;
 }

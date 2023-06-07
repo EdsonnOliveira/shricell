@@ -25,4 +25,6 @@ export interface CustomerProps {
     photoId: string
     taxExemptCertificate: string
     status: string
+    totalOrders?: string;
+    totalValue?: string;
 }

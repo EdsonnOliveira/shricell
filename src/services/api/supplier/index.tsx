@@ -75,9 +75,38 @@ const autoComplete = ({name}: IndexType) => {
     })
 }
 
+const best = () => {
+    return new Promise(async (resolve, reject) => {
+        await api.get('supplier/best-suppliers.php')
+        .then(response => {
+            let res:SupplierProps[] = response.data.suppliers
+            let array:SupplierProps[] = []
+
+            for (let i = 0; i < res.length; i++ ) {
+                let json: SupplierProps = {
+                    supplierId: res[i].supplierId,
+                    supplierName: res[i].supplierName,
+                    supplierPhone: res[i].supplierPhone,
+                    supplierEmail: res[i].supplierEmail,
+                    supplierAddress: res[i].supplierAddress,
+                    supplierCity: res[i].supplierCity,
+                    supplierState: res[i].supplierState,
+                    supplierZipCode: res[i].supplierZipCode,
+                    totalQuantity: res[i].totalQuantity,
+                    totalBought: res[i].totalBought,
+                }
+                array.push(json)
+            }
+            resolve(array)
+        })
+        .catch((response) => reject(response))
+    })
+}
+
 export default {
     listAll,
     insert,
     update,
-    autoComplete
+    autoComplete,
+    best
 }
