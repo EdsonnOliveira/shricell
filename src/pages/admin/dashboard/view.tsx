@@ -11,45 +11,14 @@ import Icon from "@atomic/atoms/icon";
 
 import useMediaQuery from "@hooks/useMediaQuery";
 
-import { BarElement, CategoryScale, Chart, Legend, LinearScale, Title, Tooltip } from "chart.js";
-import { Bar } from "react-chartjs-2";
-
 import { ViewProps } from "./models";
-
-Chart.register(
-    CategoryScale,
-    LinearScale,
-    BarElement,
-    Title,
-    Tooltip,
-    Legend
-)
-
-const options = {
-    indexAxis: 'y' as const,
-    elements: {
-        bar: {
-            borderWidth: 2,
-        },
-    },
-    responsive: true,
-    plugins: {
-        legend: {
-            display: false
-        },
-    },
-};
 
 const View: React.FC<ViewProps> = ({
     nameUser,
     latestSales,
     itemsPreview,
     outOfStock,
-    stampSelected,
-    setStampSelected,
     billedAmount,
-    dataDevices,
-    dataBrands
 }) => (
     <>
         <Head>
@@ -70,36 +39,6 @@ const View: React.FC<ViewProps> = ({
                     <BoxCommon flexDirection='row' alignItems='center' justifyContent='space-between' flex='1'>
                         <h2>$ { billedAmount }</h2>
                     </BoxCommon>
-                </BoxShadow>
-                <BoxShadow title='Best sellers' size={{ width: '100%', height: 700 }}>
-                    <BoxCommon flexDirection='row' gap='5px' mt='-25px' justifyContent='flex-end'>
-                        <Stamp
-                            value='DEVICE'
-                            bgColor={stampSelected == 0 ? primary : terciary}
-                            onClick={() => setStampSelected(0)}
-                        />
-                        <Stamp
-                            value='BRAND'
-                            bgColor={stampSelected == 1 ? primary : terciary}
-                            onClick={() => setStampSelected(1)}
-                        />
-                    </BoxCommon>
-                    {
-                        dataDevices?.labels && stampSelected === 0 && (
-                            <Bar
-                                options={options}
-                                data={dataDevices}
-                            />
-                        )
-                    }
-                    {
-                        dataBrands?.labels && stampSelected === 1 && (
-                            <Bar
-                                options={options}
-                                data={dataBrands}
-                            />
-                        )
-                    }
                 </BoxShadow>
                 <BoxShadow title='Latest sales' size={{ width: '100%', height: 'max-content' }}>
                     <Table

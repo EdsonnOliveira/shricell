@@ -18,10 +18,6 @@ export interface ViewProps {
     itemsPreview: HeaderItemsPreview[]
     billedAmount: string;
     outOfStock: StockProps[];
-    stampSelected: number;
-    setStampSelected: SetIndex;
-    dataDevices: any;
-    dataBrands: any;
 }
 
 export default function Return() {

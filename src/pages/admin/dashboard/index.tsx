@@ -28,8 +28,6 @@ const Dashboard: React.FC<IndexProps> = ({
 
     const [itemsPreview, setItemsPreview] = useState<HeaderItemsPreview[]>([])
     const [billedAmount, setBilledAmount] = useState<string>('0,00')
-    const [dataDevices, setDataDevices] = useState<Object>({})
-    const [dataBrands, setDataBrands] = useState<Object>({})
     const [latestSales, setLatestSales] = useState<TR[]>([])
     const [outOfStock, setOutOfStock] = useState<StockProps[]>([])
     
@@ -79,40 +77,6 @@ const Dashboard: React.FC<IndexProps> = ({
         .then((data) => {
             setBilledAmount(String(data || '0,00'))
         })
-        
-        sales.bestSellerDevices({ dateStart: getFirstLastDay().first, dateEnd: getFirstLastDay().last })
-        // @ts-ignore
-        .then((data: DevicesProps[]) => {
-            let labels = data.map(item => `${item.model} - ${item.storage} - ${item.color}`)
-            const dataDevices = {
-                labels,
-                datasets: [
-                    {
-                        label: 'Total Sold',
-                        data: data.map(item => item.totalSold),
-                        backgroundColor: primary,
-                    },
-                ],
-            };
-            setDataDevices(dataDevices)
-        })
-
-        sales.bestSellerBrands({ dateStart: getFirstLastDay().first, dateEnd: getFirstLastDay().last })
-        // @ts-ignore
-        .then((data: BrandProps[]) => {
-            let labels = data.map(item => item.brand)
-            const dataBrands = {
-                labels,
-                datasets: [
-                    {
-                        label: 'Total Sold',
-                        data: data.map(item => item.quantity),
-                        backgroundColor: primary,
-                    },
-                ],
-            };
-            setDataBrands(dataBrands)
-        })
 
         sales.currentWeek()
         // @ts-ignore
@@ -160,19 +124,13 @@ const Dashboard: React.FC<IndexProps> = ({
         })
     }
 
-    const [stampSelected, setStampSelected] = useState<number>(0)
-
     return (
         <View
             nameUser={dataUser.name || 'Shri'}
             latestSales={latestSales}
             itemsPreview={itemsPreview}
             billedAmount={billedAmount}
-            dataDevices={dataDevices}
-            dataBrands={dataBrands}
             outOfStock={outOfStock}
-            stampSelected={stampSelected}
-            setStampSelected={setStampSelected}
         />
     )
 }
