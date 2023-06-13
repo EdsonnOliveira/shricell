@@ -19,6 +19,7 @@ export const InputBox = styled.div`
     border-radius: 15px;
     flex-direction: row;
     justify-content: space-between;
+    align-items: center;
 
     margin-top: ${( props: MarginsStyledProps ) => (props.mt ?? 0)};
     margin-left: ${( props: MarginsStyledProps ) => (props.ml ?? 0)};
@@ -34,6 +35,8 @@ export const TextInput = styled.input.attrs({
     flex: 1;
     text-align: ${( props: IndexStyledProps ) => ( props.textAlign ?? 'left' )};
     font-size: 21px;
+    display: flex;
+    align-items: center;
 
     @media only screen and (max-width: 600px) {
         font-size: 17px;
