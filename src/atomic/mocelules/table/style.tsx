@@ -26,6 +26,7 @@ export const TR = styled.tr`
     
     &:nth-child(even) { background-color: ${grey} }
     &:hover { background-color: ${lightBlue} }
+    &:last-child { border-radius: 0 12px }
 
     @media only screen and (max-width: 800px) {
         & {
