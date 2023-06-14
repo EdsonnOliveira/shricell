@@ -6,16 +6,20 @@ import { Dispatch } from "redux";
 import { SuppliersTypes } from "@redux/reducers/suppliers/models";
 import { CustomersTypes } from "@redux/reducers/customers/models";
 
-import { getFirstLastDay } from "@constants/date";
+import { getDateCurrent, getFirstLastDay } from "@constants/date";
 
 import { TR } from "@atomic/constants/table";
 import { green, primary } from "@atomic/constants/colors";
+import { OptionsType } from "@atomic/constants/select";
 
 import supplier from "@api/supplier";
 import sales from "@api/sales";
 import customer from "@api/customer";
+import devices from "@api/stock/devices";
 import { SupplierProps } from "@api/supplier/models";
 import { CustomerProps } from "@api/customer/models";
+import { DevicesProps } from "@api/sales/models";
+import { PriceProps } from "@api/stock/devices/models";
 
 import View from "./view";
 import { IndexProps } from "./models";
@@ -198,10 +202,91 @@ const Insights: React.FC<IndexProps> = ({
 
     const [stampSelected, setStampSelected] = useState<number>(0)
 
+    const [dateStart, setDateStart] = useState<string>(getDateCurrent())
+    const [dateEnd, setDateEnd] = useState<string>(getDateCurrent())
+    const [devicesId, setDevicesId] = useState<OptionsType[]>([{ label: 'Select the Device', value: '-1' }])
+    const [filterDevices, setFilterDevices] = useState<string>('')
+
+    useEffect(() => {
+        loadDevices()
+    }, [filterDevices])
+
+    const loadDevices = () => {
+        devices.autoComplete({ model: filterDevices })
+        // @ts-ignore
+        .then((data: DevicesProps[]) => {
+            let options: OptionsType[] = [{ label: 'Select the Device', value: '-1' }]
+            let array = data.map(item => (
+                {
+                    label: `${item.model} - ${item.color} - ${item.storage}`,
+                    value: String(item.deviceId)
+                }
+            ))
+            setDevicesId([...options, ...array])
+        })
+        .catch(() => setDevicesId([{ label: 'Select the Device', value: '-1' }]))
+    }
+
+    const [devicesSelecteds, setDevicesSelecteds] = useState<any>()
+
+    const loadDevicesSelecteds = (device: { label: string, value: string }) => {
+        if (devicesSelecteds != null && devicesSelecteds.findIndex((val: { label: string, value: string }) => val.value === device.value) >= 0)
+            return
+        
+        setDevicesSelecteds(devices => ([...devices || [], device]))
+    }
+
+    const removeDevice = (value: string) => {
+        let device = devicesSelecteds.findIndex((val: { label: string, value: string }) => val.value === value)
+        let array = devicesSelecteds
+        array.splice(device, 1)
+        setDevicesSelecteds(array)
+        // setDevicesSelecteds(devices => ([...devices, array.splice(device, 1)]))
+    }
+
+    const [dataGraphByTime, setDataGraphByTime] = useState<Object>({})
+
+    useEffect(() => {
+        loadGraphByTime()
+    }, [devicesSelecteds])
+
+    const loadGraphByTime = () => {
+        let devicesId = devicesSelecteds?.map(item => item.value) || []
+        devices.prices({ dateStart, dateEnd, devicesId })
+        // @ts-ignore
+        .then((data: PriceProps[]) => {
+            let labels = data.map(item => `${item.model} - ${item.color} - ${item.storage} | ${item.month}/${item.year}`)
+            const dataPrices = {
+                labels,
+                datasets: [
+                    {
+                        label: 'Total Sold',
+                        data: data.map(item => item.averagePrice),
+                        backgroundColor: primary,
+                    },
+                ],
+            };
+            setDataGraphByTime(dataPrices)
+        })
+    }
+
     return (
         <View
             router={router}
             dataBestCustomers={dataBestCustomers}
+            dateStart={dateStart}
+            setDateStart={setDateStart}
+            dateEnd={dateEnd}
+            setDateEnd={setDateEnd}
+            filterDevices={filterDevices}
+            setFilterDevices={setFilterDevices}
+            devicesItems={devicesId}
+
+            devicesSelecteds={devicesSelecteds}
+            setDevicesSelecteds={loadDevicesSelecteds}
+            removeDeviceSelected={removeDevice}
+
+            dataGraphByTime={dataGraphByTime}
             dataBestSuppliers={dataBestSuppliers}
             dataDevices={dataDevices}
             dataBrands={dataBrands}
