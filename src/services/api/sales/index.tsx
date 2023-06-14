@@ -7,7 +7,7 @@ const listAll = () => {
         .then(response => {
             let res:SaleProps[] = response.data.sales
             let array:SaleProps[] = []
-            for (let i = 0; i < res.length; i++ ) {
+            for (let i = 0; i < res?.length; i++ ) {
                 let json: SaleProps = {
                     saleId: res[i].saleId,
                     customerId: res[i].customerId,
@@ -34,7 +34,7 @@ const listAllPending = () => {
         .then(response => {
             let res:SaleProps[] = response.data.pendingSales
             let array:SaleProps[] = []
-            for (let i = 0; i < res.length; i++ ) {
+            for (let i = 0; i < res?.length; i++ ) {
                 let json: SaleProps = {
                     saleId: res[i].saleId,
                     customerId: res[i].customerId,
@@ -77,7 +77,7 @@ const listAllCustomer = ({ customerId }: IndexType) => {
                 }
                 array.push(json)
             }
-            resolve(array)
+            resolve(array || [])
         })
         .catch((response) => reject(response))
     })
@@ -175,7 +175,7 @@ const bestSellerDevices = ({ dateStart, dateEnd }: IndexType) => {
         .then(response => {
             let res:DevicesProps[] = response.data.devices
             let array:DevicesProps[] = []
-            for (let i = 0; i < res.length; i++ ) {
+            for (let i = 0; i < res?.length; i++ ) {
                 let json: DevicesProps = {
                     deviceId: res[i].deviceId,
                     brandId: res[i].brandId,
@@ -194,7 +194,7 @@ const bestSellerDevices = ({ dateStart, dateEnd }: IndexType) => {
                 }
                 array.push(json)
             }
-            resolve(array)
+            resolve(array || [])
         })
         .catch((response) => reject(response))
     })
@@ -207,7 +207,7 @@ const bestSellerBrands = ({ dateStart, dateEnd }: IndexType) => {
             let res:BrandProps[] = response.data.brands
             let array:BrandProps[] = []
             
-            for (let i = 0; i < res.length; i++ ) {
+            for (let i = 0; i < res?.length; i++ ) {
                 let json: BrandProps = {
                     brandId: res[i].brandId,
                     brand: res[i].brand,
@@ -215,7 +215,7 @@ const bestSellerBrands = ({ dateStart, dateEnd }: IndexType) => {
                 }
                 array.push(json)
             }
-            resolve(array)
+            resolve(array || [])
         })
         .catch((response) => reject(response))
     })

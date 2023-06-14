@@ -2,9 +2,13 @@ export type IndexType = {
     deviceId?: string;
     brandId?: string;
     modelId?: string;
+    model?: string;
     colorId?: string;
     storageId?: string;
     gradeId?: string;
+    dateStart?: string;
+    dateEnd?: string;
+    devicesId?: [];
 }
 
 export interface DevicesProps {
@@ -22,4 +26,14 @@ export interface DevicesProps {
     gradeName: string | null;
     gradeDescription: string | null;
     salePrice: number | string | null;
+}
+
+export interface PriceProps {
+    model: string;
+    color: string;
+    storage: string;
+    gradeName: string;
+    year: string;
+    month: string;
+    averagePrice: string
 }

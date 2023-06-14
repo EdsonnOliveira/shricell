@@ -54,7 +54,7 @@ const best = () => {
             let res:CustomerProps[] = response.data.customers
             let array:CustomerProps[] = []
 
-            for (let i = 0; i < res.length; i++ ) {
+            for (let i = 0; i < res?.length; i++ ) {
                 let json: CustomerProps = {
                     customerId: res[i].customerId,
                     companyName: res[i].companyName,
@@ -77,7 +77,7 @@ const best = () => {
                 }
                 array.push(json)
             }
-            resolve(array)
+            resolve(array || [])
         })
         .catch((response) => reject(response))
     })
