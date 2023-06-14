@@ -35,7 +35,7 @@ const Select: React.FC<IndexProps> = ({
                             onBlur={() => {
                                 setTimeout(() => {
                                     setOnFocus(false)
-                                }, 100)
+                                }, 500)
                             }}
                         />
                         {
@@ -44,7 +44,9 @@ const Select: React.FC<IndexProps> = ({
                                     {
                                         options && options.map((item, index) => (
                                             // @ts-ignore
-                                            <Option onClick={() => onChange(item.label, item.value)} key={index}>{ item.label }</Option>
+                                            <Option onClick={() => onChange(item.label, item.value)} key={index}>
+                                                { item.label }
+                                            </Option>
                                         ))
                                     }
                                     

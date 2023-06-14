@@ -47,7 +47,6 @@ export const BoxInputDrop = styled.div`
 
 export const Drop = styled.div`
     width: 100%;
-    height: 150px;
     overflow: auto;
     padding: 10px 0;
     top: 65px;
