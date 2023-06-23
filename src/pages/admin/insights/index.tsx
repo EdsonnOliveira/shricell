@@ -218,7 +218,7 @@ const Insights: React.FC<IndexProps> = ({
             let options: OptionsType[] = [{ label: 'Select the Device', value: '-1' }]
             let array = data.map(item => (
                 {
-                    label: `${item.model} - ${item.color} - ${item.storage}`,
+                    label: `${item.model} - ${item.color} - ${item.storage} - ${item.gradeName}`,
                     value: String(item.deviceId)
                 }
             ))
@@ -241,10 +241,9 @@ const Insights: React.FC<IndexProps> = ({
         let array = devicesSelecteds
         array.splice(device, 1)
         setDevicesSelecteds(array)
-        // setDevicesSelecteds(devices => ([...devices, array.splice(device, 1)]))
     }
 
-    const [dataGraphByTime, setDataGraphByTime] = useState<Object>({})
+    const [dataGraphByTime, setDataGraphByTime] = useState<TR[]>([])
 
     useEffect(() => {
         loadGraphByTime()
@@ -255,18 +254,63 @@ const Insights: React.FC<IndexProps> = ({
         devices.prices({ dateStart, dateEnd, devicesId })
         // @ts-ignore
         .then((data: PriceProps[]) => {
-            let labels = data.map(item => `${item.model} - ${item.color} - ${item.storage} | ${item.month}/${item.year}`)
-            const dataPrices = {
-                labels,
-                datasets: [
-                    {
-                        label: 'Total Sold',
-                        data: data.map(item => item.averagePrice),
-                        backgroundColor: primary,
-                    },
-                ],
-            };
-            setDataGraphByTime(dataPrices)
+            let array = data.map((item, index) => (
+                {
+                    td: [
+                            {
+                                description: item.model,
+                                textAlign: 'left',
+                                textWeight: '500',
+                                type: 'text'
+                            },
+                            {
+                                description: item.color,
+                                textAlign: 'left',
+                                textWeight: '500',
+                                type: 'text'
+                            },
+                            {
+                                description: item.storage,
+                                textAlign: 'center',
+                                textWeight: '300',
+                                type: 'text'
+                            },
+                            {
+                                description: item.gradeName,
+                                textAlign: 'center',
+                                textWeight: '300',
+                                type: 'text'
+                            },
+                            {
+                                description: `${item.year}/${item.month.padStart(2, '0')}`,
+                                textAlign: 'center',
+                                textWeight: '300',
+                                type: 'text'
+                            },
+                            {
+                                description: `$ ${item.averagePrice.substring(0, 6)}`,
+                                textAlign: 'center',
+                                textWeight: '500',
+                                type: {
+                                    color: 'fontWhite',
+                                    bgColor: green
+                                }
+                            },
+                    ],
+                    onClick: () => {
+                        // @ts-ignore
+                        setDataCustomer(data[index])
+                        router.push({
+                            pathname: '/admin/customers/details',
+                            query: {
+                                isEdit: true,
+                            }}
+                        )
+                    }
+                }
+            ))
+
+            setDataGraphByTime(array)
         })
     }
 

@@ -13,12 +13,13 @@ import Select from "@atomic/atoms/select";
 import useMediaQuery from "@hooks/useMediaQuery";
 
 import { ViewProps } from "./models";
-import { BarElement, CategoryScale, Chart, Legend, LinearScale, Title, Tooltip } from "chart.js";
+import { BarElement, CategoryScale, Chart, Legend, LinearScale, PointElement, Title, Tooltip } from "chart.js";
 import { Bar } from "react-chartjs-2";
 
 Chart.register(
     CategoryScale,
     LinearScale,
+    PointElement,
     BarElement,
     Title,
     Tooltip,
@@ -72,40 +73,28 @@ const View: React.FC<ViewProps> = ({
                 flex={1}
                 gap='20px'
             >
-                <BoxShadow title='Best buyers' size={{ width: '100%', height: 'max-content' }}>
-                    <Table
-                        tr={dataBestCustomers}
-                        mt='10px'
-                    />
-                </BoxShadow>
-            </BoxCommon>
-            <BoxShadow
-                title='Price of phones graphic'
-                size={{ width: '100%', height: 700 }}
-            >
-                <BoxCommon flexDirection='row'>
+                <BoxShadow title='Price of phones' size={{ width: '100%', height: 'max-content' }}>
                     <BoxCommon
                         gap='10px'
                         mt='10px'
-                        width='max-content'
                         pt='12px'
-                        pr='12px'
                         pb='12px'
-                        pl='12px'
                         borderRadius='10px'
+                        flexDirection={useMediaQuery('(max-width: 1000px)') ? 'column' : 'row'}
                     >
-                        <h5 className="fontW600">Filter</h5>
                         <Input
                             type='date'
                             label='Date Start'
                             value={dateStart}
                             onChangeText={(value) => setDateStart(value)}
+                            width={useMediaQuery('(max-width: 1000px)') ? '100%' : 'max-content'}
                         />
                         <Input
                             type='date'
                             label='Date End'
                             value={dateEnd}
                             onChangeText={(value) => setDateEnd(value)}
+                            width={useMediaQuery('(max-width: 1000px)') ? '100%' : 'max-content'}
                         />
                         <Select
                             label='Devices'
@@ -115,7 +104,6 @@ const View: React.FC<ViewProps> = ({
                             // @ts-ignore
                             onChange={(label: string, value: string) => setDevicesSelecteds({ label, value })}
                             onChangeText={setFilterDevices}
-                            width="100%"
                         />
                         {
                             devicesSelecteds?.map(item => (
@@ -133,19 +121,23 @@ const View: React.FC<ViewProps> = ({
                             ))
                         }
                     </BoxCommon>
-                    <BoxCommon flex={1}>
-                        {
-                            dataGraphByTime?.labels && (
-                                <Bar
-                                    options={options}
-                                    data={dataGraphByTime}
-                                />
-                            )
-                        }
-
-                    </BoxCommon>
-                </BoxCommon>
-            </BoxShadow>
+                    <Table
+                        tr={dataGraphByTime}
+                        mt='10px'
+                    />
+                </BoxShadow>
+            </BoxCommon>
+            <BoxCommon
+                flex={1}
+                gap='20px'
+            >
+                <BoxShadow title='Best buyers' size={{ width: '100%', height: 'max-content' }}>
+                    <Table
+                        tr={dataBestCustomers}
+                        mt='10px'
+                    />
+                </BoxShadow>
+            </BoxCommon>
             <BoxShadow title='Best sellers' size={{ width: '100%', height: 700 }}>
                 <BoxCommon flexDirection='row' gap='5px' mt='-25px' justifyContent='flex-end'>
                     <Stamp

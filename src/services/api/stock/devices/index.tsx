@@ -169,8 +169,8 @@ const prices = ({ dateStart, dateEnd, devicesId }: IndexType) => {
                     color: res[i].color,
                     gradeName: res[i].gradeName,
                     storage: res[i].storage,
-                    month: res[i].month,
                     year: res[i].year,
+                    month: res[i].month,
                     averagePrice: res[i].averagePrice
                 }
                 array.push(json)

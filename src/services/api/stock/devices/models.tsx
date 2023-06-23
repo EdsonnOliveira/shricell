@@ -33,7 +33,7 @@ export interface PriceProps {
     color: string;
     storage: string;
     gradeName: string;
-    year: string;
-    month: string;
-    averagePrice: string
+    year: string
+    month: string
+    averagePrice: string;
 }
