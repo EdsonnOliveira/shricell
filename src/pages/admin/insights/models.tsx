@@ -22,7 +22,7 @@ export interface ViewProps {
     devicesItems: OptionsType[]
 
     devicesSelected: string;
-    setDevicesSelected: SetText;
+    setDevicesSelected: SetOptionsType;
     removeDeviceSelected: SetText;
 
     dataGraphByTime: any;

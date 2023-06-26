@@ -97,8 +97,9 @@ const View: React.FC<ViewProps> = ({
                         options={devicesItems}
                         isSearch
                         value={filterDevices}
+                        width="100%"
                         // @ts-ignore
-                        onChange={(label: string, value: string) => setDevicesSelected(value)}
+                        onChange={(label: string, value: string) => setDevicesSelected({ label, value})}
                         onChangeText={setFilterDevices}
                     />
                 </BoxCommon>

@@ -7,6 +7,7 @@ import { IndexStyledProps } from "./models";
 
 export const Main = styled.div`
     width: ${( props: IndexStyledProps ) => ( props.width ?? 'null' )};
+    flex: 1;
 `
 
 export const SelectBox = styled.div`

@@ -30,6 +30,7 @@ const Select: React.FC<IndexProps> = ({
                             // @ts-ignore
                             onChangeText={onChangeText}
                             placeholder={options[0].label}
+                            width={width}
                             // @ts-ignore
                             onFocus={setOnFocus}
                             onBlur={() => {

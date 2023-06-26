@@ -227,7 +227,7 @@ const Insights: React.FC<IndexProps> = ({
         .catch(() => setDevicesId([{ label: 'Select the Device', value: '-1' }]))
     }
 
-    const [deviceSelected, setDeviceSelected] = useState<string>('')
+    const [deviceSelected, setDeviceSelected] = useState<any>()
 
     const removeDevice = () => {
         setDeviceSelected('')
@@ -240,7 +240,9 @@ const Insights: React.FC<IndexProps> = ({
     }, [deviceSelected])
 
     const loadGraphByTime = () => {
-        devices.prices({ dateStart, dateEnd, deviceId: deviceSelected })
+        setFilterDevices(deviceSelected?.label)
+
+        devices.prices({ dateStart, dateEnd, deviceId: deviceSelected?.value })
         // @ts-ignore
         .then((data: PriceProps[]) => {
             let array = data.map((item, index) => (
