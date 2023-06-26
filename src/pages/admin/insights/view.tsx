@@ -107,6 +107,10 @@ const View: React.FC<ViewProps> = ({
                     tr={dataGraphByTime}
                     mt='10px'
                 />
+                {
+                    dataGraphByTime.length <= 0 &&
+                    devicesSelected?.label && <h4 className="fontCenter">Nothing to show</h4>
+                }
             </BoxShadow>
             <BoxCommon
                 flex={1}
