@@ -227,31 +227,20 @@ const Insights: React.FC<IndexProps> = ({
         .catch(() => setDevicesId([{ label: 'Select the Device', value: '-1' }]))
     }
 
-    const [devicesSelecteds, setDevicesSelecteds] = useState<any>()
+    const [deviceSelected, setDeviceSelected] = useState<string>('')
 
-    const loadDevicesSelecteds = (device: { label: string, value: string }) => {
-        if (devicesSelecteds != null && devicesSelecteds.findIndex((val: { label: string, value: string }) => val.value === device.value) >= 0)
-            return
-        
-        setDevicesSelecteds(devices => ([...devices || [], device]))
-    }
-
-    const removeDevice = (value: string) => {
-        let device = devicesSelecteds.findIndex((val: { label: string, value: string }) => val.value === value)
-        let array = devicesSelecteds
-        array.splice(device, 1)
-        setDevicesSelecteds(array)
+    const removeDevice = () => {
+        setDeviceSelected('')
     }
 
     const [dataGraphByTime, setDataGraphByTime] = useState<TR[]>([])
 
     useEffect(() => {
         loadGraphByTime()
-    }, [devicesSelecteds])
+    }, [deviceSelected])
 
     const loadGraphByTime = () => {
-        let devicesId = devicesSelecteds?.map(item => item.value) || []
-        devices.prices({ dateStart, dateEnd, devicesId })
+        devices.prices({ dateStart, dateEnd, deviceId: deviceSelected })
         // @ts-ignore
         .then((data: PriceProps[]) => {
             let array = data.map((item, index) => (
@@ -326,8 +315,8 @@ const Insights: React.FC<IndexProps> = ({
             setFilterDevices={setFilterDevices}
             devicesItems={devicesId}
 
-            devicesSelecteds={devicesSelecteds}
-            setDevicesSelecteds={loadDevicesSelecteds}
+            devicesSelected={deviceSelected}
+            setDevicesSelected={setDeviceSelected}
             removeDeviceSelected={removeDevice}
 
             dataGraphByTime={dataGraphByTime}

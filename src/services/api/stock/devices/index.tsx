@@ -156,9 +156,9 @@ const toSell = ({ brandId, modelId, storageId, gradeId }: IndexType) => {
     })
 }
 
-const prices = ({ dateStart, dateEnd, devicesId }: IndexType) => {
+const prices = ({ dateStart, dateEnd, deviceId }: IndexType) => {
     return new Promise(async (resolve, reject) => {
-        await api.post('devices/price-graphic-by-time.php', { dateStart, dateEnd, devicesId })
+        await api.post('devices/price-graphic-by-time.php', { dateStart, dateEnd, deviceId })
         .then(response => {
             let res:PriceProps[] = response.data.devices
             let array:PriceProps[] = []

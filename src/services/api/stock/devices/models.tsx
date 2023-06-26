@@ -8,7 +8,6 @@ export type IndexType = {
     gradeId?: string;
     dateStart?: string;
     dateEnd?: string;
-    devicesId?: [];
 }
 
 export interface DevicesProps {

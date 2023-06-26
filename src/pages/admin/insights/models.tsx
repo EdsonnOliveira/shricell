@@ -21,8 +21,8 @@ export interface ViewProps {
     setFilterDevices: SetText;
     devicesItems: OptionsType[]
 
-    devicesSelecteds: any;
-    setDevicesSelecteds: SetOptionsType;
+    devicesSelected: string;
+    setDevicesSelected: SetText;
     removeDeviceSelected: SetText;
 
     dataGraphByTime: any;

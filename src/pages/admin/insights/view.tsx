@@ -52,8 +52,8 @@ const View: React.FC<ViewProps> = ({
     setFilterDevices,
     devicesItems,
 
-    devicesSelecteds,
-    setDevicesSelecteds,
+    devicesSelected,
+    setDevicesSelected,
     removeDeviceSelected,
     
     dataGraphByTime,
@@ -102,24 +102,9 @@ const View: React.FC<ViewProps> = ({
                             isSearch
                             value={filterDevices}
                             // @ts-ignore
-                            onChange={(label: string, value: string) => setDevicesSelecteds({ label, value })}
+                            onChange={(label: string, value: string) => setDevicesSelected(value)}
                             onChangeText={setFilterDevices}
                         />
-                        {
-                            devicesSelecteds?.map(item => (
-                                <BoxCommon
-                                    bgColor={primary}
-                                    borderRadius='5px'
-                                    pt='5px'
-                                    pr='5px'
-                                    pb='5px'
-                                    pl='5px'
-                                    onClick={() => removeDeviceSelected(item.value)}
-                                >
-                                    <h6 className="fontSmall fontWhite fontW400">{ item.label } X</h6>
-                                </BoxCommon>
-                            ))
-                        }
                     </BoxCommon>
                     <Table
                         tr={dataGraphByTime}
