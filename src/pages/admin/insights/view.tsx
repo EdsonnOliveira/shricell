@@ -69,49 +69,44 @@ const View: React.FC<ViewProps> = ({
         </Head>
         <Header />
         <main className="main">
-            <BoxCommon
-                flex={1}
-                gap='20px'
-            >
-                <BoxShadow title='Price of phones' size={{ width: '100%', height: 'max-content' }}>
-                    <BoxCommon
-                        gap='10px'
-                        mt='10px'
-                        pt='12px'
-                        pb='12px'
-                        borderRadius='10px'
-                        flexDirection={useMediaQuery('(max-width: 1000px)') ? 'column' : 'row'}
-                    >
-                        <Input
-                            type='date'
-                            label='Date Start'
-                            value={dateStart}
-                            onChangeText={(value) => setDateStart(value)}
-                            width={useMediaQuery('(max-width: 1000px)') ? '100%' : 'max-content'}
-                        />
-                        <Input
-                            type='date'
-                            label='Date End'
-                            value={dateEnd}
-                            onChangeText={(value) => setDateEnd(value)}
-                            width={useMediaQuery('(max-width: 1000px)') ? '100%' : 'max-content'}
-                        />
-                        <Select
-                            label='Devices'
-                            options={devicesItems}
-                            isSearch
-                            value={filterDevices}
-                            // @ts-ignore
-                            onChange={(label: string, value: string) => setDevicesSelected(value)}
-                            onChangeText={setFilterDevices}
-                        />
-                    </BoxCommon>
-                    <Table
-                        tr={dataGraphByTime}
-                        mt='10px'
+            <BoxShadow title='Price of phones' size={{ width: '100%', height: 'max-content' }}>
+                <BoxCommon
+                    gap='10px'
+                    mt='10px'
+                    pt='12px'
+                    pb='12px'
+                    borderRadius='10px'
+                    flexDirection={useMediaQuery('(max-width: 1000px)') ? 'column' : 'row'}
+                >
+                    <Input
+                        type='date'
+                        label='Date Start'
+                        value={dateStart}
+                        onChangeText={(value) => setDateStart(value)}
+                        width={useMediaQuery('(max-width: 1000px)') ? '100%' : 'max-content'}
                     />
-                </BoxShadow>
-            </BoxCommon>
+                    <Input
+                        type='date'
+                        label='Date End'
+                        value={dateEnd}
+                        onChangeText={(value) => setDateEnd(value)}
+                        width={useMediaQuery('(max-width: 1000px)') ? '100%' : 'max-content'}
+                    />
+                    <Select
+                        label='Devices'
+                        options={devicesItems}
+                        isSearch
+                        value={filterDevices}
+                        // @ts-ignore
+                        onChange={(label: string, value: string) => setDevicesSelected(value)}
+                        onChangeText={setFilterDevices}
+                    />
+                </BoxCommon>
+                <Table
+                    tr={dataGraphByTime}
+                    mt='10px'
+                />
+            </BoxShadow>
             <BoxCommon
                 flex={1}
                 gap='20px'
