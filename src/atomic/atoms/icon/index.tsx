@@ -4,6 +4,9 @@ import { IndexProps } from "./models";
 
 import IconCart from "./icons/cart";
 import IconUnfinished from "./icons/unfinished";
+import IconPerson from "./icons/person";
+import IconCellphone from "./icons/cellphone";
+import IconBox from "./icons/box";
 
 const Icon: React.FC<IndexProps> = ({
     name,
@@ -16,6 +19,12 @@ const Icon: React.FC<IndexProps> = ({
                 return { icon: <IconCart />, viewBox: '738 588'};
             case 'unfinished':
                 return { icon: <IconUnfinished />, viewBox: '759 760'};
+            case 'person':
+                return { icon: <IconPerson />, viewBox: '459 760'};
+            case 'cellphone':
+                return { icon: <IconCellphone />, viewBox: '29 30'};
+            case 'box':
+                return { icon: <IconBox />, viewBox: '25 25'};
             default:
                 return { icon: null, viewBox: '738 588' }
         }

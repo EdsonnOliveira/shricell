@@ -77,7 +77,7 @@ const Insights: React.FC<IndexProps> = ({
                                 type: 'text'
                             },
                             {
-                                description: `$ ${item.totalValue}`,
+                                description: `$${item.totalValue}`,
                                 textAlign: 'center',
                                 textWeight: '500',
                                 type: {
@@ -166,7 +166,7 @@ const Insights: React.FC<IndexProps> = ({
                                 type: 'text'
                             },
                             {
-                                description: `$ ${item.totalBought}`,
+                                description: `$${item.totalBought}`,
                                 textAlign: 'center',
                                 textWeight: '500',
                                 type: {

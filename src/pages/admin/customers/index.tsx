@@ -33,7 +33,7 @@ const Customers: React.FC<IndexProps> = ({
         .then((data: CustomerProps[]) => {
             setItemsPreview([
                 {
-                    icon: '',
+                    icon: 'person',
                     title: 'Customers',
                     value: String(data.length)
                 },

@@ -112,18 +112,7 @@ const View: React.FC<ViewProps> = ({
                     devicesSelected?.label && <h4 className="fontCenter">Nothing to show</h4>
                 }
             </BoxShadow>
-            <BoxCommon
-                flex={1}
-                gap='20px'
-            >
-                <BoxShadow title='Best buyers' size={{ width: '100%', height: 'max-content' }}>
-                    <Table
-                        tr={dataBestCustomers}
-                        mt='10px'
-                    />
-                </BoxShadow>
-            </BoxCommon>
-            <BoxShadow title='Best sellers' size={{ width: '100%', height: 700 }}>
+            <BoxShadow title='Best sellers' size={{ width: useMediaQuery('(max-width: 1000px)') ? '100%' : '800px', height: 500 }}>
                 <BoxCommon flexDirection='row' gap='5px' mt='-25px' justifyContent='flex-end'>
                     <Stamp
                         value='DEVICE'
@@ -136,23 +125,36 @@ const View: React.FC<ViewProps> = ({
                         onClick={() => setStampSelected(1)}
                     />
                 </BoxCommon>
-                {
-                    dataDevices?.labels && stampSelected === 0 && (
-                        <Bar
-                            options={options}
-                            data={dataDevices}
-                        />
-                    )
-                }
-                {
-                    dataBrands?.labels && stampSelected === 1 && (
-                        <Bar
-                            options={options}
-                            data={dataBrands}
-                        />
-                    )
-                }
+                <BoxCommon width={useMediaQuery('(max-width: 1000px)') ? '100%' : '800px'} height='500px' alignItems='center'>
+                    {
+                        dataDevices?.labels && stampSelected === 0 && (
+                            <Bar
+                                options={options}
+                                data={dataDevices}
+                            />
+                        )
+                    }
+                    {
+                        dataBrands?.labels && stampSelected === 1 && (
+                            <Bar
+                                options={options}
+                                data={dataBrands}
+                            />
+                        )
+                    }
+                </BoxCommon>
             </BoxShadow>
+            <BoxCommon
+                flex={1}
+                gap='20px'
+            >
+                <BoxShadow title='Best buyers' size={{ width: '100%', height: '600px' }}>
+                    <Table
+                        tr={dataBestCustomers}
+                        mt='10px'
+                    />
+                </BoxShadow>
+            </BoxCommon>
             <BoxCommon
                 flex={1}
                 gap='20px'

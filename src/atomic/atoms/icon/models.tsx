@@ -7,11 +7,6 @@ export interface IndexProps {
     color: string;
 }
 
-type ViewBox = {
-    width: number;
-    height: number;
-}
-
 export type IndexStyledProps = StyledProps<{
     size: number;
 }>

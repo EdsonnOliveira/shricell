@@ -32,7 +32,7 @@ const Supplier: React.FC<IndexProps> = ({
         .then((data: SupplierProps[]) => {
             setItemsPreview([
                 {
-                    icon: '',
+                    icon: 'person',
                     title: 'Suppliers',
                     value: String(data.length)
                 },

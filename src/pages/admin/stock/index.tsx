@@ -39,12 +39,12 @@ const Stock: React.FC<IndexProps> = ({
         .then((data: DevicesProps[]) => {
             setItemsPreview([
                 {
-                    icon: '',
+                    icon: 'cellphone',
                     title: 'Items',
                     value: String(data.length)
                 },
                 {
-                    icon: '',
+                    icon: 'box',
                     title: 'Stock',
                     value: String(data.reduce((accumulator, value) => Number(accumulator) + Number(value.quantityStock), 0))
                 }
