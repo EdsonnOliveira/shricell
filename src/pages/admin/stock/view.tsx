@@ -75,7 +75,7 @@ const View: React.FC<ViewProps> = ({
                         onClick={() => setModalSupplier(true)}
                     />
                 </BoxCommon>
-                <BoxShadow title='Items' size={{ width: '100%', height: 'max-content' }}>
+                <BoxShadow title='Devices' size={{ width: '100%', height: 'max-content' }}>
                     <Table
                         tr={data}
                         mt='10px'

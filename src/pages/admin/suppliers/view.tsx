@@ -54,7 +54,7 @@ const View: React.FC<ViewProps> = ({
                     type={useMediaQuery('(max-width: 1000px)') ? 'primaryLarge' : 'primaryMedium'}
                     onClick={() => setModalSupplier(true)}
                 />
-                <BoxShadow title='Items' size={{ width: '100%', height: 'max-content' }}>
+                <BoxShadow title='Suppliers' size={{ width: '100%', height: 'max-content' }}>
                     <Table
                         tr={data}
                         mt='10px'

@@ -125,7 +125,12 @@ const View: React.FC<ViewProps> = ({
                         onClick={() => setStampSelected(1)}
                     />
                 </BoxCommon>
-                <BoxCommon width={useMediaQuery('(max-width: 1000px)') ? '100%' : '800px'} height='500px' alignItems='center'>
+                <BoxCommon
+                    width={useMediaQuery('(max-width: 1000px)') ? '99%' : '780px'}
+                    height='500px'
+                    alignItems='center'
+                    mt='10px'
+                >
                     {
                         dataDevices?.labels && stampSelected === 0 && (
                             <Bar

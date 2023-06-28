@@ -22,7 +22,7 @@ const View: React.FC<ViewProps> = ({
                 flex={1}
                 gap='20px'
             >
-                <BoxShadow title='Items' size={{ width: '100%', height: 'max-content' }}>
+                <BoxShadow title='Sales' size={{ width: '100%', height: 'max-content' }}>
                     <Table
                         tr={data}
                         mt='10px'
