@@ -37,10 +37,22 @@ const listAll = () => {
 
 const insert = ({ name, phone, email, address, city, state, zipCode }: IndexType) => {
     return new Promise(async (resolve, reject) => {
-        await api.post('supplier/new-supplier.php', { name, phone, email, address, city, state, zipCode })
+        await api.post('customers/new-customer.php', { name, phone, email, address, city, state, zipCode })
         .then((response) => {
             // @ts-ignore
             let res:SupplierProps = response.data
+            resolve('success')
+        })
+        .catch((response) => reject(response))
+    })
+}
+
+const update = ({ customerId, phone, email, website, address, city, state, zipCode }: IndexType) => {
+    return new Promise(async (resolve, reject) => {
+        await api.post('customers/edit-customer.php', { customerId, phone, email, companyAddress: address, city, state, zipCode })
+        .then((response) => {
+            // @ts-ignore
+            let res:CustomerProps = response.data
             resolve('success')
         })
         .catch((response) => reject(response))
@@ -83,8 +95,22 @@ const best = () => {
     })
 }
 
+const verify = ({ customerId, status }: IndexType) => {
+    return new Promise(async (resolve, reject) => {
+        await api.post('customers/verify-customer.php', { customerId, status })
+        .then((response) => {
+            // @ts-ignore
+            let res:SupplierProps = response.data
+            resolve('success')
+        })
+        .catch((response) => reject(response))
+    })
+}
+
 export default {
     listAll,
     insert,
-    best
+    update,
+    best,
+    verify
 }

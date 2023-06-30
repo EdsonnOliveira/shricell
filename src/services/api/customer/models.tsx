@@ -1,11 +1,14 @@
 export type IndexType = {
-    name: string;
+    name?: string;
     phone?: string;
     email?: string;
     address?: string;
+    website?: string;
     city?: string;
     state?: string;
     zipCode?: string;
+    customerId?: number;
+    status?: 'APPROVED' | 'DENIED';
 }
 
 export interface CustomerProps {

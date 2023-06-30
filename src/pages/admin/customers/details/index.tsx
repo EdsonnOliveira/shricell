@@ -14,6 +14,7 @@ import { SaleProps } from "@api/sales/models";
 
 import { IndexProps } from "./models";
 import View from "./view";
+import customer from "~/services/api/customer";
 
 const CustomersDetails: React.FC<IndexProps> = ({
     dataCustomer,
@@ -104,6 +105,29 @@ const CustomersDetails: React.FC<IndexProps> = ({
 
     const [modalDetails, setModalDetails] = useState<boolean>(false)
 
+    const approve = () => {
+        customer.verify({ customerId: dataCustomer.customerId, status: 'APPROVED' })
+        .then(() => router.push('/admin/customers'))
+    }
+
+    const deny = () => {
+        customer.verify({ customerId: dataCustomer.customerId, status: 'DENIED' })
+        .then(() => router.push('/admin/customers'))
+    }
+
+    const update = () => {
+        customer.update({
+            customerId: dataCustomer.customerId,
+            phone,
+            email: emailCorporation,
+            website: webSite,
+            address: companyAddress,
+            city,
+            state,
+            zipCode
+        }).then(() => router.push('/admin/customers'))
+    }
+
     return (
         <View
             isEdit={!!router.query.isEdit}
@@ -140,6 +164,9 @@ const CustomersDetails: React.FC<IndexProps> = ({
             modalDetails={modalDetails}
             setModalDetails={setModalDetails}
             billedAmount={billedAmount}
+            approve={approve}
+            deny={deny}
+            update={update}
         />
     )
 }

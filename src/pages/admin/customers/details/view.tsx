@@ -1,7 +1,7 @@
 import React from "react";
 import Head from "next/head";
 
-import { green, red } from "@atomic/constants/colors";
+import { green, red, yellow } from "@atomic/constants/colors";
 import Header from "@atomic/organisms/header";
 import BoxShadow from "@atomic/atoms/boxShadow";
 import BoxCommon from "@atomic/atoms/boxCommon";
@@ -9,6 +9,7 @@ import Stamp from "@atomic/atoms/stamp";
 import Table from "@atomic/mocelules/table";
 import Modal from "@atomic/mocelules/modal";
 import Input from "@atomic/atoms/input";
+import Button from "@atomic/atoms/button";
 
 import useMediaQuery from "@hooks/useMediaQuery";
 
@@ -48,7 +49,10 @@ const View: React.FC<ViewProps> = ({
     latestSales,
     modalDetails,
     setModalDetails,
-    billedAmount
+    billedAmount,
+    approve,
+    deny,
+    update
 }) => (
     <>
         <Head>
@@ -64,6 +68,17 @@ const View: React.FC<ViewProps> = ({
                 flexDirection='row'
                 flexWrap='wrap'
             >
+                {
+                    dataCustomer?.status === 'PENDING' && (
+                        <BoxCommon
+                            width={useMediaQuery('(max-width: 1100px)') ? '100%' : '350px'}
+                            gap='20px'
+                        >
+                            <Button type='primaryLarge' text='Approve Customer?' onClick={approve} />
+                            <Button type='redLightLarge' text='Deny Customer?' onClick={deny} />
+                        </BoxCommon>
+                    )
+                }
                 <BoxShadow
                     size={{ width: useMediaQuery('(max-width: 1100px)') ? '100%' : '400px' }}
                     onClick={() => setModalDetails(true)}
@@ -72,7 +87,10 @@ const View: React.FC<ViewProps> = ({
                         <h3 className="fontW500">{ dataCustomer?.companyName }</h3>
                         <h6 className='fontW300'>{ dataCustomer?.phone }</h6>
                         <h6 className='fontW300'>{ dataCustomer?.email }</h6>
-                        <Stamp value={dataCustomer?.status} bgColor={dataCustomer?.status ? green : red} />
+                        <Stamp value={dataCustomer?.status} bgColor={dataCustomer?.status === 'PENDING'
+                                                                        ? yellow
+                                                                        : dataCustomer?.status === 'APPROVED'
+                                                                        ? green : red} />
                         <h6 className='fontGray fontW300'>Click to show details</h6>
                     </BoxCommon>
                 </BoxShadow>
@@ -98,16 +116,9 @@ const View: React.FC<ViewProps> = ({
                 onClose={() => setModalDetails(false)}
                 firstButton={
                     {
-                        type: 'redLightLarge',
-                        text: 'Delete',
-                        onClick: () => console.log('click')
-                    }
-                }
-                secondButton={
-                    {
                         type: 'primaryLarge',
                         text: 'Update',
-                        onClick: () => console.log('click')
+                        onClick: update
                     }
                 }
             >
