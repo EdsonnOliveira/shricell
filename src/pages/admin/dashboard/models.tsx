@@ -5,7 +5,6 @@ import { TR } from "@atomic/constants/table";
 import { HeaderItemsPreview } from "@atomic/constants/header";
 
 import { StockProps } from "@api/stock/models";
-import { SetIndex } from "@typing/set";
 
 export interface IndexProps {
     dataUser: LoginTypes['data']
@@ -14,9 +13,12 @@ export interface IndexProps {
 
 export interface ViewProps {
     nameUser: string;
-    latestSales: TR[]
+    latestSales: TR[];
+    pendingSales: TR[];
     itemsPreview: HeaderItemsPreview[]
     billedAmount: string;
+    cost: string;
+    profit: string;
     outOfStock: StockProps[];
 }
 

@@ -2,10 +2,10 @@ import React, { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 
 import { TR } from "@atomic/constants/table";
-import { green, primary } from "@atomic/constants/colors";
+import { green } from "@atomic/constants/colors";
 import { HeaderItemsPreview } from "@atomic/constants/header";
 
-import { getDateCurrent, getFirstLastDay } from "@constants/date";
+import { getDateCurrent } from "@constants/date";
 
 import { Dispatch } from "redux";
 import { connect } from "react-redux";
@@ -15,7 +15,7 @@ import { SalesTypes } from "@redux/reducers/sales/models";
 import stock from "@api/stock";
 import sales from "@api/sales";
 import { StockProps } from "@api/stock/models";
-import { BrandProps, DevicesProps, SaleProps } from "@api/sales/models";
+import { SaleProps } from "@api/sales/models";
 
 import { IndexProps } from "./models";
 import View from "./view";
@@ -28,7 +28,10 @@ const Dashboard: React.FC<IndexProps> = ({
 
     const [itemsPreview, setItemsPreview] = useState<HeaderItemsPreview[]>([])
     const [billedAmount, setBilledAmount] = useState<string>('0,00')
+    const [cost, setCost] = useState<string>('0,00')
+    const [profit, setProfit] = useState<string>('0,00')
     const [latestSales, setLatestSales] = useState<TR[]>([])
+    const [pendingSales, setPendingSales] = useState<TR[]>([])
     const [outOfStock, setOutOfStock] = useState<StockProps[]>([])
     
     useEffect(() => {
@@ -42,16 +45,6 @@ const Dashboard: React.FC<IndexProps> = ({
                 title: 'Sales',
                 value: '0'
             },
-            {
-                icon: 'unfinished',
-                title: 'Unfinished',
-                value: '0'
-            },
-            {
-                icon: '$',
-                title: 'Profit',
-                value: '0'
-            },
         ]
 
         sales.listAll()
@@ -63,19 +56,58 @@ const Dashboard: React.FC<IndexProps> = ({
         sales.listAllPending()
         // @ts-ignore
         .then((data: SaleProps[]) => {
-            itemsPreview[1].value = String(data.length)
+            let array = data.map((item, index) => (
+                {
+                    td: [
+                            {
+                                description: `#${item.saleId}`,
+                                textAlign: 'left',
+                                textWeight: '500',
+                                type: 'text'
+                            },
+                            {
+                                description: item.companyName,
+                                textAlign: 'center',
+                                textWeight: '300',
+                                type: 'text'
+                            },
+                            {
+                                description: `$ ${item.saleValue}`,
+                                textAlign: 'center',
+                                textWeight: '500',
+                                type: {
+                                    color: 'fontWhite',
+                                    bgColor: green
+                                }
+                            },
+                    ],
+                    onClick: () => {
+                        // @ts-ignore
+                        setDataSale(data[index])
+                        router.push('/admin/sales/details')
+                    }
+                }
+            ))
+            // @ts-ignore
+            setPendingSales(array)
         })
 
-        sales.profit({ dateStart: getDateCurrent(), dateEnd: getDateCurrent() })
-        .then((data) => {
-            itemsPreview[2].value = String(data || '0,00')
-        })
         // @ts-ignore
         setItemsPreview(itemsPreview)
 
         sales.totalSold({ dateStart: getDateCurrent(), dateEnd: getDateCurrent() })
         .then((data) => {
             setBilledAmount(String(data || '0,00'))
+        })
+
+        sales.cost({ dateStart: getDateCurrent(), dateEnd: getDateCurrent() })
+        .then((data) => {
+            setCost(String(data || '0,00'))
+        })
+
+        sales.profit({ dateStart: getDateCurrent(), dateEnd: getDateCurrent() })
+        .then((data) => {
+            setProfit(String(data || '0,00'))
         })
 
         sales.currentWeek()
@@ -128,8 +160,11 @@ const Dashboard: React.FC<IndexProps> = ({
         <View
             nameUser={dataUser.name || 'Shri'}
             latestSales={latestSales}
+            pendingSales={pendingSales}
             itemsPreview={itemsPreview}
             billedAmount={billedAmount}
+            cost={cost}
+            profit={profit}
             outOfStock={outOfStock}
         />
     )

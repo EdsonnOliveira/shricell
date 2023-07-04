@@ -158,6 +158,17 @@ const totalSold = ({ dateStart, dateEnd }: IndexType) => {
     })
 }
 
+const cost = ({ dateStart, dateEnd }: IndexType) => {
+    return new Promise(async (resolve, reject) => {
+        await api.post('sales/total-cost.php', { dateStart, dateEnd })
+        .then(response => {
+            let res:SaleProps[] = response.data.total
+            resolve(res)
+        })
+        .catch((response) => reject(response))
+    })
+}
+
 const profit = ({ dateStart, dateEnd }: IndexType) => {
     return new Promise(async (resolve, reject) => {
         await api.post('sales/profit.php', { dateStart, dateEnd })
@@ -230,6 +241,7 @@ export default {
     customerMonthly,
     currentWeek,
     totalSold,
+    cost,
     profit,
     bestSellerDevices,
     bestSellerBrands

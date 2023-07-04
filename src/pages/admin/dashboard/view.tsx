@@ -1,13 +1,12 @@
 import React from "react";
 import Head from "next/head";
 
-import { primary, red, terciary } from "@atomic/constants/colors";
+import { red } from "@atomic/constants/colors";
 import Header from "@atomic/organisms/header";
 import BoxShadow from "@atomic/atoms/boxShadow";
 import Stamp from "@atomic/atoms/stamp";
 import BoxCommon from "@atomic/atoms/boxCommon";
 import Table from "@atomic/mocelules/table";
-import Icon from "@atomic/atoms/icon";
 
 import useMediaQuery from "@hooks/useMediaQuery";
 
@@ -16,9 +15,12 @@ import { ViewProps } from "./models";
 const View: React.FC<ViewProps> = ({
     nameUser,
     latestSales,
+    pendingSales,
     itemsPreview,
     outOfStock,
     billedAmount,
+    cost,
+    profit
 }) => (
     <>
         <Head>
@@ -39,6 +41,24 @@ const View: React.FC<ViewProps> = ({
                     <BoxCommon flexDirection='row' alignItems='center' justifyContent='space-between' flex='1'>
                         <h2>$ { billedAmount }</h2>
                     </BoxCommon>
+                </BoxShadow>
+                {/* @ts-ignore */}
+                <BoxShadow title='Cost' size={useMediaQuery('(max-width: 1000px)') && { width: '100%' }}>
+                    <BoxCommon flexDirection='row' alignItems='center' justifyContent='space-between' flex='1'>
+                        <h2>$ { cost }</h2>
+                    </BoxCommon>
+                </BoxShadow>
+                {/* @ts-ignore */}
+                <BoxShadow title='Profit' size={useMediaQuery('(max-width: 1000px)') && { width: '100%' }}>
+                    <BoxCommon flexDirection='row' alignItems='center' justifyContent='space-between' flex='1'>
+                        <h2>$ { profit }</h2>
+                    </BoxCommon>
+                </BoxShadow>
+                <BoxShadow title='Pending sales' size={{ width: '100%', height: 'max-content' }}>
+                    <Table
+                        tr={pendingSales}
+                        mt='10px'
+                    />
                 </BoxShadow>
                 <BoxShadow title='Latest sales' size={{ width: '100%', height: 'max-content' }}>
                     <Table
