@@ -1,4 +1,5 @@
 import React from 'react'
+import { StaticImageData } from 'next/image';
 
 import AppleIcon from '@assets/brand/Apple.png'
 import SamsungIcon from '@assets/brand/Samsung.png'
@@ -9,17 +10,19 @@ import { Main } from './style';
 const Brand: React.FC<IndexProps> = ({
     type
 }) => {
-    const searchImage = () => {
+    const searchImage = (): StaticImageData => {
         switch (type.toUpperCase()) {
             case 'APPLE':
                 return AppleIcon;
             case 'SAMSUNG':
                 return SamsungIcon;
+            default:
+                return SamsungIcon
         }
     }
 
     return (
-        <Main src={String(searchImage())} alt={type} />
+        <Main src={searchImage()} alt={type} />
     )
 }
 
