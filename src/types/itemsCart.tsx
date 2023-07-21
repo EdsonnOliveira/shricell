@@ -1,5 +1,4 @@
 import { BrandType } from "@atomic/constants/brand";
-import { SetText } from "./set";
 
 export type ItemsCart = {
     idUser: string;
