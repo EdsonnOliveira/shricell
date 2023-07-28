@@ -96,7 +96,7 @@ const View: React.FC<ViewProps> = ({
                     <Button
                         text='Finish'
                         type='greenLarge'
-                        onClick={() => finishCart()}
+                        onClick={finishCart}
                         disabled={payment ? false : true}
                     />
                 </BoxCommon>

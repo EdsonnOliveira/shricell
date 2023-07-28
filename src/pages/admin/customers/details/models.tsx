@@ -2,6 +2,7 @@ import { TR } from "@atomic/constants/table";
 import { CustomersTypes } from "@redux/reducers/customers/models";
 import { SalesTypes } from "@redux/reducers/sales/models";
 import { SetText, SetVoid } from "@typing/set";
+import { OptionsType } from "~/atomic/constants/select";
 
 export interface IndexProps {
     dataCustomer: CustomersTypes['data']
@@ -39,6 +40,9 @@ export interface ViewProps {
     setBusinessIdentity: SetText;
     webSite: string;
     setWebSite: SetText;
+    statusItems: OptionsType[]
+    status: string;
+    setStatus: SetText;
     latestSales: TR[];
     modalDetails: boolean;
     setModalDetails: (visible: boolean) => void;

@@ -8,7 +8,7 @@ const listAll = () => {
             let res:StoragesProps[] = response.data.storages
             let array:StoragesProps[] = []
 
-            for (let i = 0; i < res.length; i++ ) {
+            for (let i = 0; i < res?.length; i++ ) {
                 let json: StoragesProps = {
                     storageId: res[i].storageId,
                     storage: res[i].storage

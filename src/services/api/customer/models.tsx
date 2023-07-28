@@ -1,4 +1,7 @@
 export type IndexType = {
+    duns?: string;
+    taxID?: string;
+    businessID?: string;
     name?: string;
     phone?: string;
     email?: string;
@@ -7,6 +10,9 @@ export type IndexType = {
     city?: string;
     state?: string;
     zipCode?: string;
+    country?: string;
+    typeIndustry?: string;
+    stateCorporation?: string;
     customerId?: number;
     status?: 'APPROVED' | 'DENIED';
 }

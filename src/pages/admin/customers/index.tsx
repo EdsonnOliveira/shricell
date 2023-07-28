@@ -23,6 +23,22 @@ const Customers: React.FC<IndexProps> = ({
     const [itemsPreview, setItemsPreview] = useState<HeaderItemsPreview[]>([])
     const [data, setData] = useState<TR[]>([])
 
+    const [dunsNumber, setDunsNumber] = useState<string>('')
+    const [federalTax, setFederalTax] = useState<string>('')
+    const [companyLegal, setCompanyLegal] = useState<string>('')
+    const [phone, setPhone] = useState<string>('')
+    const [zipCode, setZipCode] = useState<string>('')
+    const [companyAddress, setCompanyAddress] = useState<string>('')
+    const [state, setState] = useState<string>('')
+    const [city, setCity] = useState<string>('')
+    const [country, setCountry] = useState<string>('')
+    const [stateCorporation, setStateCorporation] = useState<string>('')
+    const [typeIndustry, setTypeIndustry] = useState<string>('')
+    const [emailCorporation, setEmailCorporation] = useState<string>('')
+    const [businessIdentity, setBusinessIdentity] = useState<string>('')
+    const [webSite, setWebSite] = useState<string>('')
+    const [aboutUs, setAboutUs] = useState<string>('')
+
     useEffect(() => {
         loadData()
     }, [])
@@ -106,12 +122,62 @@ const Customers: React.FC<IndexProps> = ({
 
     const [modalAdd, setModalAdd] = useState<boolean>(false)
 
+    const saveCustomer = () => {
+        customer.insert({
+            duns: dunsNumber,
+            taxID: federalTax,
+            name: companyLegal,
+            phone,
+            zipCode,
+            address: companyAddress,
+            state,
+            city,
+            country,
+            stateCorporation,
+            typeIndustry,
+            email: emailCorporation,
+            businessID: businessIdentity,
+            website: webSite,
+        })
+    }
+
     return (
         <View
             data={data}
             itemsPreview={itemsPreview}
             modalAdd={modalAdd}
             setModalAdd={setModalAdd}
+            dunsNumber={dunsNumber}
+            setDunsNumber={setDunsNumber}
+            federalTax={federalTax}
+            setFederalTax={setFederalTax}
+            companyLegal={companyLegal}
+            setCompanyLegal={setCompanyLegal}
+            phone={phone}
+            setPhone={setPhone}
+            zipCode={zipCode}
+            setZipCode={setZipCode}
+            companyAddress={companyAddress}
+            setCompanyAddress={setCompanyAddress}
+            state={state}
+            setState={setState}
+            city={city}
+            setCity={setCity}
+            country={country}
+            setCountry={setCountry}
+            stateCorporation={stateCorporation}
+            setStateCorporation={setStateCorporation}
+            typeIndustry={typeIndustry}
+            setTypeIndustry={setTypeIndustry}
+            emailCorporation={emailCorporation}
+            setEmailCorporation={setEmailCorporation}
+            businessIdentity={businessIdentity}
+            setBusinessIdentity={setBusinessIdentity}
+            webSite={webSite}
+            setWebSite={setWebSite}
+            aboutUs={aboutUs}
+            setAboutUs={setAboutUs}
+            saveCustomer={saveCustomer}
         />
     )
 }

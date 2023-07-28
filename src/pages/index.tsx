@@ -39,7 +39,9 @@ const Home: React.FC<IndexProps> = ({
   const [certificate, setCertificate] = useState<FileList | null>(null)
   const [photoID, setPhotoID] = useState<FileList | null>(null)
   const [resaleTax, setResaleTax] = useState<FileList | null>(null)
+
   const [modalError, setModalError] = useState<boolean>(false)
+  const [modalErrorMessage, setModalErrorMessage] = useState<string>('')
 
   const clickLogin = () => {
     user.loginCustomer({ email, password })
@@ -54,7 +56,10 @@ const Home: React.FC<IndexProps> = ({
       })
       router.push('/customer/dashboard')
     })
-    .catch(() => setModalError(true))
+    .catch((response: string) => {
+      setModalError(true)
+      setModalErrorMessage(response)
+    })
   }
 
   const clickRegister = () => {
@@ -84,6 +89,7 @@ const Home: React.FC<IndexProps> = ({
       clickRegister={clickRegister}
       modalError={modalError}
       setModalError={setModalError}
+      modalErrorMessage={modalErrorMessage}
       dunsNumber={dunsNumber}
       setDunsNumber={setDunsNumber}
       federalTax={federalTax}

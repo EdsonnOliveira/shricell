@@ -109,6 +109,10 @@ const Dashboard: React.FC<IndexProps> = ({
         })
     }
 
+    useEffect(() => {
+        if (devicesItems.length <= 0) loadDevices()
+    }, [devicesItems])
+
     const updateFilter = (label: string, type: string) => {
         switch (type) {
             case 'G':
@@ -160,7 +164,7 @@ const Dashboard: React.FC<IndexProps> = ({
                     setAlertType('success')
                     setAlertText('Item added successfully!')
                     setAlertVisible(true)
-                    route.push('/customer/cart')
+                    setDevicesItems([])
                 })
                 .catch(() => {
                     setAlertType('error')
@@ -178,7 +182,7 @@ const Dashboard: React.FC<IndexProps> = ({
                     setAlertType('success')
                     setAlertText('Item updated successfully!')
                     setAlertVisible(true)
-                    route.push('/customer/cart')
+                    setDevicesItems([])
                 })
                 .catch(() => {
                     setAlertType('error')

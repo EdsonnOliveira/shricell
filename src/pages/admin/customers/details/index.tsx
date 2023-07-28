@@ -15,6 +15,20 @@ import { SaleProps } from "@api/sales/models";
 import { IndexProps } from "./models";
 import View from "./view";
 import customer from "~/services/api/customer";
+import { OptionsType } from "~/atomic/constants/select";
+import Alert from "~/atomic/atoms/alert";
+import { AlertType } from "~/atomic/constants/alert";
+
+const statusItems: OptionsType[] = [
+    {
+        label: 'APPROVED',
+        value: 'APPROVED'
+    },
+    {
+        label: 'DENIED',
+        value: 'DENID'
+    }
+]
 
 const CustomersDetails: React.FC<IndexProps> = ({
     dataCustomer,
@@ -36,6 +50,7 @@ const CustomersDetails: React.FC<IndexProps> = ({
     const [emailCorporation, setEmailCorporation] = useState<string>(dataCustomer.email)
     const [businessIdentity, setBusinessIdentity] = useState<string>(dataCustomer.businessIdentify)
     const [webSite, setWebSite] = useState<string>(dataCustomer.website)
+    const [status, setStatus] = useState<string>(dataCustomer.status)
 
     const [billedAmount, setBilledAmount] = useState<string>('0,00')
     const [latestSales, setLatestSales] = useState<TR[]>([])
@@ -105,6 +120,10 @@ const CustomersDetails: React.FC<IndexProps> = ({
 
     const [modalDetails, setModalDetails] = useState<boolean>(false)
 
+    const [alertVisible, setAlertVisible] = useState<boolean>(false)
+    const [alertType, setAlertType] = useState<AlertType>('error')
+    const [alertText, setAlertText] = useState<string>('')
+
     const approve = () => {
         customer.verify({ customerId: dataCustomer.customerId, status: 'APPROVED' })
         .then(() => router.push('/admin/customers'))
@@ -124,50 +143,70 @@ const CustomersDetails: React.FC<IndexProps> = ({
             address: companyAddress,
             city,
             state,
-            zipCode
-        }).then(() => router.push('/admin/customers'))
+            zipCode,
+            status
+        }).then(() => {
+            setModalDetails(false)
+            setAlertType('success')
+            setAlertText('Customer updated successfully!')
+            setAlertVisible(true)
+            setTimeout(() => {
+                router.push('/admin/customers')
+            }, 1500);
+        })
     }
 
     return (
-        <View
-            isEdit={!!router.query.isEdit}
-            dataCustomer={dataCustomer}
-            dunsNumber={dunsNumber}
-            setDunsNumber={setDunsNumber}
-            federalTax={federalTax}
-            setFederalTax={setFederalTax}
-            companyLegal={companyLegal}
-            setCompanyLegal={setCompanyLegal}
-            phone={phone}
-            setPhone={setPhone}
-            zipCode={zipCode}
-            setZipCode={setZipCode}
-            companyAddress={companyAddress}
-            setCompanyAddress={setCompanyAddress}
-            state={state}
-            setState={setState}
-            city={city}
-            setCity={setCity}
-            country={country}
-            setCountry={setCountry}
-            stateCorporation={stateCorporation}
-            setStateCorporation={setStateCorporation}
-            typeIndustry={typeIndustry}
-            setTypeIndustry={setTypeIndustry}
-            emailCorporation={emailCorporation}
-            setEmailCorporation={setEmailCorporation}
-            businessIdentity={businessIdentity}
-            setBusinessIdentity={setBusinessIdentity}
-            webSite={webSite}
-            setWebSite={setWebSite}
-            latestSales={latestSales}
-            modalDetails={modalDetails}
-            setModalDetails={setModalDetails}
-            billedAmount={billedAmount}
-            approve={approve}
-            deny={deny}
-            update={update}
-        />
+        <>
+            <View
+                isEdit={!!router.query.isEdit}
+                dataCustomer={dataCustomer}
+                dunsNumber={dunsNumber}
+                setDunsNumber={setDunsNumber}
+                federalTax={federalTax}
+                setFederalTax={setFederalTax}
+                companyLegal={companyLegal}
+                setCompanyLegal={setCompanyLegal}
+                phone={phone}
+                setPhone={setPhone}
+                zipCode={zipCode}
+                setZipCode={setZipCode}
+                companyAddress={companyAddress}
+                setCompanyAddress={setCompanyAddress}
+                state={state}
+                setState={setState}
+                city={city}
+                setCity={setCity}
+                country={country}
+                setCountry={setCountry}
+                stateCorporation={stateCorporation}
+                setStateCorporation={setStateCorporation}
+                typeIndustry={typeIndustry}
+                setTypeIndustry={setTypeIndustry}
+                emailCorporation={emailCorporation}
+                setEmailCorporation={setEmailCorporation}
+                businessIdentity={businessIdentity}
+                setBusinessIdentity={setBusinessIdentity}
+                webSite={webSite}
+                setWebSite={setWebSite}
+                statusItems={statusItems}
+                status={status}
+                setStatus={setStatus}
+                latestSales={latestSales}
+                modalDetails={modalDetails}
+                setModalDetails={setModalDetails}
+                billedAmount={billedAmount}
+                approve={approve}
+                deny={deny}
+                update={update}
+            />
+            <Alert
+                type={alertType}
+                text={alertText}
+                visible={alertVisible}
+                setVisible={setAlertVisible}
+            />
+        </>
     )
 }
 

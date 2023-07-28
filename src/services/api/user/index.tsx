@@ -24,6 +24,10 @@ const loginCustomer = ({ email, password }: IndexType) => {
     return new Promise(async (resolve, reject) => {
         await api.post('auth/login.php', { email, password })
         .then((response) => {
+            if (response.data.status === false) {
+                reject(response.data.message)
+                return
+            }
             let res:LoginProps = response.data
             let json: LoginProps = {
                 access_token: res.access_token,

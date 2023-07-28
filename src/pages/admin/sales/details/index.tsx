@@ -154,6 +154,12 @@ const SalesDetails: React.FC<IndexProps> = ({
         setSteps(step)
     }
 
+    const [modalViewPayment, setModalViewPayment] = useState<boolean>(false)
+
+    const viewPayment = () => {
+        setModalViewPayment(true)
+    }
+
     const confirmPayment = () => {
         sales.approve({ saleId: dataSale.saleId })
         .then(() => router.push('/admin/sales'))
@@ -169,9 +175,12 @@ const SalesDetails: React.FC<IndexProps> = ({
             dataSale={dataSale}
             dataItems={dataItems}
             totalQuantity={totalQuantity}
+            viewPayment={viewPayment}
             confirmPayment={confirmPayment}
             denyPayment={denyPayment}
             totalSales={totalSales}
+            modalViewPayment={modalViewPayment}
+            setModalViewPayment={setModalViewPayment}
         />
     )
 }

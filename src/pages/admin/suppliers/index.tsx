@@ -13,6 +13,8 @@ import { SupplierProps } from "@api/supplier/models";
 
 import View from "./view";
 import { IndexProps } from "./models";
+import Alert from "~/atomic/atoms/alert";
+import { AlertType } from "~/atomic/constants/alert";
 
 const Supplier: React.FC<IndexProps> = ({
     setDataSupplier
@@ -109,6 +111,10 @@ const Supplier: React.FC<IndexProps> = ({
     const [fieldRequired, setFieldRequired] = useState<string>('')
     const [modalRequired, setModalRequired] = useState<boolean>(false)
 
+    const [alertVisible, setAlertVisible] = useState<boolean>(false)
+    const [alertType, setAlertType] = useState<AlertType>('error')
+    const [alertText, setAlertText] = useState<string>('')
+
     const saveSupplier = () => {
         if (nameSupplier.length <= 0) {
             setFieldRequired('Name')
@@ -131,35 +137,50 @@ const Supplier: React.FC<IndexProps> = ({
                 state: stateSupplier,
                 zipCode: zipCodeSupplier
             })
-        .then(() => router.reload())
+        .then(() => {
+            setAlertType('success')
+            setAlertText('Supplier inserted successfully!')
+            setAlertVisible(true)
+            setTimeout(() => {
+                router.reload()
+            }, 1500);
+        })
     }
 
     return (
-        <View
-            router={router}
-            data={data}
-            itemsPreview={itemsPreview}
-            modalSupplier={modalSupplier}
-            setModalSupplier={setModalSupplier}
-            nameSupplier={nameSupplier}
-            setNameSupplier={setNameSupplier}
-            addressSupplier={addressSupplier}
-            setAddressSupplier={setAddressSupplier}
-            phoneSupplier={phoneSupplier}
-            setPhoneSupplier={setPhoneSupplier}
-            emailSupplier={emailSupplier}
-            setEmailSupplier={setEmailSupplier}
-            citySupplier={citySupplier}
-            setCitySupplier={setCitySupplier}
-            stateSupplier={stateSupplier}
-            setStateSupplier={setStateSupplier}
-            zipCodeSupplier={zipCodeSupplier}
-            setZipCodeSupplier={setZipCodeSupplier}
-            saveSupplier={saveSupplier}
-            fieldRequired={fieldRequired}
-            modalRequired={modalRequired}
-            setModalRequired={setModalRequired}
-        />
+        <>
+            <View
+                router={router}
+                data={data}
+                itemsPreview={itemsPreview}
+                modalSupplier={modalSupplier}
+                setModalSupplier={setModalSupplier}
+                nameSupplier={nameSupplier}
+                setNameSupplier={setNameSupplier}
+                addressSupplier={addressSupplier}
+                setAddressSupplier={setAddressSupplier}
+                phoneSupplier={phoneSupplier}
+                setPhoneSupplier={setPhoneSupplier}
+                emailSupplier={emailSupplier}
+                setEmailSupplier={setEmailSupplier}
+                citySupplier={citySupplier}
+                setCitySupplier={setCitySupplier}
+                stateSupplier={stateSupplier}
+                setStateSupplier={setStateSupplier}
+                zipCodeSupplier={zipCodeSupplier}
+                setZipCodeSupplier={setZipCodeSupplier}
+                saveSupplier={saveSupplier}
+                fieldRequired={fieldRequired}
+                modalRequired={modalRequired}
+                setModalRequired={setModalRequired}
+            />
+            <Alert
+                type={alertType}
+                text={alertText}
+                visible={alertVisible}
+                setVisible={setAlertVisible}
+            />
+        </>
     )
 }
 

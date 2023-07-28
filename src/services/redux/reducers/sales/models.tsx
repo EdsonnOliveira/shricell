@@ -13,6 +13,6 @@ type Data = {
     dateTimeInsert: string | number;
     hash: string | number;
     saleCost: string | number;
-    paymentReceipt: string | number;
+    paymentReceipt: string;
     status: 'PENDING' | 'APPROVED' | 'DENIED' | '';
 }

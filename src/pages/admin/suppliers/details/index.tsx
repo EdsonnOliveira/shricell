@@ -8,6 +8,8 @@ import { IndexProps } from "./models";
 import View from "./view";
 import supplier from "~/services/api/supplier";
 import { useRouter } from "next/router";
+import Alert from "~/atomic/atoms/alert";
+import { AlertType } from "~/atomic/constants/alert";
 
 const SupplierDetails: React.FC<IndexProps> = ({
     dataSupplier
@@ -24,6 +26,10 @@ const SupplierDetails: React.FC<IndexProps> = ({
 
     const [fieldRequired, setFieldRequired] = useState<string>('')
     const [modalRequired, setModalRequired] = useState<boolean>(false)
+
+    const [alertVisible, setAlertVisible] = useState<boolean>(false)
+    const [alertType, setAlertType] = useState<AlertType>('error')
+    const [alertText, setAlertText] = useState<string>('')
 
     const save = () => {
         if (name.length <= 0) {
@@ -48,30 +54,45 @@ const SupplierDetails: React.FC<IndexProps> = ({
             state,
             zipCode
         })
-        .then(() => router.push('/admin/suppliers'))
+        .then(() => {
+            setAlertType('success')
+            setAlertText('Supplier updated successfully!')
+            setAlertVisible(true)
+            setTimeout(() => {
+                router.push('/admin/suppliers')
+            }, 1500);
+        })
     }
 
     return (
-        <View
-            name={name}
-            setName={setName}
-            address={address}
-            setAddress={setAddress}
-            phone={phone}
-            setPhone={setPhone}
-            email={email}
-            setEmail={setEmail}
-            city={city}
-            setCity={setCity}
-            state={state}
-            setState={setState}
-            zipCode={zipCode}
-            setZipCode={setZipCode}
-            save={save}
-            fieldRequired={fieldRequired}
-            modalRequired={modalRequired}
-            setModalRequired={setModalRequired}
-        />
+        <>
+            <View
+                name={name}
+                setName={setName}
+                address={address}
+                setAddress={setAddress}
+                phone={phone}
+                setPhone={setPhone}
+                email={email}
+                setEmail={setEmail}
+                city={city}
+                setCity={setCity}
+                state={state}
+                setState={setState}
+                zipCode={zipCode}
+                setZipCode={setZipCode}
+                save={save}
+                fieldRequired={fieldRequired}
+                modalRequired={modalRequired}
+                setModalRequired={setModalRequired}
+            />
+            <Alert
+                type={alertType}
+                text={alertText}
+                visible={alertVisible}
+                setVisible={setAlertVisible}
+            />
+        </>
     )
 }
 

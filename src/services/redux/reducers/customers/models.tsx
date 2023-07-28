@@ -23,5 +23,5 @@ type Data = {
     acquisitionMethod: string
     photoId: string
     taxExemptCertificate: string
-    status: string
+    status: 'APPROVED' | 'DENIED'
 }

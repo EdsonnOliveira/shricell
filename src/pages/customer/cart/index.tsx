@@ -57,6 +57,10 @@ const Cart: React.FC<IndexProps> = ({
         })
     }
 
+    useEffect(() => {
+        if (devicesItems.length <= 0) loadData()
+    }, [devicesItems])
+
     const [fieldRequired, setFieldRequired] = useState<string>('')
     const [modalRequired, setModalRequired] = useState<boolean>(false)
 
@@ -122,7 +126,7 @@ const Cart: React.FC<IndexProps> = ({
                     setAlertType('success')
                     setAlertText('Item removing successfully!')
                     setAlertVisible(true)
-                    loadData()
+                    setDevicesItems([])
                 })
                 .catch(() => {
                     setAlertType('error')

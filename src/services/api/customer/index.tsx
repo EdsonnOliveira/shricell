@@ -8,7 +8,7 @@ const listAll = () => {
             let res:CustomerProps[] = response.data.customers
             let array:CustomerProps[] = []
 
-            for (let i = 0; i < res.length; i++ ) {
+            for (let i = 0; i < res?.length; i++ ) {
                 let json: CustomerProps = {
                     customerId: res[i].customerId,
                     companyName: res[i].companyName,
@@ -35,9 +35,9 @@ const listAll = () => {
     })
 }
 
-const insert = ({ name, phone, email, address, city, state, zipCode }: IndexType) => {
+const insert = ({ name, phone, email, address, city, state, zipCode, website, businessID, country, duns, stateCorporation, taxID, typeIndustry }: IndexType) => {
     return new Promise(async (resolve, reject) => {
-        await api.post('customers/new-customer.php', { name, phone, email, address, city, state, zipCode })
+        await api.post('customers/new-customer.php', { name, phone, email, companyAddress: address, city, state, zipCode, website, businessID, country, duns, stateCorporation, taxID, typeIndustry })
         .then((response) => {
             // @ts-ignore
             let res:SupplierProps = response.data
@@ -47,9 +47,9 @@ const insert = ({ name, phone, email, address, city, state, zipCode }: IndexType
     })
 }
 
-const update = ({ customerId, phone, email, website, address, city, state, zipCode }: IndexType) => {
+const update = ({ customerId, phone, email, website, address, city, state, zipCode, status }: IndexType) => {
     return new Promise(async (resolve, reject) => {
-        await api.post('customers/edit-customer.php', { customerId, phone, email, companyAddress: address, city, state, zipCode })
+        await api.post('customers/edit-customer.php', { customerId, phone, email, companyAddress: address, city, state, zipCode, website, status })
         .then((response) => {
             // @ts-ignore
             let res:CustomerProps = response.data

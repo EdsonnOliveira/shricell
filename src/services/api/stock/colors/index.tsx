@@ -9,7 +9,7 @@ const listAll = ({ brandId, modelId }: IndexType) => {
             let res:ColorsProps[] = response.data.colors
             let array:ColorsProps[] = []
 
-            for (let i = 0; i < res.length; i++ ) {
+            for (let i = 0; i < res?.length; i++ ) {
                 let json: ColorsProps = {
                     colorId: res[i].colorId,
                     color: res[i].color

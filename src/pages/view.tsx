@@ -20,6 +20,7 @@ const View: React.FC<ViewProps> = ({
     clickRegister,
     modalError,
     setModalError,
+    modalErrorMessage,
     dunsNumber,
     setDunsNumber,
     federalTax,
@@ -78,7 +79,7 @@ const View: React.FC<ViewProps> = ({
                         clickRegister={clickRegister}
                     />
                     <Modal
-                        title="Incorrect credentials"
+                        title="Error"
                         visible={modalError}
                         onClose={() => setModalError(false)}
                         type='error'
@@ -90,7 +91,7 @@ const View: React.FC<ViewProps> = ({
                             }
                         }
                     >
-                        <h4 className="fontCenter">Incorrect <b>username</b> or <b>password</b>. <br />Please try again.</h4>
+                        <h4 className="fontCenter">{ modalErrorMessage }</h4>
                     </Modal>
                 </>
             )

@@ -20,6 +20,7 @@ export interface LoginProps {
     clickRegister: SetVoid;
     modalError: boolean;
     setModalError: SetBoolean;
+    modalErrorMessage: string;
 }
 
 export interface RegisterProps {

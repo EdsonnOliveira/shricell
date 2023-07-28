@@ -76,8 +76,8 @@ const Finish: React.FC<IndexProps> = ({
         }
 // @ts-ignore
         sales.insert({ customerId: dataUser.id, paymentReceipt: payment[0] })
-        .then((data) => {
-            route.push('customer/success')
+        .then(() => {
+            route.push('/customer/success')
         })
         .catch((data) => {
             setAlertText(data.message)

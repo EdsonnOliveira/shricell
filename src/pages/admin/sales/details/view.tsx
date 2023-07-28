@@ -12,15 +12,19 @@ import Steps from "@atomic/mocelules/steps";
 
 import useMediaQuery from "@hooks/useMediaQuery";
 import { ViewProps } from "./models";
+import Modal from "~/atomic/mocelules/modal";
 
 const View: React.FC<ViewProps> = ({
     dataItems,
     dataSale,
     steps,
     totalQuantity,
+    viewPayment,
     confirmPayment,
     denyPayment,
-    totalSales
+    totalSales,
+    modalViewPayment,
+    setModalViewPayment,
 }) => (
     <>
         <Head>
@@ -40,6 +44,7 @@ const View: React.FC<ViewProps> = ({
                 <BoxShadow size={{ width: useMediaQuery('(max-width: 1600px)') ? '100%' : '800px', height: 'max-content'}}>
                     <BoxCommon alignItems='center' justifyContent='center' gap='25px' flex='1'>
                         <Steps items={steps} currentStep={dataSale?.status === 'APPROVED' ? 3 : 1} />
+                        <Button type='primaryLarge' text='View payment' onClick={() => viewPayment()} />
                         {
                             dataSale && dataSale?.status === 'PENDING' && (
                                 <BoxCommon width='100%' gap='10px'>
@@ -77,6 +82,19 @@ const View: React.FC<ViewProps> = ({
                     />
                 </BoxShadow>
             </BoxCommon>
+            <Modal
+                title='View Payment'
+                visible={modalViewPayment}
+                onClose={() => setModalViewPayment(false)}
+            >
+                <img
+                    src={dataSale.paymentReceipt}
+                    style={{
+                        maxWidth: '400px',
+                        maxHeight: '400px'
+                    }}
+                />
+            </Modal>
         </main>
     </>
 )

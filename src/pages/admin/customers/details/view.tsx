@@ -14,6 +14,7 @@ import Button from "@atomic/atoms/button";
 import useMediaQuery from "@hooks/useMediaQuery";
 
 import { ViewProps } from "./models";
+import Select from "~/atomic/atoms/select";
 
 const View: React.FC<ViewProps> = ({
     isEdit,
@@ -46,6 +47,9 @@ const View: React.FC<ViewProps> = ({
     setBusinessIdentity,
     webSite,
     setWebSite,
+    statusItems,
+    status,
+    setStatus,
     latestSales,
     modalDetails,
     setModalDetails,
@@ -214,6 +218,15 @@ const View: React.FC<ViewProps> = ({
                             width={useMediaQuery('(max-width: 1000px)') ? '100%' : '165px'}
                             value={stateCorporation}
                             onChangeText={setStateCorporation}
+                        />
+                        <Select
+                            label='Status'
+                            options={statusItems}
+                            isSearch
+                            value={status}
+                            width="100%"
+                            // @ts-ignore
+                            onChange={setStatus}
                         />
                     </BoxCommon>
                 </BoxCommon>

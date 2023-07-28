@@ -8,7 +8,7 @@ const listAll = () => {
             let res:BankProps[] = response.data.banks
             let array:BankProps[] = []
 
-            for (let i = 0; i < res.length; i++ ) {
+            for (let i = 0; i < res?.length; i++ ) {
                 let json: BankProps = {
                     bankId: res[i].bankId,
                     bank: res[i].bank,
